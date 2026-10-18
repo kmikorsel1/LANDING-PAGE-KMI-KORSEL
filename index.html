@@ -24,7 +24,7 @@
 <title>Komunitas Muslim Indonesia di Korea Selatan (KMI Korsel)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
 
 <style>
 /* ===== Sembunyikan elemen Blogger & kunci scroll halaman induk ===== */
@@ -766,6 +766,132 @@
 @media (max-width: 900px) { #app-root #sosmed.sos-dua .sos-grid { grid-template-columns: 1fr; } }
 @media (max-width: 640px) { #app-root .ig-grid { gap: 6px; } #app-root .ig-tile { border-radius: 10px; } }
 @media (prefers-reduced-motion: reduce) { #app-root, #app-root * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+/* =====================================================================
+   GAYA "DEVELOPER PORTAL" (bersih, putih, abu muda, judul besar, tombol pil datar)
+   Hanya untuk halaman publik (#kmi-landing). Panel pengurus tidak berubah.
+   ===================================================================== */
+#app-root #kmi-landing {
+  --text: #1C2B33; --muted: #5D6C7B; --border: #DEE3E9; --bg: #FFFFFF; --soft: #F1F4F7;
+  --shadow: none; --shadow-lg: 0 12px 32px -12px rgba(28,43,51,.18);
+  --font: "Inter", "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--font); background: #fff; color: var(--text); font-size: 16.5px;
+}
+#app-root #kmi-landing :where(h1, h2, h3, h4) { font-weight: 600; letter-spacing: -.02em; }
+#app-root #kmi-landing .sec { padding: 96px 0; }
+#app-root #kmi-landing .sec-alt, #app-root #kmi-landing .fb-sec { background: var(--soft); border: 0; }
+#app-root #kmi-landing .sec-title { font-size: clamp(30px, 4.2vw, 48px); font-weight: 600; letter-spacing: -.03em; line-height: 1.12; }
+#app-root #kmi-landing .sec-desc { font-size: 18px; color: var(--muted); }
+#app-root #kmi-landing .eyebrow { color: var(--muted); font-weight: 600; letter-spacing: .08em; font-size: 13px; }
+#app-root #kmi-landing .eyebrow::before { display: none; }
+#app-root #kmi-landing .eyebrow .ico { color: var(--primary); }
+#app-root #kmi-landing .card { border: 1px solid var(--border); box-shadow: none; border-radius: 20px; }
+#app-root #kmi-landing .sec-alt .card, #app-root #kmi-landing .fb-sec .card { border-color: transparent; }
+
+/* Tombol: pil datar */
+#app-root #kmi-landing .btn { font-weight: 600; border-radius: 999px; padding: 12px 24px; }
+#app-root #kmi-landing .btn-primary { box-shadow: none; }
+#app-root #kmi-landing .btn-primary:hover { background: var(--primary-600); }
+#app-root #kmi-landing .btn-outline { border: 1px solid #CBD2D9; background: #fff; color: var(--text); }
+#app-root #kmi-landing .btn-outline:hover { border-color: var(--text); color: var(--text); background: #fff; }
+#app-root #kmi-landing .btn-ghost { color: var(--primary); font-weight: 600; }
+
+/* Navbar: putih polos, garis tipis, menu teks dengan garis bawah */
+#app-root #kmi-landing .nav { background: rgba(255,255,255,.96); box-shadow: none; border-bottom: 1px solid var(--border); }
+#app-root #kmi-landing .nav-title { font-weight: 700; letter-spacing: .01em; }
+#app-root #kmi-landing .nav-masjid, #app-root #kmi-landing .nav-login { border: 1px solid #CBD2D9; color: var(--text); background: #fff; }
+#app-root #kmi-landing .nav-masjid .ico, #app-root #kmi-landing .nav-login .ico { color: var(--text); }
+#app-root #kmi-landing .nav-bottom { border-top: 1px solid var(--border); }
+#app-root #kmi-landing .nav-links { gap: 6px; }
+#app-root #kmi-landing .nav-links a { border-radius: 0; padding: 10px 12px; color: var(--text); font-weight: 500; position: relative; background: none; }
+#app-root #kmi-landing .nav-links a .ico { display: none; }
+#app-root #kmi-landing .nav-links a:hover { background: none; color: var(--primary); }
+#app-root #kmi-landing .nav-links a.active { background: none; color: var(--primary); }
+#app-root #kmi-landing .nav-links a.active::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: -8px; height: 3px; border-radius: 3px 3px 0 0; background: var(--primary); }
+
+/* Hero: latar gradasi lembut, judul besar ringan */
+#app-root #kmi-landing .hero { padding: 72px 0 96px; background: radial-gradient(1200px 520px at 85% 0%, color-mix(in srgb, var(--primary) 12%, #fff), transparent 60%), linear-gradient(180deg, #F5F8FF 0%, #fff 70%); }
+#app-root #kmi-landing .hero::before { display: none; }
+#app-root #kmi-landing .hero h1 { font-weight: 600; font-size: clamp(38px, 6vw, 68px); line-height: 1.04; letter-spacing: -.035em; }
+#app-root #kmi-landing .hero h1 .hl { color: var(--primary); }
+#app-root #kmi-landing .hero h1 .hl::after { display: none; }
+#app-root #kmi-landing .hero-sub { font-size: 19px; color: var(--muted); }
+#app-root #kmi-landing .hero-badges .badge { background: #fff; border: 1px solid var(--border); color: var(--text); font-weight: 600; }
+#app-root #kmi-landing .hero-stats { gap: 0; border-top: 1px solid var(--border); padding-top: 22px; }
+#app-root #kmi-landing .stat { background: none; border: 0; border-radius: 0; padding: 0 16px 0 0; }
+#app-root #kmi-landing .stat + .stat { border-left: 1px solid var(--border); padding-left: 16px; }
+#app-root #kmi-landing .stat b { color: var(--text); font-weight: 600; font-size: 32px; }
+#app-root #kmi-landing .hero-img, #app-root #kmi-landing .hero-slider { border-radius: 24px; box-shadow: none; }
+#app-root #kmi-landing .hero-caption { box-shadow: none; border: 1px solid var(--border); }
+
+/* Tentang, visi & misi */
+#app-root #kmi-landing .about-media img { box-shadow: none; border-radius: 24px; }
+#app-root #kmi-landing .about-text .hist { background: var(--soft); border-left-color: var(--primary); }
+#app-root #kmi-landing .vision { background: #1C2B33; border-radius: 24px; }
+#app-root #kmi-landing .vision .q { color: #8AB4FF; }
+#app-root #kmi-landing .mission { border-radius: 20px; }
+#app-root #kmi-landing .mission:hover, #app-root #kmi-landing .ev:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+#app-root #kmi-landing .mission .num { -webkit-text-stroke: 0; color: var(--primary); font-weight: 600; font-size: 26px; }
+#app-root #kmi-landing .mission h4, #app-root #kmi-landing .ev-body h3 { font-weight: 600; }
+
+/* Kegiatan, tab */
+#app-root #kmi-landing .tabs { background: #fff; border-color: #CBD2D9; }
+#app-root #kmi-landing .tabs button { font-weight: 600; }
+#app-root #kmi-landing .tabs button.active { background: var(--text); }
+#app-root #kmi-landing .ev-img .badges .badge { border: 0; color: var(--text); }
+#app-root #kmi-landing .meta .ico { color: var(--muted); }
+
+/* Donasi & keuangan */
+#app-root #kmi-landing .donate { background: var(--soft); border: 0; border-radius: 24px; }
+#app-root #kmi-landing .donate h2 { font-weight: 600; }
+#app-root #kmi-landing .donate-points li { border-color: transparent; }
+#app-root #kmi-landing .fin-card { box-shadow: none; }
+#app-root #kmi-landing .fin-card.saldo { background: #1C2B33; }
+#app-root #kmi-landing .fin-card b { font-weight: 600; }
+#app-root #kmi-landing .fin-list { box-shadow: none; }
+
+/* Facebook & medsos */
+#app-root #kmi-landing .fb-post { border-color: transparent; }
+#app-root #kmi-landing .fb-more, #app-root #kmi-landing .ev .more { color: var(--primary); }
+#app-root #kmi-landing .btn-fb { box-shadow: none; }
+
+/* Pengurus & FAQ */
+#app-root #kmi-landing .member { border-radius: 20px; }
+#app-root #kmi-landing .member h4 { font-weight: 600; }
+#app-root #kmi-landing .faq details { border-radius: 14px; box-shadow: none; }
+#app-root #kmi-landing .faq summary { font-weight: 600; }
+
+/* Banner masjid: gelap polos */
+#app-root #kmi-landing .mosque { background: #1C2B33; border-radius: 24px; }
+#app-root #kmi-landing .mosque h2 { font-weight: 600; }
+
+/* Kontak */
+#app-root #kmi-landing .input { border-color: #CBD2D9; border-radius: 12px; }
+#app-root #kmi-landing .input:focus { border-color: var(--primary); }
+
+/* Footer gelap */
+#app-root #kmi-landing .footer { background: #1C2B33; margin-top: 0; }
+
+@media (max-width: 900px) {
+  #app-root #kmi-landing .sec { padding: 72px 0; }
+  #app-root #kmi-landing .hero { padding: 40px 0 64px; }
+}
+@media (max-width: 420px) {
+  #app-root #kmi-landing .stat b { font-size: 24px; }
+  #app-root #kmi-landing .stat { padding-right: 10px; }
+  #app-root #kmi-landing .stat + .stat { padding-left: 10px; }
+}
+
+/* ===== Tombol Masuk / Daftar pengurus selalu terlihat (juga di HP) ===== */
+#app-root #kmi-landing .nav-login { border-color: var(--primary); color: var(--primary); font-weight: 700; }
+#app-root #kmi-landing .nav-login .ico { color: var(--primary); }
+#app-root .nav-mob { display: none; }
+@media (max-width: 1040px) {
+  #app-root .nav-mob { display: block; border-top: 1px solid var(--border); }
+  #app-root .nav-mob .container { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding-block: 10px; }
+  #app-root .nav-mob .btn { padding: 11px 12px; font-size: 14.5px; min-height: 46px; box-shadow: none; }
+  #app-root #kmi-landing .nav-mob .btn-outline { border-color: var(--primary); color: var(--primary); }
+  #app-root #kmi-landing .sec { scroll-margin-top: 150px; }
+}
 </style>
 
 </head>
@@ -785,12 +911,13 @@
         </a>
         <div class="nav-actions">
           <a href="https://korea-masjid.vercel.app/" id="nav-masjid" class="btn btn-outline nav-masjid" target="_blank" rel="noopener" title="Cari masjid &amp; musala di Korea"><span data-ico="mosque"></span>Cari Masjid</a>
-          <button type="button" id="nav-login" class="btn btn-outline nav-login" title="Masuk sebagai Ketua atau Pengurus"><span data-ico="lock"></span><span class="nav-login-txt">Masuk</span></button>
+          <button type="button" id="nav-login" class="btn btn-outline nav-login" title="Masuk atau daftar sebagai pengurus"><span data-ico="lock"></span><span class="nav-login-txt">Masuk</span><span class="nl-daftar">/ Daftar</span></button>
           <a href="#kontak" class="btn btn-primary nav-cta" data-go="kontak"><span data-ico="message"></span>Hubungi Kami</a>
           <button class="nav-burger" id="nav-burger" aria-label="Buka menu" aria-expanded="false"><span data-ico="menu"></span></button>
         </div>
       </div>
-      <div class="nav-bottom"><div class="container"><nav class="nav-links" id="nav-links" aria-label="Navigasi utama"></nav></div></div>
+      <div class="nav-mob"><div class="container"><button type="button" class="btn btn-primary" data-mlogin><span data-ico="lock"></span><span class="nav-login-txt">Masuk</span></button><button type="button" class="btn btn-outline" data-mdaftar><span data-ico="user-plus"></span>Daftar Pengurus</button></div></div>
+        <div class="nav-bottom"><div class="container"><nav class="nav-links" id="nav-links" aria-label="Navigasi utama"></nav></div></div>
       <div class="nav-drawer" id="nav-drawer"></div>
     </header>
 
@@ -1270,7 +1397,7 @@ const mockApi = (() => {
       hero_subjudul: "Wadah silaturahmi, informasi kegiatan, dan kepedulian bagi WNI muslim di Korea \u2014 dari yang baru tiba hingga yang sudah lama menetap.",
       hero_gambar_url: "", hero_gambar_keterangan: "Silaturahmi Akbar Muslim Indonesia",
       stat1_angka: "15+", stat1_label: "Tahun berkhidmat", stat2_angka: "50+", stat2_label: "Kegiatan per tahun", stat3_angka: "10.000+", stat3_label: "Jamaah terhubung",
-      warna_utama: "#0A7BBF", meta_deskripsi: "KMI Korsel \u2014 wadah silaturahmi dan kepedulian WNI muslim di Korea Selatan.",
+      warna_utama: "#0064E0", meta_deskripsi: "KMI Korsel \u2014 wadah silaturahmi dan kepedulian WNI muslim di Korea Selatan.",
       tentang_judul: "Rumah Teduh Perantauan di Negeri Ginseng",
       tentang_kami: "Jauh dari keluarga, banyak saudara kita di Korea membutuhkan tempat untuk berkumpul, belajar agama, dan saling menguatkan. KMI Korsel hadir sebagai rumah bersama bagi seluruh WNI muslim \u2014 pekerja, pelajar, dan keluarga.",
       tentang_subjudul: "Merawat Setiap Langkah Diaspora Muslim Indonesia",
@@ -1661,7 +1788,8 @@ function namaOrg() { return S("nama_org") || "Komunitas Muslim Indonesia di Kore
 function namaSingkat() { return S("nama_singkat") || "KMI Korsel"; }
 function namaLengkap() { return namaOrg() + " (" + namaSingkat() + ")"; }
 function updateLoginLabel() {
-  $$(".nav-login-txt").forEach(el => { el.textContent = STATE.user ? "Panel Pengurus" : "Masuk"; });
+  $$(".nav-login-txt").forEach(el => { el.textContent = STATE.user ? "Panel" : "Masuk"; });
+  $$(".nl-daftar, [data-mdaftar]").forEach(el => { el.hidden = !!STATE.user; });
   const f = $("#go-login-txt"); if (f) f.textContent = STATE.user ? "Panel Pengurus" : "Masuk Pengurus";
 }
 function namaBaris() {
@@ -2266,6 +2394,8 @@ $("#kmi-landing").addEventListener("change", e => {
 });
 $("#kmi-modal-root").addEventListener("click", e => { const go = e.target.closest("[data-go]"); if (go && $("#kmi-landing") && !$("#kmi-landing").hidden) setTimeout(() => scrollToSec(go.dataset.go), 50); });
 $("#nav-login").addEventListener("click", () => STATE.user ? showPanel() : showLogin());
+$("[data-mlogin]").addEventListener("click", () => STATE.user ? showPanel() : showLogin());
+$("[data-mdaftar]").addEventListener("click", () => { showLogin(); openDaftar(); });
 $("#nav-drawer").addEventListener("click", e => { if (e.target.closest("[data-login]")) { closeDrawer(); STATE.user ? showPanel() : showLogin(); } });
 $("#nav-burger").addEventListener("click", () => { const d = $("#nav-drawer"); const o = !d.classList.contains("open"); d.classList.toggle("open", o); $("#nav-burger").setAttribute("aria-expanded", String(o)); });
 
@@ -3071,7 +3201,7 @@ VIEWS.pengaturan = async () => {
       if (type === "check") return `<div class="field full"><label class="check"><input type="checkbox" data-k="${k}" id="st-${k}" ${val === "tidak" ? "" : "checked"}>${esc(label)}</label>${hint ? `<span class="hint">${esc(hint)}</span>` : ""}</div>`;
       const full = type === "textarea" || ["hero_judul", "misi", "peta_embed_url", "alamat_sekretariat"].includes(k) ? "full" : "";
       const input = type === "textarea" ? `<textarea class="input" data-k="${k}" id="st-${k}" ${k === "misi" ? 'style="min-height:170px"' : ""}>${esc(val)}</textarea>`
-        : type === "color" ? `<div style="display:flex;gap:10px;align-items:center"><input type="color" data-k="${k}" id="st-${k}" value="${esc(/^#[0-9a-f]{6}$/i.test(val) ? val : "#0A7BBF")}" style="width:56px;height:44px;border:1px solid var(--border);border-radius:12px;padding:4px;background:var(--card)"><button type="button" class="btn btn-ghost btn-sm" data-resetcolor>Kembalikan biru bawaan</button></div>`
+        : type === "color" ? `<div style="display:flex;gap:10px;align-items:center"><input type="color" data-k="${k}" id="st-${k}" value="${esc(/^#[0-9a-f]{6}$/i.test(val) ? val : "#0064E0")}" style="width:56px;height:44px;border:1px solid var(--border);border-radius:12px;padding:4px;background:var(--card)"><button type="button" class="btn btn-ghost btn-sm" data-resetcolor>Kembalikan biru bawaan</button></div>`
         : `<input class="input" data-k="${k}" id="st-${k}" value="${esc(val)}">`;
       return `<div class="field ${full}"><label for="st-${k}">${esc(label)}</label>${input}${hint ? `<span class="hint">${esc(hint)}</span>` : ""}</div>`;
     }).join("")}</div>
@@ -3086,7 +3216,7 @@ VIEWS.pengaturan = async () => {
       if (imgState[k]?.blob) box.querySelector("[data-prev]").src = URL.createObjectURL(imgState[k].blob);
     });
     $$("[data-k]", $("#st-body")).forEach(inp => inp.addEventListener(inp.type === "checkbox" ? "change" : "input", () => { draft[inp.dataset.k] = inp.type === "checkbox" ? (inp.checked ? "ya" : "tidak") : inp.value; }));
-    $("[data-resetcolor]", $("#st-body"))?.addEventListener("click", () => { draft.warna_utama = "#0A7BBF"; $("#st-warna_utama").value = "#0A7BBF"; });
+    $("[data-resetcolor]", $("#st-body"))?.addEventListener("click", () => { draft.warna_utama = "#0064E0"; $("#st-warna_utama").value = "#0064E0"; });
     $("#st-save").addEventListener("click", save);
     $("#st-test")?.addEventListener("click", tesEmail);
     $("#st-fb")?.addEventListener("click", async () => {
