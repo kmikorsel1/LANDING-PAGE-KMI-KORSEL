@@ -8,7 +8,7 @@
 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0A7BBF">
+<meta name="theme-color" content="#FFFFFF">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -2284,7 +2284,6 @@ function renderFooter() {
 function applyTheme() {
   const c = S("warna_utama");
   if (/^#[0-9a-f]{6}$/i.test(c)) root.style.setProperty("--primary", c); else root.style.removeProperty("--primary");
-  const meta = document.querySelector('meta[name="theme-color"]'); if (meta && /^#[0-9a-f]{6}$/i.test(c)) meta.content = c;
 }
 
 // ----- Feed Halaman Facebook (Facebook Page Plugin) -----
