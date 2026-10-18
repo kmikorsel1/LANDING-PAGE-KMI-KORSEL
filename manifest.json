@@ -1,0 +1,32 @@
+{
+  "name": "Komunitas Muslim Indonesia di Korea Selatan (KMI Korsel)",
+  "short_name": "KMI Korsel",
+  "description": "Wadah silaturahmi, informasi kegiatan, dan kepedulian bagi WNI muslim di Korea Selatan.",
+  "lang": "id",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0A7BBF",
+  "background_color": "#F6FAFE",
+  "icons": [
+    {
+      "src": "/ikon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/ikon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/ikon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
