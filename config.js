@@ -8,6 +8,6 @@
 // ============================================================
 window.APP_KONFIG = {
   IS_PREVIEW: false,   // true = mode uji coba dengan data contoh
-  SUPABASE_URL: "URL_SUPABASE_ANDA",
-  SUPABASE_ANON_KEY: "ANON_KEY_ANDA"
+  SUPABASE_URL: "https://fkvlbalhubxposzfyrji.supabase.co",
+  SUPABASE_ANON_KEY: "sb_publishable_Dmjq1zTb7d62GbWnkLAVug_CjIx51DI"
 };
