@@ -293,6 +293,59 @@
   #app-root .ev.featured h3 { font-size: 19px; }
 }
 
+/* ===== Slider (geser gambar) ===== */
+#app-root .slider { position: relative; }
+#app-root .sl-track { display: flex; gap: var(--sl-gap, 0px); overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
+#app-root .sl-track::-webkit-scrollbar { display: none; }
+#app-root .sl-slide { flex: 0 0 var(--sl-w, 100%); min-width: 0; scroll-snap-align: start; position: relative; }
+#app-root .sl-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.94); color: var(--text); box-shadow: 0 8px 22px -8px rgba(11,23,54,.45); transition: opacity .2s, transform .15s, background .2s; }
+#app-root .sl-nav:hover { background: #fff; color: var(--primary); transform: translateY(-50%) scale(1.06); }
+#app-root .sl-nav .ico { width: 22px; height: 22px; }
+#app-root .sl-prev { left: 12px; } #app-root .sl-next { right: 12px; }
+#app-root .sl-nav[disabled] { opacity: 0; pointer-events: none; }
+#app-root .sl-dots { display: flex; justify-content: center; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+#app-root .sl-dots button { width: 9px; height: 9px; border-radius: 99px; background: color-mix(in srgb, var(--primary) 25%, transparent); transition: width .25s, background .25s; }
+#app-root .sl-dots button.on { width: 28px; background: var(--primary); }
+#app-root .sl-count { position: absolute; z-index: 3; top: 14px; right: 14px; padding: 4px 10px; border-radius: 99px; background: rgba(5,15,40,.6); color: #fff; font-size: 12.5px; font-weight: 700; font-variant-numeric: tabular-nums; }
+/* hero */
+#app-root .hero-slider { border-radius: 28px; overflow: hidden; box-shadow: var(--shadow-lg); background: var(--primary-100); }
+#app-root .hero-slider .sl-slide img { width: 100%; aspect-ratio: 4/4.3; object-fit: cover; display: block; }
+#app-root .hero-slider .sl-dots { position: absolute; z-index: 3; left: 0; right: 0; bottom: 104px; margin: 0; }
+#app-root .hero-slider .sl-dots button { background: rgba(255,255,255,.55); box-shadow: 0 1px 3px rgba(0,0,0,.3); }
+#app-root .hero-slider .sl-dots button.on { background: #fff; }
+#app-root .hero-media .hero-caption strong { transition: opacity .25s; }
+/* galeri */
+#app-root .gal-slider { --sl-gap: 16px; --sl-w: calc((100% - 32px) / 3); }
+#app-root .gal-slider .sl-prev { left: -8px; } #app-root .gal-slider .sl-next { right: -8px; }
+#app-root .gal-card { position: relative; display: block; width: 100%; border-radius: 18px; overflow: hidden; cursor: zoom-in; background: var(--primary-100); }
+#app-root .gal-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform .5s; }
+#app-root .gal-card:hover img { transform: scale(1.04); }
+#app-root .gal-card .cap { position: absolute; inset: auto 0 0 0; padding: 44px 16px 14px; background: linear-gradient(transparent, rgba(5,15,40,.85)); color: #fff; text-align: left; }
+#app-root .gal-card .cap small { display: block; font-size: 12px; opacity: .85; font-weight: 600; }
+#app-root .gal-card .cap strong { font-size: 15px; line-height: 1.35; }
+@media (max-width: 900px) { #app-root .gal-slider { --sl-gap: 12px; --sl-w: calc((100% - 12px) / 2); } #app-root .hero-slider .sl-slide img { aspect-ratio: 4/3.2; } #app-root .hero-slider .sl-dots { bottom: 116px; } }
+@media (max-width: 560px) { #app-root .gal-slider { --sl-w: 86%; } #app-root .gal-slider .sl-nav, #app-root .hero-slider .sl-nav { display: none; } #app-root .hero-slider .sl-dots { bottom: 112px; } }
+@media (prefers-reduced-motion: reduce) { #app-root .sl-track { scroll-behavior: auto; } }
+
+/* ===== Feed Facebook ===== */
+#app-root .fb-sec { background: linear-gradient(180deg, var(--bg), color-mix(in srgb, #1877F2 5%, var(--bg))); }
+#app-root .fb-grid { display: grid; grid-template-columns: 1fr 540px; gap: 48px; align-items: start; }
+#app-root .fb-info { position: sticky; top: 150px; }
+#app-root .fb-points { display: grid; gap: 12px; margin-top: 24px; }
+#app-root .fb-points li { display: flex; gap: 12px; align-items: center; font-weight: 600; font-size: 16px; }
+#app-root .fb-points .ico { width: 40px; height: 40px; padding: 10px; border-radius: 12px; background: color-mix(in srgb, #1877F2 12%, #fff); color: #1877F2; flex: none; }
+#app-root .fb-actions { margin-top: 28px; }
+#app-root .btn-fb { background: #1877F2; color: #fff; box-shadow: 0 10px 22px -10px rgba(24,119,242,.7); }
+#app-root .btn-fb:hover { background: #0F65D8; }
+#app-root .fb-frame-wrap { padding: 20px; }
+#app-root .fb-frame { width: 100%; max-width: 500px; margin: 0 auto; min-height: 300px; display: flex; justify-content: center; background: var(--bg); border-radius: 12px; overflow: hidden; }
+#app-root .fb-frame iframe { display: block; max-width: 100%; }
+#app-root .fb-note { display: flex; gap: 8px; align-items: flex-start; margin-top: 14px; font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+#app-root .fb-note .ico { flex: none; margin-top: 2px; }
+#app-root .fb-note a { color: var(--primary); font-weight: 700; }
+@media (max-width: 1000px) { #app-root .fb-grid { grid-template-columns: 1fr; gap: 28px; } #app-root .fb-info { position: static; } }
+@media (max-width: 560px) { #app-root .fb-frame-wrap { padding: 10px; } }
+
 /* ===== Galeri ===== */
 #app-root .gal { column-count: 3; column-gap: 16px; }
 #app-root .gal-item { break-inside: avoid; margin-bottom: 16px; position: relative; border-radius: 18px; overflow: hidden; cursor: zoom-in; display: block; width: 100%; background: var(--primary-100); }
@@ -498,8 +551,10 @@
 #app-root .pw-wrap { position: relative; }
 #app-root .pw-wrap .input { padding-right: 48px; }
 #app-root .pw-eye { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 38px; height: 38px; display: grid; place-items: center; color: var(--muted); border-radius: 10px; }
-#app-root .role-pick { display: grid; grid-template-columns: 1fr 1fr; width: 100%; margin-bottom: 18px; }
-#app-root .role-pick button { padding: 10px; font-size: 15px; }
+#app-root .role-pick { display: grid; grid-template-columns: 1fr 1fr 1fr; width: 100%; margin-bottom: 18px; }
+#app-root .role-pick button { padding: 10px 6px; font-size: 14.5px; }
+#app-root .badge-admin { background: #14205C; color: #fff; border-color: #14205C; }
+#app-root .badge-admin .ico { width: 1em; height: 1em; }
 #app-root .login-card .brand-name { font-size: 15px; }
 #app-root .brand > span:last-child { line-height: 1.3; }
 #app-root .login-card .brand { flex-direction: column; text-align: center; gap: 10px; }
@@ -650,6 +705,7 @@
       <section id="beranda" class="hero sec" style="padding-top:56px"></section>
       <section id="tentang" class="sec" style="padding-top:40px"></section>
       <section id="kegiatan" class="sec sec-alt"></section>
+      <section id="facebook" class="sec fb-sec" hidden></section>
       <section id="galeri" class="sec"></section>
       <section id="donasi" class="sec" style="padding-top:16px"></section>
       <section id="pengurus" class="sec sec-alt"></section>
@@ -666,9 +722,8 @@
     <div class="login-wrap">
       <div class="login-card">
         <div class="brand"><span class="brand-logo" id="login-logo"></span><span style="text-align:left"><span class="brand-name" id="login-nama">Komunitas Muslim Indonesia di Korea Selatan</span><br><span class="brand-sub" id="login-sub">(KMI Korsel) &middot; Panel Pengurus</span></span></div>
-        <h2 id="login-title">Masuk sebagai Ketua</h2>
-        <p>Pilih peran Anda, lalu masuk dengan email dan password akun.</p>
-        <div class="tabs role-pick" role="radiogroup" aria-label="Masuk sebagai"><button type="button" class="active" data-role="Ketua" role="radio" aria-checked="true">Ketua</button><button type="button" data-role="Pengurus" role="radio" aria-checked="false">Pengurus</button></div>
+        <h2 id="login-title">Masuk Pengurus</h2>
+        <p>Masuk dengan email dan password akun Anda. Menu yang tampil menyesuaikan peran Anda (Admin Utama, Ketua, atau Pengurus).</p>
         <form id="login-form" novalidate>
           <div class="login-err" id="login-err" hidden></div>
           <div class="field"><label for="lg-email">Email</label><input class="input" id="lg-email" type="email" autocomplete="username" required placeholder="nama@email.com"></div>
@@ -677,7 +732,7 @@
           </div>
           <button class="btn btn-primary" type="submit" id="login-btn" style="width:100%;margin-top:4px"><span data-ico="lock"></span>Masuk</button>
         </form>
-        <div class="login-foot">Lupa password? Minta Ketua untuk meresetnya.<br><button type="button" id="login-back" style="margin-top:12px"><span data-ico="chevron-left"></span>Kembali ke halaman utama</button></div>
+        <div class="login-foot">Lupa password? Minta Ketua atau Admin Utama untuk meresetnya.<br><button type="button" id="login-back" style="margin-top:12px"><span data-ico="chevron-left"></span>Kembali ke halaman utama</button></div>
       </div>
     </div>
   </div>
@@ -1030,6 +1085,7 @@ const SETTINGS_TABS = [
     ["jam_layanan", "Jam layanan", "text", "Contoh: Sabtu\u2013Ahad, 10.00\u201317.00 KST"],
     ["peta_embed_url", "Link peta (embed Google Maps)", "text", "Google Maps \u2192 Bagikan \u2192 Sematkan peta \u2192 salin alamat di dalam src=\"\u2026\" (diawali https://www.google.com/maps/embed)."],
     ["instagram_url", "Link Instagram", "text"], ["facebook_url", "Link Facebook", "text"],
+    ["facebook_feed", "Tampilkan feed Halaman Facebook di situs", "check", "Postingan terbaru Halaman Facebook KMI tampil otomatis di bawah bagian Kegiatan."],
     ["youtube_url", "Link YouTube", "text"], ["tiktok_url", "Link TikTok", "text"]
   ]},
   { id: "donasi", label: "Donasi", fields: [
@@ -1055,16 +1111,16 @@ const SETTINGS_TABS = [
 ];
 
 const MENUS = [
-  { id: "dashboard", label: "Dashboard", icon: "grid", roles: ["Ketua", "Pengurus"], desc: "Ringkasan aktivitas situs." },
-  { id: "pesan", label: "Pesan Masuk", short: "Pesan", icon: "message", roles: ["Ketua", "Pengurus"], desc: "Pesan dari formulir Hubungi Kami." },
-  { id: "kegiatan", label: "Kegiatan", icon: "calendar", roles: ["Ketua", "Pengurus"], desc: "Kegiatan & pengumuman yang tampil di situs." },
-  { id: "galeri", label: "Galeri", icon: "image", roles: ["Ketua", "Pengurus"], desc: "Foto dokumentasi kegiatan." },
-  { id: "faq", label: "FAQ", icon: "help", roles: ["Ketua", "Pengurus"], desc: "Pertanyaan yang sering diajukan." },
-  { id: "susunan", label: "Susunan Pengurus", short: "Pengurus", icon: "users", roles: ["Ketua"], desc: "Daftar pengurus yang tampil di situs.", grp: "Khusus Ketua" },
-  { id: "pengaturan", label: "Pengaturan Situs", short: "Pengaturan", icon: "sliders", roles: ["Ketua"], desc: "Profil, kontak, donasi, dan email otomatis." },
-  { id: "staf", label: "Akun Staf", icon: "shield", roles: ["Ketua"], desc: "Akun login Ketua dan pengurus." },
-  { id: "log", label: "Log Aktivitas", short: "Log", icon: "file-text", roles: ["Ketua"], desc: "Riwayat perubahan oleh staf." },
-  { id: "akun", label: "Akun Saya", icon: "key", roles: ["Ketua", "Pengurus"], desc: "Ganti password akun Anda.", grp: "Akun" }
+  { id: "dashboard", label: "Dashboard", icon: "grid", roles: ["Admin", "Ketua", "Pengurus"], desc: "Ringkasan aktivitas situs." },
+  { id: "pesan", label: "Pesan Masuk", short: "Pesan", icon: "message", roles: ["Admin", "Ketua", "Pengurus"], desc: "Pesan dari formulir Hubungi Kami." },
+  { id: "kegiatan", label: "Kegiatan", icon: "calendar", roles: ["Admin", "Ketua", "Pengurus"], desc: "Kegiatan & pengumuman yang tampil di situs." },
+  { id: "galeri", label: "Galeri", icon: "image", roles: ["Admin", "Ketua", "Pengurus"], desc: "Foto dokumentasi kegiatan." },
+  { id: "faq", label: "FAQ", icon: "help", roles: ["Admin", "Ketua", "Pengurus"], desc: "Pertanyaan yang sering diajukan." },
+  { id: "susunan", label: "Susunan Pengurus", short: "Pengurus", icon: "users", roles: ["Admin", "Ketua"], desc: "Daftar pengurus yang tampil di situs.", grp: "Khusus Ketua & Admin" },
+  { id: "pengaturan", label: "Pengaturan Situs", short: "Pengaturan", icon: "sliders", roles: ["Admin", "Ketua"], desc: "Profil, kontak, donasi, dan email otomatis." },
+  { id: "staf", label: "Akun Staf", icon: "shield", roles: ["Admin", "Ketua"], desc: "Akun login Admin Utama, Ketua, dan Pengurus." },
+  { id: "log", label: "Log Aktivitas", short: "Log", icon: "file-text", roles: ["Admin", "Ketua"], desc: "Riwayat perubahan oleh staf." },
+  { id: "akun", label: "Akun Saya", icon: "key", roles: ["Admin", "Ketua", "Pengurus"], desc: "Ganti password akun Anda.", grp: "Akun" }
 ];
 
 // ===================================================================
@@ -1128,6 +1184,7 @@ const mockApi = (() => {
       { id: uid(), waktu: ago(80), nama: "Fajar Hidayat", email: "fajar@example.com", no_hp: "0812-3456-7890", kota: "Incheon", kategori: "Pertanyaan Umum", pesan: "Apakah ada pengajian rutin di Incheon?", status: "Selesai", ditangani_oleh: "Pengurus (Preview)", catatan_internal: "Sudah dibalas via WA.", email_status: "gagal" }
     ],
     staf: [
+      { user_id: "u-admin", nama: "Admin Utama (Preview)", email: "admin@kmi.test", peran: "Admin", aktif: true, wajib_ganti_password: false, login_terakhir: ago(3) },
       { user_id: "u-ketua", nama: "Ketua (Preview)", email: "ketua@kmi.test", peran: "Ketua", aktif: true, wajib_ganti_password: false, login_terakhir: ago(1) },
       { user_id: "u-pengurus", nama: "Pengurus (Preview)", email: "pengurus@kmi.test", peran: "Pengurus", aktif: true, wajib_ganti_password: false, login_terakhir: ago(30) }
     ],
@@ -1137,7 +1194,7 @@ const mockApi = (() => {
       { id: 3, waktu: ago(5), pelaku: "Ketua (Preview)", aksi: "UBAH_DONASI", detail: "donasi_no_rekening: \"7123 4567 000\" \u2192 \"7123 4567 890\"" }
     ]
   };
-  const passwords = { "ketua@kmi.test": "ketua123", "pengurus@kmi.test": "pengurus123" };
+  const passwords = { "admin@kmi.test": "admin123", "ketua@kmi.test": "ketua123", "pengurus@kmi.test": "pengurus123" };
   db.galeri = [
     "Silaturahmi Akbar di Seoul", "Bazar UMKM Indonesia", "Buka Puasa Bersama Daegu", "Pelatihan Fardhu Kifayah",
     "Kajian Akbar Ansan", "Santunan Anak Yatim", "Rapat Pengurus Tahunan", "Pawai Tahun Baru Islam"
@@ -1148,7 +1205,8 @@ const mockApi = (() => {
   const wait = (ms = 220) => new Promise(r => setTimeout(r, ms));
   const log = (aksi, detail) => db.log.unshift({ id: Date.now() + Math.random(), waktu: new Date().toISOString(), pelaku: me?.nama || "Sistem", aksi, detail });
   const needStaf = () => { if (!me) throw new Error("Sesi berakhir, silakan masuk lagi."); };
-  const needKetua = () => { needStaf(); if (me.peran !== "Ketua") throw new Error("Akses ditolak: hanya Ketua."); };
+  const needKetua = () => { needStaf(); if (!["Ketua", "Admin"].includes(me.peran)) throw new Error("Akses ditolak: hanya Ketua atau Admin Utama."); };
+  const needAdmin = () => { needStaf(); if (me.peran !== "Admin") throw new Error("Akses ditolak: hanya Admin Utama."); };
   const TBL = { kegiatan: "kegiatan", galeri: "galeri", faq: "faq", susunan_pengurus: "susunan_pengurus", pesan: "pesan" };
   const LABEL = r => r.judul || r.nama || r.pertanyaan || r.id;
   const pubSettings = () => { const o = {}; for (const [k, v] of Object.entries(db.pengaturan)) if (!PRIVATE_KEYS.includes(k)) o[k] = v; return o; };
@@ -1247,22 +1305,41 @@ const mockApi = (() => {
     async cekEmail() { await wait(300); return { status: 201, pesan: "Mode preview: email tidak benar-benar dikirim." }; },
     async tambahStaf({ email, nama, peran, password }) {
       needKetua(); await wait();
+      if (peran !== "Pengurus" && me.peran !== "Admin") throw new Error("Hanya Admin Utama yang bisa menambah akun Ketua atau Admin Utama.");
       const e = email.trim().toLowerCase();
       if (db.staf.some(s => s.email === e)) throw new Error("Email ini sudah terdaftar sebagai staf.");
       db.staf.push({ user_id: uid(), nama, email: e, peran, aktif: true, wajib_ganti_password: true, login_terakhir: null });
       passwords[e] = password; log("TAMBAH_STAF", `${nama} (${peran})`);
       return { email_diantrikan: true };
     },
-    async ubahStaf({ user_id, nama, peran, aktif }) {
+    async ubahStaf({ user_id, nama, peran, aktif, email }) {
       needKetua(); await wait();
-      if (user_id === me.user_id && (!aktif || peran !== "Ketua")) throw new Error("Anda tidak bisa menonaktifkan atau menurunkan peran akun Anda sendiri.");
-      const s = db.staf.find(x => x.user_id === user_id); Object.assign(s, { nama, peran, aktif }); log("UBAH_STAF", `${nama} (${peran}${aktif ? "" : ", nonaktif"})`);
+      const s = db.staf.find(x => x.user_id === user_id);
+      if (me.peran !== "Admin" && (s.peran !== "Pengurus" || peran !== "Pengurus")) throw new Error("Hanya Admin Utama yang bisa mengubah akun Ketua atau Admin Utama.");
+      if (user_id === me.user_id && (!aktif || peran !== s.peran)) throw new Error("Anda tidak bisa menonaktifkan atau mengubah peran akun Anda sendiri.");
+      const e = (email || "").trim().toLowerCase();
+      if (e && e !== s.email) {
+        if (me.peran !== "Admin") throw new Error("Hanya Admin Utama yang bisa mengganti email akun.");
+        if (db.staf.some(x => x.email === e && x.user_id !== user_id)) throw new Error("Email ini sudah dipakai akun lain.");
+        passwords[e] = passwords[s.email]; delete passwords[s.email]; s.email = e;
+      }
+      Object.assign(s, { nama, peran, aktif }); log("UBAH_STAF", `${nama} (${peran}${aktif ? "" : ", nonaktif"})`);
     },
     async resetPasswordStaf(user_id) {
       needKetua(); await wait();
-      const s = db.staf.find(x => x.user_id === user_id); const pw = genPassword();
+      const s = db.staf.find(x => x.user_id === user_id);
+      if (s.peran !== "Pengurus" && me.peran !== "Admin") throw new Error("Hanya Admin Utama yang bisa mereset password Ketua atau Admin Utama.");
+      const pw = genPassword();
       passwords[s.email] = pw; s.wajib_ganti_password = true; log("RESET_PASSWORD", s.nama);
       return { password_sementara: pw, email_diantrikan: true };
+    },
+    async hapusStaf(user_id) {
+      needKetua(); await wait();
+      if (user_id === me.user_id) throw new Error("Anda tidak bisa menghapus akun Anda sendiri.");
+      const i = db.staf.findIndex(x => x.user_id === user_id); const s = db.staf[i];
+      if (s.peran !== "Pengurus" && me.peran !== "Admin") throw new Error("Hanya Admin Utama yang bisa menghapus akun Ketua atau Admin Utama.");
+      delete passwords[s.email]; db.staf.splice(i, 1); log("HAPUS_STAF", `${s.nama} (${s.peran})`);
+      return { ok: true };
     },
     async logs() { needKetua(); await wait(); return clone(db.log); }
   };
@@ -1344,7 +1421,8 @@ const supabaseApi = (() => {
     async tesEmail() { return await rpc("ketua_tes_email"); },
     async cekEmail(req) { return await rpc("ketua_cek_email", { p_req: req }); },
     async tambahStaf({ email, nama, peran, password }) { return await rpc("ketua_tambah_staf", { p_email: email, p_nama: nama, p_peran: peran, p_password: password }); },
-    async ubahStaf({ user_id, nama, peran, aktif }) { return await rpc("ketua_ubah_staf", { p_user_id: user_id, p_nama: nama, p_peran: peran, p_aktif: aktif }); },
+    async ubahStaf({ user_id, nama, peran, aktif, email }) { return await rpc("ketua_ubah_staf", { p_user_id: user_id, p_nama: nama, p_peran: peran, p_aktif: aktif, p_email: email || null }); },
+    async hapusStaf(user_id) { return await rpc("admin_hapus_staf", { p_user_id: user_id }); },
     async resetPasswordStaf(user_id) { return await rpc("ketua_reset_password_staf", { p_user_id: user_id }); },
     async logs() { return chk(await supabase.from("log_aktivitas").select("*").order("waktu", { ascending: false }).limit(1000)); }
   };
@@ -1407,7 +1485,11 @@ function renderNav() {
 function renderHero() {
   const judul = esc(S("hero_judul") || S("nama_org")).replace(/\*(.+?)\*/g, '<span class="hl">$1</span>');
   const stats = [1, 2, 3].map(i => [S(`stat${i}_angka`), S(`stat${i}_label`)]).filter(([a]) => a);
-  const img = imgUrl(S("hero_gambar_url")) || placeholder(0, "", [10, 10.75]);
+  const heroSlides = [];
+  if (imgUrl(S("hero_gambar_url"))) heroSlides.push({ url: imgUrl(S("hero_gambar_url")), cap: S("hero_gambar_keterangan") });
+  (PUB.galeri || []).slice(0, 7).forEach(p => { const u = imgUrl(p.foto_url); if (u) heroSlides.push({ url: u, cap: p.judul || S("hero_gambar_keterangan") }); });
+  if (!heroSlides.length) heroSlides.push({ url: placeholder(0, "", [10, 10.75]), cap: S("hero_gambar_keterangan") });
+  const capAwal = heroSlides[0].cap || S("hero_gambar_keterangan");
   $("#beranda").innerHTML = `<div class="container hero-grid">
     <div>
       <div class="hero-badges">${S("hero_label") ? `<span class="badge">${icon("mosque")}${esc(S("hero_label"))}</span>` : ""}<span class="badge b-red"><span class="flag" style="display:inline-block;width:14px;height:10px;border-radius:2px;background:linear-gradient(#E11D2E 50%,#fff 50%);box-shadow:0 0 0 1px #F6C9CF"></span>WNI di Korea</span></div>
@@ -1417,9 +1499,9 @@ function renderHero() {
       ${stats.length ? `<div class="hero-stats">${stats.map(([a, l]) => `<div class="stat"><b>${esc(a)}</b><span>${esc(l)}</span></div>`).join("")}</div>` : ""}
     </div>
     <div class="hero-media">
-      <img class="hero-img" src="${esc(img)}" alt="${esc(S("hero_gambar_keterangan") || "Kegiatan KMI Korsel")}" fetchpriority="high">
+      ${sliderHtml("hero-slider", heroSlides.map((h, i) => `<div class="sl-slide" data-cap="${esc(h.cap || "")}"><img src="${esc(h.url)}" alt="${esc(h.cap || "Kegiatan KMI Korsel")}" ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'}></div>`), 5000)}
       <div class="hero-float"><span class="dot"></span>Terbuka untuk seluruh WNI</div>
-      ${S("hero_gambar_keterangan") ? `<div class="hero-caption"><span class="ic">${icon("users")}</span><div><small>Dokumentasi kegiatan</small><strong>${esc(S("hero_gambar_keterangan"))}</strong></div></div>` : ""}
+      ${capAwal ? `<div class="hero-caption"><span class="ic">${icon("users")}</span><div><small>Dokumentasi kegiatan</small><strong id="hero-cap">${esc(capAwal)}</strong></div></div>` : ""}
     </div>
   </div>`;
 }
@@ -1499,13 +1581,68 @@ function renderGaleri() {
   const g = PUB.galeri || [];
   $("#galeri").hidden = g.length === 0;
   if (!g.length) return;
-  const shown = g.slice(0, galShown);
   $("#galeri").innerHTML = `<div class="container">
-    <div class="head-row"><div class="sec-head"><span class="eyebrow">${icon("image")}Galeri</span><h2 class="sec-title">Galeri Dokumentasi Kegiatan</h2><p class="sec-desc">Potret kebersamaan ${esc(namaLengkap())}:, kepedulian, dan syiar dari berbagai kota di Korea.</p></div><span class="badge">${icon("image")}${g.length} foto</span></div>
-    <div class="gal">${shown.map((p, i) => `<button type="button" class="gal-item" data-gal="${i}"><img src="${esc(imgUrl(p.foto_url) || placeholder(i))}" alt="${esc(p.judul || "Foto kegiatan")}" loading="lazy">${p.judul || p.tanggal ? `<span class="cap">${p.tanggal ? `<small>${esc(fmtTanggal(p.tanggal))}</small>` : ""}<strong>${esc(p.judul || "")}</strong></span>` : ""}</button>`).join("")}</div>
-    ${g.length > galShown ? `<div class="ev-more"><button type="button" class="btn btn-outline" data-galmore>Lihat Semua Foto (${g.length})${icon("chevron-down")}</button></div>` : ""}
+    <div class="head-row"><div class="sec-head"><span class="eyebrow">${icon("image")}Galeri</span><h2 class="sec-title">Galeri Dokumentasi Kegiatan</h2><p class="sec-desc">Potret kebersamaan, kepedulian, dan syiar ${esc(namaLengkap())} dari berbagai kota di Korea. Geser untuk melihat foto lainnya.</p></div><span class="badge">${icon("image")}${g.length} foto</span></div>
+    ${sliderHtml("gal-slider", g.map((p, i) => `<div class="sl-slide"><button type="button" class="gal-card" data-gal="${i}"><img src="${esc(imgUrl(p.foto_url) || placeholder(i))}" alt="${esc(p.judul || "Foto kegiatan")}" loading="lazy">${p.judul || p.tanggal ? `<span class="cap">${p.tanggal ? `<small>${esc(fmtTanggal(p.tanggal))}</small>` : ""}<strong>${esc(p.judul || "")}</strong></span>` : ""}</button></div>`), 4500)}
   </div>`;
 }
+
+// ----- Slider umum: geser (swipe), panah, titik, putar otomatis -----
+function sliderHtml(cls, slides, auto = 0) {
+  const banyak = slides.length > 1;
+  return `<div class="slider ${cls}" data-slider ${auto && banyak ? `data-auto="${auto}"` : ""}>
+    <div class="sl-track" tabindex="0" aria-roledescription="carousel">${slides.join("")}</div>
+    ${banyak ? `<button type="button" class="sl-nav sl-prev" aria-label="Gambar sebelumnya">${icon("chevron-left")}</button><button type="button" class="sl-nav sl-next" aria-label="Gambar berikutnya">${icon("chevron-right")}</button><div class="sl-dots" role="tablist"></div>` : ""}
+  </div>`;
+}
+const SLIDERS = [];
+function initSliders(scope = root) {
+  for (let k = SLIDERS.length - 1; k >= 0; k--) if (!SLIDERS[k].el.isConnected) { clearInterval(SLIDERS[k].timer); SLIDERS.splice(k, 1); }
+  $$("[data-slider]", scope).forEach(el => {
+    if (el.dataset.ready) return; el.dataset.ready = "1";
+    const track = el.querySelector(".sl-track"), slides = Array.from(track.children);
+    const prev = el.querySelector(".sl-prev"), next = el.querySelector(".sl-next"), dots = el.querySelector(".sl-dots");
+    if (slides.length < 2) return;
+    const st = { el, timer: null, pause: false, idx: 0, max: 0, terlihat: true };
+    try { new IntersectionObserver(en => { st.terlihat = en[0].isIntersecting; }, { root, threshold: 0.35 }).observe(el); } catch { }
+    SLIDERS.push(st);
+    const maxIdx = () => { const lim = track.scrollWidth - track.clientWidth; let m = 0; slides.forEach((s, i) => { if (s.offsetLeft - slides[0].offsetLeft <= lim + 3) m = i; }); return m; };
+    const go = i => { st.max = maxIdx(); i = i < 0 ? st.max : i > st.max ? 0 : i; track.scrollTo({ left: slides[i].offsetLeft - slides[0].offsetLeft, behavior: "smooth" }); };
+    const buildDots = () => {
+      st.max = maxIdx();
+      if (dots) dots.innerHTML = Array.from({ length: st.max + 1 }, (_, i) => `<button type="button" aria-label="Gambar ${i + 1}" data-i="${i}"></button>`).join("");
+      update();
+    };
+    const update = () => {
+      const x = track.scrollLeft; let best = 0, d = Infinity;
+      slides.forEach((s, i) => { const dd = Math.abs(s.offsetLeft - slides[0].offsetLeft - x); if (dd < d) { d = dd; best = i; } });
+      if (x >= track.scrollWidth - track.clientWidth - 4) best = st.max;
+      st.idx = Math.min(best, st.max);
+      if (dots) Array.from(dots.children).forEach((b, i) => { b.classList.toggle("on", i === st.idx); b.setAttribute("aria-selected", String(i === st.idx)); });
+      const cap = slides[best]?.dataset.cap, capEl = el.parentElement.querySelector("#hero-cap");
+      if (cap && capEl && capEl.textContent !== cap) capEl.textContent = cap;
+    };
+    track.addEventListener("scroll", debounce(update, 60), { passive: true });
+    prev && prev.addEventListener("click", () => go(st.idx - 1));
+    next && next.addEventListener("click", () => go(st.idx + 1));
+    dots && dots.addEventListener("click", e => { const b = e.target.closest("[data-i]"); if (b) go(+b.dataset.i); });
+    track.addEventListener("keydown", e => { if (e.key === "ArrowRight") { e.preventDefault(); go(st.idx + 1); } if (e.key === "ArrowLeft") { e.preventDefault(); go(st.idx - 1); } });
+    let resumeT;
+    const tahan = () => { st.pause = true; clearTimeout(resumeT); };
+    const lanjut = (ms = 0) => { clearTimeout(resumeT); resumeT = setTimeout(() => { st.pause = false; }, ms); };
+    el.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") tahan(); });
+    el.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") lanjut(); });
+    el.addEventListener("touchstart", tahan, { passive: true });
+    el.addEventListener("touchend", () => lanjut(7000), { passive: true });
+    el.addEventListener("focusin", tahan); el.addEventListener("focusout", () => lanjut(3000));
+    const auto = +el.dataset.auto || 0;
+    let reduce = false; try { reduce = matchMedia("(prefers-reduced-motion: reduce)").matches; } catch { }
+    if (auto && !reduce) st.timer = setInterval(() => { if (!st.pause && st.terlihat && !document.hidden && el.offsetParent !== null && !lightbox.open && !modalStack.length) go(st.idx + 1); }, auto);
+    new ResizeObserver(debounce(buildDots, 150)).observe(track);
+    buildDots();
+  });
+}
+
 const lightbox = { open: false, i: 0, el: null };
 function openLightbox(i) {
   const g = PUB.galeri || []; if (!g.length) return;
@@ -1700,10 +1837,52 @@ function applyTheme() {
   const meta = document.querySelector('meta[name="theme-color"]'); if (meta && /^#[0-9a-f]{6}$/i.test(c)) meta.content = c;
 }
 
+// ----- Feed Halaman Facebook (Facebook Page Plugin) -----
+let fbLebarTerakhir = 0;
+function renderFacebook() {
+  const sec = $("#facebook");
+  const fb = safeUrl(S("facebook_url"));
+  const aktif = fb && /facebook\.com/i.test(fb) && S("facebook_feed") !== "tidak";
+  sec.hidden = !aktif;
+  if (!aktif) { sec.innerHTML = ""; return; }
+  sec.innerHTML = `<div class="container fb-grid">
+    <div class="fb-info">
+      <span class="eyebrow">${icon("facebook")}Kabar Terbaru</span>
+      <h2 class="sec-title">Ikuti Kabar & Dokumentasi di Facebook</h2>
+      <p class="sec-desc">Pengumuman, dokumentasi foto, dan video kegiatan terbaru langsung dari Halaman Facebook resmi ${esc(namaLengkap())}.</p>
+      <ul class="fb-points">
+        <li>${icon("megaphone")}<span>Pengumuman kegiatan paling cepat</span></li>
+        <li>${icon("image")}<span>Foto & video dokumentasi lengkap</span></li>
+        <li>${icon("users")}<span>Berinteraksi dengan sesama WNI di Korea</span></li>
+      </ul>
+      <div class="fb-actions"><a class="btn btn-fb" href="${esc(fb)}" target="_blank" rel="noopener">${icon("facebook")}Buka Facebook KMI${icon("external")}</a></div>
+    </div>
+    <div class="fb-frame-wrap card"><div class="fb-frame" id="fb-frame"></div>
+      <p class="fb-note">${icon("info")}<span>Feed tidak muncul? Beberapa browser atau pemblokir iklan menyembunyikannya. Tekan <a href="${esc(fb)}" target="_blank" rel="noopener">Buka Facebook KMI</a>.</span></p>
+    </div>
+  </div>`;
+  fbLebarTerakhir = 0;
+  pasangFrameFacebook();
+}
+function pasangFrameFacebook() {
+  const box = $("#fb-frame"); if (!box) return;
+  const fb = safeUrl(S("facebook_url"));
+  const w = Math.max(280, Math.min(500, Math.floor(box.clientWidth || 340)));
+  if (Math.abs(w - fbLebarTerakhir) < 20) return;
+  fbLebarTerakhir = w;
+  const h = window.innerWidth < 640 ? 620 : 720;
+  const src = "https://www.facebook.com/plugins/page.php?href=" + encodeURIComponent(fb)
+    + "&tabs=timeline&width=" + w + "&height=" + h
+    + "&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&locale=id_ID";
+  box.innerHTML = `<iframe title="Halaman Facebook ${esc(namaSingkat())}" src="${esc(src)}" width="${w}" height="${h}" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" loading="lazy" allow="clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>`;
+}
+window.addEventListener("resize", debounce(() => { if (!$("#facebook").hidden) pasangFrameFacebook(); }, 400));
+
 function renderLanding() {
   applyTheme();
-  renderHero(); renderTentang(); renderKegiatan(); renderGaleri(); renderDonasi(); renderPengurus(); renderFaq(); renderMasjid(); renderKontak();
+  renderHero(); renderTentang(); renderKegiatan(); renderFacebook(); renderGaleri(); renderDonasi(); renderPengurus(); renderFaq(); renderMasjid(); renderKontak();
   renderNav(); renderFooter();
+  initSliders();
 }
 
 function renderLandingSkeleton() {
@@ -1758,7 +1937,7 @@ const FALLBACK_PENGATURAN = {
   visi: "Menjadi wadah persatuan umat Islam Indonesia yang solid, mandiri, dan bermanfaat bagi seluruh muslim Indonesia di Korea Selatan.",
   link_website_masjid: "https://korea-masjid.vercel.app/",
   email_kontak_publik: "kmikorsel1@gmail.com",
-  instagram_url: "https://www.instagram.com/kmi.korsel", facebook_url: "https://www.facebook.com/2kmikorsel", tiktok_url: "https://www.tiktok.com/@kmikorsel",
+  instagram_url: "https://www.instagram.com/kmi.korsel", facebook_url: "https://www.facebook.com/2kmikorsel", tiktok_url: "https://www.tiktok.com/@kmikorsel", facebook_feed: "ya",
   masjid_judul: "Mencari Lokasi Masjid, Musala & Makanan Halal di Kota Anda?",
   masjid_teks: "Temukan direktori masjid dan musala di seluruh Korea Selatan, lengkap dengan alamat dan petunjuk arah."
 };
@@ -1800,13 +1979,6 @@ function showLogin() {
   setTimeout(() => $("#lg-email").focus(), 50);
 }
 $("#login-back").addEventListener("click", showLanding);
-let loginRole = "Ketua";
-$(".role-pick").addEventListener("click", e => {
-  const b = e.target.closest("[data-role]"); if (!b) return;
-  loginRole = b.dataset.role;
-  $$(".role-pick [data-role]").forEach(x => { const on = x === b; x.classList.toggle("active", on); x.setAttribute("aria-checked", String(on)); });
-  $("#login-title").textContent = "Masuk sebagai " + loginRole;
-});
 root.addEventListener("click", e => {
   const b = e.target.closest("[data-eye]"); if (!b) return;
   const inp = document.getElementById(b.dataset.eye); if (!inp) return;
@@ -1829,7 +2001,7 @@ $("#login-form").addEventListener("submit", async e => {
     setLock({});
     STATE.user = u; $("#lg-pw").value = "";
     showPanel();
-    if (u.peran !== loginRole) toast(`Akun ini terdaftar sebagai ${u.peran}, jadi Anda masuk sebagai ${u.peran}.`, "warn", 5000);
+    toast(`Assalamualaikum, ${u.nama}. Anda masuk sebagai ${labelPeran(u.peran)}.`, "ok", 4000);
     if (u.wajib_ganti_password) forceChangePassword();
   } catch (err) {
     const n = (lock.count || 0) + 1;
@@ -1869,7 +2041,10 @@ async function logout() {
 // ===================================================================
 // PANEL PENGURUS
 // ===================================================================
-const isKetua = () => STATE.user?.peran === "Ketua";
+const isKetua = () => ["Ketua", "Admin"].includes(STATE.user?.peran);
+const isAdmin = () => STATE.user?.peran === "Admin";
+const labelPeran = p => p === "Admin" ? "Admin Utama" : (p || "-");
+const badgePeran = p => `<span class="badge ${p === "Admin" ? "badge-admin" : p === "Ketua" ? "badge-red" : ""}">${p === "Admin" ? icon("shield") : ""}${esc(labelPeran(p))}</span>`;
 const myMenus = () => MENUS.filter(m => m.roles.includes(STATE.user?.peran));
 const THEME_KEY = "kmi-korsel-panel-theme";
 
@@ -1882,7 +2057,7 @@ function showPanel() {
   $("#side-logo").innerHTML = logoHtml(); $("#side-nama").textContent = namaOrg(); $("#side-org").textContent = "(" + namaSingkat() + ") \u00b7 Panel Pengurus";
   $("#side-av").textContent = initials(STATE.user.nama);
   $("#side-name").textContent = STATE.user.nama;
-  $("#side-role").textContent = STATE.user.peran + " \u00b7 " + STATE.user.email;
+  $("#side-role").textContent = labelPeran(STATE.user.peran) + " \u00b7 " + STATE.user.email;
   if (!myMenus().some(m => m.id === STATE.view)) STATE.view = "dashboard";
   renderMenus();
   go(STATE.view);
@@ -1961,7 +2136,7 @@ VIEWS.dashboard = async () => {
   STATE.badgePesan = d.pesan_baru || 0; renderMenus();
   const kpi = (ic, cls, n, l, go2) => `<button class="card kpi" data-menu="${go2}" style="text-align:left"><span class="ic ${cls}">${icon(ic)}</span><div><b>${n}</b><span>${l}</span></div></button>`;
   $("#pv-body").innerHTML = `
-    <div class="callout" style="margin-bottom:16px">${icon("user")}<span>Assalamualaikum, <b>${esc(STATE.user.nama)}</b>. Anda masuk sebagai <b>${esc(STATE.user.peran)}</b>.</span></div>
+    <div class="callout" style="margin-bottom:16px">${icon("user")}<span>Assalamualaikum, <b>${esc(STATE.user.nama)}</b>. Anda masuk sebagai <b>${esc(labelPeran(STATE.user.peran))}</b>.</span></div>
     <div class="kpis">${kpi("message", "red", d.pesan_baru, "Pesan baru", "pesan")}${kpi("calendar", "", d.kegiatan_akan_datang, "Kegiatan akan datang", "kegiatan")}${kpi("image", "blue", d.total_galeri, "Foto di galeri", "galeri")}${kpi("mail", "amber", d.pesan_bulan_ini, "Pesan bulan ini", "pesan")}</div>
     <div class="two">
       <div class="card box"><h3>Pesan terbaru <button class="btn btn-ghost btn-sm" data-menu="pesan">Lihat semua${icon("arrow-right")}</button></h3>
@@ -2291,6 +2466,7 @@ VIEWS.pengaturan = async () => {
     $("#st-body").innerHTML = `<div class="card set-card"><div class="fgrid">${tab.fields.map(([k, label, type, hint]) => {
       const val = draft[k] ?? "";
       if (type === "image") return imageFieldHtml(k, imgState[k] ? "" : val, label);
+      if (type === "check") return `<div class="field full"><label class="check"><input type="checkbox" data-k="${k}" id="st-${k}" ${val === "tidak" ? "" : "checked"}>${esc(label)}</label>${hint ? `<span class="hint">${esc(hint)}</span>` : ""}</div>`;
       const full = type === "textarea" || ["hero_judul", "misi", "peta_embed_url", "alamat_sekretariat"].includes(k) ? "full" : "";
       const input = type === "textarea" ? `<textarea class="input" data-k="${k}" id="st-${k}" ${k === "misi" ? 'style="min-height:170px"' : ""}>${esc(val)}</textarea>`
         : type === "color" ? `<div style="display:flex;gap:10px;align-items:center"><input type="color" data-k="${k}" id="st-${k}" value="${esc(/^#[0-9a-f]{6}$/i.test(val) ? val : "#0A7BBF")}" style="width:56px;height:44px;border:1px solid var(--border);border-radius:12px;padding:4px;background:var(--card)"><button type="button" class="btn btn-ghost btn-sm" data-resetcolor>Kembalikan biru bawaan</button></div>`
@@ -2305,7 +2481,7 @@ VIEWS.pengaturan = async () => {
       const k = box.dataset.imgf;
       if (imgState[k]?.blob) box.querySelector("[data-prev]").src = URL.createObjectURL(imgState[k].blob);
     });
-    $$("[data-k]", $("#st-body")).forEach(inp => inp.addEventListener("input", () => { draft[inp.dataset.k] = inp.value; }));
+    $$("[data-k]", $("#st-body")).forEach(inp => inp.addEventListener(inp.type === "checkbox" ? "change" : "input", () => { draft[inp.dataset.k] = inp.type === "checkbox" ? (inp.checked ? "ya" : "tidak") : inp.value; }));
     $("[data-resetcolor]", $("#st-body"))?.addEventListener("click", () => { draft.warna_utama = "#0A7BBF"; $("#st-warna_utama").value = "#0A7BBF"; });
     $("#st-save").addEventListener("click", save);
     $("#st-test")?.addEventListener("click", tesEmail);
@@ -2360,17 +2536,23 @@ VIEWS.pengaturan = async () => {
 
 // ----- Akun staf (Ketua) -----
 VIEWS.staf = async () => {
-  const rows = await api.list("staf");
-  $("#pv-body").innerHTML = `<div class="toolbar"><div style="flex:1;color:var(--muted);font-size:14px">Staf masuk dengan <b>email + password</b>. Pengurus baru wajib mengganti password saat pertama kali masuk.</div><button class="btn btn-primary" id="sf-add">${icon("plus")}Tambah Staf</button></div>
-    <div class="list" id="sf-list">${rows.map(s => `<div class="row ${s.aktif ? "" : "dim"}"><span class="thumb avatar-i" style="border-radius:50%;display:grid;place-items:center;font-size:20px;width:52px;height:52px">${esc(initials(s.nama))}</span><div class="rmain"><div class="rtitle">${esc(s.nama)} <span class="badge ${s.peran === "Ketua" ? "badge-red" : ""}">${esc(s.peran)}</span>${s.aktif ? "" : `<span class="badge badge-gray">Nonaktif</span>`}${s.wajib_ganti_password ? `<span class="badge badge-amber">Password sementara</span>` : ""}${s.user_id === STATE.user.user_id ? `<span class="badge badge-blue">Anda</span>` : ""}</div><div class="rsub">${esc(s.email)} \u00b7 login terakhir: ${esc(s.login_terakhir ? fmtWaktu(s.login_terakhir) : "belum pernah")}</div></div>
-      <div class="ractions"><button class="icon-btn" data-reset="${esc(s.user_id)}" title="Reset password" aria-label="Reset password">${icon("key")}</button><button class="icon-btn" data-edit="${esc(s.user_id)}" title="Ubah" aria-label="Ubah">${icon("edit")}</button></div></div>`).join("")}</div>`;
+  const rows = (await api.list("staf")).sort((a, b) => ({ Admin: 0, Ketua: 1, Pengurus: 2 }[a.peran] - { Admin: 0, Ketua: 1, Pengurus: 2 }[b.peran]) || a.nama.localeCompare(b.nama));
+  const boleh = s => isAdmin() || s.peran === "Pengurus";
+  const opsiPeran = (pilih, kunci = false) => ["Pengurus", "Ketua", "Admin"].filter(p => p === "Pengurus" || isAdmin() || p === pilih)
+    .map(p => `<option value="${p}" ${p === pilih ? "selected" : ""}>${labelPeran(p)}</option>`).join("");
+  $("#pv-body").innerHTML = `<div class="callout" style="margin-bottom:16px">${icon("shield")}<span>${isAdmin()
+      ? "<b>Admin Utama</b> bisa menambah, mengubah (nama, email, peran), menonaktifkan, mereset password, dan menghapus semua akun."
+      : "<b>Ketua</b> bisa menambah, mengubah, mereset password, dan menghapus akun <b>Pengurus</b>. Akun Ketua dan Admin Utama hanya bisa diubah oleh Admin Utama."}</span></div>
+    <div class="toolbar"><div style="flex:1;color:var(--muted);font-size:14px">Staf masuk dengan <b>email + password</b>. Akun baru wajib mengganti password saat pertama kali masuk.</div><button class="btn btn-primary" id="sf-add">${icon("plus")}Tambah Staf</button></div>
+    <div class="list" id="sf-list">${rows.map(s => { const saya = s.user_id === STATE.user.user_id; return `<div class="row ${s.aktif ? "" : "dim"}"><span class="thumb avatar-i" style="border-radius:50%;display:grid;place-items:center;font-size:20px;width:52px;height:52px">${esc(initials(s.nama))}</span><div class="rmain"><div class="rtitle">${esc(s.nama)} ${badgePeran(s.peran)}${s.aktif ? "" : `<span class="badge badge-gray">Nonaktif</span>`}${s.wajib_ganti_password ? `<span class="badge badge-amber">Password sementara</span>` : ""}${saya ? `<span class="badge badge-blue">Anda</span>` : ""}</div><div class="rsub">${esc(s.email)} \u00b7 login terakhir: ${esc(s.login_terakhir ? fmtWaktu(s.login_terakhir) : "belum pernah")}</div></div>
+      <div class="ractions">${boleh(s) && !saya ? `<button class="icon-btn" data-reset="${esc(s.user_id)}" title="Reset password" aria-label="Reset password">${icon("key")}</button>` : ""}${boleh(s) ? `<button class="icon-btn" data-edit="${esc(s.user_id)}" title="Ubah" aria-label="Ubah">${icon("edit")}</button>` : `<span class="badge badge-gray" title="Hanya Admin Utama">${icon("lock")}Terkunci</span>`}${boleh(s) && !saya ? `<button class="icon-btn del" data-hapus="${esc(s.user_id)}" title="Hapus akun" aria-label="Hapus akun">${icon("trash")}</button>` : ""}</div></div>`; }).join("")}</div>`;
   $("#sf-add").addEventListener("click", () => {
     const pw = genPassword();
     const m = openModal({
       title: "Tambah Akun Staf",
       body: `<div class="fgrid"><div class="field full"><label for="na-e">Email</label><input class="input" id="na-e" type="email" placeholder="nama@email.com"></div>
         <div class="field"><label for="na-n">Nama</label><input class="input" id="na-n" maxlength="100"></div>
-        <div class="field"><label for="na-p">Peran</label><select class="input select" id="na-p"><option>Pengurus</option><option>Ketua</option></select></div>
+        <div class="field"><label for="na-p">Peran</label><select class="input select" id="na-p">${opsiPeran("Pengurus")}</select></div>
         <div class="field full"><label>Password sementara</label><div class="pw-show">${esc(pw)}</div><span class="hint">Password ini juga dikirim ke email staf (bila email otomatis aktif). Staf wajib menggantinya saat pertama masuk.</span></div></div>`,
       foot: `<button class="btn btn-outline btn-sm" data-close>Batal</button><button class="btn btn-primary btn-sm" data-save>${icon("check")}Buat Akun</button>`
     });
@@ -2383,8 +2565,14 @@ VIEWS.staf = async () => {
     });
   });
   $("#sf-list").addEventListener("click", async e => {
-    const b = e.target.closest("[data-reset],[data-edit]"); if (!b) return;
-    const s = rows.find(x => x.user_id === (b.dataset.reset || b.dataset.edit));
+    const b = e.target.closest("[data-reset],[data-edit],[data-hapus]"); if (!b) return;
+    const s = rows.find(x => x.user_id === (b.dataset.reset || b.dataset.edit || b.dataset.hapus));
+    if (b.dataset.hapus) {
+      if (!(await confirmDialog("Hapus akun ini?", `Akun ${s.nama} (${labelPeran(s.peran)}, ${s.email}) akan dihapus permanen dan tidak bisa masuk lagi. Riwayat di Log Aktivitas tetap tersimpan.`, "Hapus Akun"))) return;
+      try { await withLoading(() => api.hapusStaf(s.user_id)); toast("Akun dihapus."); go("staf"); }
+      catch (err) { toast(pesanError(err), "err"); }
+      return;
+    }
     if (b.dataset.reset) {
       if (!(await confirmDialog("Reset password?", `Password ${s.nama} akan diganti dengan password sementara baru.`, "Reset", false))) return;
       try {
@@ -2394,18 +2582,23 @@ VIEWS.staf = async () => {
       } catch (err) { toast(pesanError(err), "err"); }
       return;
     }
+    const saya = s.user_id === STATE.user.user_id;
     const m = openModal({
       title: "Ubah Akun Staf",
-      body: `<div class="fgrid"><div class="field full"><label>Email</label><input class="input" value="${esc(s.email)}" disabled></div>
+      body: `<div class="fgrid"><div class="field full"><label for="ea-e">Email login</label><input class="input" id="ea-e" type="email" value="${esc(s.email)}" ${isAdmin() ? "" : "disabled"}>${isAdmin() ? `<span class="hint">Mengganti email berarti staf masuk dengan email baru (password tetap).</span>` : ""}</div>
         <div class="field"><label for="ea-n">Nama</label><input class="input" id="ea-n" maxlength="100" value="${esc(s.nama)}"></div>
-        <div class="field"><label for="ea-p">Peran</label><select class="input select" id="ea-p"><option ${s.peran === "Pengurus" ? "selected" : ""}>Pengurus</option><option ${s.peran === "Ketua" ? "selected" : ""}>Ketua</option></select></div>
-        <div class="field full"><label class="check"><input type="checkbox" id="ea-a" ${s.aktif ? "checked" : ""}>Akun aktif (bisa masuk panel)</label></div></div>`,
+        <div class="field"><label for="ea-p">Peran</label><select class="input select" id="ea-p" ${saya ? "disabled" : ""}>${opsiPeran(s.peran)}</select>${saya ? `<span class="hint">Peran akun sendiri tidak bisa diubah.</span>` : ""}</div>
+        <div class="field full"><label class="check"><input type="checkbox" id="ea-a" ${s.aktif ? "checked" : ""} ${saya ? "disabled" : ""}>Akun aktif (bisa masuk panel)</label></div></div>`,
       foot: `<button class="btn btn-outline btn-sm" data-close>Batal</button><button class="btn btn-primary btn-sm" data-save>${icon("check")}Simpan</button>`
     });
     m.el.querySelector("[data-save]").addEventListener("click", async () => {
       const nama = $("#ea-n", m.el).value.trim(); if (nama.length < 2) return toast("Nama wajib diisi.", "err");
-      try { await withLoading(() => api.ubahStaf({ user_id: s.user_id, nama, peran: $("#ea-p", m.el).value, aktif: $("#ea-a", m.el).checked })); m.close(); toast("Akun staf diperbarui."); go("staf"); }
-      catch (err) { toast(pesanError(err), "err"); }
+      const email = $("#ea-e", m.el).value.trim();
+      if (isAdmin() && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return toast("Format email tidak valid.", "err");
+      try {
+        await withLoading(() => api.ubahStaf({ user_id: s.user_id, nama, peran: $("#ea-p", m.el).value, aktif: $("#ea-a", m.el).checked, email: isAdmin() ? email : null }));
+        m.close(); toast("Akun staf diperbarui."); go("staf");
+      } catch (err) { toast(pesanError(err), "err"); }
     });
   });
 };
@@ -2430,7 +2623,7 @@ VIEWS.log = async () => {
 // ----- Akun saya -----
 VIEWS.akun = async () => {
   const u = STATE.user;
-  $("#pv-body").innerHTML = `<div class="two" style="margin-top:0"><div class="card box"><h3>Profil</h3><dl class="kv"><dt>Nama</dt><dd>${esc(u.nama)}</dd><dt>Email</dt><dd>${esc(u.email)}</dd><dt>Peran</dt><dd>${esc(u.peran)}</dd></dl><button class="btn btn-outline btn-sm" id="ak-out" style="margin-top:18px;color:var(--danger)">${icon("log-out")}Keluar dari panel</button></div>
+  $("#pv-body").innerHTML = `<div class="two" style="margin-top:0"><div class="card box"><h3>Profil</h3><dl class="kv"><dt>Nama</dt><dd>${esc(u.nama)}</dd><dt>Email</dt><dd>${esc(u.email)}</dd><dt>Peran</dt><dd>${esc(labelPeran(u.peran))}</dd></dl><button class="btn btn-outline btn-sm" id="ak-out" style="margin-top:18px;color:var(--danger)">${icon("log-out")}Keluar dari panel</button></div>
     <div class="card box"><h3>Ganti Password</h3><form id="ak-f" style="display:flex;flex-direction:column;gap:14px" novalidate>
       <div class="field"><label for="ak1">Password baru (min. 8 karakter)</label><div class="pw-wrap"><input class="input" id="ak1" type="password" autocomplete="new-password"><button type="button" class="pw-eye" data-eye="ak1" aria-label="Tampilkan">${icon("eye")}</button></div></div>
       <div class="field"><label for="ak2">Ulangi password baru</label><input class="input" id="ak2" type="password" autocomplete="new-password"></div>
@@ -2463,7 +2656,7 @@ async function start() {
   hydrateIcons();
   if (IS_PREVIEW) {
     const bar = $("#kmi-preview");
-    bar.innerHTML = `${icon("info")}<span><b>Mode Preview</b> \u2014 data contoh, tidak tersimpan. Akun uji: Ketua <code>ketua@kmi.test</code> / <code>ketua123</code> \u00b7 Pengurus <code>pengurus@kmi.test</code> / <code>pengurus123</code></span><button type="button" id="pv-login">Coba panel</button><button type="button" id="pv-close" aria-label="Tutup pita preview" title="Tutup" style="text-decoration:none;display:inline-grid;place-items:center;width:28px;height:28px;border-radius:8px">${icon("x")}</button>`;
+    bar.innerHTML = `${icon("info")}<span><b>Mode Preview</b> \u2014 data contoh, tidak tersimpan. Akun uji: Admin Utama <code>admin@kmi.test</code> / <code>admin123</code> \u00b7 Ketua <code>ketua@kmi.test</code> / <code>ketua123</code> \u00b7 Pengurus <code>pengurus@kmi.test</code> / <code>pengurus123</code></span><button type="button" id="pv-login">Coba panel</button><button type="button" id="pv-close" aria-label="Tutup pita preview" title="Tutup" style="text-decoration:none;display:inline-grid;place-items:center;width:28px;height:28px;border-radius:8px">${icon("x")}</button>`;
     let tutup = false; try { tutup = sessionStorage.getItem("kmi-preview-tutup") === "1"; } catch { }
     bar.hidden = tutup;
     $("#pv-close").addEventListener("click", () => { bar.hidden = true; try { sessionStorage.setItem("kmi-preview-tutup", "1"); } catch { } });
