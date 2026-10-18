@@ -672,6 +672,70 @@
   #app-root .kv dd { margin-bottom: 8px; }
   #app-root .gal-admin { grid-template-columns: repeat(2, 1fr); gap: 10px; }
 }
+/* ===== Daftar pengurus, jabatan & hak akses ===== */
+#app-root .login-daftar { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 10px; align-items: center; font-size: 13.5px; color: var(--muted); }
+#app-root .jab-pick { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+#app-root .jab-pick button { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 12px 6px; border-radius: 14px; border: 1.5px solid var(--border); background: var(--card); font-weight: 700; font-size: 13.5px; color: var(--text); transition: border-color .15s, background .15s; }
+#app-root .jab-pick button .ico { width: 22px; height: 22px; color: var(--primary); }
+#app-root .jab-pick button.active { border-color: var(--primary); background: var(--primary-50); color: var(--primary-700); }
+#app-root .akses-pick { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 8px; }
+#app-root .akses-opt { padding: 10px 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); font-size: 14px; }
+#app-root .akses-opt .ico { color: var(--primary); width: 18px; height: 18px; }
+#app-root .akses-opt:has(input:disabled) { opacity: .55; cursor: not-allowed; }
+#app-root .chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+#app-root .chips .badge { font-size: 11.5px; padding: 3px 9px; }
+#app-root .chips .badge .ico { width: 12px; height: 12px; }
+#app-root .ok-state { text-align: center; padding: 8px 4px 4px; }
+#app-root .ok-state .ico { width: 56px; height: 56px; color: #059669; }
+#app-root .ok-state h4 { font-size: 19px; font-weight: 800; margin-top: 10px; }
+#app-root .ok-state p { color: var(--muted); margin-top: 8px; font-size: 14.5px; }
+#app-root .seg2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+#app-root .seg2 button { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 11px; border-radius: 12px; border: 1.5px solid var(--border); background: var(--card); font-weight: 700; color: var(--muted); }
+#app-root .seg2 button.active[data-jenis="Pemasukan"] { border-color: #059669; background: #ECFDF5; color: #047857; }
+#app-root .seg2 button.active[data-jenis="Pengeluaran"] { border-color: #DC2626; background: #FEF2F2; color: #B91C1C; }
+#app-root .amt-in { color: #047857; font-weight: 800; white-space: nowrap; font-variant-numeric: tabular-nums; }
+#app-root .amt-out { color: #B91C1C; font-weight: 800; white-space: nowrap; font-variant-numeric: tabular-nums; }
+#app-root[data-theme="dark"] .amt-in { color: #34D399; }
+#app-root[data-theme="dark"] .amt-out { color: #F87171; }
+#app-root .ku-date { width: 56px; flex: none; text-align: center; font-size: 11.5px; font-weight: 700; color: var(--muted); line-height: 1.25; text-transform: uppercase; }
+#app-root .ku-date b { display: block; font-size: 22px; color: var(--text); }
+#app-root .kpis.k3 { grid-template-columns: repeat(3, 1fr); }
+#app-root .kpi.saldo .ic { background: var(--primary); color: #fff; }
+#app-root .cur-title { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 4px 0 10px; }
+/* ===== Laporan keuangan (situs) ===== */
+#app-root .fin-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+#app-root .fin-top .sec-head { margin-bottom: 0; }
+#app-root .fin-top .select { width: auto; min-width: 210px; background-color: var(--card); }
+#app-root .fin-cur + .fin-cur { margin-top: 22px; }
+#app-root .fin-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+#app-root .fin-card { padding: 20px 22px; border-radius: 20px; background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow); }
+#app-root .fin-card small { display: flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 700; color: var(--muted); }
+#app-root .fin-card small .ico { width: 18px; height: 18px; }
+#app-root .fin-card.in small .ico { color: #059669; }
+#app-root .fin-card.out small .ico { color: var(--accent); }
+#app-root .fin-card b { display: block; font-size: clamp(21px, 2.6vw, 28px); font-weight: 800; margin-top: 6px; letter-spacing: -.01em; font-variant-numeric: tabular-nums; line-height: 1.2; }
+#app-root .fin-card.saldo { background: linear-gradient(135deg, var(--primary), var(--primary-700)); color: #fff; border-color: transparent; }
+#app-root .fin-card.saldo small { color: rgba(255,255,255,.88); }
+#app-root .fin-card .sub { display: block; margin-top: 4px; font-size: 12.5px; color: var(--muted); }
+#app-root .fin-card.saldo .sub { color: rgba(255,255,255,.8); }
+#app-root .fin-list { margin-top: 22px; background: var(--card); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); }
+#app-root .fin-row { display: flex; gap: 14px; align-items: center; padding: 14px 20px; border-top: 1px solid var(--border); }
+#app-root .fin-row:first-child { border-top: 0; }
+#app-root .fin-main { flex: 1; min-width: 0; }
+#app-root .fin-main strong { display: block; font-weight: 700; font-size: 15px; line-height: 1.35; }
+#app-root .fin-main span { font-size: 13px; color: var(--muted); }
+#app-root .fin-more { text-align: center; padding: 12px; border-top: 1px solid var(--border); }
+#app-root .fin-note { margin-top: 14px; font-size: 13px; color: var(--muted); text-align: center; }
+@media (max-width: 640px) {
+  #app-root .fin-cards { grid-template-columns: 1fr 1fr; gap: 10px; }
+  #app-root .fin-card { padding: 16px; }
+  #app-root .fin-card.saldo { grid-column: 1 / -1; }
+  #app-root .fin-row { padding: 12px 14px; gap: 10px; }
+  #app-root .fin-top .select { width: 100%; }
+  #app-root .jab-pick { grid-template-columns: repeat(2, 1fr); }
+  #app-root .kpis.k3 { grid-template-columns: 1fr 1fr; }
+  #app-root .kpis.k3 .kpi.saldo { grid-column: 1 / -1; }
+}
 @media (prefers-reduced-motion: reduce) { #app-root, #app-root * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
 </style>
 
@@ -708,6 +772,7 @@
       <section id="facebook" class="sec fb-sec" hidden></section>
       <section id="galeri" class="sec"></section>
       <section id="donasi" class="sec" style="padding-top:16px"></section>
+      <section id="keuangan" class="sec" style="padding-top:24px" hidden></section>
       <section id="pengurus" class="sec sec-alt"></section>
       <section id="faq" class="sec"></section>
       <section id="masjid" class="sec" style="padding-top:0;padding-bottom:40px"></section>
@@ -723,7 +788,7 @@
       <div class="login-card">
         <div class="brand"><span class="brand-logo" id="login-logo"></span><span style="text-align:left"><span class="brand-name" id="login-nama">Komunitas Muslim Indonesia di Korea Selatan</span><br><span class="brand-sub" id="login-sub">(KMI Korsel) &middot; Panel Pengurus</span></span></div>
         <h2 id="login-title">Masuk Pengurus</h2>
-        <p>Masuk dengan email dan password akun Anda. Menu yang tampil menyesuaikan peran Anda (Admin Utama, Ketua, atau Pengurus).</p>
+        <p>Masuk dengan email dan password akun Anda. Menu yang tampil menyesuaikan peran dan jabatan Anda.</p>
         <form id="login-form" novalidate>
           <div class="login-err" id="login-err" hidden></div>
           <div class="field"><label for="lg-email">Email</label><input class="input" id="lg-email" type="email" autocomplete="username" required placeholder="nama@email.com"></div>
@@ -732,6 +797,7 @@
           </div>
           <button class="btn btn-primary" type="submit" id="login-btn" style="width:100%;margin-top:4px"><span data-ico="lock"></span>Masuk</button>
         </form>
+        <div class="login-daftar"><span>Belum punya akun pengurus?</span><button type="button" class="btn btn-outline" id="daftar-btn" style="width:100%"><span data-ico="user-plus"></span>Daftar sebagai Pengurus</button></div>
         <div class="login-foot">Lupa password? Minta Ketua atau Admin Utama untuk meresetnya.<br><button type="button" id="login-back" style="margin-top:12px"><span data-ico="chevron-left"></span>Kembali ke halaman utama</button></div>
       </div>
     </div>
@@ -842,7 +908,7 @@ function safeUrl(u, allowBlob = false) {
 }
 const imgUrl = u => safeUrl(u, true);
 function uid() { return (crypto.randomUUID ? crypto.randomUUID() : "id-" + Date.now() + "-" + Math.random().toString(16).slice(2)); }
-function initials(n) { return String(n || "?").trim().split(/\s+/).slice(0, 2).map(w => w[0] || "").join("").toUpperCase() || "?"; }
+function initials(n) { return String(n || "?").replace(/\(.*?\)/g, " ").trim().split(/\s+/).map(w => w.replace(/[^\p{L}\p{N}]/gu, "")).filter(Boolean).slice(0, 2).map(w => w[0]).join("").toUpperCase() || "?"; }
 function todayKST() { return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date()); }
 function fmtTanggal(d, opt = { day: "numeric", month: "long", year: "numeric" }) {
   if (!d) return "";
@@ -928,6 +994,10 @@ const ICONS = {
   "book-open": '<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>',
   bank: '<path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/>',
   megaphone: '<path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>',
+  wallet: '<path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/>',
+  "user-plus": '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/>',
+  "trend-up": '<path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/>',
+  "trend-down": '<path d="m22 17-8.5-8.5-5 5L2 7"/><path d="M16 17h6v-6"/>',
   star: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>'
 };
 function icon(name, cls = "") { return `<svg class="ico ${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name] || ""}</svg>`; }
@@ -968,7 +1038,7 @@ function pesanError(e) {
   if (/rate limit|too many/i.test(m)) return "Terlalu banyak percobaan. Tunggu beberapa menit lalu coba lagi.";
   if (/JWT expired|refresh token|session/i.test(m) && !/Sesi/i.test(m)) return "Sesi berakhir, silakan masuk lagi.";
   if (/does not exist|Could not find the function|schema cache/i.test(m)) return "Database belum disiapkan \u2014 jalankan setup.sql di SQL Editor Supabase.";
-  if (/row-level security|permission denied|violates row-level/i.test(m)) return "Akses ditolak. Fitur ini tidak tersedia untuk peran Anda.";
+  if (/row-level security|permission denied|violates row-level/i.test(m)) return "Akses ditolak. Menu ini tidak termasuk hak akses jabatan Anda.";
   if (/Payload too large|exceeded the maximum allowed size/i.test(m)) return "Ukuran berkas terlalu besar.";
   return m || "Terjadi kesalahan. Silakan coba lagi.";
 }
@@ -1051,6 +1121,28 @@ const KATEGORI_PESAN = ["Ingin Bergabung", "Donasi", "Kegiatan", "Pertanyaan Umu
 const STATUS_PESAN = ["Baru", "Sedang Ditangani", "Selesai"];
 const PRIVATE_KEYS = ["email_notifikasi", "email_pengirim", "nama_pengirim"];
 
+// Jabatan Pengurus & hak akses menu. Ketua dan Admin Utama selalu bisa semua.
+const AKSES = [["kegiatan", "Agenda Kegiatan", "calendar"], ["galeri", "Galeri Foto", "image"], ["keuangan", "Laporan Keuangan", "wallet"], ["pesan", "Pesan Masuk", "message"], ["faq", "FAQ", "help"]];
+const JABATAN_PILIHAN = ["Bendahara", "Sekretaris", "Media"];
+const JABATAN_AKSES = { Bendahara: ["keuangan", "pesan"], Sekretaris: ["kegiatan", "pesan", "faq"], Media: ["galeri"] };
+const JABATAN_INFO = { Bendahara: "Mengisi laporan keuangan yang tampil di situs.", Sekretaris: "Mengisi agenda kegiatan & pengumuman.", Media: "Mengunggah foto dokumentasi kegiatan.", Lainnya: "Hak akses menu ditentukan Ketua / Admin Utama saat menyetujui." };
+const JABATAN_ICON = { Bendahara: "wallet", Sekretaris: "calendar", Media: "image", Lainnya: "edit" };
+const KATEGORI_KEUANGAN = ["Donasi", "Infak", "Kas Anggota", "Konsumsi", "Transportasi", "Sewa Tempat", "Santunan", "Perlengkapan", "Operasional", "Lainnya"];
+const MATA_UANG = { KRW: "Won (KRW)", IDR: "Rupiah (IDR)" };
+function fmtUang(n, mu = "KRW") {
+  const v = Math.round(Number(n) || 0);
+  return (v < 0 ? "\u2212" : "") + (mu === "IDR" ? "Rp" : "\u20a9") + new Intl.NumberFormat("id-ID").format(Math.abs(v));
+}
+function bulanLabel(ym) {
+  const [y, m] = String(ym).split("-");
+  return new Date(Date.UTC(+y, +m - 1, 15)).toLocaleDateString("id-ID", { month: "long", year: "numeric", timeZone: "UTC" });
+}
+function ringkasKeuangan(rows) {
+  const o = {};
+  rows.forEach(r => { const mu = r.mata_uang || "KRW"; o[mu] = o[mu] || { masuk: 0, keluar: 0 }; o[mu][r.jenis === "Pemasukan" ? "masuk" : "keluar"] += Number(r.jumlah) || 0; });
+  return o;
+}
+
 const SETTINGS_TABS = [
   { id: "identitas", label: "Identitas & Hero", fields: [
     ["nama_org", "Nama lengkap organisasi", "text"],
@@ -1088,7 +1180,7 @@ const SETTINGS_TABS = [
     ["facebook_feed", "Tampilkan feed Halaman Facebook di situs", "check", "Postingan terbaru Halaman Facebook KMI tampil otomatis di bawah bagian Kegiatan."],
     ["youtube_url", "Link YouTube", "text"], ["tiktok_url", "Link TikTok", "text"]
   ]},
-  { id: "donasi", label: "Donasi", fields: [
+  { id: "donasi", label: "Donasi & Keuangan", fields: [
     ["donasi_judul", "Judul ajakan donasi", "text"],
     ["donasi_ajakan", "Kalimat ajakan donasi", "textarea"],
     ["donasi_poin", "Poin keunggulan (satu per baris)", "textarea"],
@@ -1096,7 +1188,10 @@ const SETTINGS_TABS = [
     ["donasi_nama_rekening", "Nama pemilik rekening", "text"],
     ["donasi_no_rekening", "Nomor rekening", "text", "Kosongkan untuk menyembunyikan bagian Donasi."],
     ["donasi_qr_url", "Gambar QR donasi (opsional)", "image"],
-    ["donasi_catatan", "Catatan donasi", "textarea"]
+    ["donasi_catatan", "Catatan donasi", "textarea"],
+    ["keuangan_tampil", "Tampilkan Laporan Keuangan di situs", "check", "Transaksi yang dicatat bendahara (dan dicentang \u201ctampil\u201d) muncul di bagian Laporan Keuangan."],
+    ["keuangan_judul", "Judul bagian Laporan Keuangan", "text"],
+    ["keuangan_teks", "Kalimat pengantar Laporan Keuangan", "textarea"]
   ]},
   { id: "masjid", label: "Tautan Masjid", fields: [
     ["link_website_masjid", "Alamat website Masjid Korea", "text", "Diawali https://. Kosongkan untuk menyembunyikan banner."],
@@ -1111,16 +1206,18 @@ const SETTINGS_TABS = [
 ];
 
 const MENUS = [
-  { id: "dashboard", label: "Dashboard", icon: "grid", roles: ["Admin", "Ketua", "Pengurus"], desc: "Ringkasan aktivitas situs." },
-  { id: "pesan", label: "Pesan Masuk", short: "Pesan", icon: "message", roles: ["Admin", "Ketua", "Pengurus"], desc: "Pesan dari formulir Hubungi Kami." },
-  { id: "kegiatan", label: "Kegiatan", icon: "calendar", roles: ["Admin", "Ketua", "Pengurus"], desc: "Kegiatan & pengumuman yang tampil di situs." },
-  { id: "galeri", label: "Galeri", icon: "image", roles: ["Admin", "Ketua", "Pengurus"], desc: "Foto dokumentasi kegiatan." },
-  { id: "faq", label: "FAQ", icon: "help", roles: ["Admin", "Ketua", "Pengurus"], desc: "Pertanyaan yang sering diajukan." },
-  { id: "susunan", label: "Susunan Pengurus", short: "Pengurus", icon: "users", roles: ["Admin", "Ketua"], desc: "Daftar pengurus yang tampil di situs.", grp: "Khusus Ketua & Admin" },
-  { id: "pengaturan", label: "Pengaturan Situs", short: "Pengaturan", icon: "sliders", roles: ["Admin", "Ketua"], desc: "Profil, kontak, donasi, dan email otomatis." },
-  { id: "staf", label: "Akun Staf", icon: "shield", roles: ["Admin", "Ketua"], desc: "Akun login Admin Utama, Ketua, dan Pengurus." },
-  { id: "log", label: "Log Aktivitas", short: "Log", icon: "file-text", roles: ["Admin", "Ketua"], desc: "Riwayat perubahan oleh staf." },
-  { id: "akun", label: "Akun Saya", icon: "key", roles: ["Admin", "Ketua", "Pengurus"], desc: "Ganti password akun Anda.", grp: "Akun" }
+  { id: "dashboard", label: "Dashboard", icon: "grid", need: "semua", desc: "Ringkasan aktivitas situs." },
+  { id: "pesan", label: "Pesan Masuk", short: "Pesan", icon: "message", need: "pesan", desc: "Pesan dari formulir Hubungi Kami." },
+  { id: "kegiatan", label: "Agenda Kegiatan", short: "Agenda", icon: "calendar", need: "kegiatan", desc: "Agenda kegiatan & pengumuman yang tampil di situs." },
+  { id: "galeri", label: "Galeri Foto", short: "Galeri", icon: "image", need: "galeri", desc: "Foto dokumentasi kegiatan." },
+  { id: "keuangan", label: "Laporan Keuangan", short: "Keuangan", icon: "wallet", need: "keuangan", desc: "Pemasukan & pengeluaran yang tampil di situs." },
+  { id: "faq", label: "FAQ", icon: "help", need: "faq", desc: "Pertanyaan yang sering diajukan." },
+  { id: "pendaftaran", label: "Pendaftaran Pengurus", short: "Pendaftar", icon: "user-plus", need: "ketua", desc: "Setujui atau tolak calon pengurus yang mendaftar.", grp: "Khusus Ketua & Admin" },
+  { id: "staf", label: "Akun Staf", icon: "shield", need: "ketua", desc: "Akun login, jabatan, dan hak akses pengurus." },
+  { id: "susunan", label: "Susunan Pengurus", short: "Pengurus", icon: "users", need: "ketua", desc: "Daftar pengurus yang tampil di situs." },
+  { id: "pengaturan", label: "Pengaturan Situs", short: "Pengaturan", icon: "sliders", need: "ketua", desc: "Profil, kontak, donasi, keuangan, dan email otomatis." },
+  { id: "log", label: "Log Aktivitas", short: "Log", icon: "file-text", need: "ketua", desc: "Riwayat perubahan oleh staf." },
+  { id: "akun", label: "Akun Saya", icon: "key", need: "semua", desc: "Profil dan password akun Anda.", grp: "Akun" }
 ];
 
 // ===================================================================
@@ -1184,9 +1281,11 @@ const mockApi = (() => {
       { id: uid(), waktu: ago(80), nama: "Fajar Hidayat", email: "fajar@example.com", no_hp: "0812-3456-7890", kota: "Incheon", kategori: "Pertanyaan Umum", pesan: "Apakah ada pengajian rutin di Incheon?", status: "Selesai", ditangani_oleh: "Pengurus (Preview)", catatan_internal: "Sudah dibalas via WA.", email_status: "gagal" }
     ],
     staf: [
-      { user_id: "u-admin", nama: "Admin Utama (Preview)", email: "admin@kmi.test", peran: "Admin", aktif: true, wajib_ganti_password: false, login_terakhir: ago(3) },
-      { user_id: "u-ketua", nama: "Ketua (Preview)", email: "ketua@kmi.test", peran: "Ketua", aktif: true, wajib_ganti_password: false, login_terakhir: ago(1) },
-      { user_id: "u-pengurus", nama: "Pengurus (Preview)", email: "pengurus@kmi.test", peran: "Pengurus", aktif: true, wajib_ganti_password: false, login_terakhir: ago(30) }
+      { user_id: "u-admin", nama: "Admin Utama (Preview)", email: "admin@kmi.test", no_hp: "", peran: "Admin", jabatan: "Admin Website", akses: [], aktif: true, wajib_ganti_password: false, login_terakhir: ago(3) },
+      { user_id: "u-ketua", nama: "Ketua (Preview)", email: "ketua@kmi.test", no_hp: "", peran: "Ketua", jabatan: "Ketua Umum", akses: [], aktif: true, wajib_ganti_password: false, login_terakhir: ago(1) },
+      { user_id: "u-bendahara", nama: "Bendahara (Preview)", email: "bendahara@kmi.test", no_hp: "010-1111-2222", peran: "Pengurus", jabatan: "Bendahara", akses: ["keuangan", "pesan"], aktif: true, wajib_ganti_password: false, login_terakhir: ago(10) },
+      { user_id: "u-sekretaris", nama: "Sekretaris (Preview)", email: "sekretaris@kmi.test", no_hp: "", peran: "Pengurus", jabatan: "Sekretaris", akses: ["kegiatan", "pesan", "faq"], aktif: true, wajib_ganti_password: false, login_terakhir: ago(30) },
+      { user_id: "u-media", nama: "Media (Preview)", email: "media@kmi.test", no_hp: "", peran: "Pengurus", jabatan: "Media", akses: ["galeri"], aktif: true, wajib_ganti_password: false, login_terakhir: null }
     ],
     log: [
       { id: 1, waktu: ago(30), pelaku: "Pengurus (Preview)", aksi: "LOGIN", detail: "Masuk ke panel" },
@@ -1194,7 +1293,22 @@ const mockApi = (() => {
       { id: 3, waktu: ago(5), pelaku: "Ketua (Preview)", aksi: "UBAH_DONASI", detail: "donasi_no_rekening: \"7123 4567 000\" \u2192 \"7123 4567 890\"" }
     ]
   };
-  const passwords = { "admin@kmi.test": "admin123", "ketua@kmi.test": "ketua123", "pengurus@kmi.test": "pengurus123" };
+  const passwords = { "admin@kmi.test": "admin123", "ketua@kmi.test": "ketua123", "bendahara@kmi.test": "bendahara123", "sekretaris@kmi.test": "sekretaris123", "media@kmi.test": "media123" };
+  const tglLalu = n => daysFromNow(-n);
+  db.keuangan = [
+    [2, "Pemasukan", "Infak", "Infak Jumat berjamaah Ansan", 385000, "KRW"],
+    [5, "Pengeluaran", "Konsumsi", "Konsumsi rapat pengurus", 62000, "KRW"],
+    [9, "Pemasukan", "Donasi", "Donasi jamaah untuk santunan", 1500000, "IDR"],
+    [12, "Pengeluaran", "Santunan", "Santunan saudara dirawat di Busan", 500000, "KRW"],
+    [20, "Pemasukan", "Kas Anggota", "Kas anggota bulan lalu", 640000, "KRW"],
+    [33, "Pengeluaran", "Sewa Tempat", "Sewa aula kegiatan Silaturahmi", 300000, "KRW"],
+    [38, "Pemasukan", "Donasi", "Donasi hamba Allah", 1000000, "KRW"],
+    [45, "Pengeluaran", "Transportasi", "Transport tim pelatihan jenazah", 85000, "KRW"]
+  ].map(([n, jenis, kategori, keterangan, jumlah, mata_uang]) => ({ id: uid(), tanggal: tglLalu(n), jenis, kategori, keterangan, jumlah, mata_uang, tampil: true, dibuat_oleh: "Bendahara (Preview)", dibuat_pada: ago(n * 24), diubah_pada: ago(n * 24) }));
+  db.pendaftaran = [
+    { id: uid(), waktu: ago(5), nama: "Rahmat Hidayat", email: "rahmat@example.com", no_hp: "010-5555-6666", jabatan: "Bendahara", catatan: "Tinggal di Gimhae, pernah jadi bendahara masjid.", status: "Menunggu", diproses_oleh: "", diproses_pada: null, alasan: "" },
+    { id: uid(), waktu: ago(28), nama: "Dewi Lestari", email: "dewi@example.com", no_hp: "", jabatan: "Humas", catatan: "", status: "Menunggu", diproses_oleh: "", diproses_pada: null, alasan: "" }
+  ];
   db.galeri = [
     "Silaturahmi Akbar di Seoul", "Bazar UMKM Indonesia", "Buka Puasa Bersama Daegu", "Pelatihan Fardhu Kifayah",
     "Kajian Akbar Ansan", "Santunan Anak Yatim", "Rapat Pengurus Tahunan", "Pawai Tahun Baru Islam"
@@ -1206,9 +1320,13 @@ const mockApi = (() => {
   const log = (aksi, detail) => db.log.unshift({ id: Date.now() + Math.random(), waktu: new Date().toISOString(), pelaku: me?.nama || "Sistem", aksi, detail });
   const needStaf = () => { if (!me) throw new Error("Sesi berakhir, silakan masuk lagi."); };
   const needKetua = () => { needStaf(); if (!["Ketua", "Admin"].includes(me.peran)) throw new Error("Akses ditolak: hanya Ketua atau Admin Utama."); };
-  const needAdmin = () => { needStaf(); if (me.peran !== "Admin") throw new Error("Akses ditolak: hanya Admin Utama."); };
-  const TBL = { kegiatan: "kegiatan", galeri: "galeri", faq: "faq", susunan_pengurus: "susunan_pengurus", pesan: "pesan" };
-  const LABEL = r => r.judul || r.nama || r.pertanyaan || r.id;
+  const needAkses = m => { needStaf(); if (!["Ketua", "Admin"].includes(me.peran) && !(me.akses || []).includes(m)) throw new Error("new row violates row-level security policy"); };
+  const punya = m => me && (["Ketua", "Admin"].includes(me.peran) || (me.akses || []).includes(m));
+  const AKSES_TBL = { kegiatan: "kegiatan", galeri: "galeri", faq: "faq", pesan: "pesan", keuangan: "keuangan" };
+  const rapikan = a => [...new Set((a || []).filter(x => AKSES.some(([k]) => k === x)))].sort();
+  const cekAdminAktif = () => { if (db.staf.some(x => x.peran === "Admin") && !db.staf.some(x => x.peran === "Admin" && x.aktif)) throw new Error("Minimal harus ada 1 akun Admin Utama yang aktif."); };
+  const TBL = { kegiatan: "kegiatan", galeri: "galeri", faq: "faq", susunan_pengurus: "susunan_pengurus", pesan: "pesan", keuangan: "keuangan" };
+  const LABEL = r => r.judul || r.nama || r.pertanyaan || r.keterangan || r.id;
   const pubSettings = () => { const o = {}; for (const [k, v] of Object.entries(db.pengaturan)) if (!PRIVATE_KEYS.includes(k)) o[k] = v; return o; };
 
   return {
@@ -1220,7 +1338,8 @@ const mockApi = (() => {
         kegiatan: db.kegiatan.filter(k => k.tampil).map(({ dibuat_oleh, diubah_pada, gambar_path, tampil, ...r }) => r),
         galeri: db.galeri.filter(g => g.tampil).sort((a, b) => a.urutan - b.urutan),
         pengurus: db.susunan_pengurus.filter(p => p.tampil).sort((a, b) => a.urutan - b.urutan),
-        faq: db.faq.filter(f => f.tampil).sort((a, b) => a.urutan - b.urutan)
+        faq: db.faq.filter(f => f.tampil).sort((a, b) => a.urutan - b.urutan),
+        keuangan: db.pengaturan.keuangan_tampil === "tidak" ? [] : db.keuangan.filter(k => k.tampil).sort((a, b) => b.tanggal.localeCompare(a.tanggal)).map(({ tampil, dibuat_oleh, diubah_pada, ...r }) => r)
       });
     },
     async kirimPesan(f) {
@@ -1248,35 +1367,40 @@ const mockApi = (() => {
       needStaf(); await wait();
       const t = todayKST(), ym = t.slice(0, 7);
       const ymKST = d => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul" }).format(new Date(d)).slice(0, 7);
+      const ps = punya("pesan");
       return clone({
-        pesan_baru: db.pesan.filter(p => p.status === "Baru").length,
+        pesan_baru: ps ? db.pesan.filter(p => p.status === "Baru").length : 0,
         kegiatan_akan_datang: db.kegiatan.filter(k => k.tanggal && k.tanggal >= t).length,
         total_galeri: db.galeri.length,
-        pesan_bulan_ini: db.pesan.filter(p => ymKST(p.waktu) === ym).length,
-        pesan_terbaru: db.pesan.slice(0, 5),
-        kegiatan_terdekat: db.kegiatan.filter(k => k.tanggal && k.tanggal >= t).sort((a, b) => a.tanggal.localeCompare(b.tanggal)).slice(0, 5)
+        pesan_bulan_ini: ps ? db.pesan.filter(p => ymKST(p.waktu) === ym).length : 0,
+        pesan_terbaru: ps ? db.pesan.slice(0, 5) : [],
+        kegiatan_terdekat: db.kegiatan.filter(k => k.tanggal && k.tanggal >= t).sort((a, b) => a.tanggal.localeCompare(b.tanggal)).slice(0, 5),
+        pendaftaran_menunggu: ["Ketua", "Admin"].includes(me.peran) ? db.pendaftaran.filter(d => d.status === "Menunggu").length : 0,
+        keuangan: punya("keuangan") ? ringkasKeuangan(db.keuangan) : null
       });
     },
     async list(table) {
       needStaf(); await wait(150);
       if (table === "staf") { needKetua(); return clone(db.staf); }
+      if (["pesan", "keuangan", "faq"].includes(table) && !punya(table)) return [];
       const rows = db[TBL[table]];
       return clone(rows);
     },
     async save(table, row) {
       needStaf(); await wait();
       if (["susunan_pengurus"].includes(table)) needKetua();
+      if (AKSES_TBL[table]) needAkses(AKSES_TBL[table]);
       const rows = db[TBL[table]];
       if (row.id) {
         const r = rows.find(x => x.id === row.id); if (!r) throw new Error("Data tidak ditemukan.");
         if (table === "pesan") { r.status = row.status ?? r.status; r.catatan_internal = row.catatan_internal ?? r.catatan_internal; r.ditangani_oleh = me.nama; log("UBAH_PESAN", `${r.nama}: status ${r.status}`); return clone(r); }
         Object.assign(r, row);
-        if (table === "kegiatan") r.diubah_pada = new Date().toISOString();
+        if (table === "kegiatan" || table === "keuangan") r.diubah_pada = new Date().toISOString();
         log("UBAH_" + table.toUpperCase(), LABEL(r));
         return clone(r);
       }
       const n = { ...row, id: uid() };
-      if (table === "kegiatan") { n.dibuat_oleh = me.nama; n.dibuat_pada = n.diubah_pada = new Date().toISOString(); }
+      if (table === "kegiatan" || table === "keuangan") { n.dibuat_oleh = me.nama; n.dibuat_pada = n.diubah_pada = new Date().toISOString(); }
       if (table === "galeri") { n.diunggah_oleh = me.nama; n.diunggah_pada = new Date().toISOString(); }
       rows.unshift(n);
       log("TAMBAH_" + table.toUpperCase(), LABEL(n));
@@ -1284,7 +1408,7 @@ const mockApi = (() => {
     },
     async remove(table, id) {
       needStaf(); await wait();
-      if (table !== "faq") needKetua();
+      if (["pesan", "susunan_pengurus"].includes(table)) needKetua(); else needAkses(AKSES_TBL[table]);
       const rows = db[TBL[table]]; const i = rows.findIndex(x => x.id === id);
       if (i >= 0) { log("HAPUS_" + table.toUpperCase(), LABEL(rows[i])); rows.splice(i, 1); }
     },
@@ -1303,32 +1427,33 @@ const mockApi = (() => {
     },
     async tesEmail() { needKetua(); await wait(600); return { request_id: 1 }; },
     async cekEmail() { await wait(300); return { status: 201, pesan: "Mode preview: email tidak benar-benar dikirim." }; },
-    async tambahStaf({ email, nama, peran, password }) {
+    async tambahStaf({ email, nama, peran, password, jabatan = "", akses = [] }) {
       needKetua(); await wait();
-      if (peran !== "Pengurus" && me.peran !== "Admin") throw new Error("Hanya Admin Utama yang bisa menambah akun Ketua atau Admin Utama.");
       const e = email.trim().toLowerCase();
       if (db.staf.some(s => s.email === e)) throw new Error("Email ini sudah terdaftar sebagai staf.");
-      db.staf.push({ user_id: uid(), nama, email: e, peran, aktif: true, wajib_ganti_password: true, login_terakhir: null });
-      passwords[e] = password; log("TAMBAH_STAF", `${nama} (${peran})`);
+      db.staf.push({ user_id: uid(), nama, email: e, no_hp: "", peran, jabatan, akses: rapikan(akses), aktif: true, wajib_ganti_password: true, login_terakhir: null });
+      passwords[e] = password; log("TAMBAH_STAF", `${nama} (${labelPeran(peran)}${jabatan ? ", " + jabatan : ""})`);
       return { email_diantrikan: true };
     },
-    async ubahStaf({ user_id, nama, peran, aktif, email }) {
+    async ubahStaf({ user_id, nama, peran, aktif, email, jabatan, akses }) {
       needKetua(); await wait();
       const s = db.staf.find(x => x.user_id === user_id);
-      if (me.peran !== "Admin" && (s.peran !== "Pengurus" || peran !== "Pengurus")) throw new Error("Hanya Admin Utama yang bisa mengubah akun Ketua atau Admin Utama.");
       if (user_id === me.user_id && (!aktif || peran !== s.peran)) throw new Error("Anda tidak bisa menonaktifkan atau mengubah peran akun Anda sendiri.");
       const e = (email || "").trim().toLowerCase();
+      const lama = { ...s };
       if (e && e !== s.email) {
-        if (me.peran !== "Admin") throw new Error("Hanya Admin Utama yang bisa mengganti email akun.");
         if (db.staf.some(x => x.email === e && x.user_id !== user_id)) throw new Error("Email ini sudah dipakai akun lain.");
         passwords[e] = passwords[s.email]; delete passwords[s.email]; s.email = e;
       }
-      Object.assign(s, { nama, peran, aktif }); log("UBAH_STAF", `${nama} (${peran}${aktif ? "" : ", nonaktif"})`);
+      Object.assign(s, { nama, peran, aktif });
+      if (jabatan != null) s.jabatan = jabatan;
+      if (akses != null) s.akses = rapikan(akses);
+      try { cekAdminAktif(); } catch (err) { Object.assign(s, lama); throw err; }
+      log("UBAH_STAF", `${nama} (${labelPeran(peran)}${s.jabatan ? ", " + s.jabatan : ""}${aktif ? "" : ", nonaktif"})`);
     },
     async resetPasswordStaf(user_id) {
       needKetua(); await wait();
       const s = db.staf.find(x => x.user_id === user_id);
-      if (s.peran !== "Pengurus" && me.peran !== "Admin") throw new Error("Hanya Admin Utama yang bisa mereset password Ketua atau Admin Utama.");
       const pw = genPassword();
       passwords[s.email] = pw; s.wajib_ganti_password = true; log("RESET_PASSWORD", s.nama);
       return { password_sementara: pw, email_diantrikan: true };
@@ -1337,10 +1462,41 @@ const mockApi = (() => {
       needKetua(); await wait();
       if (user_id === me.user_id) throw new Error("Anda tidak bisa menghapus akun Anda sendiri.");
       const i = db.staf.findIndex(x => x.user_id === user_id); const s = db.staf[i];
-      if (s.peran !== "Pengurus" && me.peran !== "Admin") throw new Error("Hanya Admin Utama yang bisa menghapus akun Ketua atau Admin Utama.");
-      delete passwords[s.email]; db.staf.splice(i, 1); log("HAPUS_STAF", `${s.nama} (${s.peran})`);
+      if (s.peran === "Admin" && !db.staf.some(x => x.peran === "Admin" && x.aktif && x.user_id !== user_id)) throw new Error("Minimal harus ada 1 akun Admin Utama yang aktif.");
+      delete passwords[s.email]; db.staf.splice(i, 1); log("HAPUS_STAF", `${s.nama} (${labelPeran(s.peran)})`);
       return { ok: true };
     },
+    async daftarPengurus(f) {
+      await wait(500);
+      if (f.honeypot) return { ok: true };
+      const e = String(f.email).trim().toLowerCase();
+      if (db.staf.some(s => s.email === e)) throw new Error("Email ini sudah terdaftar sebagai pengurus. Silakan masuk, atau minta Ketua mereset password Anda.");
+      if (db.pendaftaran.some(d => d.email === e && d.status === "Menunggu")) throw new Error("Pendaftaran dengan email ini sudah dikirim dan sedang menunggu persetujuan Ketua / Admin Utama.");
+      db.pendaftaran.unshift({ id: uid(), waktu: new Date().toISOString(), nama: f.nama.trim(), email: e, no_hp: f.no_hp || "", jabatan: f.jabatan, catatan: f.catatan || "", status: "Menunggu", diproses_oleh: "", diproses_pada: null, alasan: "", _pw: f.password });
+      db.log.unshift({ id: Date.now(), waktu: new Date().toISOString(), pelaku: f.nama.trim(), aksi: "DAFTAR_PENGURUS", detail: `${f.nama.trim()} (${f.jabatan}) \u2013 ${e}` });
+      return { ok: true };
+    },
+    async daftarPendaftaran() { needKetua(); await wait(); return clone(db.pendaftaran.map(({ _pw, ...d }) => d)); },
+    async setujuiPendaftaran({ id, peran, jabatan, akses }) {
+      needKetua(); await wait();
+      const d = db.pendaftaran.find(x => x.id === id);
+      if (!d || d.status !== "Menunggu") throw new Error("Pendaftaran ini sudah diproses sebelumnya.");
+      if (db.staf.some(s => s.email === d.email)) throw new Error("Email ini sudah terdaftar sebagai staf.");
+      db.staf.push({ user_id: uid(), nama: d.nama, email: d.email, no_hp: d.no_hp, peran, jabatan: jabatan || d.jabatan, akses: rapikan(akses), aktif: true, wajib_ganti_password: false, login_terakhir: null });
+      passwords[d.email] = d._pw || "rahasia123";
+      Object.assign(d, { status: "Disetujui", diproses_oleh: me.nama, diproses_pada: new Date().toISOString() }); delete d._pw;
+      log("SETUJUI_PENDAFTARAN", `${d.nama} (${jabatan || d.jabatan})`);
+      return { ok: true, email_diantrikan: true };
+    },
+    async tolakPendaftaran(id, alasan) {
+      needKetua(); await wait();
+      const d = db.pendaftaran.find(x => x.id === id);
+      if (!d || d.status !== "Menunggu") throw new Error("Pendaftaran ini sudah diproses sebelumnya.");
+      Object.assign(d, { status: "Ditolak", alasan: alasan || "", diproses_oleh: me.nama, diproses_pada: new Date().toISOString() }); delete d._pw;
+      log("TOLAK_PENDAFTARAN", `${d.nama} (${d.jabatan})`);
+      return { ok: true };
+    },
+    async hapusPendaftaran(id) { needKetua(); await wait(); db.pendaftaran = db.pendaftaran.filter(x => x.id !== id); return { ok: true }; },
     async logs() { needKetua(); await wait(); return clone(db.log); }
   };
 })();
@@ -1355,7 +1511,8 @@ const supabaseApi = (() => {
     faq: [["urutan", true]],
     susunan_pengurus: [["urutan", true]],
     pesan: [["waktu", false]],
-    staf: [["peran", true], ["nama", true]]
+    staf: [["peran", true], ["nama", true]],
+    keuangan: [["tanggal", false], ["dibuat_pada", false]]
   };
   const chk = ({ data, error }) => { if (error) throw error; return data; };
   const rpc = async (fn, args = {}) => chk(await supabase.rpc(fn, args));
@@ -1393,6 +1550,7 @@ const supabaseApi = (() => {
       let q = supabase.from(table).select("*");
       for (const [col, asc] of ORDER[table] || []) q = q.order(col, { ascending: asc, nullsFirst: false });
       if (table === "pesan") q = q.limit(1000);
+      if (table === "keuangan") q = q.limit(5000);
       return chk(await q);
     },
     async save(table, row) {
@@ -1420,8 +1578,13 @@ const supabaseApi = (() => {
     },
     async tesEmail() { return await rpc("ketua_tes_email"); },
     async cekEmail(req) { return await rpc("ketua_cek_email", { p_req: req }); },
-    async tambahStaf({ email, nama, peran, password }) { return await rpc("ketua_tambah_staf", { p_email: email, p_nama: nama, p_peran: peran, p_password: password }); },
-    async ubahStaf({ user_id, nama, peran, aktif, email }) { return await rpc("ketua_ubah_staf", { p_user_id: user_id, p_nama: nama, p_peran: peran, p_aktif: aktif, p_email: email || null }); },
+    async tambahStaf({ email, nama, peran, password, jabatan = "", akses = [] }) { return await rpc("ketua_tambah_staf", { p_email: email, p_nama: nama, p_peran: peran, p_password: password, p_jabatan: jabatan, p_akses: akses }); },
+    async ubahStaf({ user_id, nama, peran, aktif, email, jabatan = null, akses = null }) { return await rpc("ketua_ubah_staf", { p_user_id: user_id, p_nama: nama, p_peran: peran, p_aktif: aktif, p_email: email || null, p_jabatan: jabatan, p_akses: akses }); },
+    async daftarPengurus(f) { return await rpc("daftar_pengurus", { p_nama: f.nama, p_email: f.email, p_no_hp: f.no_hp || "", p_jabatan: f.jabatan, p_password: f.password, p_catatan: f.catatan || "", p_honeypot: f.honeypot || "" }); },
+    async daftarPendaftaran() { return (await rpc("ketua_daftar_pendaftaran")) || []; },
+    async setujuiPendaftaran({ id, peran, jabatan, akses }) { return await rpc("ketua_setujui_pendaftaran", { p_id: id, p_peran: peran, p_jabatan: jabatan, p_akses: akses }); },
+    async tolakPendaftaran(id, alasan) { return await rpc("ketua_tolak_pendaftaran", { p_id: id, p_alasan: alasan || "" }); },
+    async hapusPendaftaran(id) { return await rpc("ketua_hapus_pendaftaran", { p_id: id }); },
     async hapusStaf(user_id) { return await rpc("admin_hapus_staf", { p_user_id: user_id }); },
     async resetPasswordStaf(user_id) { return await rpc("ketua_reset_password_staf", { p_user_id: user_id }); },
     async logs() { return chk(await supabase.from("log_aktivitas").select("*").order("waktu", { ascending: false }).limit(1000)); }
@@ -1433,9 +1596,9 @@ const api = IS_PREVIEW ? mockApi : supabaseApi;
 // ===================================================================
 // LANDING PAGE
 // ===================================================================
-const NAV = [["beranda", "Beranda"], ["tentang", "Tentang"], ["kegiatan", "Kegiatan"], ["galeri", "Galeri"], ["donasi", "Donasi"], ["pengurus", "Pengurus"], ["faq", "FAQ"], ["kontak", "Kontak"]];
-const NAV_ICON = { beranda: "home", tentang: "book-open", kegiatan: "calendar", galeri: "image", donasi: "heart", pengurus: "users", faq: "help", kontak: "message" };
-let PUB = { pengaturan: {}, kegiatan: [], galeri: [], pengurus: [], faq: [] };
+const NAV = [["beranda", "Beranda"], ["tentang", "Tentang"], ["kegiatan", "Kegiatan"], ["galeri", "Galeri"], ["donasi", "Donasi"], ["keuangan", "Keuangan"], ["pengurus", "Pengurus"], ["faq", "FAQ"], ["kontak", "Kontak"]];
+const NAV_ICON = { beranda: "home", tentang: "book-open", kegiatan: "calendar", galeri: "image", donasi: "heart", keuangan: "wallet", pengurus: "users", faq: "help", kontak: "message" };
+let PUB = { pengaturan: {}, kegiatan: [], galeri: [], pengurus: [], faq: [], keuangan: [] };
 const S = k => PUB.pengaturan?.[k] ?? "";
 const evState = { tab: "Semua", shown: 6 };
 let galShown = 9;
@@ -1697,6 +1860,41 @@ function renderDonasi() {
   </div></div>`;
 }
 
+const keuState = { periode: "", shown: 8 };
+function renderKeuangan() {
+  const all = PUB.keuangan || [];
+  const sec = $("#keuangan");
+  sec.hidden = !all.length || S("keuangan_tampil") === "tidak";
+  if (sec.hidden) return;
+  const bulan = [...new Set(all.map(r => String(r.tanggal).slice(0, 7)))].sort().reverse();
+  if (keuState.periode && !bulan.includes(keuState.periode)) keuState.periode = "";
+  const per = keuState.periode;
+  const rows = per ? all.filter(r => String(r.tanggal).startsWith(per)) : all;
+  const sumPer = ringkasKeuangan(rows);
+  const sumSaldo = ringkasKeuangan(per ? all.filter(r => String(r.tanggal).slice(0, 7) <= per) : all);
+  const daftarMu = Object.keys(sumSaldo).sort((a, b) => (a === "KRW" ? -1 : 1));
+  const lblPer = per ? bulanLabel(per) : "semua periode";
+  const blok = daftarMu.map(mu => {
+    const p = sumPer[mu] || { masuk: 0, keluar: 0 }, t = sumSaldo[mu];
+    return `<div class="fin-cur">${daftarMu.length > 1 ? `<div class="cur-title">${esc(MATA_UANG[mu] || mu)}</div>` : ""}<div class="fin-cards">
+      <div class="fin-card in"><small>${icon("trend-up")}Pemasukan</small><b>${esc(fmtUang(p.masuk, mu))}</b><span class="sub">${esc(lblPer)}</span></div>
+      <div class="fin-card out"><small>${icon("trend-down")}Pengeluaran</small><b>${esc(fmtUang(p.keluar, mu))}</b><span class="sub">${esc(lblPer)}</span></div>
+      <div class="fin-card saldo"><small>${icon("wallet")}Saldo kas</small><b>${esc(fmtUang(t.masuk - t.keluar, mu))}</b><span class="sub">${per ? "s.d. akhir " + esc(bulanLabel(per)) : "keseluruhan"}</span></div>
+    </div></div>`;
+  }).join("");
+  const tampil = rows.slice(0, keuState.shown);
+  const tgl = d => { const x = new Date(d + "T00:00:00"); return `<div class="ku-date"><b>${x.getDate()}</b>${esc(x.toLocaleDateString("id-ID", { month: "short" }))}</div>`; };
+  const list = rows.length ? `<div class="fin-list">${tampil.map(r => `<div class="fin-row">${tgl(r.tanggal)}<div class="fin-main"><strong>${esc(r.keterangan || r.kategori || r.jenis)}</strong><span>${esc(r.kategori || r.jenis)}${String(r.tanggal).slice(0, 4) !== todayKST().slice(0, 4) ? " \u00b7 " + esc(String(r.tanggal).slice(0, 4)) : ""}</span></div><span class="${r.jenis === "Pemasukan" ? "amt-in" : "amt-out"}">${r.jenis === "Pemasukan" ? "+" : "\u2212"}${esc(fmtUang(r.jumlah, r.mata_uang))}</span></div>`).join("")}
+      ${rows.length > tampil.length ? `<div class="fin-more"><button class="btn btn-ghost btn-sm" type="button" data-kmore>Tampilkan lebih banyak (${rows.length - tampil.length} lagi)${icon("chevron-down")}</button></div>` : ""}</div>` : `<div class="empty" style="margin-top:22px">${icon("wallet")}<p>Belum ada transaksi pada periode ini.</p></div>`;
+  const terakhir = all.reduce((a, r) => (r.dibuat_pada && r.dibuat_pada > a ? r.dibuat_pada : a), "");
+  sec.innerHTML = `<div class="container">
+    <div class="fin-top"><div class="sec-head"><span class="eyebrow">${icon("wallet")}Transparansi</span><h2 class="sec-title">${esc(S("keuangan_judul") || "Laporan Keuangan Komunitas")}</h2>${S("keuangan_teks") ? `<p class="sec-desc">${esc(S("keuangan_teks"))}</p>` : ""}</div>
+      <select class="input select" id="fin-per" aria-label="Pilih periode laporan"><option value="">Semua periode</option>${bulan.map(b => `<option value="${b}" ${b === per ? "selected" : ""}>${esc(bulanLabel(b))}</option>`).join("")}</select></div>
+    ${blok}${list}
+    <p class="fin-note">${icon("shield")} Dicatat oleh bendahara ${esc(namaSingkat())}${terakhir ? " \u00b7 diperbarui " + esc(fmtWaktu(terakhir)) : ""}.</p>
+  </div>`;
+}
+
 function renderPengurus() {
   const p = PUB.pengurus || [];
   $("#pengurus").hidden = p.length === 0;
@@ -1880,7 +2078,7 @@ window.addEventListener("resize", debounce(() => { if (!$("#facebook").hidden) p
 
 function renderLanding() {
   applyTheme();
-  renderHero(); renderTentang(); renderKegiatan(); renderFacebook(); renderGaleri(); renderDonasi(); renderPengurus(); renderFaq(); renderMasjid(); renderKontak();
+  renderHero(); renderTentang(); renderKegiatan(); renderFacebook(); renderGaleri(); renderDonasi(); renderKeuangan(); renderPengurus(); renderFaq(); renderMasjid(); renderKontak();
   renderNav(); renderFooter();
   initSliders();
 }
@@ -1913,11 +2111,15 @@ $("#kmi-landing").addEventListener("click", async e => {
   if (e.target.closest("[data-evmore]")) { evState.shown += 6; return renderKegiatan(); }
   const gal = e.target.closest("[data-gal]"); if (gal) return openLightbox(+gal.dataset.gal);
   if (e.target.closest("[data-galmore]")) { galShown = 9999; return renderGaleri(); }
+  if (e.target.closest("[data-kmore]")) { keuState.shown += 20; return renderKeuangan(); }
   if (e.target.closest("[data-copy-acct]")) { await copyText(S("donasi_no_rekening").replace(/\s/g, "")); return toast("Tersalin: nomor rekening " + S("donasi_no_rekening")); }
   if (e.target.closest("[data-konfirmasi]")) {
     scrollToSec("kontak");
     setTimeout(() => { const s = $("#cf-kat"); if (s) { s.value = "Donasi"; s.dispatchEvent(new Event("input", { bubbles: true })); } const n = $("#cf-nama"); if (n) n.focus({ preventScroll: true }); }, 450);
   }
+});
+$("#kmi-landing").addEventListener("change", e => {
+  if (e.target.id === "fin-per") { keuState.periode = e.target.value; keuState.shown = 8; renderKeuangan(); }
 });
 $("#kmi-modal-root").addEventListener("click", e => { const go = e.target.closest("[data-go]"); if (go && $("#kmi-landing") && !$("#kmi-landing").hidden) setTimeout(() => scrollToSec(go.dataset.go), 50); });
 $("#nav-login").addEventListener("click", () => STATE.user ? showPanel() : showLogin());
@@ -1948,11 +2150,11 @@ async function loadPublik() {
   if (cached) { PUB = cached; renderLanding(); } else renderLandingSkeleton();
   try {
     const data = await api.getPublik();
-    PUB = { pengaturan: data.pengaturan || {}, kegiatan: data.kegiatan || [], galeri: data.galeri || [], pengurus: data.pengurus || [], faq: data.faq || [] };
+    PUB = { pengaturan: data.pengaturan || {}, kegiatan: data.kegiatan || [], galeri: data.galeri || [], pengurus: data.pengurus || [], faq: data.faq || [], keuangan: data.keuangan || [] };
     if (!IS_PREVIEW) { try { localStorage.setItem(CACHE_KEY, JSON.stringify(PUB)); } catch { } }
     renderLanding();
   } catch (err) {
-    if (!cached) { PUB = { pengaturan: { ...FALLBACK_PENGATURAN }, kegiatan: [], galeri: [], pengurus: [], faq: [] }; renderLanding(); }
+    if (!cached) { PUB = { pengaturan: { ...FALLBACK_PENGATURAN }, kegiatan: [], galeri: [], pengurus: [], faq: [], keuangan: [] }; renderLanding(); }
     const w = $("#kmi-dbwarn");
     if (w.hidden) { w.innerHTML = `${icon("info")}<span>${esc(pesanError(err))}</span>`; w.hidden = false; }
   }
@@ -1961,7 +2163,7 @@ async function loadPublik() {
 // ===================================================================
 // LOGIN & SESI
 // ===================================================================
-const STATE = { user: null, view: "dashboard", badgePesan: 0 };
+const STATE = { user: null, view: "dashboard", badgePesan: 0, badgeDaftar: 0 };
 const LOCK_KEY = "kmi-korsel-login-gagal";
 function getLock() { try { return JSON.parse(localStorage.getItem(LOCK_KEY) || "{}"); } catch { return {}; } }
 function setLock(o) { try { localStorage.setItem(LOCK_KEY, JSON.stringify(o)); } catch { } }
@@ -1979,6 +2181,59 @@ function showLogin() {
   setTimeout(() => $("#lg-email").focus(), 50);
 }
 $("#login-back").addEventListener("click", showLanding);
+$("#daftar-btn").addEventListener("click", () => openDaftar());
+function pwFieldHtml(id, label, ac = "new-password") {
+  return `<div class="field"><label for="${id}">${label}</label><div class="pw-wrap"><input class="input" id="${id}" type="password" autocomplete="${ac}" maxlength="72"><button type="button" class="pw-eye" data-eye="${id}" aria-label="Tampilkan password">${icon("eye")}</button></div></div>`;
+}
+function openDaftar() {
+  let jab = "";
+  const m = openModal({
+    title: "Daftar sebagai Pengurus", size: "wide",
+    body: `<div class="callout" style="margin-bottom:16px">${icon("info")}<span>Isi data di bawah. Akun Anda aktif setelah <b>disetujui Ketua atau Admin Utama</b>, dan pemberitahuannya dikirim ke email Anda.</span></div>
+      <form id="dfm" class="fgrid" novalidate>
+        <div class="field full"><label for="df-n">Nama lengkap <span style="color:var(--accent)">*</span></label><input class="input" id="df-n" maxlength="100" autocomplete="name"></div>
+        <div class="field"><label for="df-e">Email <span style="color:var(--accent)">*</span></label><input class="input" id="df-e" type="email" autocomplete="email" placeholder="nama@email.com"></div>
+        <div class="field"><label for="df-h">No. HP / WhatsApp</label><input class="input" id="df-h" maxlength="30" inputmode="tel" autocomplete="tel" placeholder="010-1234-5678"></div>
+        <div class="field full"><label>Jabatan yang diajukan <span style="color:var(--accent)">*</span></label>
+          <div class="jab-pick" id="df-j">${[...JABATAN_PILIHAN, "Lainnya"].map(j => `<button type="button" data-jab="${j}">${icon(JABATAN_ICON[j])}${j}</button>`).join("")}</div>
+          <input class="input" id="df-jl" maxlength="60" placeholder="Tulis jabatan Anda, misal: Humas, Koordinator Wilayah Ansan" hidden style="margin-top:8px">
+          <span class="hint" id="df-jh">Pilih salah satu. Menu yang bisa Anda isi menyesuaikan jabatan.</span></div>
+        ${pwFieldHtml("df-p1", 'Buat password <span style="color:var(--accent)">*</span>')}
+        <div class="field"><label for="df-p2">Ulangi password <span style="color:var(--accent)">*</span></label><input class="input" id="df-p2" type="password" autocomplete="new-password" maxlength="72"></div>
+        <div class="field full"><label for="df-c">Catatan (opsional)</label><textarea class="input" id="df-c" maxlength="500" style="min-height:80px" placeholder="Kota tempat tinggal, pengalaman, atau siapa yang merekomendasikan Anda"></textarea></div>
+        <input type="text" id="df-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+      </form>`,
+    foot: `<button class="btn btn-outline btn-sm" data-close>Batal</button><button class="btn btn-primary btn-sm" data-save>${icon("send")}Kirim Pendaftaran</button>`
+  });
+  const el = m.el;
+  el.querySelector("#df-j").addEventListener("click", e => {
+    const b = e.target.closest("[data-jab]"); if (!b) return;
+    jab = b.dataset.jab;
+    el.querySelectorAll("[data-jab]").forEach(x => x.classList.toggle("active", x === b));
+    const lain = $("#df-jl", el); lain.hidden = jab !== "Lainnya"; if (!lain.hidden) lain.focus();
+    $("#df-jh", el).textContent = JABATAN_INFO[jab] || "";
+  });
+  const btn = el.querySelector("[data-save]");
+  btn.addEventListener("click", async () => {
+    const nama = $("#df-n", el).value.trim(), email = $("#df-e", el).value.trim(), p1 = $("#df-p1", el).value, p2 = $("#df-p2", el).value;
+    const jabatan = jab === "Lainnya" ? $("#df-jl", el).value.trim() : jab;
+    if (nama.length < 2) return toast("Nama lengkap wajib diisi.", "err");
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return toast("Format email tidak valid.", "err");
+    if (!jab) return toast("Pilih jabatan yang diajukan.", "err");
+    if (jabatan.length < 2) return toast("Tulis nama jabatan Anda.", "err");
+    if (p1.length < 8) return toast("Password minimal 8 karakter.", "err");
+    if (p1 !== p2) return toast("Ulangan password tidak sama.", "err");
+    btn.disabled = true;
+    try {
+      await withLoading(() => api.daftarPengurus({ nama, email, no_hp: $("#df-h", el).value.trim(), jabatan, password: p1, catatan: $("#df-c", el).value.trim(), honeypot: $("#df-hp", el).value }));
+      m.close();
+      openModal({ title: "Pendaftaran terkirim", size: "small",
+        body: `<div class="ok-state">${icon("check-circle")}<h4>Jazakallahu khairan, ${esc(nama)}</h4><p>Pendaftaran Anda sebagai <b>${esc(jabatan)}</b> sudah kami terima dan menunggu persetujuan Ketua / Admin Utama.</p><p>Setelah disetujui, masuk dengan email <b>${esc(email)}</b> dan password yang baru Anda buat.</p></div>`,
+        foot: `<button class="btn btn-primary btn-sm" data-close>Mengerti</button>` });
+    } catch (err) { toast(pesanError(err), "err", 5000); }
+    finally { btn.disabled = false; }
+  });
+}
 root.addEventListener("click", e => {
   const b = e.target.closest("[data-eye]"); if (!b) return;
   const inp = document.getElementById(b.dataset.eye); if (!inp) return;
@@ -2001,7 +2256,7 @@ $("#login-form").addEventListener("submit", async e => {
     setLock({});
     STATE.user = u; $("#lg-pw").value = "";
     showPanel();
-    toast(`Assalamualaikum, ${u.nama}. Anda masuk sebagai ${labelPeran(u.peran)}.`, "ok", 4000);
+    toast(`Assalamualaikum, ${u.nama}. Anda masuk sebagai ${labelAkun(u)}.`, "ok", 4000);
     if (u.wajib_ganti_password) forceChangePassword();
   } catch (err) {
     const n = (lock.count || 0) + 1;
@@ -2043,9 +2298,41 @@ async function logout() {
 // ===================================================================
 const isKetua = () => ["Ketua", "Admin"].includes(STATE.user?.peran);
 const isAdmin = () => STATE.user?.peran === "Admin";
+const bisa = m => isKetua() || (STATE.user?.akses || []).includes(m);
 const labelPeran = p => p === "Admin" ? "Admin Utama" : (p || "-");
 const badgePeran = p => `<span class="badge ${p === "Admin" ? "badge-admin" : p === "Ketua" ? "badge-red" : ""}">${p === "Admin" ? icon("shield") : ""}${esc(labelPeran(p))}</span>`;
-const myMenus = () => MENUS.filter(m => m.roles.includes(STATE.user?.peran));
+const labelAkun = u => labelPeran(u.peran) + (u.jabatan ? " \u2013 " + u.jabatan : "");
+const myMenus = () => MENUS.filter(m => m.need === "semua" || (m.need === "ketua" ? isKetua() : bisa(m.need)));
+function aksesChips(s) {
+  if (["Ketua", "Admin"].includes(s.peran)) return `<div class="chips"><span class="badge">${icon("check")}Semua menu</span></div>`;
+  const a = AKSES.filter(([k]) => (s.akses || []).includes(k));
+  return `<div class="chips">${a.length ? a.map(([, l, ic]) => `<span class="badge badge-gray">${icon(ic)}${esc(l)}</span>`).join("") : `<span class="badge badge-amber">${icon("info")}Belum ada hak akses menu</span>`}</div>`;
+}
+// Komponen isian jabatan + hak akses (dipakai di Tambah/Ubah staf dan Setujui pendaftaran)
+function jabatanAksesHtml(id, { jabatan = "", akses = [] } = {}) {
+  const preset = JABATAN_PILIHAN.includes(jabatan) ? jabatan : (jabatan ? "Lainnya" : "");
+  return `<div class="field"><label for="${id}-js">Jabatan</label><select class="input select" id="${id}-js"><option value="">\u2014 Tanpa jabatan \u2014</option>${[...JABATAN_PILIHAN, "Lainnya"].map(j => `<option value="${j}" ${j === preset ? "selected" : ""}>${j === "Lainnya" ? "Lainnya (ketik sendiri)" : j}</option>`).join("")}</select></div>
+    <div class="field" id="${id}-jlw" ${preset === "Lainnya" ? "" : "hidden"}><label for="${id}-jl">Tulis jabatan</label><input class="input" id="${id}-jl" maxlength="60" value="${preset === "Lainnya" ? esc(jabatan) : ""}" placeholder="Misal: Humas, Wakil Ketua"></div>
+    <div class="field full" id="${id}-akw"><label>Hak akses menu (boleh mengisi)</label><div class="akses-pick">${AKSES.map(([k, l, ic]) => `<label class="check akses-opt"><input type="checkbox" value="${k}" ${akses.includes(k) ? "checked" : ""}>${icon(ic)}${esc(l)}</label>`).join("")}</div><span class="hint" id="${id}-akh"></span></div>`;
+}
+function bindJabatanAkses(scope, id, getPeran) {
+  const sel = $(`#${id}-js`, scope), w = $(`#${id}-jlw`, scope), akw = $(`#${id}-akw`, scope), hint = $(`#${id}-akh`, scope);
+  const sync = () => {
+    const semua = ["Ketua", "Admin"].includes(getPeran());
+    akw.querySelectorAll("input").forEach(i => { i.disabled = semua; });
+    hint.textContent = semua ? "Ketua dan Admin Utama otomatis bisa mengisi semua menu." : "Memilih Bendahara / Sekretaris / Media otomatis mencentang menu yang sesuai. Bisa diubah manual.";
+  };
+  sel.addEventListener("change", () => {
+    w.hidden = sel.value !== "Lainnya"; if (!w.hidden) $(`#${id}-jl`, scope).focus();
+    const p = JABATAN_AKSES[sel.value]; if (p) akw.querySelectorAll("input").forEach(i => { i.checked = p.includes(i.value); });
+  });
+  sync(); return sync;
+}
+function bacaJabatanAkses(scope, id) {
+  const v = $(`#${id}-js`, scope).value;
+  const jabatan = v === "Lainnya" ? $(`#${id}-jl`, scope).value.trim() : v;
+  return { jabatan, akses: $$(`#${id}-akw input:checked`, scope).map(i => i.value), kosong: v === "Lainnya" && jabatan.length < 2 };
+}
 const THEME_KEY = "kmi-korsel-panel-theme";
 
 function showPanel() {
@@ -2057,7 +2344,7 @@ function showPanel() {
   $("#side-logo").innerHTML = logoHtml(); $("#side-nama").textContent = namaOrg(); $("#side-org").textContent = "(" + namaSingkat() + ") \u00b7 Panel Pengurus";
   $("#side-av").textContent = initials(STATE.user.nama);
   $("#side-name").textContent = STATE.user.nama;
-  $("#side-role").textContent = labelPeran(STATE.user.peran) + " \u00b7 " + STATE.user.email;
+  $("#side-role").textContent = labelAkun(STATE.user) + " \u00b7 " + STATE.user.email;
   if (!myMenus().some(m => m.id === STATE.view)) STATE.view = "dashboard";
   renderMenus();
   go(STATE.view);
@@ -2069,19 +2356,20 @@ function renderMenus() {
   html += `<div class="grp">Menu</div>`;
   menus.forEach(m => {
     if (m.grp && m.grp !== lastGrp) { html += `<div class="grp">${esc(m.grp)}</div>`; lastGrp = m.grp; }
-    html += `<button class="navi ${STATE.view === m.id ? "active" : ""}" data-menu="${m.id}">${icon(m.icon)}<span>${esc(m.label)}</span>${m.id === "pesan" && STATE.badgePesan ? `<span class="cnt">${STATE.badgePesan}</span>` : ""}</button>`;
+    const n = m.id === "pesan" ? STATE.badgePesan : m.id === "pendaftaran" ? STATE.badgeDaftar : 0;
+    html += `<button class="navi ${STATE.view === m.id ? "active" : ""}" data-menu="${m.id}">${icon(m.icon)}<span>${esc(m.label)}</span>${n ? `<span class="cnt">${n}</span>` : ""}</button>`;
   });
   $("#side-nav").innerHTML = html;
   const primary = menus.length > 5 ? menus.slice(0, 4) : menus;
   const extra = menus.length > 5 ? menus.slice(4) : [];
-  $("#bnav").innerHTML = primary.map(m => `<button class="${STATE.view === m.id ? "active" : ""}" data-menu="${m.id}">${icon(m.icon)}<span>${esc(m.short || m.label)}</span>${m.id === "pesan" && STATE.badgePesan ? `<span class="dotc">${STATE.badgePesan}</span>` : ""}</button>`).join("")
-    + (extra.length ? `<button class="${extra.some(m => m.id === STATE.view) ? "active" : ""}" data-more>${icon("more")}<span>Lainnya</span></button>` : "");
+  $("#bnav").innerHTML = primary.map(m => { const n = m.id === "pesan" ? STATE.badgePesan : m.id === "pendaftaran" ? STATE.badgeDaftar : 0; return `<button class="${STATE.view === m.id ? "active" : ""}" data-menu="${m.id}">${icon(m.icon)}<span>${esc(m.short || m.label)}</span>${n ? `<span class="dotc">${n}</span>` : ""}</button>`; }).join("")
+    + (extra.length ? `<button class="${extra.some(m => m.id === STATE.view) ? "active" : ""}" data-more>${icon("more")}<span>Lainnya</span>${extra.some(m => m.id === "pendaftaran") && STATE.badgeDaftar ? `<span class="dotc">${STATE.badgeDaftar}</span>` : ""}</button>` : "");
 }
 function openMoreSheet() {
   const extra = myMenus().slice(4);
   const m = openModal({
     title: "Menu Lainnya", size: "small",
-    body: `<div class="more-sheet" style="display:flex;flex-direction:column;gap:4px">${extra.map(x => `<button class="navi ${STATE.view === x.id ? "active" : ""}" data-menu="${x.id}">${icon(x.icon)}<span>${esc(x.label)}</span></button>`).join("")}
+    body: `<div class="more-sheet" style="display:flex;flex-direction:column;gap:4px">${extra.map(x => `<button class="navi ${STATE.view === x.id ? "active" : ""}" data-menu="${x.id}">${icon(x.icon)}<span>${esc(x.label)}</span>${x.id === "pendaftaran" && STATE.badgeDaftar ? `<span class="cnt">${STATE.badgeDaftar}</span>` : ""}</button>`).join("")}
       <button class="navi" data-act="site">${icon("globe")}<span>Lihat Situs</span></button>
       <button class="navi" data-act="logout" style="color:var(--danger)">${icon("log-out")}<span>Keluar</span></button></div>`
   });
@@ -2105,7 +2393,7 @@ $("#theme-btn").addEventListener("click", () => {
 async function refreshBadge() {
   try {
     const d = await api.dashboard();
-    STATE.badgePesan = d.pesan_baru || 0;
+    STATE.badgePesan = d.pesan_baru || 0; STATE.badgeDaftar = d.pendaftaran_menunggu || 0;
     renderMenus();
   } catch { }
 }
@@ -2133,17 +2421,33 @@ const statusBadge = s => `<span class="badge ${s === "Baru" ? "badge-red" : s ==
 // ----- Dashboard -----
 VIEWS.dashboard = async () => {
   const d = await api.dashboard();
-  STATE.badgePesan = d.pesan_baru || 0; renderMenus();
-  const kpi = (ic, cls, n, l, go2) => `<button class="card kpi" data-menu="${go2}" style="text-align:left"><span class="ic ${cls}">${icon(ic)}</span><div><b>${n}</b><span>${l}</span></div></button>`;
+  STATE.badgePesan = d.pesan_baru || 0; STATE.badgeDaftar = d.pendaftaran_menunggu || 0; renderMenus();
+  const kpi = (ic, cls, n, l, go2) => `<button class="card kpi ${cls === "saldo" ? "saldo" : ""}" data-menu="${go2}" style="text-align:left"><span class="ic ${cls}">${icon(ic)}</span><div><b>${n}</b><span>${l}</span></div></button>`;
+  const k = [];
+  if (bisa("pesan")) k.push(kpi("message", "red", d.pesan_baru, "Pesan baru", "pesan"));
+  if (isKetua()) k.push(kpi("user-plus", "amber", d.pendaftaran_menunggu || 0, "Pendaftar menunggu", "pendaftaran"));
+  if (bisa("kegiatan")) k.push(kpi("calendar", "", d.kegiatan_akan_datang, "Agenda akan datang", "kegiatan"));
+  if (bisa("galeri")) k.push(kpi("image", "blue", d.total_galeri, "Foto di galeri", "galeri"));
+  if (bisa("keuangan") && d.keuangan) {
+    const mus = Object.keys(d.keuangan).sort((a, b) => (a === "KRW" ? -1 : 1));
+    if (!mus.length) k.push(kpi("wallet", "saldo", fmtUang(0), "Saldo kas", "keuangan"));
+    mus.forEach(mu => k.push(kpi("wallet", "saldo", esc(fmtUang(d.keuangan[mu].masuk - d.keuangan[mu].keluar, mu)), "Saldo kas " + mu, "keuangan")));
+  }
+  if (!isKetua() && bisa("pesan") && k.length < 4) k.push(kpi("mail", "amber", d.pesan_bulan_ini, "Pesan bulan ini", "pesan"));
+  const tugas = myMenus().filter(m => !["dashboard", "akun"].includes(m.id));
+  const boxKiri = bisa("pesan")
+    ? `<div class="card box"><h3>Pesan terbaru <button class="btn btn-ghost btn-sm" data-menu="pesan">Lihat semua${icon("arrow-right")}</button></h3>
+        ${(d.pesan_terbaru || []).length ? `<div class="list">${d.pesan_terbaru.map(p => `<div class="row clickable" data-menu="pesan"><div class="rmain"><div class="rtitle">${esc(p.nama)} ${statusBadge(p.status)}</div><div class="rsub">${esc(p.kategori)} \u00b7 ${esc(fmtWaktu(p.waktu))}</div></div></div>`).join("")}</div>` : emptyBox("Belum ada pesan masuk.", "message")}</div>`
+    : `<div class="card box"><h3>Menu yang bisa Anda isi</h3>${tugas.length ? `<div class="list">${tugas.map(m => `<div class="row clickable" data-menu="${m.id}"><span class="icon-btn" style="border:0;background:var(--primary-50);color:var(--primary)">${icon(m.icon)}</span><div class="rmain"><div class="rtitle">${esc(m.label)}</div><div class="rsub">${esc(m.desc)}</div></div><span class="icon-btn" style="border:0">${icon("chevron-right")}</span></div>`).join("")}</div>` : emptyBox("Akun Anda belum diberi hak akses menu. Hubungi Ketua atau Admin Utama.", "lock")}</div>`;
+  const aksesTeks = isKetua() ? "Anda bisa mengelola semua menu." : (tugas.length ? "Menu Anda: " + tugas.map(m => m.label).join(", ") + "." : "Akun Anda belum diberi hak akses menu.");
   $("#pv-body").innerHTML = `
-    <div class="callout" style="margin-bottom:16px">${icon("user")}<span>Assalamualaikum, <b>${esc(STATE.user.nama)}</b>. Anda masuk sebagai <b>${esc(labelPeran(STATE.user.peran))}</b>.</span></div>
-    <div class="kpis">${kpi("message", "red", d.pesan_baru, "Pesan baru", "pesan")}${kpi("calendar", "", d.kegiatan_akan_datang, "Kegiatan akan datang", "kegiatan")}${kpi("image", "blue", d.total_galeri, "Foto di galeri", "galeri")}${kpi("mail", "amber", d.pesan_bulan_ini, "Pesan bulan ini", "pesan")}</div>
+    <div class="callout" style="margin-bottom:16px">${icon("user")}<span>Assalamualaikum, <b>${esc(STATE.user.nama)}</b>. Anda masuk sebagai <b>${esc(labelAkun(STATE.user))}</b>. ${esc(aksesTeks)}</span></div>
+    ${isKetua() && d.pendaftaran_menunggu ? `<div class="callout warn" style="margin-bottom:16px">${icon("user-plus")}<span><b>${d.pendaftaran_menunggu} calon pengurus</b> menunggu persetujuan. <button class="btn btn-ghost btn-sm" data-menu="pendaftaran" style="padding:2px 8px">Periksa sekarang${icon("arrow-right")}</button></span></div>` : ""}
+    ${k.length ? `<div class="kpis">${k.join("")}</div>` : ""}
     <div class="two">
-      <div class="card box"><h3>Pesan terbaru <button class="btn btn-ghost btn-sm" data-menu="pesan">Lihat semua${icon("arrow-right")}</button></h3>
-        ${(d.pesan_terbaru || []).length ? `<div class="list">${d.pesan_terbaru.map(p => `<div class="row clickable" data-menu="pesan"><div class="rmain"><div class="rtitle">${esc(p.nama)} ${statusBadge(p.status)}</div><div class="rsub">${esc(p.kategori)} \u00b7 ${esc(fmtWaktu(p.waktu))}</div></div></div>`).join("")}</div>` : emptyBox("Belum ada pesan masuk.", "message")}
-      </div>
-      <div class="card box"><h3>Kegiatan terdekat <button class="btn btn-ghost btn-sm" data-menu="kegiatan">Kelola${icon("arrow-right")}</button></h3>
-        ${(d.kegiatan_terdekat || []).length ? `<div class="list">${d.kegiatan_terdekat.map(k => `<div class="row"><div class="rmain"><div class="rtitle">${esc(k.judul)}</div><div class="rsub">${esc(fmtTanggal(k.tanggal))}${k.lokasi ? " \u00b7 " + esc(k.lokasi) : ""}</div></div></div>`).join("")}</div>` : emptyBox("Belum ada kegiatan yang akan datang.", "calendar")}
+      ${boxKiri}
+      <div class="card box"><h3>Agenda terdekat ${bisa("kegiatan") ? `<button class="btn btn-ghost btn-sm" data-menu="kegiatan">Kelola${icon("arrow-right")}</button>` : ""}</h3>
+        ${(d.kegiatan_terdekat || []).length ? `<div class="list">${d.kegiatan_terdekat.map(k => `<div class="row"><div class="rmain"><div class="rtitle">${esc(k.judul)}</div><div class="rsub">${esc(fmtTanggal(k.tanggal))}${k.lokasi ? " \u00b7 " + esc(k.lokasi) : ""}</div></div></div>`).join("")}</div>` : emptyBox("Belum ada agenda yang akan datang.", "calendar")}
       </div>
     </div>`;
 };
@@ -2235,7 +2539,7 @@ VIEWS.kegiatan = async () => {
     const q = $("#kg-q").value.trim().toLowerCase(), f = $("#kg-f").value;
     const rows = sortKegiatan(kegCache).filter(k => (!q || (k.judul + " " + (k.lokasi || "")).toLowerCase().includes(q)) && (!f || k.jenis === f || statusKegiatan(k) === f || (f === "tersembunyi" && !k.tampil)));
     $("#kg-list").innerHTML = rows.length ? `<div class="list">${rows.map((k, i) => { const st = statusKegiatan(k); return `<div class="row ${k.tampil ? "" : "dim"}"><img class="thumb" src="${esc(imgUrl(k.gambar_url) || placeholder(i))}" alt=""><div class="rmain"><div class="rtitle">${esc(k.judul)} ${k.disematkan ? `<span class="badge badge-red">${icon("pin")}Utama</span>` : ""}<span class="badge badge-gray">${esc(k.jenis)}</span>${st ? `<span class="badge ${st === "Selesai" ? "badge-gray" : "badge-amber"}">${st}</span>` : ""}${k.tampil ? "" : `<span class="badge badge-gray">${icon("eye-off")}Tersembunyi</span>`}</div><div class="rsub">${k.tanggal ? esc(fmtTanggal(k.tanggal)) : "Tanpa tanggal"}${k.lokasi ? " \u00b7 " + esc(k.lokasi) : ""} \u00b7 oleh ${esc(k.dibuat_oleh || "-")}</div></div>
-      <div class="ractions"><button class="icon-btn ${k.disematkan ? "on" : ""}" data-pin="${esc(k.id)}" title="${k.disematkan ? "Lepas sematan" : "Sematkan di atas"}" aria-label="Sematkan">${icon("pin")}</button><button class="icon-btn" data-vis="${esc(k.id)}" title="${k.tampil ? "Sembunyikan" : "Tampilkan"}" aria-label="Tampil/sembunyi">${icon(k.tampil ? "eye" : "eye-off")}</button><button class="icon-btn" data-edit="${esc(k.id)}" title="Ubah" aria-label="Ubah">${icon("edit")}</button>${isKetua() ? `<button class="icon-btn del" data-del="${esc(k.id)}" title="Hapus" aria-label="Hapus">${icon("trash")}</button>` : ""}</div></div>`; }).join("")}</div>` : emptyBox("Belum ada kegiatan. Tekan Tambah untuk membuat yang pertama.", "calendar");
+      <div class="ractions"><button class="icon-btn ${k.disematkan ? "on" : ""}" data-pin="${esc(k.id)}" title="${k.disematkan ? "Lepas sematan" : "Sematkan di atas"}" aria-label="Sematkan">${icon("pin")}</button><button class="icon-btn" data-vis="${esc(k.id)}" title="${k.tampil ? "Sembunyikan" : "Tampilkan"}" aria-label="Tampil/sembunyi">${icon(k.tampil ? "eye" : "eye-off")}</button><button class="icon-btn" data-edit="${esc(k.id)}" title="Ubah" aria-label="Ubah">${icon("edit")}</button>${bisa("kegiatan") ? `<button class="icon-btn del" data-del="${esc(k.id)}" title="Hapus" aria-label="Hapus">${icon("trash")}</button>` : ""}</div></div>`; }).join("")}</div>` : emptyBox("Belum ada kegiatan. Tekan Tambah untuk membuat yang pertama.", "calendar");
   };
   $("#kg-q").addEventListener("input", debounce(draw)); $("#kg-f").addEventListener("change", draw);
   $("#kg-add").addEventListener("click", () => kegiatanForm());
@@ -2303,7 +2607,7 @@ VIEWS.galeri = async () => {
   const draw = () => {
     const q = $("#gl-q").value.trim().toLowerCase();
     const rows = galCache.filter(p => !q || (p.judul || "").toLowerCase().includes(q));
-    $("#gl-list").innerHTML = rows.length ? `<div class="gal-admin">${rows.map((p, i) => `<div class="gtile ${p.tampil ? "" : "dim"}">${p.tampil ? "" : `<span class="badge badge-gray hid">${icon("eye-off")}Tersembunyi</span>`}<img src="${esc(imgUrl(p.foto_url) || placeholder(i))}" alt="" loading="lazy"><div class="gt-body"><div class="gt-title">${esc(p.judul || "(tanpa keterangan)")}</div><div style="font-size:12px;color:var(--muted)">Urutan ${p.urutan ?? 0}</div><div class="gt-act"><button class="icon-btn" data-vis="${esc(p.id)}" title="Tampil/sembunyi" aria-label="Tampil/sembunyi">${icon(p.tampil ? "eye" : "eye-off")}</button><button class="icon-btn" data-edit="${esc(p.id)}" title="Ubah" aria-label="Ubah">${icon("edit")}</button>${isKetua() ? `<button class="icon-btn del" data-del="${esc(p.id)}" title="Hapus" aria-label="Hapus">${icon("trash")}</button>` : ""}</div></div></div>`).join("")}</div>` : emptyBox("Belum ada foto. Tekan Unggah Foto untuk menambahkan.", "image");
+    $("#gl-list").innerHTML = rows.length ? `<div class="gal-admin">${rows.map((p, i) => `<div class="gtile ${p.tampil ? "" : "dim"}">${p.tampil ? "" : `<span class="badge badge-gray hid">${icon("eye-off")}Tersembunyi</span>`}<img src="${esc(imgUrl(p.foto_url) || placeholder(i))}" alt="" loading="lazy"><div class="gt-body"><div class="gt-title">${esc(p.judul || "(tanpa keterangan)")}</div><div style="font-size:12px;color:var(--muted)">Urutan ${p.urutan ?? 0}</div><div class="gt-act"><button class="icon-btn" data-vis="${esc(p.id)}" title="Tampil/sembunyi" aria-label="Tampil/sembunyi">${icon(p.tampil ? "eye" : "eye-off")}</button><button class="icon-btn" data-edit="${esc(p.id)}" title="Ubah" aria-label="Ubah">${icon("edit")}</button>${bisa("galeri") ? `<button class="icon-btn del" data-del="${esc(p.id)}" title="Hapus" aria-label="Hapus">${icon("trash")}</button>` : ""}</div></div></div>`).join("")}</div>` : emptyBox("Belum ada foto. Tekan Unggah Foto untuk menambahkan.", "image");
   };
   $("#gl-q").addEventListener("input", debounce(draw));
   $("#gl-up").addEventListener("click", async () => {
@@ -2401,6 +2705,160 @@ function faqForm(f = null) {
       if (f) row.id = f.id;
       await withLoading(() => api.save("faq", row)); m.close(); toast("FAQ disimpan."); go("faq");
     } catch (err) { toast(pesanError(err), "err"); }
+  });
+}
+
+// ----- Laporan keuangan (Bendahara, Ketua, Admin Utama) -----
+let keuCache = [];
+VIEWS.keuangan = async () => {
+  keuCache = await api.list("keuangan");
+  const bulan = [...new Set(keuCache.map(r => String(r.tanggal).slice(0, 7)))].sort().reverse();
+  $("#pv-body").innerHTML = `<div class="toolbar"><div class="search">${icon("search")}<input class="input" id="ku-q" placeholder="Cari keterangan atau kategori\u2026"></div>
+    <select class="input select" id="ku-b"><option value="">Semua bulan</option>${bulan.map(b => `<option value="${b}">${esc(bulanLabel(b))}</option>`).join("")}</select>
+    <select class="input select" id="ku-j"><option value="">Semua jenis</option><option>Pemasukan</option><option>Pengeluaran</option></select>
+    <button class="icon-btn" id="ku-csv" title="Unduh untuk Excel (CSV)" aria-label="Unduh CSV">${icon("download")}</button>
+    <button class="btn btn-primary" id="ku-add">${icon("plus")}Catat Transaksi</button></div>
+    <div id="ku-sum"></div><div id="ku-list" style="margin-top:16px"></div>`;
+  const filtered = () => {
+    const q = $("#ku-q").value.trim().toLowerCase(), b = $("#ku-b").value, j = $("#ku-j").value;
+    return keuCache.filter(r => (!q || ((r.keterangan || "") + " " + (r.kategori || "")).toLowerCase().includes(q)) && (!b || String(r.tanggal).startsWith(b)) && (!j || r.jenis === j));
+  };
+  const draw = () => {
+    const rows = filtered(), b = $("#ku-b").value;
+    const sum = ringkasKeuangan(rows);
+    const mus = Object.keys(sum).sort((x, y) => (x === "KRW" ? -1 : 1));
+    $("#ku-sum").innerHTML = mus.map(mu => `${mus.length > 1 ? `<div class="cur-title">${esc(MATA_UANG[mu] || mu)}</div>` : ""}<div class="kpis k3" style="margin-bottom:12px">
+      <div class="card kpi"><span class="ic" style="background:#ECFDF5;color:#059669">${icon("trend-up")}</span><div><b class="amt-in" style="font-size:22px">${esc(fmtUang(sum[mu].masuk, mu))}</b><span>Pemasukan${b ? " " + esc(bulanLabel(b)) : ""}</span></div></div>
+      <div class="card kpi"><span class="ic red">${icon("trend-down")}</span><div><b class="amt-out" style="font-size:22px">${esc(fmtUang(sum[mu].keluar, mu))}</b><span>Pengeluaran${b ? " " + esc(bulanLabel(b)) : ""}</span></div></div>
+      <div class="card kpi saldo"><span class="ic">${icon("wallet")}</span><div><b style="font-size:22px">${esc(fmtUang(sum[mu].masuk - sum[mu].keluar, mu))}</b><span>Selisih (saldo)</span></div></div></div>`).join("");
+    const tgl = d => { const x = new Date(d + "T00:00:00"); return `<div class="ku-date"><b>${x.getDate()}</b>${esc(x.toLocaleDateString("id-ID", { month: "short" }))}</div>`; };
+    $("#ku-list").innerHTML = rows.length ? `<div class="list">${rows.map(r => `<div class="row ${r.tampil ? "" : "dim"}">${tgl(r.tanggal)}<div class="rmain"><div class="rtitle">${esc(r.keterangan || r.kategori)} ${r.kategori ? `<span class="badge badge-gray">${esc(r.kategori)}</span>` : ""}${r.tampil ? "" : `<span class="badge badge-gray">${icon("eye-off")}Tidak tampil di situs</span>`}</div><div class="rsub"><span class="${r.jenis === "Pemasukan" ? "amt-in" : "amt-out"}" style="font-size:15px">${r.jenis === "Pemasukan" ? "+" : "\u2212"}${esc(fmtUang(r.jumlah, r.mata_uang))}</span> \u00b7 ${esc(r.jenis)} \u00b7 dicatat ${esc(r.dibuat_oleh || "-")}</div></div>
+      <div class="ractions"><button class="icon-btn" data-vis="${esc(r.id)}" title="${r.tampil ? "Sembunyikan dari situs" : "Tampilkan di situs"}" aria-label="Tampil/sembunyi">${icon(r.tampil ? "eye" : "eye-off")}</button><button class="icon-btn" data-edit="${esc(r.id)}" title="Ubah" aria-label="Ubah">${icon("edit")}</button><button class="icon-btn del" data-del="${esc(r.id)}" title="Hapus" aria-label="Hapus">${icon("trash")}</button></div></div>`).join("")}</div>`
+      : emptyBox(keuCache.length ? "Tidak ada transaksi yang cocok." : "Belum ada transaksi. Tekan Catat Transaksi untuk mulai mengisi laporan keuangan.", "wallet");
+  };
+  $("#ku-q").addEventListener("input", debounce(draw));
+  $("#ku-b").addEventListener("change", draw); $("#ku-j").addEventListener("change", draw);
+  $("#ku-add").addEventListener("click", () => keuanganForm());
+  $("#ku-csv").addEventListener("click", () => {
+    const rows = filtered(); if (!rows.length) return toast("Tidak ada data untuk diunduh.", "warn");
+    const q = v => `"${String(v ?? "").replace(/"/g, '""')}"`;
+    const csv = [["Tanggal", "Jenis", "Kategori", "Keterangan", "Jumlah", "Mata Uang", "Tampil di situs", "Dicatat oleh"].map(q).join(",")]
+      .concat(rows.map(r => [r.tanggal, r.jenis, r.kategori, r.keterangan, r.jenis === "Pemasukan" ? r.jumlah : -r.jumlah, r.mata_uang, r.tampil ? "Ya" : "Tidak", r.dibuat_oleh].map(q).join(","))).join("\r\n");
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob(["\ufeff" + csv], { type: "text/csv;charset=utf-8" }));
+    a.download = `laporan-keuangan-${$("#ku-b").value || "semua"}.csv`;
+    document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+  });
+  $("#ku-list").addEventListener("click", async e => {
+    const b = e.target.closest("[data-vis],[data-edit],[data-del]"); if (!b) return;
+    const r = keuCache.find(x => String(x.id) === String(b.dataset.vis || b.dataset.edit || b.dataset.del));
+    if (b.dataset.edit) return keuanganForm(r);
+    try {
+      if (b.dataset.vis) { await withLoading(() => api.save("keuangan", { id: r.id, tampil: !r.tampil })); r.tampil = !r.tampil; toast(r.tampil ? "Ditampilkan di situs." : "Disembunyikan dari situs."); }
+      if (b.dataset.del) {
+        if (!(await confirmDialog("Hapus transaksi?", `"${r.keterangan || r.kategori}" (${fmtUang(r.jumlah, r.mata_uang)}) akan dihapus permanen. Penghapusan tercatat di Log Aktivitas.`, "Hapus"))) return;
+        await withLoading(() => api.remove("keuangan", r.id)); keuCache = keuCache.filter(x => x.id !== r.id); toast("Transaksi dihapus.");
+      }
+      draw();
+    } catch (err) { toast(pesanError(err), "err"); }
+  });
+  draw();
+};
+function keuanganForm(r = null) {
+  const v = r || { tanggal: todayKST(), jenis: "Pemasukan", kategori: "", keterangan: "", jumlah: "", mata_uang: "KRW", tampil: true };
+  let jenis = v.jenis;
+  const m = openModal({
+    title: r ? "Ubah Transaksi" : "Catat Transaksi", size: "wide",
+    body: `<div class="fgrid">
+      <div class="field full"><label>Jenis transaksi</label><div class="seg2" id="kf-jen"><button type="button" data-jenis="Pemasukan" class="${jenis === "Pemasukan" ? "active" : ""}">${icon("trend-up")}Pemasukan</button><button type="button" data-jenis="Pengeluaran" class="${jenis === "Pengeluaran" ? "active" : ""}">${icon("trend-down")}Pengeluaran</button></div></div>
+      <div class="field"><label for="kf-tg">Tanggal</label><input class="input" type="date" id="kf-tg" value="${esc(v.tanggal || todayKST())}"></div>
+      <div class="field"><label for="kf-mu">Mata uang</label><select class="input select" id="kf-mu">${Object.entries(MATA_UANG).map(([k, l]) => `<option value="${k}" ${k === v.mata_uang ? "selected" : ""}>${l}</option>`).join("")}</select></div>
+      <div class="field"><label for="kf-jm">Jumlah <span style="color:var(--accent)">*</span></label><input class="input" id="kf-jm" inputmode="numeric" autocomplete="off" placeholder="Contoh: 250000" value="${v.jumlah ? esc(new Intl.NumberFormat("id-ID").format(v.jumlah)) : ""}"><span class="hint" id="kf-jmh"></span></div>
+      <div class="field"><label for="kf-kt">Kategori</label><input class="input" id="kf-kt" list="kf-ktl" maxlength="60" value="${esc(v.kategori || "")}" placeholder="Pilih atau ketik"><datalist id="kf-ktl">${KATEGORI_KEUANGAN.map(k => `<option value="${k}">`).join("")}</datalist></div>
+      <div class="field full"><label for="kf-ket">Keterangan <span style="color:var(--accent)">*</span></label><input class="input" id="kf-ket" maxlength="200" value="${esc(v.keterangan || "")}" placeholder="Contoh: Infak Jumat berjamaah Ansan"></div>
+      <div class="field full"><label class="check"><input type="checkbox" id="kf-tp" ${v.tampil ? "checked" : ""}>Tampilkan di Laporan Keuangan situs</label><span class="hint">Hilangkan centang untuk transaksi yang hanya untuk catatan internal.</span></div></div>`,
+    foot: `<button class="btn btn-outline btn-sm" data-close>Batal</button><button class="btn btn-primary btn-sm" data-save>${icon("check")}Simpan</button>`
+  });
+  const el = m.el;
+  const angka = () => parseInt(($("#kf-jm", el).value || "").replace(/\D/g, ""), 10) || 0;
+  const preview = () => { const n = angka(); $("#kf-jmh", el).textContent = n ? "= " + fmtUang(n, $("#kf-mu", el).value) : ""; };
+  $("#kf-jm", el).addEventListener("input", e => { const n = angka(); e.target.value = n ? new Intl.NumberFormat("id-ID").format(n) : ""; preview(); });
+  $("#kf-mu", el).addEventListener("change", preview); preview();
+  $("#kf-jen", el).addEventListener("click", e => { const b = e.target.closest("[data-jenis]"); if (!b) return; jenis = b.dataset.jenis; el.querySelectorAll("[data-jenis]").forEach(x => x.classList.toggle("active", x === b)); });
+  el.querySelector("[data-save]").addEventListener("click", async () => {
+    const jumlah = angka(), ket = $("#kf-ket", el).value.trim(), tanggal = $("#kf-tg", el).value;
+    if (!tanggal) return toast("Tanggal wajib diisi.", "err");
+    if (jumlah <= 0) return toast("Jumlah harus lebih dari 0.", "err");
+    if (ket.length < 3) return toast("Keterangan minimal 3 karakter.", "err");
+    const row = { tanggal, jenis, mata_uang: $("#kf-mu", el).value, jumlah, kategori: $("#kf-kt", el).value.trim(), keterangan: ket, tampil: $("#kf-tp", el).checked };
+    if (r) row.id = r.id;
+    try { await withLoading(() => api.save("keuangan", row)); m.close(); toast(r ? "Transaksi diperbarui." : "Transaksi dicatat."); go("keuangan"); }
+    catch (err) { toast(pesanError(err), "err"); }
+  });
+}
+
+// ----- Pendaftaran pengurus (Ketua & Admin Utama) -----
+let dafCache = [], dafTab = "Menunggu";
+VIEWS.pendaftaran = async () => {
+  dafCache = await api.daftarPendaftaran();
+  const n = st => dafCache.filter(d => d.status === st).length;
+  STATE.badgeDaftar = n("Menunggu"); renderMenus();
+  $("#pv-body").innerHTML = `<div class="callout" style="margin-bottom:16px">${icon("user-plus")}<span>Calon pengurus mendaftar lewat tombol <b>Daftar sebagai Pengurus</b> di halaman masuk. <b>Setujui</b> untuk langsung membuat akunnya (mereka masuk dengan password yang mereka buat sendiri), atau <b>Tolak</b>. Pendaftar menerima email pemberitahuan.</span></div>
+    <div class="stabs" id="dp-tabs">${["Menunggu", "Disetujui", "Ditolak"].map(st => `<button data-dtab="${st}" class="${st === dafTab ? "active" : ""}">${st} (${n(st)})</button>`).join("")}</div><div id="dp-list"></div>`;
+  const draw = () => {
+    const rows = dafCache.filter(d => d.status === dafTab);
+    $("#dp-list").innerHTML = rows.length ? `<div class="list">${rows.map(d => { const wa = waLink(d.no_hp); return `<div class="row"><span class="thumb avatar-i" style="border-radius:50%;display:grid;place-items:center;font-size:20px;width:52px;height:52px">${esc(initials(d.nama))}</span><div class="rmain">
+      <div class="rtitle">${esc(d.nama)} <span class="badge">${icon(JABATAN_ICON[d.jabatan] || "edit")}${esc(d.jabatan)}</span>${d.status === "Menunggu" ? `<span class="badge badge-amber">${icon("clock")}Menunggu</span>` : d.status === "Disetujui" ? `<span class="badge">${icon("check")}Disetujui</span>` : `<span class="badge badge-red">Ditolak</span>`}</div>
+      <div class="rsub">${esc(d.email)}${d.no_hp ? " \u00b7 " + esc(d.no_hp) : ""} \u00b7 daftar ${esc(fmtWaktu(d.waktu))}</div>
+      ${d.catatan ? `<div class="rsub" style="font-style:italic">\u201c${esc(d.catatan)}\u201d</div>` : ""}
+      ${d.status !== "Menunggu" ? `<div class="rsub">${esc(d.status)} oleh ${esc(d.diproses_oleh || "-")}${d.diproses_pada ? " \u00b7 " + esc(fmtWaktu(d.diproses_pada)) : ""}${d.alasan ? " \u00b7 " + esc(d.alasan) : ""}</div>` : ""}</div>
+      <div class="ractions" style="align-items:center">${wa ? `<a class="icon-btn" href="${esc(wa)}" target="_blank" rel="noopener" title="Chat WhatsApp" aria-label="Chat WhatsApp">${icon("whatsapp")}</a>` : ""}${d.status === "Menunggu"
+        ? `<button class="btn btn-outline btn-sm" data-tolak="${esc(d.id)}" style="color:var(--danger)">${icon("x")}Tolak</button><button class="btn btn-primary btn-sm" data-setuju="${esc(d.id)}">${icon("check")}Setujui</button>`
+        : `<button class="icon-btn del" data-hapus="${esc(d.id)}" title="Hapus dari daftar" aria-label="Hapus">${icon("trash")}</button>`}</div></div>`; }).join("")}</div>`
+      : emptyBox(dafTab === "Menunggu" ? "Tidak ada pendaftaran yang menunggu persetujuan." : "Belum ada data.", "user-plus");
+  };
+  $("#dp-tabs").addEventListener("click", e => { const b = e.target.closest("[data-dtab]"); if (!b) return; dafTab = b.dataset.dtab; $$("#dp-tabs button").forEach(x => x.classList.toggle("active", x === b)); draw(); });
+  $("#dp-list").addEventListener("click", async e => {
+    const b = e.target.closest("[data-setuju],[data-tolak],[data-hapus]"); if (!b) return;
+    const d = dafCache.find(x => String(x.id) === String(b.dataset.setuju || b.dataset.tolak || b.dataset.hapus));
+    if (b.dataset.setuju) return setujuiForm(d);
+    if (b.dataset.tolak) return tolakForm(d);
+    if (!(await confirmDialog("Hapus dari daftar?", `Data pendaftaran ${d.nama} akan dihapus dari riwayat. Akun staf (bila sudah disetujui) tidak terpengaruh.`, "Hapus"))) return;
+    try { await withLoading(() => api.hapusPendaftaran(d.id)); toast("Dihapus dari daftar."); go("pendaftaran"); } catch (err) { toast(pesanError(err), "err"); }
+  });
+  draw();
+};
+function setujuiForm(d) {
+  const preset = JABATAN_AKSES[d.jabatan] || [];
+  const m = openModal({
+    title: "Setujui " + d.nama, size: "wide",
+    body: `<dl class="kv" style="margin-bottom:16px"><dt>Email login</dt><dd>${esc(d.email)}</dd><dt>Jabatan diajukan</dt><dd>${esc(d.jabatan)}</dd>${d.no_hp ? `<dt>No. HP/WA</dt><dd>${esc(d.no_hp)}</dd>` : ""}</dl>
+      <div class="fgrid"><div class="field full"><label for="sj-p">Peran</label><select class="input select" id="sj-p"><option value="Pengurus" selected>Pengurus</option><option value="Ketua">Ketua</option><option value="Admin">Admin Utama</option></select><span class="hint">Pengurus hanya bisa mengisi menu yang dicentang di bawah. Ketua & Admin Utama bisa semua.</span></div>
+      ${jabatanAksesHtml("sj", { jabatan: d.jabatan, akses: preset })}</div>`,
+    foot: `<button class="btn btn-outline btn-sm" data-close>Batal</button><button class="btn btn-primary btn-sm" data-save>${icon("check")}Setujui & Buat Akun</button>`
+  });
+  const sync = bindJabatanAkses(m.el, "sj", () => $("#sj-p", m.el).value);
+  $("#sj-p", m.el).addEventListener("change", sync);
+  m.el.querySelector("[data-save]").addEventListener("click", async () => {
+    const peran = $("#sj-p", m.el).value, ja = bacaJabatanAkses(m.el, "sj");
+    if (ja.kosong) return toast("Tulis nama jabatannya.", "err");
+    if (peran === "Pengurus" && !ja.akses.length && !(await confirmDialog("Tanpa hak akses?", "Akun ini belum dicentang menu apa pun, jadi hanya bisa melihat Dashboard. Lanjutkan?", "Lanjutkan", false))) return;
+    try {
+      const r = await withLoading(() => api.setujuiPendaftaran({ id: d.id, peran, jabatan: ja.jabatan || d.jabatan, akses: ja.akses }));
+      m.close(); toast(`${d.nama} disetujui.${r?.email_diantrikan ? " Email pemberitahuan dikirim." : ""}`, "ok", 4500); go("pendaftaran");
+    } catch (err) { toast(pesanError(err), "err"); }
+  });
+}
+function tolakForm(d) {
+  const m = openModal({
+    title: "Tolak pendaftaran", size: "small",
+    body: `<p style="color:var(--muted);margin-bottom:12px">Pendaftaran <b>${esc(d.nama)}</b> (${esc(d.jabatan)}) akan ditolak dan pendaftar diberi tahu lewat email.</p>
+      <div class="field"><label for="tl-a">Keterangan untuk pendaftar (opsional)</label><textarea class="input" id="tl-a" maxlength="500" style="min-height:90px" placeholder="Misal: Silakan hubungi Ketua lewat WhatsApp terlebih dahulu."></textarea></div>`,
+    foot: `<button class="btn btn-outline btn-sm" data-close>Batal</button><button class="btn btn-danger btn-sm" data-save>Tolak Pendaftaran</button>`
+  });
+  m.el.querySelector("[data-save]").addEventListener("click", async () => {
+    try { await withLoading(() => api.tolakPendaftaran(d.id, $("#tl-a", m.el).value.trim())); m.close(); toast("Pendaftaran ditolak."); go("pendaftaran"); }
+    catch (err) { toast(pesanError(err), "err"); }
   });
 }
 
@@ -2534,33 +2992,35 @@ VIEWS.pengaturan = async () => {
   drawTab();
 };
 
-// ----- Akun staf (Ketua) -----
+// ----- Akun staf (Ketua & Admin Utama: wewenang sama) -----
 VIEWS.staf = async () => {
-  const rows = (await api.list("staf")).sort((a, b) => ({ Admin: 0, Ketua: 1, Pengurus: 2 }[a.peran] - { Admin: 0, Ketua: 1, Pengurus: 2 }[b.peran]) || a.nama.localeCompare(b.nama));
-  const boleh = s => isAdmin() || s.peran === "Pengurus";
-  const opsiPeran = (pilih, kunci = false) => ["Pengurus", "Ketua", "Admin"].filter(p => p === "Pengurus" || isAdmin() || p === pilih)
-    .map(p => `<option value="${p}" ${p === pilih ? "selected" : ""}>${labelPeran(p)}</option>`).join("");
-  $("#pv-body").innerHTML = `<div class="callout" style="margin-bottom:16px">${icon("shield")}<span>${isAdmin()
-      ? "<b>Admin Utama</b> bisa menambah, mengubah (nama, email, peran), menonaktifkan, mereset password, dan menghapus semua akun."
-      : "<b>Ketua</b> bisa menambah, mengubah, mereset password, dan menghapus akun <b>Pengurus</b>. Akun Ketua dan Admin Utama hanya bisa diubah oleh Admin Utama."}</span></div>
-    <div class="toolbar"><div style="flex:1;color:var(--muted);font-size:14px">Staf masuk dengan <b>email + password</b>. Akun baru wajib mengganti password saat pertama kali masuk.</div><button class="btn btn-primary" id="sf-add">${icon("plus")}Tambah Staf</button></div>
-    <div class="list" id="sf-list">${rows.map(s => { const saya = s.user_id === STATE.user.user_id; return `<div class="row ${s.aktif ? "" : "dim"}"><span class="thumb avatar-i" style="border-radius:50%;display:grid;place-items:center;font-size:20px;width:52px;height:52px">${esc(initials(s.nama))}</span><div class="rmain"><div class="rtitle">${esc(s.nama)} ${badgePeran(s.peran)}${s.aktif ? "" : `<span class="badge badge-gray">Nonaktif</span>`}${s.wajib_ganti_password ? `<span class="badge badge-amber">Password sementara</span>` : ""}${saya ? `<span class="badge badge-blue">Anda</span>` : ""}</div><div class="rsub">${esc(s.email)} \u00b7 login terakhir: ${esc(s.login_terakhir ? fmtWaktu(s.login_terakhir) : "belum pernah")}</div></div>
-      <div class="ractions">${boleh(s) && !saya ? `<button class="icon-btn" data-reset="${esc(s.user_id)}" title="Reset password" aria-label="Reset password">${icon("key")}</button>` : ""}${boleh(s) ? `<button class="icon-btn" data-edit="${esc(s.user_id)}" title="Ubah" aria-label="Ubah">${icon("edit")}</button>` : `<span class="badge badge-gray" title="Hanya Admin Utama">${icon("lock")}Terkunci</span>`}${boleh(s) && !saya ? `<button class="icon-btn del" data-hapus="${esc(s.user_id)}" title="Hapus akun" aria-label="Hapus akun">${icon("trash")}</button>` : ""}</div></div>`; }).join("")}</div>`;
+  const urut = { Admin: 0, Ketua: 1, Pengurus: 2 };
+  const rows = (await api.list("staf")).sort((a, b) => (urut[a.peran] - urut[b.peran]) || a.nama.localeCompare(b.nama));
+  const opsiPeran = pilih => ["Pengurus", "Ketua", "Admin"].map(p => `<option value="${p}" ${p === pilih ? "selected" : ""}>${labelPeran(p)}</option>`).join("");
+  $("#pv-body").innerHTML = `<div class="callout" style="margin-bottom:16px">${icon("shield")}<span><b>Ketua</b> dan <b>Admin Utama</b> punya wewenang yang sama: menambah, mengubah (nama, email, peran, jabatan, hak akses), menonaktifkan, mereset password, dan menghapus akun. <b>Pengurus</b> hanya bisa mengisi menu sesuai hak akses jabatannya.</span></div>
+    <div class="toolbar"><div style="flex:1;color:var(--muted);font-size:14px">Calon pengurus juga bisa mendaftar sendiri lewat halaman masuk \u2192 menu <button class="btn btn-ghost btn-sm" data-menu="pendaftaran" style="padding:2px 6px">Pendaftaran Pengurus</button></div><button class="btn btn-primary" id="sf-add">${icon("plus")}Tambah Staf</button></div>
+    <div class="list" id="sf-list">${rows.map(s => { const saya = s.user_id === STATE.user.user_id; return `<div class="row ${s.aktif ? "" : "dim"}"><span class="thumb avatar-i" style="border-radius:50%;display:grid;place-items:center;font-size:20px;width:52px;height:52px">${esc(initials(s.nama))}</span><div class="rmain"><div class="rtitle">${esc(s.nama)} ${badgePeran(s.peran)}${s.jabatan ? `<span class="badge badge-blue">${icon(JABATAN_ICON[s.jabatan] || "user")}${esc(s.jabatan)}</span>` : ""}${s.aktif ? "" : `<span class="badge badge-gray">Nonaktif</span>`}${s.wajib_ganti_password ? `<span class="badge badge-amber">Password sementara</span>` : ""}${saya ? `<span class="badge badge-blue">Anda</span>` : ""}</div><div class="rsub">${esc(s.email)} \u00b7 login terakhir: ${esc(s.login_terakhir ? fmtWaktu(s.login_terakhir) : "belum pernah")}</div>${aksesChips(s)}</div>
+      <div class="ractions">${!saya ? `<button class="icon-btn" data-reset="${esc(s.user_id)}" title="Reset password" aria-label="Reset password">${icon("key")}</button>` : ""}<button class="icon-btn" data-edit="${esc(s.user_id)}" title="Ubah" aria-label="Ubah">${icon("edit")}</button>${!saya ? `<button class="icon-btn del" data-hapus="${esc(s.user_id)}" title="Hapus akun" aria-label="Hapus akun">${icon("trash")}</button>` : ""}</div></div>`; }).join("")}</div>`;
   $("#sf-add").addEventListener("click", () => {
     const pw = genPassword();
     const m = openModal({
-      title: "Tambah Akun Staf",
+      title: "Tambah Akun Staf", size: "wide",
       body: `<div class="fgrid"><div class="field full"><label for="na-e">Email</label><input class="input" id="na-e" type="email" placeholder="nama@email.com"></div>
         <div class="field"><label for="na-n">Nama</label><input class="input" id="na-n" maxlength="100"></div>
         <div class="field"><label for="na-p">Peran</label><select class="input select" id="na-p">${opsiPeran("Pengurus")}</select></div>
+        ${jabatanAksesHtml("na")}
         <div class="field full"><label>Password sementara</label><div class="pw-show">${esc(pw)}</div><span class="hint">Password ini juga dikirim ke email staf (bila email otomatis aktif). Staf wajib menggantinya saat pertama masuk.</span></div></div>`,
       foot: `<button class="btn btn-outline btn-sm" data-close>Batal</button><button class="btn btn-primary btn-sm" data-save>${icon("check")}Buat Akun</button>`
     });
+    const sync = bindJabatanAkses(m.el, "na", () => $("#na-p", m.el).value);
+    $("#na-p", m.el).addEventListener("change", sync);
     m.el.querySelector("[data-save]").addEventListener("click", async () => {
       const email = $("#na-e", m.el).value.trim(), nama = $("#na-n", m.el).value.trim(), peran = $("#na-p", m.el).value;
+      const ja = bacaJabatanAkses(m.el, "na");
       if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return toast("Format email tidak valid.", "err");
       if (nama.length < 2) return toast("Nama wajib diisi.", "err");
-      try { const r = await withLoading(() => api.tambahStaf({ email, nama, peran, password: pw })); m.close(); toast(r?.email_diantrikan ? "Akun dibuat. Info login dikirim ke email staf." : "Akun dibuat. Sampaikan password sementara secara langsung.", "ok", 5000); go("staf"); }
+      if (ja.kosong) return toast("Tulis nama jabatannya.", "err");
+      try { const r = await withLoading(() => api.tambahStaf({ email, nama, peran, password: pw, jabatan: ja.jabatan, akses: ja.akses })); m.close(); toast(r?.email_diantrikan ? "Akun dibuat. Info login dikirim ke email staf." : "Akun dibuat. Sampaikan password sementara secara langsung.", "ok", 5000); go("staf"); }
       catch (err) { toast(pesanError(err), "err"); }
     });
   });
@@ -2568,7 +3028,7 @@ VIEWS.staf = async () => {
     const b = e.target.closest("[data-reset],[data-edit],[data-hapus]"); if (!b) return;
     const s = rows.find(x => x.user_id === (b.dataset.reset || b.dataset.edit || b.dataset.hapus));
     if (b.dataset.hapus) {
-      if (!(await confirmDialog("Hapus akun ini?", `Akun ${s.nama} (${labelPeran(s.peran)}, ${s.email}) akan dihapus permanen dan tidak bisa masuk lagi. Riwayat di Log Aktivitas tetap tersimpan.`, "Hapus Akun"))) return;
+      if (!(await confirmDialog("Hapus akun ini?", `Akun ${s.nama} (${labelAkun(s)}, ${s.email}) akan dihapus permanen dan tidak bisa masuk lagi. Riwayat di Log Aktivitas tetap tersimpan.`, "Hapus Akun"))) return;
       try { await withLoading(() => api.hapusStaf(s.user_id)); toast("Akun dihapus."); go("staf"); }
       catch (err) { toast(pesanError(err), "err"); }
       return;
@@ -2584,19 +3044,25 @@ VIEWS.staf = async () => {
     }
     const saya = s.user_id === STATE.user.user_id;
     const m = openModal({
-      title: "Ubah Akun Staf",
-      body: `<div class="fgrid"><div class="field full"><label for="ea-e">Email login</label><input class="input" id="ea-e" type="email" value="${esc(s.email)}" ${isAdmin() ? "" : "disabled"}>${isAdmin() ? `<span class="hint">Mengganti email berarti staf masuk dengan email baru (password tetap).</span>` : ""}</div>
+      title: "Ubah Akun Staf", size: "wide",
+      body: `<div class="fgrid"><div class="field full"><label for="ea-e">Email login</label><input class="input" id="ea-e" type="email" value="${esc(s.email)}"><span class="hint">Mengganti email berarti staf masuk dengan email baru (password tetap).</span></div>
         <div class="field"><label for="ea-n">Nama</label><input class="input" id="ea-n" maxlength="100" value="${esc(s.nama)}"></div>
         <div class="field"><label for="ea-p">Peran</label><select class="input select" id="ea-p" ${saya ? "disabled" : ""}>${opsiPeran(s.peran)}</select>${saya ? `<span class="hint">Peran akun sendiri tidak bisa diubah.</span>` : ""}</div>
+        ${jabatanAksesHtml("ea", { jabatan: s.jabatan || "", akses: s.akses || [] })}
         <div class="field full"><label class="check"><input type="checkbox" id="ea-a" ${s.aktif ? "checked" : ""} ${saya ? "disabled" : ""}>Akun aktif (bisa masuk panel)</label></div></div>`,
       foot: `<button class="btn btn-outline btn-sm" data-close>Batal</button><button class="btn btn-primary btn-sm" data-save>${icon("check")}Simpan</button>`
     });
+    const sync = bindJabatanAkses(m.el, "ea", () => $("#ea-p", m.el).value);
+    $("#ea-p", m.el).addEventListener("change", sync);
     m.el.querySelector("[data-save]").addEventListener("click", async () => {
       const nama = $("#ea-n", m.el).value.trim(); if (nama.length < 2) return toast("Nama wajib diisi.", "err");
       const email = $("#ea-e", m.el).value.trim();
-      if (isAdmin() && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return toast("Format email tidak valid.", "err");
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return toast("Format email tidak valid.", "err");
+      const ja = bacaJabatanAkses(m.el, "ea");
+      if (ja.kosong) return toast("Tulis nama jabatannya.", "err");
       try {
-        await withLoading(() => api.ubahStaf({ user_id: s.user_id, nama, peran: $("#ea-p", m.el).value, aktif: $("#ea-a", m.el).checked, email: isAdmin() ? email : null }));
+        await withLoading(() => api.ubahStaf({ user_id: s.user_id, nama, peran: $("#ea-p", m.el).value, aktif: $("#ea-a", m.el).checked, email, jabatan: ja.jabatan, akses: ja.akses }));
+        if (saya) { STATE.user.nama = nama; STATE.user.email = email; STATE.user.jabatan = ja.jabatan; STATE.user.akses = ja.akses; $("#side-name").textContent = nama; $("#side-role").textContent = labelAkun(STATE.user) + " \u00b7 " + email; }
         m.close(); toast("Akun staf diperbarui."); go("staf");
       } catch (err) { toast(pesanError(err), "err"); }
     });
@@ -2623,7 +3089,7 @@ VIEWS.log = async () => {
 // ----- Akun saya -----
 VIEWS.akun = async () => {
   const u = STATE.user;
-  $("#pv-body").innerHTML = `<div class="two" style="margin-top:0"><div class="card box"><h3>Profil</h3><dl class="kv"><dt>Nama</dt><dd>${esc(u.nama)}</dd><dt>Email</dt><dd>${esc(u.email)}</dd><dt>Peran</dt><dd>${esc(labelPeran(u.peran))}</dd></dl><button class="btn btn-outline btn-sm" id="ak-out" style="margin-top:18px;color:var(--danger)">${icon("log-out")}Keluar dari panel</button></div>
+  $("#pv-body").innerHTML = `<div class="two" style="margin-top:0"><div class="card box"><h3>Profil</h3><dl class="kv"><dt>Nama</dt><dd>${esc(u.nama)}</dd><dt>Email</dt><dd>${esc(u.email)}</dd><dt>Peran</dt><dd>${badgePeran(u.peran)}</dd><dt>Jabatan</dt><dd>${esc(u.jabatan || "-")}</dd><dt>Hak akses</dt><dd>${aksesChips(u)}</dd></dl><p class="hint" style="color:var(--muted);font-size:13px;margin-top:10px">Jabatan dan hak akses diatur oleh Ketua / Admin Utama.</p><button class="btn btn-outline btn-sm" id="ak-out" style="margin-top:18px;color:var(--danger)">${icon("log-out")}Keluar dari panel</button></div>
     <div class="card box"><h3>Ganti Password</h3><form id="ak-f" style="display:flex;flex-direction:column;gap:14px" novalidate>
       <div class="field"><label for="ak1">Password baru (min. 8 karakter)</label><div class="pw-wrap"><input class="input" id="ak1" type="password" autocomplete="new-password"><button type="button" class="pw-eye" data-eye="ak1" aria-label="Tampilkan">${icon("eye")}</button></div></div>
       <div class="field"><label for="ak2">Ulangi password baru</label><input class="input" id="ak2" type="password" autocomplete="new-password"></div>
@@ -2656,7 +3122,7 @@ async function start() {
   hydrateIcons();
   if (IS_PREVIEW) {
     const bar = $("#kmi-preview");
-    bar.innerHTML = `${icon("info")}<span><b>Mode Preview</b> \u2014 data contoh, tidak tersimpan. Akun uji: Admin Utama <code>admin@kmi.test</code> / <code>admin123</code> \u00b7 Ketua <code>ketua@kmi.test</code> / <code>ketua123</code> \u00b7 Pengurus <code>pengurus@kmi.test</code> / <code>pengurus123</code></span><button type="button" id="pv-login">Coba panel</button><button type="button" id="pv-close" aria-label="Tutup pita preview" title="Tutup" style="text-decoration:none;display:inline-grid;place-items:center;width:28px;height:28px;border-radius:8px">${icon("x")}</button>`;
+    bar.innerHTML = `${icon("info")}<span><b>Mode Preview</b> \u2014 data contoh, tidak tersimpan. Akun uji (password = nama + 123): <code>admin@kmi.test</code> \u00b7 <code>ketua@kmi.test</code> \u00b7 <code>bendahara@kmi.test</code> \u00b7 <code>sekretaris@kmi.test</code> \u00b7 <code>media@kmi.test</code></span><button type="button" id="pv-login">Coba panel</button><button type="button" id="pv-close" aria-label="Tutup pita preview" title="Tutup" style="text-decoration:none;display:inline-grid;place-items:center;width:28px;height:28px;border-radius:8px">${icon("x")}</button>`;
     let tutup = false; try { tutup = sessionStorage.getItem("kmi-preview-tutup") === "1"; } catch { }
     bar.hidden = tutup;
     $("#pv-close").addEventListener("click", () => { bar.hidden = true; try { sessionStorage.setItem("kmi-preview-tutup", "1"); } catch { } });
@@ -2664,7 +3130,7 @@ async function start() {
   } else if (MASALAH_KONFIG || !supabase) {
     $("#kmi-dbwarn").innerHTML = `${icon("info")}<span>${esc(MASALAH_KONFIG || (createClient ? "Koneksi Supabase gagal dibuat. Periksa SUPABASE_URL di file config.js." : "Pustaka Supabase gagal dimuat. Periksa koneksi internet lalu muat ulang halaman."))}</span>`;
     $("#kmi-dbwarn").hidden = false;
-    PUB = { pengaturan: { ...FALLBACK_PENGATURAN }, kegiatan: [], galeri: [], pengurus: [], faq: [] };
+    PUB = { pengaturan: { ...FALLBACK_PENGATURAN }, kegiatan: [], galeri: [], pengurus: [], faq: [], keuangan: [] };
     renderLanding();
     return;
   }
