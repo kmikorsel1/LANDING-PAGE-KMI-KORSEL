@@ -736,6 +736,35 @@
   #app-root .kpis.k3 { grid-template-columns: 1fr 1fr; }
   #app-root .kpis.k3 .kpi.saldo { grid-column: 1 / -1; }
 }
+/* ===== Postingan Facebook otomatis ===== */
+#app-root .fb-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 26px; }
+#app-root .fb-top .sec-head { margin-bottom: 0; }
+#app-root .fb-posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
+#app-root .fb-post { overflow: hidden; display: flex; flex-direction: column; }
+#app-root .fb-img { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: var(--primary-100); }
+#app-root .fb-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s; }
+#app-root .fb-post:hover .fb-img img { transform: scale(1.04); }
+#app-root .fb-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 8px; }
+#app-root .fb-meta { display: flex; gap: 6px; align-items: center; font-size: 12.5px; font-weight: 700; color: var(--muted); }
+#app-root .fb-meta .ico { width: 15px; height: 15px; color: #1877F2; }
+#app-root .fb-text { font-size: 14.5px; line-height: 1.6; white-space: pre-line; display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; }
+#app-root .fb-more { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 13.5px; color: var(--primary); }
+#app-root .fb-more .ico { width: 14px; height: 14px; }
+@media (max-width: 960px) { #app-root .fb-posts { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { #app-root .fb-posts { grid-template-columns: 1fr; } #app-root .fb-top .btn { width: 100%; justify-content: center; } }
+/* ===== Media sosial otomatis ===== */
+#app-root .sos-grid { display: grid; gap: 28px; align-items: start; }
+#app-root #sosmed.sos-dua .sos-grid { grid-template-columns: 1.25fr 1fr; }
+#app-root .ig-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+#app-root .ig-tile { position: relative; display: block; aspect-ratio: 1; border-radius: 16px; overflow: hidden; background: var(--primary-100); }
+#app-root .ig-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s; }
+#app-root .ig-tile:hover img { transform: scale(1.05); }
+#app-root .ig-badge { position: absolute; top: 8px; right: 8px; width: 28px; height: 28px; border-radius: 8px; background: rgba(0,0,0,.55); color: #fff; display: grid; place-items: center; }
+#app-root .ig-badge .ico { width: 15px; height: 15px; }
+#app-root .tt-box { padding: 10px; overflow: hidden; display: flex; justify-content: center; min-height: 460px; }
+#app-root .tt-box iframe { max-width: 100%; }
+@media (max-width: 900px) { #app-root #sosmed.sos-dua .sos-grid { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { #app-root .ig-grid { gap: 6px; } #app-root .ig-tile { border-radius: 10px; } }
 @media (prefers-reduced-motion: reduce) { #app-root, #app-root * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
 </style>
 
@@ -770,6 +799,7 @@
       <section id="tentang" class="sec" style="padding-top:40px"></section>
       <section id="kegiatan" class="sec sec-alt"></section>
       <section id="facebook" class="sec fb-sec" hidden></section>
+      <section id="sosmed" class="sec sec-alt" hidden><div class="container"><div id="sos-head"></div><div class="sos-grid"><div id="ig-wrap"></div><div id="tt-wrap" hidden></div></div></div></section>
       <section id="galeri" class="sec"></section>
       <section id="donasi" class="sec" style="padding-top:16px"></section>
       <section id="keuangan" class="sec" style="padding-top:24px" hidden></section>
@@ -998,6 +1028,7 @@ const ICONS = {
   "user-plus": '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/>',
   "trend-up": '<path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/>',
   "trend-down": '<path d="m22 17-8.5-8.5-5 5L2 7"/><path d="M16 17h6v-6"/>',
+  play: '<path d="M6 4l14 8-14 8z"/>',
   star: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>'
 };
 function icon(name, cls = "") { return `<svg class="ico ${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[name] || ""}</svg>`; }
@@ -1176,9 +1207,13 @@ const SETTINGS_TABS = [
     ["alamat_sekretariat", "Alamat sekretariat", "textarea"],
     ["jam_layanan", "Jam layanan", "text", "Contoh: Sabtu\u2013Ahad, 10.00\u201317.00 KST"],
     ["peta_embed_url", "Link peta (embed Google Maps)", "text", "Google Maps \u2192 Bagikan \u2192 Sematkan peta \u2192 salin alamat di dalam src=\"\u2026\" (diawali https://www.google.com/maps/embed)."],
-    ["instagram_url", "Link Instagram", "text"], ["facebook_url", "Link Facebook", "text"],
-    ["facebook_feed", "Tampilkan feed Halaman Facebook di situs", "check", "Postingan terbaru Halaman Facebook KMI tampil otomatis di bawah bagian Kegiatan."],
-    ["youtube_url", "Link YouTube", "text"], ["tiktok_url", "Link TikTok", "text"]
+    ["instagram_url", "Link Instagram", "text"],
+    ["instagram_feed_url", "Link feed otomatis Instagram (Behold)", "text", "Opsional. Daftar gratis di behold.so \u2192 sambungkan Instagram KMI \u2192 buat feed jenis JSON \u2192 salin link https://feeds.behold.so/\u2026 ke sini. Foto Instagram terbaru lalu tampil otomatis di situs dan di slider atas."],
+    ["facebook_url", "Link Facebook", "text"],
+    ["facebook_feed", "Tampilkan postingan Facebook di situs", "check", "Postingan publik terbaru Halaman Facebook KMI tampil otomatis di bawah bagian Kegiatan, fotonya juga masuk ke slider atas."],
+    ["fb_page_id", "ID Halaman Facebook (opsional)", "text", "Biasanya kosongkan saja. Diisi hanya bila panduan memintanya."],
+    ["youtube_url", "Link YouTube", "text"], ["tiktok_url", "Link TikTok", "text"],
+    ["tiktok_feed", "Tampilkan video TikTok terbaru di situs", "check", "10 video terbaru akun TikTok KMI tampil otomatis (akun TikTok harus publik)."]
   ]},
   { id: "donasi", label: "Donasi & Keuangan", fields: [
     ["donasi_judul", "Judul ajakan donasi", "text"],
@@ -1248,7 +1283,7 @@ const mockApi = (() => {
       masjid_teks: "Temukan direktori masjid dan musala di seluruh Korea Selatan, lengkap dengan alamat dan petunjuk arah.",
       email_kontak_publik: "kmikorsel1@gmail.com", no_wa_publik: "010-1234-5678",
       alamat_sekretariat: "Sekretariat KMI Korsel\nSeoul, Korea Selatan", jam_layanan: "Sabtu\u2013Ahad, 10.00\u201317.00 KST",
-      peta_embed_url: "", instagram_url: "https://www.instagram.com/kmi.korsel", facebook_url: "https://www.facebook.com/2kmikorsel", youtube_url: "", tiktok_url: "https://www.tiktok.com/@kmikorsel",
+      peta_embed_url: "", instagram_feed_url: "", instagram_cache: "", instagram_cache_waktu: "", tiktok_feed: "tidak", fb_page_id: "", fb_status: "", fb_sinkron_waktu: "", instagram_url: "https://www.instagram.com/kmi.korsel", facebook_url: "https://www.facebook.com/2kmikorsel", youtube_url: "", tiktok_url: "https://www.tiktok.com/@kmikorsel",
       donasi_judul: "Dukung Operasional Dakwah, Bantuan Darurat WNI & Syiar Islam di Korea",
       donasi_ajakan: "Setiap rupiah dan won yang Anda titipkan membantu kegiatan dakwah, santunan saudara yang tertimpa musibah, dan operasional komunitas.",
       donasi_poin: "Amanah & tersalurkan tepat sasaran\nLaporan penggunaan dana berkala",
@@ -1305,6 +1340,14 @@ const mockApi = (() => {
     [38, "Pemasukan", "Donasi", "Donasi hamba Allah", 1000000, "KRW"],
     [45, "Pengeluaran", "Transportasi", "Transport tim pelatihan jenazah", 85000, "KRW"]
   ].map(([n, jenis, kategori, keterangan, jumlah, mata_uang]) => ({ id: uid(), tanggal: tglLalu(n), jenis, kategori, keterangan, jumlah, mata_uang, tampil: true, dibuat_oleh: "Bendahara (Preview)", dibuat_pada: ago(n * 24), diubah_pada: ago(n * 24) }));
+  db.facebook = [
+    ["Alhamdulillah, Silaturahmi Akbar Muslim Indonesia di Seoul Central Mosque dihadiri ratusan jamaah dari berbagai kota. Jazakumullah khairan untuk seluruh panitia dan relawan.", 1],
+    ["Kajian rutin bulanan insyaAllah diadakan Ahad depan di Ansan. Terbuka untuk umum, ajak keluarga dan teman.", 2],
+    ["Penyaluran santunan untuk saudara kita yang sedang dirawat di Busan. Terima kasih para donatur.", 4],
+    ["Pengumuman: jadwal buka puasa bersama dan pembagian takjil. Info lengkap hubungi pengurus wilayah.", 7],
+    ["Dokumentasi pelatihan pengurusan jenazah di Gimhae.", 11],
+    ["Selamat datang saudara-saudara yang baru tiba di Korea! Jangan ragu menghubungi KMI Korsel.", 15]
+  ].map(([pesan, n], i) => ({ id: "fb" + i, pesan, gambar: i === 3 ? "" : placeholder(i + 3, "", [16, 10]), tautan: "https://www.facebook.com/2kmikorsel", waktu: ago(n * 24) }));
   db.pendaftaran = [
     { id: uid(), waktu: ago(5), nama: "Rahmat Hidayat", email: "rahmat@example.com", no_hp: "010-5555-6666", jabatan: "Bendahara", catatan: "Tinggal di Gimhae, pernah jadi bendahara masjid.", status: "Menunggu", diproses_oleh: "", diproses_pada: null, alasan: "" },
     { id: uid(), waktu: ago(28), nama: "Dewi Lestari", email: "dewi@example.com", no_hp: "", jabatan: "Humas", catatan: "", status: "Menunggu", diproses_oleh: "", diproses_pada: null, alasan: "" }
@@ -1339,6 +1382,7 @@ const mockApi = (() => {
         galeri: db.galeri.filter(g => g.tampil).sort((a, b) => a.urutan - b.urutan),
         pengurus: db.susunan_pengurus.filter(p => p.tampil).sort((a, b) => a.urutan - b.urutan),
         faq: db.faq.filter(f => f.tampil).sort((a, b) => a.urutan - b.urutan),
+        facebook: db.pengaturan.facebook_feed === "tidak" ? [] : clone(db.facebook),
         keuangan: db.pengaturan.keuangan_tampil === "tidak" ? [] : db.keuangan.filter(k => k.tampil).sort((a, b) => b.tanggal.localeCompare(a.tanggal)).map(({ tampil, dibuat_oleh, diubah_pada, ...r }) => r)
       });
     },
@@ -1480,6 +1524,9 @@ const mockApi = (() => {
       db.log.unshift({ id: Date.now(), waktu: new Date().toISOString(), pelaku: f.nama.trim(), aksi: "DAFTAR_PENGURUS", detail: `${f.nama.trim()} (${f.jabatan}) \u2013 ${e}` });
       return { ok: true };
     },
+    async fbTarik() { needKetua(); await wait(300); return { request_id: 1, status: "" }; },
+    async fbCek() { needKetua(); await wait(300); db.pengaturan.fb_status = "Mode preview: contoh postingan ditampilkan."; return { status: "ok", jumlah: db.facebook.length }; },
+    async simpanCacheIG(str) { needStaf(); await wait(); db.pengaturan.instagram_cache = str; db.pengaturan.instagram_cache_waktu = new Date().toISOString(); return { ok: true }; },
     async daftarPendaftaran() { needKetua(); await wait(); return clone(db.pendaftaran.map(({ _pw, ...d }) => d)); },
     async setujuiPendaftaran({ id, peran, jabatan, akses }) {
       needKetua(); await wait();
@@ -1586,6 +1633,9 @@ const supabaseApi = (() => {
     async ubahStaf({ user_id, nama, peran, aktif, email, jabatan = null, akses = null }) { return await rpc("ketua_ubah_staf", { p_user_id: user_id, p_nama: nama, p_peran: peran, p_aktif: aktif, p_email: email || null, p_jabatan: jabatan, p_akses: akses }); },
     async daftarPengurus(f) { return await rpc("daftar_pengurus", { p_nama: f.nama, p_email: f.email, p_no_hp: f.no_hp || "", p_jabatan: f.jabatan, p_password: f.password, p_catatan: f.catatan || "", p_honeypot: f.honeypot || "" }); },
     async daftarPendaftaran() { return (await rpc("ketua_daftar_pendaftaran")) || []; },
+    async simpanCacheIG(str) { return await rpc("staf_simpan_cache_ig", { p_data: str }); },
+    async fbTarik() { return await rpc("ketua_fb_tarik"); },
+    async fbCek() { return await rpc("ketua_fb_cek"); },
     async setujuiPendaftaran({ id, peran, jabatan, akses }) { return await rpc("ketua_setujui_pendaftaran", { p_id: id, p_peran: peran, p_jabatan: jabatan, p_akses: akses }); },
     async tolakPendaftaran(id, alasan) { return await rpc("ketua_tolak_pendaftaran", { p_id: id, p_alasan: alasan || "" }); },
     async hapusPendaftaran(id) { return await rpc("ketua_hapus_pendaftaran", { p_id: id }); },
@@ -1602,7 +1652,7 @@ const api = IS_PREVIEW ? mockApi : supabaseApi;
 // ===================================================================
 const NAV = [["beranda", "Beranda"], ["tentang", "Tentang"], ["kegiatan", "Kegiatan"], ["galeri", "Galeri"], ["donasi", "Donasi"], ["keuangan", "Keuangan"], ["pengurus", "Pengurus"], ["faq", "FAQ"], ["kontak", "Kontak"]];
 const NAV_ICON = { beranda: "home", tentang: "book-open", kegiatan: "calendar", galeri: "image", donasi: "heart", keuangan: "wallet", pengurus: "users", faq: "help", kontak: "message" };
-let PUB = { pengaturan: {}, kegiatan: [], galeri: [], pengurus: [], faq: [], keuangan: [] };
+let PUB = { pengaturan: {}, kegiatan: [], galeri: [], pengurus: [], faq: [], keuangan: [], facebook: [] };
 const S = k => PUB.pengaturan?.[k] ?? "";
 const evState = { tab: "Semua", shown: 6 };
 let galShown = 9;
@@ -1654,6 +1704,8 @@ function renderHero() {
   const stats = [1, 2, 3].map(i => [S(`stat${i}_angka`), S(`stat${i}_label`)]).filter(([a]) => a);
   const heroSlides = [];
   if (imgUrl(S("hero_gambar_url"))) heroSlides.push({ url: imgUrl(S("hero_gambar_url")), cap: S("hero_gambar_keterangan") });
+  (PUB.facebook || []).filter(p => /^https:\/\//.test(p.gambar || "") || /^data:image\//.test(p.gambar || "")).slice(0, 6).forEach(p => heroSlides.push({ url: p.gambar, cap: (String(p.pesan || "").split("\n")[0] || "").slice(0, 90) || "Facebook " + namaSingkat() }));
+  igPosts().slice(0, 6).forEach(p => heroSlides.push({ url: p.img, cap: (p.cap.split("\n")[0] || "").slice(0, 90) || "Instagram " + namaSingkat() }));
   (PUB.galeri || []).slice(0, 7).forEach(p => { const u = imgUrl(p.foto_url); if (u) heroSlides.push({ url: u, cap: p.judul || S("hero_gambar_keterangan") }); });
   if (!heroSlides.length) heroSlides.push({ url: placeholder(0, "", [10, 10.75]), cap: S("hero_gambar_keterangan") });
   const capAwal = heroSlides[0].cap || S("hero_gambar_keterangan");
@@ -2041,12 +2093,25 @@ function applyTheme() {
 
 // ----- Feed Halaman Facebook (Facebook Page Plugin) -----
 let fbLebarTerakhir = 0;
+let fbShown = 6;
 function renderFacebook() {
   const sec = $("#facebook");
   const fb = safeUrl(S("facebook_url"));
   const aktif = fb && /facebook\.com/i.test(fb) && S("facebook_feed") !== "tidak";
   sec.hidden = !aktif;
   if (!aktif) { sec.innerHTML = ""; return; }
+  const posts = (PUB.facebook || []).filter(p => p.pesan || p.gambar);
+  if (posts.length) {
+    const tampil = posts.slice(0, fbShown);
+    const ringkas = t => { const x = String(t || "").replace(/\s+\n/g, "\n").trim(); return x.length > 220 ? x.slice(0, 220).replace(/\s+\S*$/, "") + "\u2026" : x; };
+    sec.innerHTML = `<div class="container">
+      <div class="fb-top"><div class="sec-head"><span class="eyebrow">${icon("facebook")}Kabar Terbaru</span><h2 class="sec-title">Kabar & Dokumentasi dari Facebook KMI</h2><p class="sec-desc">Diperbarui otomatis dari Halaman Facebook resmi ${esc(namaLengkap())}.</p></div>
+        <a class="btn btn-fb" href="${esc(fb)}" target="_blank" rel="noopener">${icon("facebook")}Ikuti Facebook KMI${icon("external")}</a></div>
+      <div class="fb-posts">${tampil.map(p => { const g = imgUrl(p.gambar); const link = safeUrl(p.tautan) || fb; return `<article class="card fb-post">${g ? `<a class="fb-img" href="${esc(link)}" target="_blank" rel="noopener"><img src="${esc(g)}" alt="" loading="lazy"></a>` : ""}<div class="fb-body"><div class="fb-meta">${icon("facebook")}<span>${esc(namaSingkat())}</span>${p.waktu ? `<span>\u00b7 ${esc(fmtTanggal(p.waktu))}</span>` : ""}</div>${p.pesan ? `<p class="fb-text">${esc(ringkas(p.pesan))}</p>` : ""}<a class="fb-more" href="${esc(link)}" target="_blank" rel="noopener">Lihat di Facebook${icon("external")}</a></div></article>`; }).join("")}</div>
+      ${posts.length > tampil.length ? `<div style="text-align:center;margin-top:22px"><button class="btn btn-outline" type="button" data-fbmore>Tampilkan lebih banyak${icon("chevron-down")}</button></div>` : ""}
+    </div>`;
+    return;
+  }
   sec.innerHTML = `<div class="container fb-grid">
     <div class="fb-info">
       <span class="eyebrow">${icon("facebook")}Kabar Terbaru</span>
@@ -2078,11 +2143,84 @@ function pasangFrameFacebook() {
     + "&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&locale=id_ID";
   box.innerHTML = `<iframe title="Halaman Facebook ${esc(namaSingkat())}" src="${esc(src)}" width="${w}" height="${h}" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" loading="lazy" allow="clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>`;
 }
-window.addEventListener("resize", debounce(() => { if (!$("#facebook").hidden) pasangFrameFacebook(); }, 400));
+window.addEventListener("resize", debounce(() => { if (!$("#facebook").hidden && $("#fb-frame")) pasangFrameFacebook(); }, 400));
+
+// ----- Media sosial otomatis: Instagram (lewat feed Behold) & TikTok (widget resmi) -----
+const IG_CACHE_JAM = 6;
+let igLangsung = null, ttUser = "", ttObs = null;
+function igPosts() {
+  let a = [];
+  try { a = JSON.parse(S("instagram_cache") || "[]"); } catch { a = []; }
+  if ((!Array.isArray(a) || !a.length) && Array.isArray(igLangsung)) a = igLangsung;
+  return (Array.isArray(a) ? a : []).filter(p => /^https:\/\//.test(p?.img || "") && /^https:\/\/(www\.)?instagram\.com\//.test(p?.u || "")).map(p => ({ ...p, cap: String(p.cap || "") }));
+}
+function ringkasIG(data) {
+  return (data?.posts || []).slice(0, 12).map(p => ({
+    u: p.permalink, t: p.timestamp, v: p.mediaType === "VIDEO" ? 1 : 0, c: p.mediaType === "CAROUSEL_ALBUM" ? 1 : 0,
+    img: (p.mediaType === "VIDEO" ? p.thumbnailUrl : "") || p.sizes?.medium?.mediaUrl || p.sizes?.large?.mediaUrl || p.mediaUrl,
+    cap: String(p.prunedCaption || p.caption || "").slice(0, 300)
+  })).filter(p => /^https:\/\//.test(p.img || "") && /^https:\/\/(www\.)?instagram\.com\//.test(p.u || ""));
+}
+async function ambilIG() {
+  const url = safeUrl(S("instagram_feed_url")); if (!url) return null;
+  const r = await fetch(url, { cache: "no-store" });
+  if (!r.ok) throw new Error("Feed Instagram tidak bisa diambil (kode " + r.status + "). Periksa link feed Behold.");
+  return ringkasIG(await r.json());
+}
+async function sinkronIG(paksa = false) {
+  if (!STATE.user || !safeUrl(S("instagram_feed_url"))) return 0;
+  const t = Date.parse(S("instagram_cache_waktu") || "") || 0;
+  if (!paksa && Date.now() - t < IG_CACHE_JAM * 36e5) return 0;
+  const posts = await ambilIG(); if (!posts) return 0;
+  const str = JSON.stringify(posts);
+  await api.simpanCacheIG(str);
+  PUB.pengaturan.instagram_cache = str; PUB.pengaturan.instagram_cache_waktu = new Date().toISOString();
+  try { localStorage.removeItem(CACHE_KEY); } catch { }
+  return posts.length;
+}
+function tiktokUser() { const m = String(S("tiktok_url")).match(/tiktok\.com\/@([A-Za-z0-9._]+)/i); return m ? m[1] : ""; }
+function muatTikTok() {
+  if (ttObs) ttObs.disconnect();
+  ttObs = new IntersectionObserver(en => {
+    if (!en.some(e => e.isIntersecting)) return;
+    ttObs.disconnect();
+    document.getElementById("tt-script")?.remove();
+    const sc = document.createElement("script"); sc.id = "tt-script"; sc.async = true; sc.src = "https://www.tiktok.com/embed.js";
+    document.body.appendChild(sc);
+  }, { root, rootMargin: "600px" });
+  ttObs.observe($("#tt-wrap"));
+}
+function renderSosmed() {
+  const sec = $("#sosmed");
+  const posts = igPosts();
+  const tt = S("tiktok_feed") !== "tidak" ? tiktokUser() : "";
+  if (!posts.length && safeUrl(S("instagram_feed_url")) && igLangsung === null) {
+    igLangsung = [];
+    ambilIG().then(p => { igLangsung = p || []; if (igLangsung.length) { renderSosmed(); renderHero(); initSliders($("#beranda")); } }).catch(() => { });
+  }
+  sec.hidden = !posts.length && !tt;
+  if (sec.hidden) return;
+  const igUrl = safeUrl(S("instagram_url"));
+  const sumber = posts.length && tt ? "Instagram & TikTok" : posts.length ? "Instagram" : "TikTok";
+  $("#sos-head").innerHTML = `<div class="sec-head center"><span class="eyebrow">${icon(posts.length ? "instagram" : "tiktok")}Media Sosial</span><h2 class="sec-title">Kabar Terbaru dari ${sumber} KMI</h2><p class="sec-desc">Diperbarui otomatis dari akun resmi ${esc(namaLengkap())}.</p></div>`;
+  sec.classList.toggle("sos-dua", !!(posts.length && tt));
+  const ig = $("#ig-wrap");
+  ig.hidden = !posts.length;
+  ig.innerHTML = posts.length ? `<div class="ig-grid">${posts.slice(0, 9).map(p => `<a class="ig-tile" href="${esc(p.u)}" target="_blank" rel="noopener" title="${esc(p.cap.slice(0, 200))}"><img src="${esc(p.img)}" alt="${esc(p.cap.slice(0, 100) || "Postingan Instagram KMI")}" loading="lazy">${p.v ? `<span class="ig-badge">${icon("play")}</span>` : p.c ? `<span class="ig-badge">${icon("copy")}</span>` : ""}</a>`).join("")}</div>
+    ${igUrl ? `<div style="text-align:center;margin-top:18px"><a class="btn btn-outline" href="${esc(igUrl)}" target="_blank" rel="noopener">${icon("instagram")}Lihat semua di Instagram${icon("external")}</a></div>` : ""}` : "";
+  const ttw = $("#tt-wrap");
+  ttw.hidden = !tt;
+  if (tt && tt !== ttUser) {
+    ttUser = tt;
+    ttw.innerHTML = `<div class="tt-box card"><blockquote class="tiktok-embed" cite="https://www.tiktok.com/@${tt}" data-unique-id="${tt}" data-embed-type="creator" style="max-width:780px;min-width:288px;margin:0"><section><a target="_blank" rel="noopener" href="https://www.tiktok.com/@${tt}?refer=creator_embed">@${tt}</a></section></blockquote></div>
+      <p class="fb-note" style="text-align:center">${icon("info")}<span>Video tidak muncul? <a href="https://www.tiktok.com/@${tt}" target="_blank" rel="noopener">Buka TikTok @${tt}</a>.</span></p>`;
+    muatTikTok();
+  }
+}
 
 function renderLanding() {
   applyTheme();
-  renderHero(); renderTentang(); renderKegiatan(); renderFacebook(); renderGaleri(); renderDonasi(); renderKeuangan(); renderPengurus(); renderFaq(); renderMasjid(); renderKontak();
+  renderHero(); renderTentang(); renderKegiatan(); renderFacebook(); renderSosmed(); renderGaleri(); renderDonasi(); renderKeuangan(); renderPengurus(); renderFaq(); renderMasjid(); renderKontak();
   renderNav(); renderFooter();
   initSliders();
 }
@@ -2116,6 +2254,7 @@ $("#kmi-landing").addEventListener("click", async e => {
   const gal = e.target.closest("[data-gal]"); if (gal) return openLightbox(+gal.dataset.gal);
   if (e.target.closest("[data-galmore]")) { galShown = 9999; return renderGaleri(); }
   if (e.target.closest("[data-kmore]")) { keuState.shown += 20; return renderKeuangan(); }
+  if (e.target.closest("[data-fbmore]")) { fbShown = 12; return renderFacebook(); }
   if (e.target.closest("[data-copy-acct]")) { await copyText(S("donasi_no_rekening").replace(/\s/g, "")); return toast("Tersalin: nomor rekening " + S("donasi_no_rekening")); }
   if (e.target.closest("[data-konfirmasi]")) {
     scrollToSec("kontak");
@@ -2154,11 +2293,11 @@ async function loadPublik() {
   if (cached) { PUB = cached; renderLanding(); } else renderLandingSkeleton();
   try {
     const data = await api.getPublik();
-    PUB = { pengaturan: data.pengaturan || {}, kegiatan: data.kegiatan || [], galeri: data.galeri || [], pengurus: data.pengurus || [], faq: data.faq || [], keuangan: data.keuangan || [] };
+    PUB = { pengaturan: data.pengaturan || {}, kegiatan: data.kegiatan || [], galeri: data.galeri || [], pengurus: data.pengurus || [], faq: data.faq || [], keuangan: data.keuangan || [], facebook: data.facebook || [] };
     if (!IS_PREVIEW) { try { localStorage.setItem(CACHE_KEY, JSON.stringify(PUB)); } catch { } }
     renderLanding();
   } catch (err) {
-    if (!cached) { PUB = { pengaturan: { ...FALLBACK_PENGATURAN }, kegiatan: [], galeri: [], pengurus: [], faq: [], keuangan: [] }; renderLanding(); }
+    if (!cached) { PUB = { pengaturan: { ...FALLBACK_PENGATURAN }, kegiatan: [], galeri: [], pengurus: [], faq: [], keuangan: [], facebook: [] }; renderLanding(); }
     const w = $("#kmi-dbwarn");
     if (w.hidden) { w.innerHTML = `${icon("info")}<span>${esc(pesanError(err))}</span>`; w.hidden = false; }
   }
@@ -2353,6 +2492,7 @@ function showPanel() {
   renderMenus();
   go(STATE.view);
   refreshBadge();
+  sinkronIG().catch(() => { });
 }
 function renderMenus() {
   const menus = myMenus();
@@ -2936,6 +3076,8 @@ VIEWS.pengaturan = async () => {
       return `<div class="field ${full}"><label for="st-${k}">${esc(label)}</label>${input}${hint ? `<span class="hint">${esc(hint)}</span>` : ""}</div>`;
     }).join("")}</div>
     ${setTab === "email" ? `<div class="callout">${icon("mail")}<div><b>Email otomatis lewat Brevo.</b> Setelah API key Brevo disimpan (lihat PANDUAN.md langkah Brevo) dan kolom di atas diisi, tekan <b>Simpan</b> lalu <b>Kirim Email Uji</b>.<div id="st-test-res" style="margin-top:8px"></div><button type="button" class="btn btn-outline btn-sm" id="st-test" style="margin-top:10px">${icon("send")}Kirim Email Uji</button></div></div>` : ""}
+    ${setTab === "kontak" ? `<div class="callout">${icon("facebook")}<div><b>Postingan Facebook otomatis.</b> Postingan publik Halaman KMI ditarik otomatis setiap 30 menit. Status terakhir: <b id="st-fb-stat">${esc(S("fb_status") || "belum pernah ditarik")}</b>${S("fb_sinkron_waktu") ? " (" + esc(fmtWaktu(S("fb_sinkron_waktu"))) + ")" : ""}<div id="st-fb-res" style="margin-top:8px"></div><button type="button" class="btn btn-outline btn-sm" id="st-fb" style="margin-top:10px">${icon("refresh")}Tarik postingan Facebook sekarang</button></div></div>` : ""}
+    ${setTab === "kontak" ? `<div class="callout">${icon("instagram")}<div><b>Foto Instagram otomatis.</b> Setelah link feed Behold diisi dan disimpan, postingan terbaru diambil otomatis setiap kali pengurus membuka panel (paling sering tiap 6 jam).<div id="st-ig-res" style="margin-top:8px"></div><button type="button" class="btn btn-outline btn-sm" id="st-ig" style="margin-top:10px">${icon("refresh")}Ambil postingan Instagram sekarang</button></div></div>` : ""}
     ${setTab === "donasi" ? `<div class="callout warn">${icon("shield")}<span>Setiap perubahan data donasi dicatat di Log Aktivitas (nilai lama \u2192 nilai baru).</span></div>` : ""}
     <div class="set-foot"><button class="btn btn-primary" id="st-save">${icon("check")}Simpan Pengaturan</button></div></div>`;
     bindImageFields($("#st-body"), imgState);
@@ -2947,9 +3089,32 @@ VIEWS.pengaturan = async () => {
     $("[data-resetcolor]", $("#st-body"))?.addEventListener("click", () => { draft.warna_utama = "#0A7BBF"; $("#st-warna_utama").value = "#0A7BBF"; });
     $("#st-save").addEventListener("click", save);
     $("#st-test")?.addEventListener("click", tesEmail);
+    $("#st-fb")?.addEventListener("click", async () => {
+      const res = $("#st-fb-res");
+      try {
+        const r = await withLoading(() => api.fbTarik());
+        if (!r?.request_id) { res.innerHTML = `<span class="badge badge-red">Belum aktif</span> ${esc(r?.status || "Simpan token Facebook di Vault Supabase (lihat panduan).")}`; return; }
+        res.innerHTML = `<span class="badge badge-blue">${icon("clock")}Menghubungi Facebook\u2026</span>`;
+        let n = 0;
+        const cek = async () => {
+          n++;
+          const c = await api.fbCek().catch(err => ({ status: "gagal", pesan: pesanError(err) }));
+          if (c.status === "ok") { res.innerHTML = `<span class="badge">${icon("check")}Berhasil</span> ${c.jumlah} postingan terbaru tersimpan. Buka situs untuk melihatnya.`; try { localStorage.removeItem(CACHE_KEY); } catch { } return; }
+          if (c.status === "gagal") { res.innerHTML = `<span class="badge badge-red">Gagal${c.kode ? " (kode " + esc(c.kode) + ")" : ""}</span> <span style="font-size:13px">${esc(c.pesan || "")}</span>`; return; }
+          if (n < 10) setTimeout(cek, 1500); else res.innerHTML = `<span class="badge badge-amber">Facebook belum menjawab</span> Coba tekan lagi beberapa saat lagi.`;
+        };
+        setTimeout(cek, 1500);
+      } catch (err) { res.innerHTML = `<span class="badge badge-red">Gagal</span> ${esc(pesanError(err))}`; }
+    });
+    $("#st-ig")?.addEventListener("click", async () => {
+      const res = $("#st-ig-res");
+      if (!safeUrl(draft.instagram_feed_url)) { res.innerHTML = `<span class="badge badge-amber">Isi dulu link feed Behold, lalu Simpan.</span>`; return; }
+      try { const n = await withLoading(() => sinkronIG(true)); res.innerHTML = `<span class="badge">${icon("check")}Berhasil</span> ${n || 0} postingan Instagram tampil di situs.`; }
+      catch (err) { res.innerHTML = `<span class="badge badge-red">Gagal</span> ${esc(pesanError(err))}`; }
+    });
   };
   const save = async () => {
-    const urlKeys = ["link_website_masjid", "instagram_url", "facebook_url", "youtube_url", "tiktok_url"];
+    const urlKeys = ["link_website_masjid", "instagram_url", "instagram_feed_url", "facebook_url", "youtube_url", "tiktok_url"];
     for (const k of urlKeys) if (draft[k] && !/^https?:\/\//i.test(draft[k].trim())) { toast("Link harus diawali https:// \u2014 periksa kolom " + k.replace(/_/g, " "), "err"); return; }
     if (draft.peta_embed_url && !/^https:\/\/(www\.)?google\.[a-z.]+\/maps\/embed/i.test(draft.peta_embed_url.trim())) { toast("Link peta harus berupa link embed Google Maps (https://www.google.com/maps/embed\u2026).", "err"); return; }
     try {
@@ -2969,6 +3134,7 @@ VIEWS.pengaturan = async () => {
       $("#side-logo").innerHTML = logoHtml(); $("#side-nama").textContent = namaOrg(); $("#side-org").textContent = "(" + namaSingkat() + ") \u00b7 Panel Pengurus";
       toast("Pengaturan disimpan. Situs langsung memakai data baru.");
       drawTab();
+      if (safeUrl(data.instagram_feed_url)) sinkronIG(true).catch(err => toast(pesanError(err), "warn", 5000));
     } catch (err) { toast(pesanError(err), "err"); }
   };
   const tesEmail = async () => {
@@ -3135,7 +3301,7 @@ async function start() {
   } else if (MASALAH_KONFIG || !supabase) {
     $("#kmi-dbwarn").innerHTML = `${icon("info")}<span>${esc(MASALAH_KONFIG || (createClient ? "Koneksi Supabase gagal dibuat. Periksa SUPABASE_URL di file config.js." : "Pustaka Supabase gagal dimuat. Periksa koneksi internet lalu muat ulang halaman."))}</span>`;
     $("#kmi-dbwarn").hidden = false;
-    PUB = { pengaturan: { ...FALLBACK_PENGATURAN }, kegiatan: [], galeri: [], pengurus: [], faq: [], keuangan: [] };
+    PUB = { pengaturan: { ...FALLBACK_PENGATURAN }, kegiatan: [], galeri: [], pengurus: [], faq: [], keuangan: [], facebook: [] };
     renderLanding();
     return;
   }
