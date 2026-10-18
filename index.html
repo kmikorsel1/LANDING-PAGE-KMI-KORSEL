@@ -1429,6 +1429,7 @@ const mockApi = (() => {
     async cekEmail() { await wait(300); return { status: 201, pesan: "Mode preview: email tidak benar-benar dikirim." }; },
     async tambahStaf({ email, nama, peran, password, jabatan = "", akses = [] }) {
       needKetua(); await wait();
+      if (peran === "Admin" && me.peran !== "Admin") throw new Error("Hanya Admin Utama yang bisa membuat akun Admin Utama.");
       const e = email.trim().toLowerCase();
       if (db.staf.some(s => s.email === e)) throw new Error("Email ini sudah terdaftar sebagai staf.");
       db.staf.push({ user_id: uid(), nama, email: e, no_hp: "", peran, jabatan, akses: rapikan(akses), aktif: true, wajib_ganti_password: true, login_terakhir: null });
@@ -1438,6 +1439,7 @@ const mockApi = (() => {
     async ubahStaf({ user_id, nama, peran, aktif, email, jabatan, akses }) {
       needKetua(); await wait();
       const s = db.staf.find(x => x.user_id === user_id);
+      if ((s.peran === "Admin" || peran === "Admin") && me.peran !== "Admin") throw new Error("Hanya Admin Utama yang bisa mengubah akun Admin Utama atau memberi peran Admin Utama.");
       if (user_id === me.user_id && (!aktif || peran !== s.peran)) throw new Error("Anda tidak bisa menonaktifkan atau mengubah peran akun Anda sendiri.");
       const e = (email || "").trim().toLowerCase();
       const lama = { ...s };
@@ -1454,6 +1456,7 @@ const mockApi = (() => {
     async resetPasswordStaf(user_id) {
       needKetua(); await wait();
       const s = db.staf.find(x => x.user_id === user_id);
+      if (s.peran === "Admin" && me.peran !== "Admin") throw new Error("Hanya Admin Utama yang bisa mereset password Admin Utama.");
       const pw = genPassword();
       passwords[s.email] = pw; s.wajib_ganti_password = true; log("RESET_PASSWORD", s.nama);
       return { password_sementara: pw, email_diantrikan: true };
@@ -1462,6 +1465,7 @@ const mockApi = (() => {
       needKetua(); await wait();
       if (user_id === me.user_id) throw new Error("Anda tidak bisa menghapus akun Anda sendiri.");
       const i = db.staf.findIndex(x => x.user_id === user_id); const s = db.staf[i];
+      if (s.peran === "Admin" && me.peran !== "Admin") throw new Error("Ketua tidak bisa menghapus akun Admin Utama.");
       if (s.peran === "Admin" && !db.staf.some(x => x.peran === "Admin" && x.aktif && x.user_id !== user_id)) throw new Error("Minimal harus ada 1 akun Admin Utama yang aktif.");
       delete passwords[s.email]; db.staf.splice(i, 1); log("HAPUS_STAF", `${s.nama} (${labelPeran(s.peran)})`);
       return { ok: true };
@@ -2833,7 +2837,7 @@ function setujuiForm(d) {
   const m = openModal({
     title: "Setujui " + d.nama, size: "wide",
     body: `<dl class="kv" style="margin-bottom:16px"><dt>Email login</dt><dd>${esc(d.email)}</dd><dt>Jabatan diajukan</dt><dd>${esc(d.jabatan)}</dd>${d.no_hp ? `<dt>No. HP/WA</dt><dd>${esc(d.no_hp)}</dd>` : ""}</dl>
-      <div class="fgrid"><div class="field full"><label for="sj-p">Peran</label><select class="input select" id="sj-p"><option value="Pengurus" selected>Pengurus</option><option value="Ketua">Ketua</option><option value="Admin">Admin Utama</option></select><span class="hint">Pengurus hanya bisa mengisi menu yang dicentang di bawah. Ketua & Admin Utama bisa semua.</span></div>
+      <div class="fgrid"><div class="field full"><label for="sj-p">Peran</label><select class="input select" id="sj-p"><option value="Pengurus" selected>Pengurus</option><option value="Ketua">Ketua</option>${isAdmin() ? `<option value="Admin">Admin Utama</option>` : ""}</select><span class="hint">Pengurus hanya bisa mengisi menu yang dicentang di bawah. Ketua & Admin Utama bisa semua.</span></div>
       ${jabatanAksesHtml("sj", { jabatan: d.jabatan, akses: preset })}</div>`,
     foot: `<button class="btn btn-outline btn-sm" data-close>Batal</button><button class="btn btn-primary btn-sm" data-save>${icon("check")}Setujui & Buat Akun</button>`
   });
@@ -2996,11 +3000,12 @@ VIEWS.pengaturan = async () => {
 VIEWS.staf = async () => {
   const urut = { Admin: 0, Ketua: 1, Pengurus: 2 };
   const rows = (await api.list("staf")).sort((a, b) => (urut[a.peran] - urut[b.peran]) || a.nama.localeCompare(b.nama));
-  const opsiPeran = pilih => ["Pengurus", "Ketua", "Admin"].map(p => `<option value="${p}" ${p === pilih ? "selected" : ""}>${labelPeran(p)}</option>`).join("");
-  $("#pv-body").innerHTML = `<div class="callout" style="margin-bottom:16px">${icon("shield")}<span><b>Ketua</b> dan <b>Admin Utama</b> punya wewenang yang sama: menambah, mengubah (nama, email, peran, jabatan, hak akses), menonaktifkan, mereset password, dan menghapus akun. <b>Pengurus</b> hanya bisa mengisi menu sesuai hak akses jabatannya.</span></div>
+  const boleh = s => isAdmin() || s.peran !== "Admin";
+  const opsiPeran = pilih => ["Pengurus", "Ketua", "Admin"].filter(p => p !== "Admin" || isAdmin() || pilih === "Admin").map(p => `<option value="${p}" ${p === pilih ? "selected" : ""}>${labelPeran(p)}</option>`).join("");
+  $("#pv-body").innerHTML = `<div class="callout" style="margin-bottom:16px">${icon("shield")}<span>${isAdmin() ? "<b>Admin Utama</b> bisa mengelola semua akun." : "<b>Ketua</b> bisa mengelola akun Ketua dan Pengurus. Akun <b>Admin Utama</b> hanya bisa diubah atau dihapus oleh Admin Utama."} Kelola: tambah, ubah (nama, email, peran, jabatan, hak akses), nonaktifkan, reset password, dan hapus. <b>Pengurus</b> hanya bisa mengisi menu sesuai hak akses jabatannya.</span></div>
     <div class="toolbar"><div style="flex:1;color:var(--muted);font-size:14px">Calon pengurus juga bisa mendaftar sendiri lewat halaman masuk \u2192 menu <button class="btn btn-ghost btn-sm" data-menu="pendaftaran" style="padding:2px 6px">Pendaftaran Pengurus</button></div><button class="btn btn-primary" id="sf-add">${icon("plus")}Tambah Staf</button></div>
     <div class="list" id="sf-list">${rows.map(s => { const saya = s.user_id === STATE.user.user_id; return `<div class="row ${s.aktif ? "" : "dim"}"><span class="thumb avatar-i" style="border-radius:50%;display:grid;place-items:center;font-size:20px;width:52px;height:52px">${esc(initials(s.nama))}</span><div class="rmain"><div class="rtitle">${esc(s.nama)} ${badgePeran(s.peran)}${s.jabatan ? `<span class="badge badge-blue">${icon(JABATAN_ICON[s.jabatan] || "user")}${esc(s.jabatan)}</span>` : ""}${s.aktif ? "" : `<span class="badge badge-gray">Nonaktif</span>`}${s.wajib_ganti_password ? `<span class="badge badge-amber">Password sementara</span>` : ""}${saya ? `<span class="badge badge-blue">Anda</span>` : ""}</div><div class="rsub">${esc(s.email)} \u00b7 login terakhir: ${esc(s.login_terakhir ? fmtWaktu(s.login_terakhir) : "belum pernah")}</div>${aksesChips(s)}</div>
-      <div class="ractions">${!saya ? `<button class="icon-btn" data-reset="${esc(s.user_id)}" title="Reset password" aria-label="Reset password">${icon("key")}</button>` : ""}<button class="icon-btn" data-edit="${esc(s.user_id)}" title="Ubah" aria-label="Ubah">${icon("edit")}</button>${!saya ? `<button class="icon-btn del" data-hapus="${esc(s.user_id)}" title="Hapus akun" aria-label="Hapus akun">${icon("trash")}</button>` : ""}</div></div>`; }).join("")}</div>`;
+      <div class="ractions">${!boleh(s) ? `<span class="badge badge-gray" title="Hanya Admin Utama yang bisa mengubah akun ini">${icon("lock")}Terkunci</span>` : `${!saya ? `<button class="icon-btn" data-reset="${esc(s.user_id)}" title="Reset password" aria-label="Reset password">${icon("key")}</button>` : ""}<button class="icon-btn" data-edit="${esc(s.user_id)}" title="Ubah" aria-label="Ubah">${icon("edit")}</button>${!saya ? `<button class="icon-btn del" data-hapus="${esc(s.user_id)}" title="Hapus akun" aria-label="Hapus akun">${icon("trash")}</button>` : ""}`}</div></div>`; }).join("")}</div>`;
   $("#sf-add").addEventListener("click", () => {
     const pw = genPassword();
     const m = openModal({
