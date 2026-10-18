@@ -892,6 +892,17 @@
   #app-root #kmi-landing .nav-mob .btn-outline { border-color: var(--primary); color: var(--primary); }
   #app-root #kmi-landing .sec { scroll-margin-top: 150px; }
 }
+
+/* ===== Kartu angka di HP: angka panjang tidak terpotong ===== */
+#app-root .kpis > *, #app-root .kpi > div { min-width: 0; }
+#app-root .kpi b { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 768px) {
+  #app-root .kpi b { font-size: 20px !important; }
+  #app-root .kpis .kpi.saldo { grid-column: 1 / -1; }
+  #app-root .kpis.k3 .kpi:not(.saldo) .ic { display: none; }
+  #app-root .kpi span { font-size: 12px; }
+  #app-root .kpi .ic { width: 36px; height: 36px; }
+}
 </style>
 
 </head>
