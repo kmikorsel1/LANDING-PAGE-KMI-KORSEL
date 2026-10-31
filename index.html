@@ -15,7 +15,7 @@
 <meta name="apple-mobile-web-app-title" content="KMI Korsel">
 <meta name="description" content="KMI Korsel &#8212; Komunitas Muslim Indonesia di Korea Selatan. Wadah silaturahmi, kegiatan, dan kepedulian WNI muslim di Korea.">
 <link rel="icon" type="image/png" href="/favicon.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 <link rel="manifest" href="/manifest.json">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Komunitas Muslim Indonesia di Korea Selatan (KMI Korsel)">
@@ -1020,6 +1020,7 @@
           <div class="field"><label for="lg-pw">Password</label>
             <div class="pw-wrap"><input class="input" id="lg-pw" type="password" autocomplete="current-password" required placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"><button type="button" class="pw-eye" data-eye="lg-pw" aria-label="Tampilkan password"><span data-ico="eye"></span></button></div>
           </div>
+          <div id="lg-captcha" hidden style="min-height:65px;display:flex;justify-content:center"></div>
           <button class="btn btn-primary" type="submit" id="login-btn" style="width:100%;margin-top:4px"><span data-ico="lock"></span>Masuk</button>
         </form>
         <div class="login-daftar"><span>Belum punya akun pengurus?</span><button type="button" class="btn btn-outline" id="daftar-btn" style="width:100%"><span data-ico="user-plus"></span>Daftar sebagai Pengurus</button></div>
@@ -1061,7 +1062,7 @@ const SUPABASE_ANON_KEY = K.SUPABASE_ANON_KEY || "ANON_KEY_ANDA";
 // Pustaka Supabase dimuat dinamis: bila CDN gagal, situs tetap tampil dengan pesan yang jelas
 let createClient = null;
 if (!IS_PREVIEW) {
-  try { ({ createClient } = await import("https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm")); }
+  try { ({ createClient } = await import("https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/+esm")); }
   catch (e) { createClient = null; }
 }
 // Bersihkan salah tempel yang umum (spasi, tanda kutip, garis miring, akhiran /rest/v1)
@@ -1090,6 +1091,7 @@ function cekKonfigurasi() {
 const MASALAH_KONFIG = cekKonfigurasi();
 
 let supabase = null;
+let supabaseApi_publikOk = false;
 if (!IS_PREVIEW) {
   try {
     supabase = createClient(SB_URL, SB_KEY, { auth: { persistSession: true, autoRefreshToken: true, storageKey: "kmi-korsel-auth" } });
@@ -1428,6 +1430,10 @@ const SETTINGS_TABS = [
     ["masjid_judul", "Judul banner", "text"],
     ["masjid_teks", "Kalimat banner", "textarea"]
   ]},
+  { id: "keamanan", label: "Keamanan", fields: [
+    ["turnstile_site_key", "Site key Cloudflare Turnstile (CAPTCHA login)", "text", "Opsional, untuk menahan serangan login massal oleh robot. Ikuti PANDUAN-KEAMANAN bagian E. Isi di sini DULU, baru aktifkan CAPTCHA di Supabase. Kosongkan untuk mematikan."],
+    ["batas_email_harian", "Batas email otomatis per hari", "text", "Bawaan 280 (akun Brevo gratis = 300/hari). Bila tercapai, email otomatis berhenti sampai besok; pesan tetap tersimpan di panel."]
+  ]},
   { id: "email", label: "Email Otomatis", fields: [
     ["email_notifikasi", "Email penerima notifikasi", "text", "Email pengurus yang menerima pesan baru. Lebih dari satu dipisah koma."],
     ["email_pengirim", "Email pengirim (sudah diverifikasi di Brevo)", "text", "Harus sama dengan sender yang sudah diverifikasi di akun Brevo."],
@@ -1447,6 +1453,7 @@ const MENUS = [
   { id: "susunan", label: "Susunan Pengurus", short: "Pengurus", icon: "users", need: "ketua", desc: "Daftar pengurus yang tampil di situs." },
   { id: "pengaturan", label: "Pengaturan Situs", short: "Pengaturan", icon: "sliders", need: "ketua", desc: "Profil, kontak, donasi, keuangan, dan email otomatis." },
   { id: "log", label: "Log Aktivitas", short: "Log", icon: "file-text", need: "ketua", desc: "Riwayat perubahan oleh staf." },
+  { id: "keamanan", label: "Cek Keamanan", short: "Keamanan", icon: "lock", need: "ketua", desc: "Uji otomatis: apakah data situs aman dari akses orang luar." },
   { id: "akun", label: "Akun Saya", icon: "key", need: "semua", desc: "Profil dan password akun Anda.", grp: "Akun" }
 ];
 
@@ -1476,7 +1483,7 @@ const mockApi = (() => {
       link_website_masjid: "https://korea-masjid.vercel.app/",
       masjid_judul: "Mencari Lokasi Masjid, Musala & Makanan Halal di Kota Anda?",
       masjid_teks: "Temukan direktori masjid dan musala di seluruh Korea Selatan, lengkap dengan alamat dan petunjuk arah.",
-      email_kontak_publik: "kmikorsel1@gmail.com", no_wa_publik: "010-1234-5678",
+      email_kontak_publik: "kmikorsel1@gmail.com", no_wa_publik: "010-1234-5678", turnstile_site_key: "", batas_email_harian: "280",
       alamat_sekretariat: "Sekretariat KMI Korsel\nSeoul, Korea Selatan", jam_layanan: "Sabtu\u2013Ahad, 10.00\u201317.00 KST",
       peta_embed_url: "", instagram_feed_url: "", instagram_cache: "", instagram_cache_waktu: "", tiktok_feed: "tidak", fb_page_id: "", fb_status: "", fb_sinkron_waktu: "", instagram_url: "https://www.instagram.com/kmi.korsel", facebook_url: "https://www.facebook.com/2kmikorsel", youtube_url: "", tiktok_url: "https://www.tiktok.com/@kmikorsel",
       donasi_judul: "Dukung Operasional Dakwah, Bantuan Darurat WNI & Syiar Islam di Korea",
@@ -1720,6 +1727,7 @@ const mockApi = (() => {
       return { ok: true };
     },
     async fbTarik() { needKetua(); await wait(300); return { request_id: 1, status: "" }; },
+    async cekKeamanan() { needKetua(); await wait(400); return { tabel_tanpa_rls: [], tabel_terbuka_anon: [], fungsi_terbuka_anon: ["daftar_pengurus", "get_data_publik", "kirim_pesan"], definer_tanpa_search_path: [], admin_aktif: db.staf.filter(x => x.peran === "Admin" && x.aktif).length, ketua_aktif: db.staf.filter(x => x.peran === "Ketua" && x.aktif).length, password_sementara: 0, pendaftar_menunggu: db.pendaftaran.filter(d => d.status === "Menunggu").length, brevo_tersimpan: true, facebook_tersimpan: true, bucket_media: { publik: true, batas_mb: 5, tipe: ["image/jpeg", "image/png", "image/webp", "image/gif"] }, login_24_jam: 3, hapus_7_hari: 1, email_hari_ini: 12, batas_email: 280, pesan_24_jam: 4, captcha_login: false }; },
     async fbCek() { needKetua(); await wait(300); db.pengaturan.fb_status = "Mode preview: contoh postingan ditampilkan."; return { status: "ok", jumlah: db.facebook.length }; },
     async simpanCacheIG(str) { needStaf(); await wait(); db.pengaturan.instagram_cache = str; db.pengaturan.instagram_cache_waktu = new Date().toISOString(); return { ok: true }; },
     async daftarPendaftaran() { needKetua(); await wait(); return clone(db.pendaftaran.map(({ _pw, ...d }) => d)); },
@@ -1765,16 +1773,28 @@ const supabaseApi = (() => {
 
   return {
     async checkDatabase() {
+      if (supabaseApi_publikOk) return { ok: true };   // data publik barusan berhasil dimuat: tidak perlu memanggil database lagi
       const { error } = await supabase.rpc("get_data_publik");
       if (error) return { ok: false, message: pesanError(error) };
       return { ok: true };
     },
-    async getPublik() { return await rpc("get_data_publik"); },
+    async getPublik() {
+      // Pengunjung: ambil lewat cache CDN (/api/publik) agar cepat & database tidak kewalahan saat ramai.
+      // Pengurus yang sedang login: langsung ke database agar perubahan langsung terlihat.
+      if (!STATE.user && /^https?:$/.test(location.protocol)) {
+        try {
+          const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), 5000);
+          const r = await fetch("/api/publik", { signal: ctl.signal, credentials: "omit" }).finally(() => clearTimeout(t));
+          if (r.ok) { const d = await r.json(); if (d && typeof d === "object" && d.pengaturan) { supabaseApi_publikOk = true; return d; } }
+        } catch (e) { /* lanjut langsung ke database */ }
+      }
+      const d = await rpc("get_data_publik"); supabaseApi_publikOk = true; return d;
+    },
     async kirimPesan(f) {
       return await rpc("kirim_pesan", { p_nama: f.nama, p_email: f.email, p_no_hp: f.no_hp || "", p_kota: f.kota || "", p_kategori: f.kategori, p_pesan: f.pesan, p_honeypot: f.honeypot || "" });
     },
-    async login(email, password) {
-      const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
+    async login(email, password, captchaToken = "") {
+      const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password, ...(captchaToken ? { options: { captchaToken } } : {}) });
       if (error) throw error;
       try { return await rpc("staf_masuk", { p_catat: true }); }
       catch (e) { await supabase.auth.signOut(); throw e; }
@@ -1831,6 +1851,7 @@ const supabaseApi = (() => {
     async simpanCacheIG(str) { return await rpc("staf_simpan_cache_ig", { p_data: str }); },
     async fbTarik() { return await rpc("ketua_fb_tarik"); },
     async fbCek() { return await rpc("ketua_fb_cek"); },
+    async cekKeamanan() { return await rpc("ketua_cek_keamanan"); },
     async setujuiPendaftaran({ id, peran, jabatan, akses }) { return await rpc("ketua_setujui_pendaftaran", { p_id: id, p_peran: peran, p_jabatan: jabatan, p_akses: akses }); },
     async tolakPendaftaran(id, alasan) { return await rpc("ketua_tolak_pendaftaran", { p_id: id, p_alasan: alasan || "" }); },
     async hapusPendaftaran(id) { return await rpc("ketua_hapus_pendaftaran", { p_id: id }); },
@@ -2276,7 +2297,7 @@ function renderFooter() {
       <li>${icon("lock")}<button type="button" class="link-login" id="go-login"><span id="go-login-txt">Masuk Pengurus</span></button></li>
     </ul></div>
   </div>
-  <div class="container foot-bottom"><span><span class="flag"></span>\u00a9 ${year} ${esc(S("nama_org") || "KMI Korsel")}. Hak cipta dilindungi.</span><span>Dibuat dengan semangat ukhuwah untuk WNI di Korea Selatan.</span></div>`;
+  <div class="container foot-bottom"><span><span class="flag"></span>\u00a9 ${year} ${esc(S("nama_org") || "KMI Korsel")}. Hak cipta dilindungi.</span><span><a href="/privasi" style="color:inherit">Kebijakan Privasi</a> \u00b7 <a href="/hapus-akun" style="color:inherit">Hapus Akun</a></span></div>`;
   $("#go-login").addEventListener("click", () => STATE.user ? showPanel() : showLogin());
   updateLoginLabel();
 }
@@ -2518,8 +2539,34 @@ function showLogin() {
   $("#kmi-landing").hidden = true; $("#kmi-panel").hidden = true; $("#kmi-login").hidden = false;
   $("#login-logo").innerHTML = logoHtml(); $("#login-nama").textContent = namaOrg(); $("#login-sub").textContent = "(" + namaSingkat() + ") \u00b7 Panel Pengurus";
   $("#login-err").hidden = true; root.scrollTop = 0;
+  siapkanCaptcha();
   setTimeout(() => $("#lg-email").focus(), 50);
 }
+// ----- CAPTCHA login (Cloudflare Turnstile, opsional) -----
+// Aktif bila "Site key Turnstile" diisi di Pengaturan Situs -> Keamanan. Menahan serangan login massal oleh robot.
+const TS = { id: null, token: "", aktif: false };
+function muatTurnstile() {
+  return new Promise((res, rej) => {
+    if (window.turnstile) return res();
+    const s = document.createElement("script");
+    s.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"; s.async = true;
+    s.onload = () => res(); s.onerror = () => rej(new Error("Verifikasi keamanan gagal dimuat. Periksa koneksi internet lalu muat ulang."));
+    document.head.appendChild(s);
+  });
+}
+async function siapkanCaptcha() {
+  const key = String(S("turnstile_site_key") || "").trim(), box = $("#lg-captcha");
+  TS.aktif = !!key && !IS_PREVIEW; box.hidden = !TS.aktif;
+  if (!TS.aktif) return;
+  TS.token = "";
+  try {
+    await muatTurnstile();
+    if (TS.id !== null) { window.turnstile.reset(TS.id); return; }
+    TS.id = window.turnstile.render(box, { sitekey: key, language: "id", theme: "auto",
+      callback: t => { TS.token = t; }, "expired-callback": () => { TS.token = ""; }, "error-callback": () => { TS.token = ""; } });
+  } catch (e) { box.innerHTML = `<div style="color:var(--danger);font-size:13px">${esc(pesanError(e))}</div>`; }
+}
+function ulangCaptcha() { TS.token = ""; try { if (TS.id !== null && window.turnstile) window.turnstile.reset(TS.id); } catch (e) {} }
 $("#login-back").addEventListener("click", showLanding);
 $("#daftar-btn").addEventListener("click", () => openDaftar());
 function pwFieldHtml(id, label, ac = "new-password") {
@@ -2590,9 +2637,10 @@ $("#login-form").addEventListener("submit", async e => {
   }
   const email = $("#lg-email").value.trim(), pw = $("#lg-pw").value;
   if (!email || !pw) { errBox.textContent = "Email dan password wajib diisi."; errBox.hidden = false; return; }
+  if (TS.aktif && !TS.token) { errBox.textContent = "Tunggu sebentar, verifikasi keamanan (bukan robot) belum selesai."; errBox.hidden = false; return; }
   const btn = $("#login-btn"); btn.disabled = true; btn.innerHTML = `<span class="spinner sm" style="border-color:rgba(255,255,255,.35);border-top-color:#fff"></span>Memeriksa\u2026`;
   try {
-    const u = await api.login(email, pw);
+    const u = await api.login(email, pw, TS.token);
     setLock({});
     STATE.user = u; $("#lg-pw").value = "";
     showPanel();
@@ -2603,7 +2651,7 @@ $("#login-form").addEventListener("submit", async e => {
     setLock(n >= 5 ? { count: 0, until: Date.now() + 15 * 60000 } : { count: n });
     errBox.textContent = pesanError(err) + (n >= 5 ? " Login dikunci 15 menit." : n >= 3 ? ` (Sisa ${5 - n} percobaan)` : "");
     errBox.hidden = false;
-  } finally { btn.disabled = false; btn.innerHTML = `${icon("lock")}Masuk`; }
+  } finally { btn.disabled = false; btn.innerHTML = `${icon("lock")}Masuk`; if (TS.aktif) ulangCaptcha(); }
 });
 
 function forceChangePassword() {
@@ -3454,10 +3502,116 @@ VIEWS.log = async () => {
   draw();
 };
 
+// ----- Cek Keamanan (Ketua & Admin Utama) -----
+// Menguji dari sisi "orang luar": klien Supabase baru TANPA login mencoba membaca/mengubah data.
+async function ujiDariLuar() {
+  const H = [];
+  const add = (grup, uji, ok, ket, saran = "") => H.push({ grup, uji, hasil: ok === null ? "INFO" : ok ? "LULUS" : "GAGAL", ket, saran });
+  add("Situs", "Situs dibuka lewat HTTPS (gembok)", location.protocol === "https:" ? true : (IS_PREVIEW ? null : false), location.protocol === "https:" ? "terenkripsi" : "mode preview / bukan https", "Buka situs lewat https://kmikorsel.com.");
+  add("Situs", "Kunci di config.js adalah anon key (bukan service_role)", IS_PREVIEW ? null : !MASALAH_KONFIG, IS_PREVIEW ? "mode preview" : (MASALAH_KONFIG || "benar"), "Ganti isi SUPABASE_ANON_KEY dengan anon/publishable key.");
+  if (!IS_PREVIEW && /^https?:/.test(location.protocol)) {
+    try {
+      const r = await fetch("/", { cache: "no-store" });
+      const h = n => r.headers.get(n) || "";
+      add("Situs", "Pelindung serangan skrip (Content-Security-Policy)", /frame-ancestors 'none'/.test(h("content-security-policy")), h("content-security-policy") ? "aktif" : "tidak ada", "Unggah ulang vercel.json terbaru ke GitHub.");
+      add("Situs", "Situs tidak bisa disisipkan di situs lain (anti-clickjacking)", /deny/i.test(h("x-frame-options")), h("x-frame-options") || "tidak ada", "Unggah ulang vercel.json terbaru.");
+      add("Situs", "Wajib HTTPS (HSTS)", /max-age=\d{6,}/.test(h("strict-transport-security")), h("strict-transport-security") ? "aktif" : "tidak ada", "Unggah ulang vercel.json terbaru.");
+      add("Situs", "Jenis file tidak bisa dipalsukan (nosniff)", /nosniff/i.test(h("x-content-type-options")), h("x-content-type-options") || "tidak ada", "Unggah ulang vercel.json terbaru.");
+      add("Situs", "Kamera, mikrofon & lokasi dimatikan", /camera=\(\)/.test(h("permissions-policy")), h("permissions-policy") ? "dibatasi" : "tidak ada", "Unggah ulang vercel.json terbaru.");
+    } catch (e) { add("Situs", "Header keamanan", null, "tidak bisa diperiksa: " + pesanError(e)); }
+    for (const f of ["/setup.sql", "/database/setup.sql", "/.env"]) {
+      try {
+        const r = await fetch(f, { cache: "no-store" }); const t = r.ok ? await r.text() : "";
+        const bocor = /create table|SUPABASE|service_role/i.test(t) && !/<html/i.test(t);
+        add("Situs", "File rahasia " + f + " tidak bisa diunduh", !bocor, bocor ? "BISA DIUNDUH!" : "tertutup", "Hapus file itu dari GitHub. File .sql & folder database tidak boleh diunggah.");
+      } catch { add("Situs", "File rahasia " + f + " tidak bisa diunduh", true, "tertutup"); }
+    }
+  }
+  if (IS_PREVIEW || !createClient) { add("Database", "Uji dari luar (tanpa login)", null, "hanya berjalan di situs asli yang tersambung Supabase"); return H; }
+  const luar = createClient(SB_URL, SB_KEY, { auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false, storageKey: "kmi-uji-luar" } });
+  for (const t of ["staf", "pesan", "pengaturan", "keuangan", "pendaftaran_staf", "log_aktivitas", "kegiatan", "galeri"]) {
+    const { data, error } = await luar.from(t).select("*").limit(1);
+    const aman = !!error || !(data || []).length;
+    add("Database", "Orang luar tidak bisa membaca tabel " + t, aman, error ? "ditolak" : ((data || []).length ? "DATA TERBACA!" : "kosong"), "Jalankan ulang setup.sql terbaru di Supabase.");
+  }
+  {
+    const { error } = await luar.from("kegiatan").insert({ judul: "uji-keamanan" });
+    add("Database", "Orang luar tidak bisa menambah data", !!error, error ? "ditolak" : "BISA MENAMBAH!", "Jalankan ulang setup.sql terbaru.");
+  }
+  for (const [fn, arg] of [["staf_dashboard", {}], ["ketua_daftar_pendaftaran", {}], ["ketua_cek_keamanan", {}], ["ketua_tambah_staf", { p_email: "uji@uji.invalid", p_nama: "Uji", p_peran: "Admin", p_password: "UjiKeamanan123" }]]) {
+    const { error } = await luar.rpc(fn, arg);
+    add("Database", "Orang luar tidak bisa menjalankan " + fn, !!error, error ? "ditolak" : "BISA DIJALANKAN!", "Jalankan ulang setup.sql terbaru.");
+  }
+  {
+    const nama = "uji-keamanan-" + Date.now() + ".png";
+    const { error } = await luar.storage.from(BUCKET).upload(nama, new Blob(["x"], { type: "image/png" }));
+    if (!error) await luar.storage.from(BUCKET).remove([nama]).catch(() => {});
+    add("Database", "Orang luar tidak bisa mengunggah file", !!error, error ? "ditolak" : "BISA MENGUNGGAH!", "Jalankan ulang setup.sql terbaru.");
+  }
+  {
+    const { error } = await luar.auth.signInWithPassword({ email: STATE.user.email, password: "password-salah-" + Date.now() });
+    add("Database", "Password salah ditolak", !!error, error ? "ditolak" : "DITERIMA!", "");
+  }
+  return H;
+}
+function ujiDariServer(c) {
+  const H = [];
+  const add = (uji, ok, ket, saran = "") => H.push({ grup: "Pengaturan database", uji, hasil: ok === null ? "INFO" : ok ? "LULUS" : "GAGAL", ket, saran });
+  const daftar = a => (a || []).length ? a.join(", ") : "tidak ada";
+  add("Semua tabel memakai pengaman baris (RLS)", !(c.tabel_tanpa_rls || []).length, daftar(c.tabel_tanpa_rls), "Jalankan ulang setup.sql terbaru.");
+  add("Tidak ada tabel terbuka untuk publik", !(c.tabel_terbuka_anon || []).length, daftar(c.tabel_terbuka_anon), "Jalankan ulang setup.sql terbaru.");
+  const f = (c.fungsi_terbuka_anon || []).slice().sort().join(", ");
+  add("Hanya 3 fungsi terbuka untuk pengunjung", f === "daftar_pengurus, get_data_publik, kirim_pesan", f || "-", "Jalankan ulang setup.sql terbaru.");
+  add("Fungsi khusus terkunci (search_path)", !(c.definer_tanpa_search_path || []).length, daftar(c.definer_tanpa_search_path), "Jalankan ulang setup.sql terbaru.");
+  add("Ada Admin Utama aktif", c.admin_aktif >= 1, c.admin_aktif + " akun", "Hubungi pembuat situs.");
+  add("Jumlah Admin Utama tidak berlebihan", c.admin_aktif <= 2, c.admin_aktif + " akun", "Batasi Admin Utama maksimal 2 orang.");
+  add("Semua akun sudah mengganti password sementara", !c.password_sementara, c.password_sementara ? c.password_sementara + " akun belum" : "semua sudah", "Minta pemilik akun masuk & mengganti password.");
+  const b = c.bucket_media || {};
+  const tipe = (b.tipe || []).join(", ");
+  add("Unggahan hanya gambar (bukan SVG/HTML)", !!tipe && !/svg|html|javascript/i.test(tipe), tipe || "tidak dibatasi", "Jalankan ulang setup.sql terbaru.");
+  add("Ukuran unggahan dibatasi", b.batas_mb > 0 && b.batas_mb <= 10, (b.batas_mb || 0) + " MB", "Jalankan ulang setup.sql terbaru.");
+  add("API key Brevo disimpan di Vault", c.brevo_tersimpan ? true : null, c.brevo_tersimpan ? "tersimpan aman" : "belum diisi (email otomatis mati)");
+  add("Token Facebook disimpan di Vault", c.facebook_tersimpan ? true : null, c.facebook_tersimpan ? "tersimpan aman" : "belum diisi");
+  add("Aktivitas: masuk panel 24 jam terakhir", null, c.login_24_jam + " kali");
+  add("Aktivitas: penghapusan 7 hari terakhir", null, c.hapus_7_hari + " kali");
+  if ("email_hari_ini" in c) {
+    add("Pemakaian email otomatis hari ini", c.email_hari_ini < c.batas_email * 0.8 ? true : null, `${c.email_hari_ini} dari ${c.batas_email}`, "");
+    add("Pesan masuk 24 jam terakhir (wajar < 50)", c.pesan_24_jam < 50 ? true : null, c.pesan_24_jam + " pesan");
+    add("CAPTCHA anti-robot di halaman login", c.captcha_login ? true : null, c.captcha_login ? "aktif" : "belum diaktifkan (opsional, lihat panduan bagian E)");
+  }
+  return H;
+}
+VIEWS.keamanan = async () => {
+  $("#pv-body").innerHTML = `<div class="callout" style="margin-bottom:16px">${icon("lock")}<span>Uji ini mencoba <b>"membobol"</b> situs dari luar (tanpa login) dan memeriksa pengaturan database. Tidak ada data yang diubah. Jalankan setelah setiap pembaruan situs.</span></div>
+    <button class="btn btn-primary" id="km-run">${icon("refresh")}Jalankan Cek Keamanan</button><div id="km-out" style="margin-top:16px"></div>`;
+  const run = async () => {
+    $("#km-out").innerHTML = `<div class="callout">${icon("refresh")}<span>Sedang menguji\u2026 (\u00b110 detik)</span></div>`;
+    let H = [];
+    try { H = H.concat(ujiDariServer(await api.cekKeamanan())); }
+    catch (e) { H.push({ grup: "Pengaturan database", uji: "Laporan keamanan database", hasil: "GAGAL", ket: pesanError(e), saran: "Jalankan setup.sql terbaru di Supabase." }); }
+    try { H = H.concat(await ujiDariLuar()); }
+    catch (e) { H.push({ grup: "Database", uji: "Uji dari luar", hasil: "INFO", ket: pesanError(e) }); }
+    const lulus = H.filter(h => h.hasil === "LULUS").length, gagal = H.filter(h => h.hasil === "GAGAL").length;
+    const grup = [...new Set(H.map(h => h.grup))];
+    const bdg = h => `<span class="badge ${h.hasil === "GAGAL" ? "badge-red" : h.hasil === "INFO" ? "badge-gray" : ""}">${icon(h.hasil === "GAGAL" ? "x" : h.hasil === "INFO" ? "info" : "check")}${h.hasil}</span>`;
+    $("#km-out").innerHTML = `<div class="callout ${gagal ? "warn" : ""}" style="margin-bottom:16px">${icon(gagal ? "info" : "check-circle")}<span>${gagal ? `<b>${gagal} masalah ditemukan.</b> Lihat saran perbaikan di baris berwarna merah.` : `<b>Aman.</b> ${lulus} uji lulus, tidak ada masalah.`} <span style="color:var(--muted)">(${esc(fmtWaktu(new Date().toISOString()))})</span></span></div>
+      ${grup.map(g => `<div class="card box" style="margin-bottom:14px"><h3>${esc(g)}</h3><div class="list">${H.filter(h => h.grup === g).map(h => `<div class="row"><div class="rmain"><div class="rtitle">${bdg(h)}${esc(h.uji)}</div><div class="rsub">${esc(h.ket)}</div>${h.hasil === "GAGAL" && h.saran ? `<div class="rsub" style="color:var(--danger)"><b>Perbaikan:</b> ${esc(h.saran)}</div>` : ""}</div></div>`).join("")}</div></div>`).join("")}`;
+  };
+  $("#km-run").addEventListener("click", run);
+  run();
+};
+
 // ----- Akun saya -----
+function mailtoHapus(u) {
+  const to = S("email_kontak_publik") || "kmikorsel1@gmail.com";
+  const isi = `Assalamualaikum,\n\nSaya meminta akun saya di aplikasi KMI Korsel dihapus.\n\nNama: ${u.nama}\nEmail terdaftar: ${u.email}\nJabatan: ${u.jabatan || u.peran}\n\nTerima kasih.`;
+  return `mailto:${to}?subject=${encodeURIComponent("Permintaan Hapus Akun KMI Korsel")}&body=${encodeURIComponent(isi)}`;
+}
 VIEWS.akun = async () => {
   const u = STATE.user;
-  $("#pv-body").innerHTML = `<div class="two" style="margin-top:0"><div class="card box"><h3>Profil</h3><dl class="kv"><dt>Nama</dt><dd>${esc(u.nama)}</dd><dt>Email</dt><dd>${esc(u.email)}</dd><dt>Peran</dt><dd>${badgePeran(u.peran)}</dd><dt>Jabatan</dt><dd>${esc(u.jabatan || "-")}</dd><dt>Hak akses</dt><dd>${aksesChips(u)}</dd></dl><p class="hint" style="color:var(--muted);font-size:13px;margin-top:10px">Jabatan dan hak akses diatur oleh Ketua / Admin Utama.</p><button class="btn btn-outline btn-sm" id="ak-out" style="margin-top:18px;color:var(--danger)">${icon("log-out")}Keluar dari panel</button></div>
+  $("#pv-body").innerHTML = `<div class="two" style="margin-top:0"><div class="card box"><h3>Profil</h3><dl class="kv"><dt>Nama</dt><dd>${esc(u.nama)}</dd><dt>Email</dt><dd>${esc(u.email)}</dd><dt>Peran</dt><dd>${badgePeran(u.peran)}</dd><dt>Jabatan</dt><dd>${esc(u.jabatan || "-")}</dd><dt>Hak akses</dt><dd>${aksesChips(u)}</dd></dl><p class="hint" style="color:var(--muted);font-size:13px;margin-top:10px">Jabatan dan hak akses diatur oleh Ketua / Admin Utama.</p><button class="btn btn-outline btn-sm" id="ak-out" style="margin-top:18px;color:var(--danger)">${icon("log-out")}Keluar dari panel</button>
+      <div style="margin-top:22px;padding-top:16px;border-top:1px solid var(--border)"><h3 style="font-size:15px">Hapus akun saya</h3><p style="color:var(--muted);font-size:13px;margin:6px 0 12px">Kirim permintaan ke Ketua / Admin Utama untuk menghapus akun dan data Anda. Diproses paling lambat 7 hari.</p>
+      <a class="btn btn-outline btn-sm" style="color:var(--danger)" href="${esc(mailtoHapus(u))}">${icon("trash")}Minta hapus akun</a> <a class="btn btn-ghost btn-sm" href="/hapus-akun" target="_blank" rel="noopener">Info selengkapnya</a></div></div>
     <div class="card box"><h3>Ganti Password</h3><form id="ak-f" style="display:flex;flex-direction:column;gap:14px" novalidate>
       <div class="field"><label for="ak1">Password baru (min. 8 karakter)</label><div class="pw-wrap"><input class="input" id="ak1" type="password" autocomplete="new-password"><button type="button" class="pw-eye" data-eye="ak1" aria-label="Tampilkan">${icon("eye")}</button></div></div>
       <div class="field"><label for="ak2">Ulangi password baru</label><input class="input" id="ak2" type="password" autocomplete="new-password"></div>
