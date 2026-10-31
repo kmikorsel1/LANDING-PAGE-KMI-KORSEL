@@ -1,6 +1,6 @@
 // Service worker KMI Korsel. Naikkan nomor versi CACHE setiap rilis besar.
-const CACHE = "kmi-korsel-v1";
-const INTI = ["/", "/index.html", "/config.js", "/manifest.json", "/favicon.png", "/ikon-192.png", "/ikon-512.png", "/ikon-maskable-512.png", "/apple-touch-icon.png"];
+const CACHE = "kmi-korsel-v2";
+const INTI = ["/", "/index.html", "/config.js", "/manifest.json", "/favicon.png", "/ikon-192.png", "/ikon-512.png", "/ikon-bulat-192.png", "/ikon-bulat-512.png", "/apple-touch-icon.png"];
 const CDN = ["cdn.jsdelivr.net", "fonts.googleapis.com", "fonts.gstatic.com"];
 
 self.addEventListener("install", e => {
