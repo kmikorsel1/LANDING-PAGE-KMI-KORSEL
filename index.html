@@ -496,6 +496,127 @@
 #app-root .db-warn { margin: 16px 20px 0; padding: 14px 18px; background: #FEF2F2; color: #991B1B; border: 1px solid #FECACA; border-radius: 14px; font-size: 14px; font-weight: 600; display: flex; gap: 10px; align-items: flex-start; }
 
 /* ===== Tombol mengambang: Pasang Aplikasi di HP ===== */
+/* ===== Halaman Organisasi ===== */
+#app-root .org-hero { padding: 40px 0 8px; background: linear-gradient(180deg, var(--primary-50), transparent); }
+#app-root .org-crumb { display: flex; align-items: center; gap: 6px; font-size: 13.5px; color: var(--muted); margin-bottom: 18px; }
+#app-root .org-crumb a { color: var(--primary); font-weight: 600; }
+#app-root .org-crumb .ico { width: 14px; height: 14px; }
+#app-root .org-hero .sec-head { margin-bottom: 22px; }
+#app-root .org-hero h1.sec-title { font-size: clamp(28px, 4.4vw, 44px); }
+#app-root .org-tabs { display: inline-flex; gap: 6px; padding: 5px; border-radius: 999px; background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow); max-width: 100%; overflow-x: auto; }
+#app-root .org-tabs button { display: inline-flex; align-items: center; gap: 8px; border: 0; background: transparent; font: inherit; font-weight: 700; font-size: 14.5px; color: var(--muted); padding: 10px 18px; border-radius: 999px; cursor: pointer; white-space: nowrap; }
+#app-root .org-tabs button .ico { width: 18px; height: 18px; }
+#app-root .org-tabs button.on { background: var(--primary); color: #fff; }
+#app-root .org-body { padding-top: 28px; }
+#app-root .org-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 30px; }
+#app-root .org-stats > div { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; }
+#app-root .org-stats b { display: block; font-size: 26px; font-weight: 800; color: var(--primary); line-height: 1.15; }
+#app-root .org-stats span { color: var(--muted); font-size: 13.5px; }
+#app-root .tl { list-style: none; margin: 0; padding: 0 0 0 30px; position: relative; }
+#app-root .tl:before { content: ""; position: absolute; left: 9px; top: 6px; bottom: 6px; width: 2px; background: var(--border); }
+#app-root .tl-item { position: relative; margin-bottom: 22px; }
+#app-root .tl-dot { position: absolute; left: -27px; top: 6px; width: 16px; height: 16px; border-radius: 50%; background: var(--card); border: 3px solid var(--primary-100); }
+#app-root .tl-item.now .tl-dot { border-color: var(--primary); box-shadow: 0 0 0 5px var(--primary-50); }
+#app-root .tl-year { font-size: 13px; font-weight: 800; letter-spacing: .08em; color: var(--muted); margin-bottom: 6px; }
+#app-root .tl-card { padding: 20px 22px; }
+#app-root .tl-head { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+#app-root .tl-now { background: #ECFDF3; color: #067647; border-color: #ABEFC6; }
+#app-root .tl-ketua { display: flex; align-items: center; gap: 14px; }
+#app-root .tl-ketua .avatar { width: 56px; height: 56px; font-size: 19px; border-width: 3px; flex: none; }
+#app-root .tl-ketua small { display: block; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+#app-root .tl-ketua b { font-size: 19px; line-height: 1.3; }
+#app-root .tl-cat { margin: 14px 0 0; color: var(--muted); white-space: pre-line; }
+#app-root .tl-foto { display: block; width: 100%; max-height: 380px; object-fit: cover; border-radius: 14px; margin-top: 16px; background: var(--soft); }
+#app-root .tl-sus { margin-top: 16px; border-top: 1px solid var(--border); padding-top: 4px; }
+#app-root .tl-sus summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 10px; font-weight: 700; font-size: 14.5px; color: var(--primary); padding: 10px 0; }
+#app-root .tl-sus summary::-webkit-details-marker { display: none; }
+#app-root .tl-sus summary .ico { width: 18px; height: 18px; transition: transform .2s; }
+#app-root .tl-sus[open] summary .ico { transform: rotate(180deg); }
+#app-root .tl-sus ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 8px; }
+#app-root .tl-sus li { background: var(--soft); border-radius: 12px; padding: 10px 14px; }
+#app-root .tl-sus li span { display: block; font-size: 12.5px; color: var(--muted); }
+#app-root .tl-sus li b { font-size: 15px; }
+#app-root .org-empty { text-align: center; padding: 48px 20px; color: var(--muted); }
+#app-root .org-empty .ico { width: 40px; height: 40px; color: var(--primary); margin-bottom: 10px; }
+#app-root .org-link { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; color: var(--primary); margin-top: 6px; }
+#app-root .org-link .ico { width: 16px; height: 16px; }
+#app-root .ad-docs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+#app-root .ad-docs button { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid var(--border); background: var(--card); font: inherit; font-weight: 700; font-size: 14.5px; padding: 9px 16px; border-radius: 999px; cursor: pointer; color: var(--text); }
+#app-root .ad-docs button span { font-size: 11.5px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: var(--primary-50); color: var(--primary); }
+#app-root .ad-docs button.on { border-color: var(--primary); background: var(--primary); color: #fff; }
+#app-root .ad-docs button.on span { background: rgba(255,255,255,.2); color: #fff; }
+#app-root .ad-info { display: flex; gap: 10px; align-items: flex-start; background: var(--primary-50); border-radius: 14px; padding: 12px 16px; font-size: 14.5px; margin-bottom: 14px; }
+#app-root .ad-info .ico { flex: none; width: 18px; height: 18px; color: var(--primary); margin-top: 3px; }
+#app-root .ad-tools { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+#app-root .ad-tools .ad-search { flex: 1; min-width: 220px; position: relative; }
+#app-root .ad-tools .ad-search .ico { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--muted); }
+#app-root .ad-tools .ad-search input { padding-left: 42px; }
+#app-root .ad-bab { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 10px; scroll-margin-top: 140px; }
+#app-root .ad-bab > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 12px; padding: 16px 18px; }
+#app-root .ad-bab > summary::-webkit-details-marker { display: none; }
+#app-root .ad-bab .no { flex: none; font-size: 12px; font-weight: 800; letter-spacing: .04em; color: var(--primary); background: var(--primary-50); border-radius: 8px; padding: 4px 9px; }
+#app-root .ad-bab .jd { flex: 1; font-weight: 700; font-size: 16px; }
+#app-root .ad-bab .ct { flex: none; font-size: 12.5px; color: var(--muted); }
+#app-root .ad-bab > summary .ico { flex: none; width: 18px; height: 18px; color: var(--muted); transition: transform .2s; }
+#app-root .ad-bab[open] > summary .ico { transform: rotate(180deg); }
+#app-root .ad-body { padding: 0 18px 10px; }
+#app-root .ad-sub { font-weight: 700; font-size: 13.5px; color: var(--primary); padding-top: 12px; margin-top: 4px; border-top: 1px dashed var(--border); }
+#app-root .ad-ps { display: grid; grid-template-columns: 84px 1fr auto; gap: 12px; padding: 12px 0; border-top: 1px solid var(--border); scroll-margin-top: 150px; }
+#app-root .ad-sub + .ad-ps { border-top: 0; }
+#app-root .ad-pn { font-weight: 700; font-size: 14px; color: var(--muted); }
+#app-root .ad-ps p { margin: 0; }
+#app-root .ad-ps ol { margin: 8px 0 0; padding-left: 22px; }
+#app-root .ad-ps li { margin: 5px 0; }
+#app-root .ad-cp { border: 0; background: transparent; color: var(--muted); cursor: pointer; padding: 4px; border-radius: 8px; height: max-content; }
+#app-root .ad-cp:hover { color: var(--primary); background: var(--primary-50); }
+#app-root .ad-cp .ico { width: 16px; height: 16px; }
+#app-root .ad-ps.flash { animation: ad-flash 2.2s ease; }
+@keyframes ad-flash { 0%, 40% { background: var(--primary-50); } 100% { background: transparent; } }
+#app-root .ad-ps mark, #app-root .ad-bab mark { background: #FFE58A; color: inherit; border-radius: 3px; padding: 0 1px; }
+#app-root .ad-sah { padding: 18px 20px; margin-top: 6px; }
+#app-root .ad-sah ul { margin: 8px 0 0; padding-left: 20px; columns: 2; }
+#app-root .ad-h3 { font-size: 22px; font-weight: 800; letter-spacing: -.02em; margin: 44px 0 6px; }
+#app-root .ad-lead { color: var(--muted); margin: 0 0 18px; }
+#app-root .chart { display: flex; flex-direction: column; align-items: center; }
+#app-root .chart .lv { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; width: 100%; }
+#app-root .chart .bx { background: var(--card); border: 1.5px solid var(--border); border-radius: 14px; padding: 12px 16px; text-align: center; flex: 1; min-width: 200px; max-width: 340px; }
+#app-root .chart .bx b { display: block; font-size: 15.5px; }
+#app-root .chart .bx small { display: block; color: var(--muted); font-size: 13px; line-height: 1.45; margin-top: 2px; }
+#app-root .chart .bx.hi { border-color: var(--primary); background: var(--primary-50); }
+#app-root .chart .bx.dk { background: #0B1736; border-color: #0B1736; color: #fff; }
+#app-root .chart .bx.dk small { color: #B9C7DA; }
+#app-root .chart .bx.sd { border-style: dashed; }
+#app-root .chart .ar { width: 2px; height: 22px; background: var(--border); }
+#app-root .lambang { display: grid; grid-template-columns: 200px 1fr; gap: 26px; align-items: center; }
+#app-root .lambang img { width: 200px; height: 200px; border-radius: 50%; background: #fff; border: 1px solid var(--border); object-fit: contain; }
+#app-root .lambang ul { margin: 0; padding-left: 20px; } #app-root .lambang li { margin: 8px 0; }
+#app-root .ad-ubah { overflow-x: auto; }
+#app-root .ad-ubah table { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 640px; }
+#app-root .ad-ubah th, #app-root .ad-ubah td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--border); }
+#app-root .ad-ubah thead th { font-size: 12.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); background: var(--soft); }
+#app-root .ad-ubah td.ps { white-space: nowrap; color: var(--muted); font-size: 13px; }
+#app-root .ad-dl { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+#app-root .ad-dl .card { display: flex; align-items: center; gap: 14px; padding: 16px 18px; }
+#app-root .ad-dl .pdf { flex: none; width: 46px; height: 54px; border-radius: 8px; background: #D6232E; color: #fff; font-weight: 800; font-size: 12px; display: grid; place-items: center; }
+#app-root .ad-dl .card div { flex: 1; min-width: 0; } #app-root .ad-dl small { display: block; color: var(--muted); }
+#app-root .ad-note { font-size: 13px; color: var(--muted); margin-top: 12px; }
+@media (max-width: 720px) {
+  #app-root .org-stats { grid-template-columns: 1fr 1fr; } #app-root .org-stats > div:last-child { grid-column: span 2; }
+  #app-root .lambang { grid-template-columns: 1fr; justify-items: center; } #app-root .lambang img { width: 160px; height: 160px; }
+  #app-root .ad-dl { grid-template-columns: 1fr; }
+  #app-root .ad-ps { grid-template-columns: 1fr auto; gap: 4px 10px; } #app-root .ad-ps > div { grid-column: 1 / -1; }
+  #app-root .ad-sah ul { columns: 1; }
+  #app-root .chart .bx { min-width: 0; flex-basis: 100%; }
+  #app-root .ad-ubah { overflow: visible; } #app-root .ad-ubah table { min-width: 0; } #app-root .ad-ubah thead { display: none; }
+  #app-root .ad-ubah table, #app-root .ad-ubah tbody, #app-root .ad-ubah tr, #app-root .ad-ubah th, #app-root .ad-ubah td { display: block; }
+  #app-root .ad-ubah tr { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; }
+  #app-root .ad-ubah th, #app-root .ad-ubah td { border: 0; padding: 3px 0; } #app-root .ad-ubah tbody th { font-size: 16px; padding-bottom: 6px; }
+  #app-root .ad-ubah td:before { content: attr(data-l); display: block; font-size: 11.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  #app-root .ad-ubah td.ps { white-space: normal; }
+  #app-root .org-tabs { display: flex; } #app-root .org-tabs button { flex: 1; justify-content: center; padding: 10px 10px; font-size: 13.5px; }
+}
+@media (max-width: 420px) { #app-root .org-tabs button .ico { display: none; } }
+@media print { #app-root header.nav, #app-root .nav-mob, #app-root .org-tabs, #app-root .ad-tools, #app-root .ad-docs, #app-root .ad-cp, #app-root .footer, #app-root .fab-pasang { display: none !important; } }
 #app-root .fab-pasang { position: fixed; z-index: 120; left: calc(16px + env(safe-area-inset-left, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; border-radius: 999px; background: #14205C; color: #fff; border: 2px solid #fff; font-weight: 800; font-size: 15.5px; box-shadow: 0 12px 30px -10px rgba(11,23,54,.6); transition: transform .15s, background .2s; animation: kmi-up .4s .6s both; }
 #app-root .fab-pasang:hover { background: var(--primary); transform: translateY(-2px); }
 #app-root .fab-pasang .ico { width: 20px; height: 20px; }
@@ -1003,6 +1124,7 @@
       <section id="masjid" class="sec" style="padding-top:0;padding-bottom:40px"></section>
       <section id="kontak" class="sec" style="padding-top:48px"></section>
     </main>
+    <main id="kmi-org" hidden></main>
 
     <footer class="footer" id="kmi-footer"></footer>
   </div>
@@ -1451,6 +1573,7 @@ const MENUS = [
   { id: "pendaftaran", label: "Pendaftaran Pengurus", short: "Pendaftar", icon: "user-plus", need: "ketua", desc: "Setujui atau tolak calon pengurus yang mendaftar.", grp: "Khusus Ketua & Admin" },
   { id: "staf", label: "Akun Staf", icon: "shield", need: "ketua", desc: "Akun login, jabatan, dan hak akses pengurus." },
   { id: "susunan", label: "Susunan Pengurus", short: "Pengurus", icon: "users", need: "ketua", desc: "Daftar pengurus yang tampil di situs." },
+  { id: "riwayat", label: "Riwayat Pengurus", short: "Riwayat", icon: "calendar", need: "ketua", desc: "Pengurus KMI dari periode ke periode, tampil di halaman Organisasi." },
   { id: "pengaturan", label: "Pengaturan Situs", short: "Pengaturan", icon: "sliders", need: "ketua", desc: "Profil, kontak, donasi, keuangan, dan email otomatis." },
   { id: "log", label: "Log Aktivitas", short: "Log", icon: "file-text", need: "ketua", desc: "Riwayat perubahan oleh staf." },
   { id: "keamanan", label: "Cek Keamanan", short: "Keamanan", icon: "lock", need: "ketua", desc: "Uji otomatis: apakah data situs aman dari akses orang luar." },
@@ -1502,6 +1625,11 @@ const mockApi = (() => {
       { id: uid(), jenis: "Pengumuman", judul: "Perubahan Jam Layanan Sekretariat", tanggal: null, waktu: "", lokasi: "", deskripsi: "Mulai bulan ini sekretariat buka setiap Sabtu dan Ahad.", gambar_url: "", gambar_path: "", link_pendaftaran: "", tampil: false, disematkan: false, dibuat_oleh: "Ketua (Preview)", dibuat_pada: ago(200), diubah_pada: ago(200) }
     ],
     galeri: [],
+    riwayat_pengurus: [
+      { id: "rw-3", judul: "2025/2026", tahun_mulai: 2025, tahun_selesai: null, ketua: "Nama Ketua (contoh)", catatan: "Contoh data untuk mode uji coba. Diisi Ketua / Admin Utama lewat panel \u2192 Riwayat Pengurus.", susunan: "Ketua | Nama Ketua (contoh)\nSekretaris Umum | Nama Sekretaris (contoh)\nBendahara Umum | Nama Bendahara (contoh)\nKetua Bidang Dakwah | Nama (contoh)\nKetua Bidang Sosial | Nama (contoh)\nMajelis Syuro | Nama (contoh)", foto_url: "", foto_path: "", tampil: true, dibuat_pada: new Date().toISOString() },
+      { id: "rw-2", judul: "2022/2023", tahun_mulai: 2022, tahun_selesai: 2023, ketua: "Nama Ketua (contoh)", catatan: "Contoh: dipilih dalam Musyawarah Majelis Syuro di Daegu, 13 November 2022.", susunan: "Sekretaris Umum | Nama (contoh)\nBendahara Umum | Nama (contoh)", foto_url: "", foto_path: "", tampil: true, dibuat_pada: new Date().toISOString() },
+      { id: "rw-1", judul: "2014/2015", tahun_mulai: 2014, tahun_selesai: 2015, ketua: "Nama Ketua (contoh)", catatan: "", susunan: "", foto_url: "", foto_path: "", tampil: true, dibuat_pada: new Date().toISOString() }
+    ],
     susunan_pengurus: [
       ["Ustadz Ahmad Fauzi", "Ketua Umum"], ["Muhammad Rizky", "Wakil Ketua"], ["Siti Nurhaliza", "Sekretaris"],
       ["Dimas Anggara", "Bendahara"], ["Bagus Pratama", "Koordinator Kegiatan"], ["Rahayu Wulandari", "Koordinator Sosial"]
@@ -1570,7 +1698,7 @@ const mockApi = (() => {
   const AKSES_TBL = { kegiatan: "kegiatan", galeri: "galeri", faq: "faq", pesan: "pesan", keuangan: "keuangan" };
   const rapikan = a => [...new Set((a || []).filter(x => AKSES.some(([k]) => k === x)))].sort();
   const cekAdminAktif = () => { if (db.staf.some(x => x.peran === "Admin") && !db.staf.some(x => x.peran === "Admin" && x.aktif)) throw new Error("Minimal harus ada 1 akun Admin Utama yang aktif."); };
-  const TBL = { kegiatan: "kegiatan", galeri: "galeri", faq: "faq", susunan_pengurus: "susunan_pengurus", pesan: "pesan", keuangan: "keuangan" };
+  const TBL = { kegiatan: "kegiatan", galeri: "galeri", faq: "faq", susunan_pengurus: "susunan_pengurus", riwayat_pengurus: "riwayat_pengurus", pesan: "pesan", keuangan: "keuangan" };
   const LABEL = r => r.judul || r.nama || r.pertanyaan || r.keterangan || r.id;
   const pubSettings = () => { const o = {}; for (const [k, v] of Object.entries(db.pengaturan)) if (!PRIVATE_KEYS.includes(k)) o[k] = v; return o; };
 
@@ -1583,6 +1711,7 @@ const mockApi = (() => {
         kegiatan: db.kegiatan.filter(k => k.tampil).map(({ dibuat_oleh, diubah_pada, gambar_path, tampil, ...r }) => r),
         galeri: db.galeri.filter(g => g.tampil).sort((a, b) => a.urutan - b.urutan),
         pengurus: db.susunan_pengurus.filter(p => p.tampil).sort((a, b) => a.urutan - b.urutan),
+        riwayat: db.riwayat_pengurus.filter(p => p.tampil).sort((a, b) => b.tahun_mulai - a.tahun_mulai).map(({ foto_path, tampil, ...r }) => r),
         faq: db.faq.filter(f => f.tampil).sort((a, b) => a.urutan - b.urutan),
         facebook: db.pengaturan.facebook_feed === "tidak" ? [] : clone(db.facebook),
         keuangan: db.pengaturan.keuangan_tampil === "tidak" ? [] : db.keuangan.filter(k => k.tampil).sort((a, b) => b.tanggal.localeCompare(a.tanggal)).map(({ tampil, dibuat_oleh, diubah_pada, ...r }) => r)
@@ -1634,7 +1763,7 @@ const mockApi = (() => {
     },
     async save(table, row) {
       needStaf(); await wait();
-      if (["susunan_pengurus"].includes(table)) needKetua();
+      if (["susunan_pengurus", "riwayat_pengurus"].includes(table)) needKetua();
       if (AKSES_TBL[table]) needAkses(AKSES_TBL[table]);
       const rows = db[TBL[table]];
       if (row.id) {
@@ -1654,7 +1783,7 @@ const mockApi = (() => {
     },
     async remove(table, id) {
       needStaf(); await wait();
-      if (["pesan", "susunan_pengurus"].includes(table)) needKetua(); else needAkses(AKSES_TBL[table]);
+      if (["pesan", "susunan_pengurus", "riwayat_pengurus"].includes(table)) needKetua(); else needAkses(AKSES_TBL[table]);
       const rows = db[TBL[table]]; const i = rows.findIndex(x => x.id === id);
       if (i >= 0) { log("HAPUS_" + table.toUpperCase(), LABEL(rows[i])); rows.splice(i, 1); }
     },
@@ -1764,6 +1893,7 @@ const supabaseApi = (() => {
     galeri: [["urutan", true], ["diunggah_pada", false]],
     faq: [["urutan", true]],
     susunan_pengurus: [["urutan", true]],
+    riwayat_pengurus: [["tahun_mulai", false], ["dibuat_pada", false]],
     pesan: [["waktu", false]],
     staf: [["peran", true], ["nama", true]],
     keuangan: [["tanggal", false], ["dibuat_pada", false]]
@@ -1904,7 +2034,8 @@ function closeDrawer() { $("#nav-drawer").classList.remove("open"); $("#nav-burg
 
 function renderNav() {
   const visible = NAV.filter(([id]) => !document.getElementById(id)?.hidden);
-  const links = visible.map(([id, l]) => `<a href="#${id}" data-go="${id}">${icon(NAV_ICON[id])}<span>${l}</span></a>`).join("");
+  const links = visible.map(([id, l]) => `<a href="#${id}" data-go="${id}">${icon(NAV_ICON[id])}<span>${l}</span></a>`).join("")
+    + `<a href="${orgUrl("riwayat")}" data-page="organisasi">${icon("mosque")}<span>Organisasi</span></a>`;
   const masjid = safeUrl(S("link_website_masjid")) || "https://korea-masjid.vercel.app/";
   $("#nav-links").innerHTML = links;
   $("#nav-drawer").innerHTML = `<a class="drawer-masjid" href="${esc(masjid)}" target="_blank" rel="noopener">${icon("mosque")}Cari Masjid di Korea<span class="ext">${icon("external")}</span></a>` + links
@@ -1914,6 +2045,7 @@ function renderNav() {
   $("#nav-title").innerHTML = namaDuaBarisHtml();
   updateLoginLabel();
   observeSections();
+  tandaiNavOrg();
 }
 
 function renderHero() {
@@ -2170,6 +2302,7 @@ function renderKeuangan() {
 
 function renderPengurus() {
   const p = PUB.pengurus || [];
+  setTimeout(() => { const sec = $("#pengurus"); if (sec && !sec.hidden && (PUB.riwayat || []).length && !$("#pengurus .org-more")) sec.querySelector(".container")?.insertAdjacentHTML("beforeend", `<p class="org-more" style="text-align:center;margin-top:28px"><a class="btn btn-outline" href="${orgUrl("riwayat")}" data-page="organisasi">${icon("users")}Pengurus dari Masa ke Masa${icon("arrow-right")}</a></p>`); }, 0);
   $("#pengurus").hidden = p.length === 0;
   if (!p.length) return;
   $("#pengurus").innerHTML = `<div class="container">
@@ -2292,6 +2425,8 @@ function renderFooter() {
       <li>${icon("user")}<a href="#kontak" data-go="kontak" data-kat="Ingin Bergabung">Bergabung Bersama Kami</a></li>
       <li>${icon("help")}<a href="#kontak" data-go="kontak" data-kat="Pertanyaan Umum">Kirim Pertanyaan</a></li>
       ${S("donasi_no_rekening") ? `<li>${icon("heart")}<a href="#donasi" data-go="donasi">Donasi & Infak</a></li>` : `<li>${icon("heart")}<a href="#kontak" data-go="kontak" data-kat="Donasi">Info Donasi</a></li>`}
+      <li>${icon("users")}<a href="${orgUrl("riwayat")}" data-page="organisasi">Pengurus dari Masa ke Masa</a></li>
+      <li>${icon("book-open")}<a href="${orgUrl("adart")}" data-page="organisasi" data-tab="adart">AD/ART Organisasi</a></li>
       ${safeUrl(S("link_website_masjid")) ? `<li>${icon("globe")}<a href="${esc(safeUrl(S("link_website_masjid")))}" target="_blank" rel="noopener">Direktori Masjid Korea</a></li>` : ""}
       ${sudahTerpasang() ? "" : `<li>${icon("upload")}<button type="button" class="link-login" data-install>Pasang Aplikasi di HP</button></li>`}
       <li>${icon("lock")}<button type="button" class="link-login" id="go-login"><span id="go-login-txt">Masuk Pengurus</span></button></li>
@@ -2434,11 +2569,196 @@ function renderSosmed() {
   }
 }
 
+// ===================================================================
+// HALAMAN ORGANISASI: Pengurus dari Masa ke Masa + AD/ART
+// Halaman di dalam situs (menu & footer sama). Alamat: /organisasi
+// ===================================================================
+const ADART = {"docs":{"ad2022":{"label":"Anggaran Dasar 2022","pendek":"AD 2022","status":"Terbaru","sah":{"tanggal":"13 November 2022","tempat":"Daegu, Korea Selatan","judul":"Pimpinan Majelis Syuro","nama":["Ustadz Irfanudin","Ustadz Irsyad","Ustadz Gangsar Hernanto","Ustadz Heryanto","Ustadz Hendra / Ustadz Rusdi","Ustadz Ali"]},"bab":[{"bab":"BAB I","judul":"Nama, Tempat & Waktu","isi":[{"p":"Pasal 1","t":"Nama dari wadah organisasi ini adalah \u201cKomunitas Muslim Indonesia di Korea\u201d disingkat KMI KOREA.","l":[]},{"p":"Pasal 2","t":"KMI KOREA memiliki sekretariat terdaftar di Masjid Al-Ikhlas Yongin, dengan alamat 1137 Baegokdaero, Cheoin-gu, Yongin-si, Gyeonggi-do.","l":[]},{"p":"Pasal 3","t":"KMI KOREA didirikan pada tanggal 17 Februari 2007 di KBRI Seoul.","l":[]}]},{"bab":"BAB II","judul":"Landasan, Status, Sifat & Kedaulatan","isi":[{"p":"Pasal 4","t":"KMI KOREA berlandaskan Islam dengan berpedoman kepada Al-Qur\u2019an, Sunah dan ijtihad para \u2018Ulama.","l":[]},{"p":"Pasal 5","t":"KMI KOREA adalah sebagai wadah organisasi keislaman para WNI di seluruh Korea Selatan.","l":[]},{"p":"Pasal 6","t":"Sifat KMI KOREA adalah Independen, Mandiri, Ukhuwah Islamiyah & Kekeluargaan.","l":[]},{"p":"Pasal 7","t":"Kedaulatan berada di tangan Musyawarah Majelis Syuro KMI KOREA dan dilaksanakan sepenuhnya oleh Pengurus KMI KOREA dan Anggota KMI KOREA.","l":[]}]},{"bab":"BAB III","judul":"Visi & Misi","isi":[{"p":"Pasal 8","t":"Visi KMI KOREA adalah menjadi rumah besar umat Islam Indonesia yang berkontribusi aktif terhadap perkembangan Islam di Korea Selatan.","l":[]},{"p":"Pasal 9","t":"Misi KMI KOREA adalah:","l":["Menjalankan organisasi yang profesional, kredibel, dan aspiratif;","Membuat rancangan strategis pengembangan dakwah dan kemakmuran masjid-masjid muslim Indonesia yang ada di Korea Selatan;","Memfasilitasi dan berkontribusi aktif dalam mendirikan musholla/masjid di Korea Selatan;","Melakukan kolaborasi dengan organisasi Islam di Korea Selatan agar dakwah dapat bermanfaat untuk umat Islam Indonesia;","Melakukan sistem regenerasi dakwah Islam di Korea Selatan yang berkesinambungan."]}]},{"bab":"BAB IV","judul":"Identitas & Motto","isi":[{"p":"Pasal 10","t":"Identitas KMI KOREA adalah Lambang KMI KOREA. Arti lambang:","l":["Tulisan KMI dan Komunitas Muslim Indonesia adalah sebagai penjelasan atas nama organisasi;","Warna merah biru dalam bentuk lingkaran adalah ciri khas dari Korea;","Selatan, sebagai tempat kedudukan organisasi;","Kubah masjid merupakan identitas organisasi yang berlandaskan Islam;","Gambar bola dunia sebagai sikap dari organisasi yang terbuka akan perkembangan dunia dan berusaha menjadi bagian dari kebaikan, tidak hanya bagi muslim Indonesia yang ada di Korea namun juga masyarakat di dunia."]},{"p":"Pasal 11","t":"Motto KMI KOREA adalah \u201cTerjalin Ukhuwah Islamiyah Umat Islam Indonesia di Korea Selatan\u201d.","l":[]}]},{"bab":"BAB V","judul":"Keanggotaan","isi":[{"p":"Pasal 11","t":"Anggota KMI KOREA terdiri dari:","l":["Anggota Umum adalah setiap umat Islam Indonesia yang menjadi jamaah masjid di Korea Selatan;","Anggota Khusus adalah perwakilan pengurus organisasi/musholla/masjid yang memiliki hak dan kewajiban dalam kepengurusan KMI yang diatur dalam Anggaran Rumah Tangga KMI KOREA;","Anggota Kehormatan adalah orang per orang yang disahkan oleh pengurus KMI KOREA dikarenakan jasa, kontribusi dan peran/status dalam memajukan KMI KOREA."]}]},{"bab":"BAB VI","judul":"Kelengkapan Organisasi","isi":[{"p":"Pasal 12","t":"Kelengkapan Organisasi KMI KOREA terdiri dari:","l":["Penanggung Jawab KMI Korea adalah perorangan yang terdaftar dalam dokumen legal di Pemerintahan Korea Selatan;","Majelis Syuro KMI Korea adalah Lembaga Tertinggi yang memegang peran Legislatif dan Yudikatif;","Pengurus KMI KOREA adalah lembaga Eksekutif KMI KOREA;","Gubernur adalah jabatan koordinator Amir Masjid yang ada di wilayah Utara, Daegu, Jeollabuk-do, Busan, dan Daerah Istimewa Pulau Jeju;","Amir Masjid adalah jabatan ketua DKM Masjid atau Musholla Indonesia di Korea Selatan;","Anggota Khusus adalah perwakilan organisasi/musholla/masjid."]}]},{"bab":"BAB VII","judul":"Tata Urutan Peraturan & Forum Pengambilan Keputusan","isi":[{"p":"Pasal 13","t":"Tata urutan peraturan KMI KOREA adalah:","l":["Anggaran Dasar/Anggaran Rumah Tangga KMI KOREA;","Peraturan Majelis Syuro KMI KOREA;","Peraturan Ketua KMI KOREA;","Keputusan Ketua KMI KOREA."]},{"p":"Pasal 14","t":"Forum pengambilan keputusan KMI KOREA terdiri dari:","l":["Musyawarah Majelis Syuro KMI KOREA;","Musyawarah Luar Biasa KMI KOREA;","Musyawarah Anggota KMI KOREA;","Rapat Pengurus KMI KOREA;","Rapat Bidang Pengurus KMI KOREA;","Rapat Koordinator Wilayah."]}]},{"bab":"BAB VIII","judul":"Keuangan","isi":[{"p":"Pasal 15","t":"Sistem keuangan KMI KOREA berdasarkan pada prinsip Islami/syariah, mandiri, transparan, efektif dan efisien.","l":[]},{"p":"Pasal 16","t":"Pendapatan KMI KOREA diperoleh dari:","l":["Donasi dari anggota KMI KOREA;","Usaha-usaha dan sumber yang sah serta tidak bertentangan dengan Islam, landasan, visi dan misi KMI KOREA;","Dana-dana dan sumbangan lain yang tidak mengikat dan tidak bertentangan dengan syariat Islam, landasan, visi dan misi KMI KOREA;","Kolaborasi dengan pihak ketiga yang saling menguntungkan kedua belah pihak dalam menjalankan usaha."]}]},{"bab":"BAB IX","judul":"Pergantian Struktur & Jangka Waktu Kepengurusan","isi":[{"p":"Pasal 17","t":"Pergantian kepengurusan dimulai:","l":["Pemilihan Majelis Syuro KMI KOREA yang dilakukan oleh Musyawarah Anggota yang dihadiri oleh para Anggota KMI KOREA;","Majelis Syuro KMI KOREA berjumlah 9 (sembilan) orang dan memiliki komposisi mantan Ketua Harian KMI KOREA periode sebelumnya;","Anggota Majelis Syuro KMI KOREA harus mewakili masing-masing wilayah, perwakilan KMF, perwakilan organisasi Masyarakat Indonesia, perwakilan Mahasiswa/Pelajar;","Selanjutnya Majelis Syuro memilih Ketua KMI KOREA periode berikutnya;","Pemilihan dilakukan berdasarkan prinsip Islam, musyawarah mufakat dan meminimalisir pemungutan suara."]},{"p":"Pasal 18","t":"Jangka waktu kepengurusan KMI KOREA adalah 1 (satu) tahun dengan periodisasi dari tanggal ditetapkan sampai pada tahun berikutnya.","l":[]}]},{"bab":"BAB X","judul":"Penutup","isi":[{"sub":"Bagian Pertama: Pembekuan, Pengaktifan Kembali dan Pembubaran KMI KOREA"},{"p":"Pasal 19","t":"Pembekuan dan pengaktifan kembali KMI KOREA hanya dapat dilaksanakan pada Musyawarah Anggota Majelis Syuro KMI KOREA.","l":[]},{"p":"Pasal 20","t":"Pembubaran KMI KOREA hanya dapat dilaksanakan melalui Musyawarah Anggota Majelis Syuro KMI KOREA.","l":[]},{"sub":"Bagian Kedua: Perubahan AD/ART"},{"p":"Pasal 21","t":"Perubahan AD/ART KMI KOREA hanya dapat dilaksanakan pada Musyawarah Anggota Majelis Syuro KMI KOREA.","l":[]},{"sub":"Bagian Ketiga: Aturan Tambahan"},{"p":"Pasal 22","t":"Hal-hal lain yang belum diatur dalam Anggaran Dasar akan ditetapkan dalam Anggaran Rumah Tangga dan atau peraturan-peraturan lainnya sesuai dengan tata urutan peraturan KMI KOREA dan tidak bertentangan dengan Peraturan Dasar KMI KOREA.","l":[]},{"sub":"Bagian Keempat: Pengesahan"},{"p":"Pasal 23","t":"Pengesahan:","l":["Anggaran Dasar KMI KOREA ini sah sejak ditandatangani oleh pimpinan sidang Musyawarah Majelis Syuro KMI KOREA.","Semua ketentuan-ketentuan dan peraturan-peraturan yang bertentangan dengan Anggaran Dasar KMI KOREA ini dinyatakan tidak berlaku."]}]}],"pdf":"/dokumen/AD-KMI-2022.pdf","info":"Anggaran Dasar terbaru, disahkan 13 November 2022 di Daegu oleh Pimpinan Majelis Syuro. Ketentuan lama yang bertentangan dengannya dinyatakan tidak berlaku (Pasal 23)."},"ad2014":{"label":"Anggaran Dasar 2014","pendek":"AD 2014","status":"Arsip","sah":{"tanggal":"20 April 2014","tempat":"Korea Selatan","judul":"Pimpinan Majelis Syuro","nama":["Ust. Hadiyawarman \u2013 Seoul (Pimpinan)","Ust. Arifin \u2013 Busan","Ust. Arif \u2013 Daegu","Nur Sito Aji \u2013 Seoul","Rifqi \u2013 IMUSKA"]},"bab":[{"bab":"BAB I","judul":"Nama, Tempat & Waktu","isi":[{"p":"Pasal 1","t":"Nama dari wadah organisasi ini adalah \u201cKMI KOREA\u201d.","l":[]},{"p":"Pasal 2","t":"KMI KOREA memiliki sekretariat di Masjid Sayyidina Bilal, Changwon, Seongsan-gu, Jungang-dong 31-15, Gyeongnam, Korea Selatan.","l":[]},{"p":"Pasal 3","t":"KMI KOREA didirikan pada tanggal 17 Februari 2007 di KBRI Seoul.","l":[]}]},{"bab":"BAB II","judul":"Landasan, Status, Sifat & Kedaulatan","isi":[{"p":"Pasal 4","t":"KMI KOREA berlandaskan Islam dengan berpedoman kepada Al-Qur\u2019an, Sunah dan ijtihad jumhur Ulama.","l":[]},{"p":"Pasal 5","t":"KMI KOREA adalah sebagai wadah organisasi keislaman para WNI di seluruh Korea Selatan.","l":[]},{"p":"Pasal 6","t":"Sifat KMI KOREA adalah Independen, Mandiri, Ukhuwah Islamiyah & Kekeluargaan.","l":[]},{"p":"Pasal 7","t":"Kedaulatan berada di tangan Anggota KMI KOREA dan dilaksanakan sepenuhnya oleh Majelis Syura\u2019 KMI KOREA dan dijalankan oleh pengurus KMI KOREA.","l":[]}]},{"bab":"BAB III","judul":"Visi & Misi","isi":[{"p":"Pasal 8","t":"Visi KMI KOREA adalah menjadi organisasi keislaman yang profesional, bermanfaat dan solutif terhadap permasalahan umat Islam di Indonesia khususnya di Korea Selatan, dan berkontribusi aktif terhadap kemajuan bangsa dan negara Indonesia.","l":[]},{"p":"Pasal 9","t":"Misi KMI KOREA adalah:","l":["Memberikan pelayanan dan menjalankan organisasi yang profesional dan kredibel;","Berperan aktif, mendukung dan berusaha memfasilitasi kegiatan-kegiatan keislaman di sekitar Korea Selatan;","Mempelopori dan membantu berdirinya musholla/masjid di Korea Selatan;","Melakukan kegiatan-kegiatan yang bermanfaat, baik secara langsung kepada Muslim Indonesia di Korea Selatan, maupun bersama dengan organisasi/musholla/masjid yang ada di bawah naungan KMI KOREA."]}]},{"bab":"BAB IV","judul":"Identitas & Motto","isi":[{"p":"Pasal 10","t":"Identitas KMI KOREA adalah Lambang KMI KOREA. Arti lambang:","l":["Tulisan KMI dan Komunitas Muslim Indonesia adalah sebagai penjelasan atas nama organisasi;","Warna merah biru dalam bentuk lingkaran adalah ciri khas dari Korea Selatan, sebagai tempat kedudukan organisasi;","Kubah masjid merupakan identitas organisasi yang berlandaskan Islam;","Gambar bola dunia sebagai sikap dari organisasi yang terbuka akan perkembangan dunia dan berusaha menjadi bagian dari kebaikan, tidak hanya bagi muslim Indonesia yang ada di Korea namun juga masyarakat di dunia."]},{"p":"Pasal 11","t":"Motto KMI KOREA adalah \u201cJadikan Hari Esok Lebih Baik.\u201d","l":[]}]},{"bab":"BAB V","judul":"Keanggotaan","isi":[{"p":"Pasal 11","t":"Anggota KMI KOREA terdiri dari:","l":["Jama\u2019ah KMI KOREA, adalah setiap muslim laki-laki dan perempuan yang berada di Korea Selatan;","Anggota Khusus, adalah perwakilan pengurus organisasi/musholla/masjid yang memiliki hak dan kewajiban dalam kepengurusan KMI yang diatur dalam Anggaran Rumah Tangga KMI KOREA;","Anggota Kehormatan, adalah orang per orang yang disahkan oleh pengurus KMI KOREA dikarenakan jasa, kontribusi dan peran/status dalam memajukan KMI KOREA."]}]},{"bab":"BAB VI","judul":"Kelengkapan Organisasi","isi":[{"p":"Pasal 12","t":"Kelengkapan Organisasi KMI KOREA terdiri dari:","l":["Majelis Syuro KMI Korea, adalah Lembaga Tertinggi yang memegang peran Legislatif dan Yudikatif;","Pengurus KMI KOREA, adalah lembaga Eksekutif KMI KOREA;","Anggota Khusus, adalah perwakilan organisasi/musholla/masjid."]}]},{"bab":"BAB VII","judul":"Forum Pengambilan Keputusan & Tata Urutan Peraturan","isi":[{"p":"Pasal 13","t":"Forum pengambilan keputusan KMI KOREA terdiri dari:","l":["Musyawarah Anggota KMI KOREA;","Musyawarah Majelis Syuro KMI KOREA;","Musyawarah Luar Biasa KMI KOREA;","Rapat Pengurus KMI KOREA;","Rapat Bidang Pengurus KMI KOREA."]},{"p":"Pasal 14","t":"Tata urutan peraturan KMI KOREA adalah:","l":["Ketetapan Majelis Syuro KMI KOREA;","Ketetapan Pengurus KMI KOREA;","Ketetapan Rapat Bidang KMI KOREA."]}]},{"bab":"BAB VIII","judul":"Keuangan","isi":[{"p":"Pasal 15","t":"Sistem keuangan KMI KOREA berdasarkan pada prinsip Islami/syariah, mandiri, transparan, efektif dan efisien.","l":[]},{"p":"Pasal 16","t":"Pendapatan KMI KOREA diperoleh dari:","l":["Donasi anggota KMI KOREA;","Usaha-usaha dan sumber yang sah serta tidak bertentangan dengan Islam, landasan, visi dan misi KMI KOREA;","Dana-dana dan sumbangan lain yang tidak mengikat dan tidak bertentangan dengan Islam, landasan, visi dan misi KMI KOREA."]}]},{"bab":"BAB IX","judul":"Pergantian Struktur & Jangka Waktu Kepengurusan","isi":[{"p":"Pasal 17","t":"Pergantian kepengurusan dimulai:","l":["Pemilihan Majelis Syuro yang dilakukan oleh Rapat Anggota yang diwakili oleh para Anggota Khusus;","Majelis Syuro berjumlah 5 (lima) orang dan memiliki komposisi mantan Pengurus Harian KMI KOREA periode sebelumnya dan masing-masing 1 (satu) orang perwakilan dari wilayah Utara dan Selatan dan 1 (satu) orang perwakilan pelajar;","Selanjutnya Majelis Syuro memilih Pengurus Harian KMI KOREA periode berikutnya;","Pemilihan dilakukan berdasarkan prinsip Islam, dan meminimalisir pemungutan suara."]},{"p":"Pasal 18","t":"Jangka waktu kepengurusan adalah 1 (satu) tahun, dengan periodisasi dari Maret sampai Februari tahun berikutnya.","l":[]}]},{"bab":"BAB X","judul":"Penutup","isi":[{"sub":"Bagian Pertama: Pembekuan, Pengaktifan Kembali dan Pembubaran KMI KOREA"},{"p":"Pasal 19","t":"Pembekuan dan pengaktifan kembali KMI KOREA hanya dapat dilaksanakan pada Musyawarah Anggota KMI KOREA.","l":[]},{"p":"Pasal 20","t":"Pembubaran KMI KOREA hanya dapat dilaksanakan melalui Musyawarah Anggota KMI KOREA.","l":[]},{"sub":"Bagian Kedua: Perubahan AD/ART"},{"p":"Pasal 21","t":"Perubahan AD/ART KMI KOREA hanya dapat dilaksanakan pada Musyawarah Anggota KMI.","l":[]},{"sub":"Bagian Ketiga: Aturan Tambahan"},{"p":"Pasal 22","t":"Hal-hal lain yang belum diatur dalam Anggaran Dasar akan ditetapkan dalam Anggaran Rumah Tangga dan atau peraturan-peraturan lainnya sesuai dengan tata urutan peraturan KMI KOREA dan tidak bertentangan dengan Peraturan Dasar KMI KOREA.","l":[]},{"sub":"Bagian Keempat: Pengesahan"},{"p":"Pasal 23","t":"Pengesahan:","l":["Anggaran Dasar KMI KOREA ini sah sejak ditandatangani oleh pimpinan sidang Musyawarah Majelis Syuro KMI KOREA.","Semua ketentuan-ketentuan dan peraturan-peraturan yang bertentangan dengan Anggaran Dasar KMI KOREA ini dinyatakan tidak berlaku."]}]}],"pdf":"/dokumen/AD-ART-KMI-2014.pdf","info":"Anggaran Dasar sebelumnya (20 April 2014), disimpan sebagai arsip. Telah diperbarui oleh AD 2022."},"art2014":{"label":"Anggaran Rumah Tangga 2014","pendek":"ART 2014","status":"ART terakhir","sah":{"tanggal":"20 April 2014","tempat":"Korea Selatan","judul":"Pimpinan Majelis Syuro","nama":["Ust. Hadiyawarman \u2013 Seoul (Pimpinan)","Ust. Arifin \u2013 Busan","Ust. Arif \u2013 Daegu","Nur Sito Aji \u2013 Seoul","Rifqi \u2013 IMUSKA"]},"bab":[{"bab":"BAB I","judul":"Keanggotaan","isi":[{"sub":"Bagian Pertama: Kewajiban Jama\u2019ah dan Anggota Khusus"},{"p":"Pasal 1","t":"Kewajiban jama\u2019ah dan anggota khusus:","l":["Berusaha meningkatkan keimanan dan ketakwaan kepada Allah SWT;","Menaati AD/ART dan Peraturan KMI KOREA;","Menjaga dan ikut serta menjunjung tinggi nama baik KMI KOREA;","Anggota khusus wajib berperan aktif dalam segala kegiatan KMI dan menaati keputusan-keputusan yang diputuskan oleh Pengurus KMI."]},{"sub":"Bagian Kedua: Hak Anggota"},{"p":"Pasal 2","t":"Hak anggota:","l":["Setiap Anggota KMI KOREA berhak mendapatkan pelayanan dan fasilitas yang disediakan oleh KMI KOREA menurut prosedur yang berlaku;","Setiap anggota KMI KOREA berhak untuk mengeluarkan pendapat secara lisan maupun tulisan;","Setiap anggota KMI KOREA berhak untuk memilih dan dipilih;","Setiap anggota KMI KOREA berhak untuk berpartisipasi dalam semua kegiatan KMI KOREA menurut prosedur yang berlaku;","Setiap anggota KMI KOREA berhak untuk berpartisipasi dalam kepengurusan KMI KOREA menurut prosedur yang berlaku;","Anggota khusus memiliki hak suara dan pendapat dalam Rapat Anggota KMI."]},{"p":"Pasal 3","t":"Pemenuhan hak-hak anggota harus sesuai dengan ketentuan-ketentuan/peraturan-peraturan dalam KMI KOREA.","l":[]},{"sub":"Bagian Ketiga: Sanksi"},{"p":"Pasal 4","t":"Sanksi:","l":["Anggota KMI KOREA dapat diberi sanksi jika bertindak bertentangan dengan peraturan KMI KOREA, AD/ART KMI KOREA dan atau peraturan-peraturan/ketentuan-ketentuan lainnya yang telah ditetapkan oleh KMI KOREA;","Anggota KMI KOREA diberi sanksi sesuai dengan prosedur yang berlaku;","Pembuatan prosedur dan penjatuhan sanksi merupakan wewenang Majelis Syuro yang dijalankan oleh Pengurus KMI KOREA;","Sanksi yang diberikan dilaksanakan dengan tegas dan bertanggung jawab."]},{"sub":"Bagian Keempat: Tuntutan & Pembelaan"},{"p":"Pasal 5","t":"Tuntutan dan pembelaan:","l":["Setiap anggota KMI KOREA berhak untuk melakukan tuntutan kepada anggota KMI KOREA yang lain dan atau Pengurus KMI KOREA sesuai dengan peraturan yang berlaku;","Anggota KMI KOREA dan atau Pengurus KMI KOREA yang dikenai tuntutan mempunyai hak untuk melakukan pembelaan sesuai dengan peraturan yang berlaku."]},{"sub":"Bagian Kelima: Kehilangan Keanggotaan"},{"p":"Pasal 6","t":"Setiap anggota KMI KOREA kehilangan keanggotaan jika disahkan oleh Majelis Syuro dan rapat Pengurus dikarenakan sanksi, meninggal dunia, atau mengundurkan diri.","l":[]}]},{"bab":"BAB II","judul":"Musyawarah Anggota","isi":[{"p":"Pasal 7","t":"Musyawarah anggota adalah musyawarah yang melibatkan komponen KMI KOREA, yang dipimpin oleh Majelis Syuro atau yang disepakati oleh seluruh peserta.","l":[]},{"p":"Pasal 8","t":"Komponen KMI KOREA adalah Anggota KMI KOREA, Majelis Syuro, dan Pengurus KMI KOREA.","l":[]},{"p":"Pasal 9","t":"Musyawarah anggota dilaksanakan minimal 1 (satu) kali dalam 1 (satu) tahun.","l":[]},{"p":"Pasal 10","t":"Yang menyebabkan dapat diadakannya Musyawarah Anggota adalah dalam rangka Pemilihan Majelis Syuro dan atau jika terjadi hal-hal yang di luar kemampuan dan kewenangan Majelis Syuro.","l":[]},{"p":"Pasal 11","t":"Syarat sah Musyawarah Anggota, dihadiri oleh:","l":["Anggota khusus KMI KOREA di luar Majelis Syuro dan Pengurus, minimal \u00bd (setengah) dari jumlah organisasi yang ada;","Minimal 2/3 anggota Majelis Syuro KMI KOREA;","Minimal \u00bd Pengurus KMI KOREA."]},{"p":"Pasal 12","t":"Untuk kondisi luar biasa di mana syarat sah Musyawarah Anggota tidak dapat dipenuhi, dikarenakan hal-hal di luar batas kemampuan manusia yang terjadi pada anggota Majelis Syuro dan Pengurus KMI KOREA, maka Musyawarah Anggota bisa dilaksanakan oleh Anggota KMI KOREA yang hadir.","l":[]}]},{"bab":"BAB III","judul":"Majelis Syuro KMI KOREA","isi":[{"sub":"Bagian Pertama: Ketentuan Dasar Majelis Syuro"},{"p":"Pasal 13","t":"Anggota Majelis Syura KMI KOREA terdiri dari Anggota KMI KOREA yang dipilih secara langsung oleh Anggota KMI KOREA melalui Musyawarah Anggota.","l":[]},{"sub":"Bagian Kedua: Kelengkapan Majelis Syuro KMI KOREA"},{"p":"Pasal 14","t":"Dalam melaksanakan tugasnya, kelengkapan Majelis Syura\u2019 KMI KOREA minimal terdiri dari:","l":["Ketua;","Sekretaris;","Anggota."]},{"sub":"Bagian Ketiga: Kewajiban Majelis Syuro KMI KOREA"},{"p":"Pasal 15","t":"Majelis Syuro KMI KOREA memiliki kewajiban:","l":["Menaati dan melaksanakan landasan KMI KOREA, putusan Musyawarah Majelis Syura\u2019 KMI KOREA;","Menampung dan mempertimbangkan segala aspirasi Anggota KMI KOREA yang disampaikan kepada Majelis Syura\u2019 KMI KOREA;","Mempertimbangkan dan mengesahkan rancangan program kerja dan rancangan anggaran Pengurus KMI KOREA;","Mengawasi pelaksanaan program kerja dan AD/ART pengurus KMI KOREA, hasil-hasil Musyawarah Syura\u2019, dan hasil-hasil ketetapan Majelis Syura\u2019; memfasilitasi penyelesaian masalah yang timbul dalam kepengurusan KMI KOREA;","Bertanggung jawab atas terselenggaranya pergantian kepengurusan KMI KOREA;","Memberikan mandat kepada calon ketua terpilih sebagai ketua KMI KOREA;","Meminta laporan pertanggungjawaban kepada KMI KOREA pada akhir masa jabatan;","Bertanggung jawab atas terselenggaranya Musyawarah Syura\u2019 KMI KOREA;","Mengusut dan memeriksa apabila ada indikasi penyimpangan yang dilakukan oleh Pengurus KMI KOREA;","Menyusun sistem kaderisasi di KMI KOREA."]},{"sub":"Bagian Keempat: Hak Majelis Syuro KMI KOREA"},{"p":"Pasal 16","t":"Majelis Syuro KMI KOREA memiliki hak:","l":["Legislasi dan yudikasi;","Membuat peraturan yang tidak bertentangan dengan hasil Musyawarah Anggota KMI KOREA;","Mencabut mandat ketua KMI KOREA;","Menerima atau menolak peraturan-peraturan yang diajukan Pengurus KMI KOREA;","Memanggil Anggota/Anggota Khusus atau pengurus KMI KOREA yang dianggap perlu untuk menyelesaikan masalah yang timbul dalam KMI KOREA;","Menolak atau menerima pengunduran diri Ketua KMI KOREA;","Menolak atau menerima Laporan Pertanggungjawaban Pengurus KMI KOREA;","Memberikan sanksi kepada anggota atau Pengurus KMI KOREA."]},{"sub":"Bagian Kelima: Mekanisme Pencalonan & Pemilihan Anggota Majelis Syuro"},{"p":"Pasal 17","t":"Persyaratan calon anggota Majelis Syuro KMI KOREA adalah:","l":["Anggota KMI KOREA;","Sudah pernah aktif dalam kepanitiaan-kepanitiaan KMI KOREA/menjabat kepengurusan KMI;","Bersedia dicalonkan;","Berpegang teguh pada nilai-nilai keislaman/komitmen keislaman, bertakwa kepada Allah SWT, serius dalam kemaslahatan serta perjuangan umat;","Memiliki pengetahuan hukum dan syariat yang memadai;","Mempunyai kemampuan manajerial dan pengalaman organisasi."]},{"p":"Pasal 18","t":"Anggota Majelis Syura\u2019 dipilih melalui mekanisme Musyawarah Anggota.","l":[]}]},{"bab":"BAB IV","judul":"Pengurus KMI KOREA","isi":[{"sub":"Bagian Pertama: Ketentuan Dasar Pengurus KMI KOREA"},{"p":"Pasal 19","t":"Pengurus KMI KOREA adalah lembaga eksekutif KMI KOREA.","l":[]},{"sub":"Bagian Kedua: Struktur Pengurus KMI KOREA"},{"p":"Pasal 20","t":"Struktur Pengurus KMI KOREA minimal terdiri dari:","l":["Ketua KMI KOREA;","Badan Pengurus Harian KMI KOREA yang sekurang-kurangnya terdiri dari Sekretaris Umum, Bendahara Umum, dan Ketua-ketua Bidang."]},{"sub":"Bagian Ketiga: Kewajiban Pengurus KMI KOREA"},{"p":"Pasal 21","t":"Pengurus KMI KOREA memiliki kewajiban:","l":["Menaati dan melaksanakan landasan-landasan KMI KOREA, putusan Musyawarah Syura\u2019 KMI KOREA;","Menyerahkan rencana program kerja kepada Majelis Syuro;","Mempublikasikan program kerja yang telah disahkan oleh Majelis Syuro;","Memberikan laporan kepada Majelis Syuro tentang perkembangan program kerja sekurang-kurangnya 4 (empat) bulan sekali atau jika diminta;","Memberikan penjelasan atas pertanyaan yang diajukan oleh Majelis Syuro;","Memberikan laporan pertanggungjawaban ketika masa jabatan berakhir atau jika diminta sewaktu-waktu;","Mengontrol kepanitiaan-kepanitiaan yang telah dibentuk oleh Pengurus KMI Korea."]},{"sub":"Bagian Keempat: Hak Pengurus KMI KOREA"},{"p":"Pasal 22","t":"Pengurus KMI KOREA memiliki hak:","l":["Membentuk kepanitiaan-kepanitiaan yang diperlukan untuk melaksanakan tugas-tugas Pengurus KMI Korea;","Meminta LPJ dari kepanitiaan-kepanitiaan yang telah dibentuk;","Membubarkan kepanitiaan yang telah menyelesaikan tugas-tugas yang diberikan atau bila diperlukan;","Mengajukan keberatan terhadap putusan Majelis Syuro;","Memberikan penghargaan kepada orang yang dianggap berjasa kepada KMI KOREA dengan persetujuan Majelis Syuro;","Mengangkat anggota kehormatan."]},{"sub":"Bagian Kelima: Mekanisme Pemilihan Ketua KMI KOREA"},{"p":"Pasal 23","t":"Mekanisme pemilihan ketua:","l":["Proses pemilihan diawali dengan pemaparan tanggapan Majelis Syuro terhadap Laporan Pertanggungjawaban Pengurus KMI Korea periode sebelumnya;","Proses pemilihan dapat diselenggarakan oleh Panitia Pemilihan Umum yang ditunjuk oleh Majelis Syuro;","Ketua Pengurus KMI Korea diusulkan oleh anggota KMI KOREA;","Setiap perwakilan musholla memiliki hak satu suara."]},{"p":"Pasal 24","t":"Persyaratan Calon Ketua KMI KOREA adalah:","l":["Anggota KMI KOREA;","Pernah aktif dalam kepanitiaan-kepanitiaan di KMI KOREA minimal 6 bulan;","Bersedia untuk menjabat hingga masa akhir jabatan;","Memiliki pengetahuan hukum Islam yang memadai;","Bersedia untuk tidak menjabat dalam organisasi lain di luar KMI KOREA, kecuali untuk jabatan yang berhubungan dengan posisi sebagai Ketua KMI KOREA;","Berpegang teguh pada nilai-nilai keislaman/komitmen keislaman, bertakwa kepada Allah SWT, serius dalam kemaslahatan serta perjuangan umat;","Mempunyai kemampuan manajerial dan pengalaman organisasi."]},{"p":"Pasal 25","t":"Mekanisme pemberhentian Ketua KMI KOREA adalah:","l":["Majelis Syuro mengeluarkan Surat Peringatan kepada Ketua KMI KOREA, apabila dianggap telah memenuhi persyaratan pemberhentian Ketua KMI KOREA;","Setelah Surat Peringatan 3 diputuskan, maka Majelis Syuro mengeluarkan putusan pelaksanaan Musyawarah Majelis Syuro."]}]},{"bab":"BAB V","judul":"Masa Jabatan, Laporan Pertanggungjawaban & Serah Terima Jabatan","isi":[{"p":"Pasal 26","t":"Masa jabatan dan LPJ:","l":["Masa jabatan Pengurus KMI Korea adalah 1 (satu) tahun kepengurusan terhitung sejak serah terima jabatan dan setelah itu dapat dipilih kembali;","Laporan Pertanggungjawaban diserahkan kepada Majelis Syuro sebelum dilakukan pergantian kepengurusan."]},{"p":"Pasal 27","t":"Pemilihan ketua KMI Korea dilakukan pada bulan Maret atau selambat-lambatnya 1 bulan setelah terbentuknya Majelis Syuro yang baru.","l":[]}]},{"bab":"BAB VI","judul":"Keuangan","isi":[{"p":"Pasal 28","t":"Kekayaan dan keuangan serta perbendaharaan KMI KOREA meliputi segala uang tunai, tabungan, surat-surat berharga, barang-barang yang dimiliki secara sah, sisa dana, dan peralatan panitia yang pernah dibentuk oleh Pengurus KMI KOREA yang ada di lingkungan KMI KOREA, yang pengelolaannya dilakukan sepenuhnya oleh Pengurus KMI KOREA.","l":[]},{"p":"Pasal 29","t":"Segala sesuatu yang menyangkut persoalan keuangan baik yang masuk maupun keluar harus dibukukan dan disertai bukti yang sah dan dapat dipertanggungjawabkan.","l":[]},{"p":"Pasal 30","t":"Sebagai bentuk transparansi keuangan, laporan dipublikasikan minimal setiap satu bulan sekali.","l":[]}]},{"bab":"BAB VII","judul":"Penutup","isi":[{"sub":"Pengesahan"},{"p":"Pasal 31","t":"Pengesahan:","l":["Peraturan Rumah Tangga KMI KOREA ini sah sejak ditandatangani oleh Ketua Majelis Syuro;","Semua ketentuan-ketentuan dan peraturan-peraturan yang bertentangan dengan Peraturan Rumah Tangga KMI KOREA ini dinyatakan tidak berlaku."]}]}],"pdf":"/dokumen/AD-ART-KMI-2014.pdf","info":"Anggaran Rumah Tangga terakhir yang tersedia (20 April 2014). Mengatur hal-hal rinci yang belum diatur Anggaran Dasar, sepanjang tidak bertentangan dengan AD 2022 (Pasal 22\u201323)."}},"ubah":[["Nama resmi","\u201cKMI KOREA\u201d","\u201cKomunitas Muslim Indonesia di Korea\u201d disingkat KMI KOREA","Pasal 1"],["Sekretariat","Masjid Sayyidina Bilal, Changwon (Gyeongnam)","Masjid Al-Ikhlas, Yongin (Gyeonggi-do)","Pasal 2"],["Kedaulatan","Di tangan Anggota, dilaksanakan Majelis Syuro","Di tangan Musyawarah Majelis Syuro, dilaksanakan Pengurus & Anggota","Pasal 7"],["Visi","Organisasi keislaman yang profesional, bermanfaat dan solutif","Rumah besar umat Islam Indonesia yang berkontribusi aktif bagi perkembangan Islam di Korea Selatan","Pasal 8"],["Misi","4 poin","5 poin \u2014 tambahan kemakmuran masjid, kolaborasi organisasi Islam, regenerasi dakwah","Pasal 9"],["Motto","\u201cJadikan Hari Esok Lebih Baik\u201d","\u201cTerjalin Ukhuwah Islamiyah Umat Islam Indonesia di Korea Selatan\u201d","Pasal 11"],["Anggota","Jama\u2019ah: setiap muslim di Korea Selatan","Anggota Umum: umat Islam Indonesia yang menjadi jamaah masjid di Korea Selatan","Pasal 11"],["Kelengkapan organisasi","Majelis Syuro, Pengurus, Anggota Khusus","Ditambah Penanggung Jawab (legal Korea), Gubernur wilayah, dan Amir Masjid","Pasal 12"],["Tata urutan peraturan","Ketetapan Majelis Syuro \u2192 Pengurus \u2192 Rapat Bidang","AD/ART \u2192 Peraturan Majelis Syuro \u2192 Peraturan Ketua \u2192 Keputusan Ketua","Pasal 13"],["Forum keputusan","5 forum","6 forum \u2014 ditambah Rapat Koordinator Wilayah","Pasal 14"],["Sumber pendapatan","3 sumber","4 sumber \u2014 ditambah kolaborasi dengan pihak ketiga","Pasal 16"],["Majelis Syuro","5 orang, dipilih Rapat Anggota (diwakili Anggota Khusus)","9 orang, dipilih Musyawarah Anggota; mewakili wilayah, KMF, ormas Indonesia, mahasiswa/pelajar","Pasal 17"],["Yang dipilih Majelis Syuro","Pengurus Harian","Ketua KMI KOREA","Pasal 17"],["Periode kepengurusan","1 tahun, Maret \u2013 Februari","1 tahun sejak tanggal ditetapkan","Pasal 18"],["Pembekuan, pembubaran & perubahan AD/ART","Musyawarah Anggota","Musyawarah Anggota Majelis Syuro","Pasal 19\u201321"]]};
+const ORG = { tab: "riwayat", doc: "ad2022", q: "", judul: "" };
+const ORG_HTTP = /^https?:$/.test(location.protocol);
+function orgUrl(tab, anchor = "") {
+  return ORG_HTTP ? "/organisasi" + (tab === "adart" ? "?bagian=adart" : "") + (anchor ? "#" + anchor : "") : "#/organisasi" + (tab === "adart" ? "/adart" : "");
+}
+function halamanOrgTerbuka() { const o = document.getElementById("kmi-org"); return !!o && !o.hidden; }
+function tandaiNavOrg() {
+  const on = halamanOrgTerbuka();
+  $$("[data-page='organisasi']").forEach(a => a.classList.toggle("active", on && a.closest(".nav-links, .nav-drawer") !== null));
+  if (on) $$(".nav-links [data-go], .nav-drawer > [data-go]").forEach(a => a.classList.remove("active"));
+}
+function bukaOrganisasi(tab = "riwayat", opt = {}) {
+  const { push = true, anchor = "" } = opt;
+  if (!halamanOrgTerbuka()) ORG.judul = document.title;
+  ORG.tab = tab === "adart" ? "adart" : "riwayat";
+  $("#kmi-main").hidden = true; $("#kmi-org").hidden = false;
+  closeDrawer(); renderOrg(); tandaiNavOrg();
+  if (push) { try { history.pushState({ org: ORG.tab }, "", orgUrl(ORG.tab, anchor)); } catch (e) { } }
+  document.title = (ORG.tab === "adart" ? "AD/ART" : "Pengurus dari Masa ke Masa") + " \u00b7 " + namaSingkat();
+  if (anchor) setTimeout(() => lompatPasal(anchor), 80); else { root.style.scrollBehavior = "auto"; root.scrollTop = 0; window.scrollTo(0, 0); root.style.scrollBehavior = ""; }
+}
+function tutupOrganisasi(push = true) {
+  if (!halamanOrgTerbuka()) return;
+  $("#kmi-org").hidden = true; $("#kmi-main").hidden = false; tandaiNavOrg();
+  if (ORG.judul) document.title = ORG.judul;
+  if (push) { try { history.pushState({}, "", ORG_HTTP ? "/" : location.pathname + location.search); } catch (e) { } }
+}
+function ruteDariUrl() {
+  const p = location.pathname.replace(/\/+$/, ""), h = location.hash || "";
+  const org = (ORG_HTTP && p === "/organisasi") || h.indexOf("#/organisasi") === 0;
+  if (!org) { tutupOrganisasi(false); return; }
+  const anchor = /^#(ad2022|ad2014|art2014)-/.test(h) ? decodeURIComponent(h.slice(1)) : "";
+  const tab = anchor || /bagian=adart/.test(location.search) || h.indexOf("#/organisasi/adart") === 0 ? "adart" : "riwayat";
+  bukaOrganisasi(tab, { push: false, anchor });
+}
+window.addEventListener("popstate", () => { if (!$("#kmi-landing").hidden) ruteDariUrl(); });
+
+function renderOrg() {
+  const tabs = [["riwayat", "users", "Pengurus dari Masa ke Masa"], ["adart", "book-open", "AD/ART"]];
+  const ad = ORG.tab === "adart";
+  $("#kmi-org").innerHTML = `<section class="sec org-hero"><div class="container">
+      <nav class="org-crumb" aria-label="Lokasi halaman"><a href="${ORG_HTTP ? "/" : "#beranda"}" data-go="beranda">Beranda</a>${icon("chevron-right")}<span>Organisasi</span>${icon("chevron-right")}<span>${ad ? "AD/ART" : "Pengurus dari Masa ke Masa"}</span></nav>
+      <div class="sec-head"><span class="eyebrow">${icon("mosque")}Profil Organisasi</span>
+        <h1 class="sec-title">${ad ? "Anggaran Dasar &amp; Anggaran Rumah Tangga" : "Pengurus dari Masa ke Masa"}</h1>
+        <p class="sec-desc">${ad ? `Landasan, aturan, dan struktur ${esc(namaLengkap())}. Bisa dicari per kata dan dibagikan per pasal.` : `Jejak kepengurusan ${esc(namaLengkap())} dari periode ke periode, sejak berdiri pada 17 Februari 2007 di KBRI Seoul.`}</p></div>
+      <div class="org-tabs" role="tablist">${tabs.map(([id, ic, l]) => `<button type="button" role="tab" aria-selected="${ORG.tab === id}" class="${ORG.tab === id ? "on" : ""}" data-orgtab="${id}">${icon(ic)}${l}</button>`).join("")}</div>
+    </div></section>
+    <section class="sec org-body"><div class="container" id="org-isi"></div></section>`;
+  if (ad) renderAdart(); else renderRiwayat();
+}
+
+// ----- Pengurus dari masa ke masa -----
+function parseSusunan(t) {
+  return lines(t).map(l => { const i = l.indexOf("|"); return i < 0 ? { j: "", n: l } : { j: l.slice(0, i).trim(), n: l.slice(i + 1).trim() }; }).filter(x => x.n || x.j);
+}
+function renderRiwayat() {
+  const r = PUB.riwayat || [];
+  const kini = new Date().getFullYear();
+  const linkKini = (PUB.pengurus || []).length ? `<a href="#pengurus" class="org-link" data-go="pengurus">Lihat susunan pengurus saat ini${icon("arrow-right")}</a>` : "";
+  if (!r.length) {
+    $("#org-isi").innerHTML = `<div class="card org-empty">${icon("users")}<h3>Riwayat kepengurusan sedang dilengkapi</h3><p>Pengurus akan menambahkan data periode-periode kepengurusan ${esc(namaSingkat())} di sini.</p>${linkKini}</div>`;
+    return;
+  }
+  const tertua = Math.min(...r.map(x => x.tahun_mulai || kini));
+  $("#org-isi").innerHTML = `<div class="org-stats">
+      <div><b>${r.length}</b><span>periode kepengurusan tercatat</span></div>
+      <div><b>${esc(String(tertua))}</b><span>periode tertua yang tercatat</span></div>
+      <div><b>2007</b><span>${esc(namaSingkat())} berdiri di KBRI Seoul</span></div></div>
+    <ol class="tl">${r.map((p, i) => {
+      const s = parseSusunan(p.susunan), foto = imgUrl(p.foto_url);
+      const berjalan = i === 0 && (!p.tahun_selesai || p.tahun_selesai >= kini);
+      const thn = p.tahun_selesai && p.tahun_selesai !== p.tahun_mulai ? `${p.tahun_mulai} \u2013 ${p.tahun_selesai}` : String(p.tahun_mulai);
+      return `<li class="tl-item ${berjalan ? "now" : ""}"><span class="tl-dot"></span><div class="tl-year">${esc(thn)}</div>
+        <article class="card tl-card">
+          <div class="tl-head"><span class="badge">${icon("calendar")}Periode ${esc(p.judul)}</span>${berjalan ? `<span class="badge tl-now">Periode berjalan</span>` : ""}</div>
+          ${p.ketua ? `<div class="tl-ketua"><span class="avatar avatar-i">${esc(initials(p.ketua))}</span><div><small>Ketua</small><b>${esc(p.ketua)}</b></div></div>` : ""}
+          ${p.catatan ? `<p class="tl-cat">${esc(p.catatan)}</p>` : ""}
+          ${foto ? `<img class="tl-foto" src="${esc(foto)}" alt="Foto pengurus periode ${esc(p.judul)}" loading="lazy">` : ""}
+          ${s.length ? `<details class="tl-sus"${i === 0 ? " open" : ""}><summary>Susunan pengurus (${s.length} orang)${icon("chevron-down")}</summary><ul>${s.map(x => `<li>${x.j ? `<span>${esc(x.j)}</span>` : ""}<b>${esc(x.n)}</b></li>`).join("")}</ul></details>` : ""}
+        </article></li>`;
+    }).join("")}</ol>${linkKini}`;
+}
+
+// ----- AD/ART -----
+function adCari(s) { return String(s).toLowerCase().replace(/[\u2018\u2019]/g, "'"); }
+function adSorot(text) {
+  const t = String(text ?? "");
+  if (!ORG.q) return esc(t);
+  const n = adCari(t), k = adCari(ORG.q); let out = "", i = 0, at;
+  while ((at = n.indexOf(k, i)) !== -1) { out += esc(t.slice(i, at)) + "<mark>" + esc(t.slice(at, at + k.length)) + "</mark>"; i = at + k.length; }
+  return out + esc(t.slice(i));
+}
+function adSlug(s) { return String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
+function adPid(doc, bab, pasal) { return doc + "-" + adSlug(pasal) + (bab === "BAB V" && pasal === "Pasal 11" ? "-anggota" : ""); }
+function renderAdart() {
+  const d = ADART.docs[ORG.doc];
+  const logo = imgUrl(S("logo_url")) || DEFAULT_LOGO;
+  const lambang = ADART.docs.ad2022.bab[3].isi[0].l;
+  $("#org-isi").innerHTML = `
+    <div class="ad-docs" role="tablist">${["ad2022", "ad2014", "art2014"].map(id => `<button type="button" role="tab" aria-selected="${id === ORG.doc}" class="${id === ORG.doc ? "on" : ""}" data-adoc="${id}">${ADART.docs[id].pendek}<span>${ADART.docs[id].status}</span></button>`).join("")}</div>
+    <div class="ad-info">${icon("info")}<span>${esc(d.info)}</span></div>
+    <div class="ad-tools"><label class="ad-search">${icon("search")}<input class="input" id="ad-q" type="search" placeholder="Cari kata, mis. ketua, keuangan, syuro" value="${esc(ORG.q)}" autocomplete="off" aria-label="Cari di ${esc(d.label)}"></label>
+      <button type="button" class="btn btn-outline" data-adbuka>${icon("book-open")}Buka semua</button></div>
+    <div id="ad-doc"></div>
+
+    <h2 class="ad-h3" id="ad-struktur">Struktur Organisasi</h2><p class="ad-lead">Menurut Anggaran Dasar 2022 (Pasal 7, 11, 12, 17) dan ART 2014 (Pasal 20).</p>
+    <div class="chart">
+      <div class="lv"><div class="bx hi"><b>Musyawarah Anggota</b><small>Memilih anggota Majelis Syuro</small></div></div><div class="ar"></div>
+      <div class="lv"><div class="bx dk"><b>Majelis Syuro \u00b7 9 orang</b><small>Lembaga tertinggi: legislatif &amp; yudikatif. Mewakili wilayah, KMF, ormas Indonesia, mahasiswa/pelajar.</small></div><div class="bx sd"><b>Penanggung Jawab</b><small>Perorangan yang terdaftar dalam dokumen legal di Pemerintah Korea Selatan</small></div></div><div class="ar"></div>
+      <div class="lv"><div class="bx hi"><b>Ketua KMI KOREA</b><small>Dipilih Majelis Syuro \u00b7 masa jabatan 1 tahun</small></div></div><div class="ar"></div>
+      <div class="lv"><div class="bx"><b>Pengurus (Eksekutif)</b><small>Badan Pengurus Harian: Sekretaris Umum, Bendahara Umum, Ketua-ketua Bidang</small></div><div class="bx"><b>Gubernur Wilayah</b><small>Koordinator Amir Masjid: Utara, Daegu, Jeollabuk-do, Busan, Pulau Jeju</small></div></div><div class="ar"></div>
+      <div class="lv"><div class="bx"><b>Amir Masjid</b><small>Ketua DKM masjid/musholla Indonesia di Korea Selatan</small></div></div><div class="ar"></div>
+      <div class="lv"><div class="bx"><b>Anggota</b><small>Umum (jamaah masjid) \u00b7 Khusus (perwakilan organisasi/masjid) \u00b7 Kehormatan</small></div></div>
+    </div>
+
+    <h2 class="ad-h3">Arti Lambang</h2><p class="ad-lead">Anggaran Dasar 2022, Pasal 10.</p>
+    <div class="lambang"><img src="${esc(logo)}" alt="Lambang ${esc(namaSingkat())}"><ul>${lambang.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>
+
+    <h2 class="ad-h3">Apa yang berubah dari 2014 ke 2022?</h2><p class="ad-lead">Perbandingan Anggaran Dasar 2014 dengan Anggaran Dasar 2022.</p>
+    <div class="card ad-ubah"><table><thead><tr><th>Hal</th><th>AD 2014</th><th>AD 2022</th><th>Pasal</th></tr></thead><tbody>${ADART.ubah.map(([a, b, c, p]) => `<tr><th scope="row">${esc(a)}</th><td data-l="AD 2014">${esc(b)}</td><td data-l="AD 2022"><b>${esc(c)}</b></td><td class="ps" data-l="Pasal">${esc(p)}</td></tr>`).join("")}</tbody></table></div>
+
+    <h2 class="ad-h3">Dokumen asli</h2><p class="ad-lead">Unduh berkas PDF resmi yang ditandatangani Majelis Syuro.</p>
+    <div class="ad-dl">
+      <div class="card"><span class="pdf">PDF</span><div><b>Anggaran Dasar KMI 2022</b><small>Disahkan 13 November 2022, Daegu \u00b7 7 halaman</small></div><a class="btn btn-primary btn-sm" href="/dokumen/AD-KMI-2022.pdf" target="_blank" rel="noopener">${icon("download")}Unduh</a></div>
+      <div class="card"><span class="pdf">PDF</span><div><b>AD/ART KMI Korea 2014</b><small>Disahkan 20 April 2014 \u00b7 11 halaman</small></div><a class="btn btn-primary btn-sm" href="/dokumen/AD-ART-KMI-2014.pdf" target="_blank" rel="noopener">${icon("download")}Unduh</a></div>
+    </div>
+    <p class="ad-note">Ejaan pada halaman ini dirapikan seperlunya agar mudah dibaca, tanpa mengubah isi dan penomoran. Rujukan resmi tetap dokumen asli (PDF).</p>`;
+  gambarDokumen();
+}
+function gambarDokumen(bukaSemua = false) {
+  const d = ADART.docs[ORG.doc], k = adCari(ORG.q);
+  const cocok = x => !k || adCari(x.p + " " + x.t + " " + x.l.join(" ")).includes(k);
+  let total = 0;
+  const html = d.bab.map(b => {
+    const isi = b.isi.filter(x => x.sub || cocok(x)), n = isi.filter(x => !x.sub).length;
+    if (k && !n) return "";
+    total += n;
+    const body = isi.map((x, i) => {
+      if (x.sub) { const nx = isi[i + 1]; return nx && !nx.sub ? `<div class="ad-sub">${esc(x.sub)}</div>` : ""; }
+      const id = adPid(ORG.doc, b.bab, x.p);
+      return `<div class="ad-ps" id="${id}"><span class="ad-pn">${esc(x.p)}</span><div><p>${adSorot(x.t)}</p>${x.l.length ? `<ol>${x.l.map(li => `<li>${adSorot(li)}</li>`).join("")}</ol>` : ""}</div><button type="button" class="ad-cp" data-salin="${id}" title="Salin tautan ${esc(x.p)}" aria-label="Salin tautan ${esc(x.p)}">${icon("copy")}</button></div>`;
+    }).join("");
+    return `<details class="ad-bab" id="${ORG.doc}-${adSlug(b.bab)}"${k || bukaSemua ? " open" : ""}><summary><span class="no">${esc(b.bab)}</span><span class="jd">${adSorot(b.judul)}</span><span class="ct">${n} pasal</span>${icon("chevron-down")}</summary><div class="ad-body">${body}</div></details>`;
+  }).join("");
+  const s = d.sah;
+  $("#ad-doc").innerHTML = (k && !total)
+    ? `<div class="card org-empty">${icon("search")}<p>Tidak ada pasal yang memuat \u201c${esc(ORG.q)}\u201d di ${esc(d.label)}. Coba kata lain atau pilih dokumen lain.</p></div>`
+    : html + (k ? "" : `<div class="card ad-sah"><b>Disahkan ${esc(s.tanggal)} di ${esc(s.tempat)}</b><div class="ad-note" style="margin-top:4px">${esc(s.judul)}:</div><ul>${s.nama.map(n => `<li>${esc(n)}</li>`).join("")}</ul></div>`);
+}
+function lompatPasal(id) {
+  const doc = ["ad2022", "ad2014", "art2014"].find(x => id.indexOf(x + "-") === 0);
+  if (!doc) return;
+  if (ORG.tab !== "adart" || ORG.doc !== doc || ORG.q) { ORG.tab = "adart"; ORG.doc = doc; ORG.q = ""; renderOrg(); tandaiNavOrg(); }
+  const t = document.getElementById(id); if (!t) return;
+  const det = t.closest("details"); if (det) det.open = true;
+  t.scrollIntoView({ block: "center" }); t.classList.remove("flash"); void t.offsetWidth; t.classList.add("flash");
+}
+function klikOrganisasi(e) {
+  const pg = e.target.closest("[data-page]");
+  if (pg) { e.preventDefault(); bukaOrganisasi(pg.dataset.tab || "riwayat"); return true; }
+  const t = e.target.closest("[data-orgtab]");
+  if (t) { if (t.dataset.orgtab !== ORG.tab) bukaOrganisasi(t.dataset.orgtab); return true; }
+  const dc = e.target.closest("[data-adoc]");
+  if (dc) { ORG.doc = dc.dataset.adoc; renderAdart(); return true; }
+  if (e.target.closest("[data-adbuka]")) {
+    const all = $$("#ad-doc details.ad-bab"), tutup = all.some(x => !x.open);
+    all.forEach(x => { x.open = tutup; });
+    e.target.closest("[data-adbuka]").lastChild.textContent = tutup ? "Tutup semua" : "Buka semua";
+    return true;
+  }
+  const cp = e.target.closest("[data-salin]");
+  if (cp) {
+    const url = ORG_HTTP ? location.origin + orgUrl("adart", cp.dataset.salin) : location.href;
+    copyText(url).then(() => toast("Tautan " + cp.closest(".ad-ps").querySelector(".ad-pn").textContent + " disalin."));
+    return true;
+  }
+  return false;
+}
+
 function renderLanding() {
   applyTheme();
   renderHero(); renderTentang(); renderKegiatan(); renderFacebook(); renderSosmed(); renderGaleri(); renderDonasi(); renderKeuangan(); renderPengurus(); renderFaq(); renderMasjid(); renderKontak();
   renderNav(); renderFooter();
   initSliders();
+  if (halamanOrgTerbuka()) renderOrg();
 }
 
 function renderLandingSkeleton() {
@@ -2458,9 +2778,11 @@ function observeSections() {
 
 // Event landing (delegasi)
 $("#kmi-landing").addEventListener("click", async e => {
+  if (klikOrganisasi(e)) return;
   const go = e.target.closest("[data-go]");
   if (go) {
     e.preventDefault();
+    if (halamanOrgTerbuka()) tutupOrganisasi();
     if (go.dataset.kat) setTimeout(() => { const s = $("#cf-kat"); if (s) s.value = go.dataset.kat; }, 50);
     scrollToSec(go.dataset.go); return;
   }
@@ -2476,6 +2798,9 @@ $("#kmi-landing").addEventListener("click", async e => {
     scrollToSec("kontak");
     setTimeout(() => { const s = $("#cf-kat"); if (s) { s.value = "Donasi"; s.dispatchEvent(new Event("input", { bubbles: true })); } const n = $("#cf-nama"); if (n) n.focus({ preventScroll: true }); }, 450);
   }
+});
+$("#kmi-landing").addEventListener("input", e => {
+  if (e.target.id === "ad-q") { const v = e.target.value.trim(); if (v.length === 1) return; ORG.q = v; gambarDokumen(); }
 });
 $("#kmi-landing").addEventListener("change", e => {
   if (e.target.id === "fin-per") { keuState.periode = e.target.value; keuState.shown = 8; renderKeuangan(); }
@@ -2511,7 +2836,7 @@ async function loadPublik() {
   if (cached) { PUB = cached; renderLanding(); } else renderLandingSkeleton();
   try {
     const data = await api.getPublik();
-    PUB = { pengaturan: data.pengaturan || {}, kegiatan: data.kegiatan || [], galeri: data.galeri || [], pengurus: data.pengurus || [], faq: data.faq || [], keuangan: data.keuangan || [], facebook: data.facebook || [] };
+    PUB = { pengaturan: data.pengaturan || {}, kegiatan: data.kegiatan || [], galeri: data.galeri || [], pengurus: data.pengurus || [], faq: data.faq || [], keuangan: data.keuangan || [], facebook: data.facebook || [], riwayat: data.riwayat || [] };
     if (!IS_PREVIEW) { try { localStorage.setItem(CACHE_KEY, JSON.stringify(PUB)); } catch { } }
     renderLanding();
   } catch (err) {
@@ -3301,6 +3626,92 @@ function susunanForm(p = null) {
   });
 }
 
+// ----- Riwayat Pengurus (Ketua & Admin Utama) -----
+let rwCache = [];
+VIEWS.riwayat = async () => {
+  rwCache = await api.list("riwayat_pengurus");
+  $("#pv-body").innerHTML = `<div class="toolbar"><div style="flex:1;color:var(--muted);font-size:14px">Tampil di halaman <b>Organisasi \u2192 Pengurus dari Masa ke Masa</b>. Periode terbaru otomatis paling atas.</div>
+    <a class="btn btn-outline" href="${esc(orgUrl("riwayat"))}" target="_blank" rel="noopener">${icon("external")}Lihat halaman</a><button class="btn btn-primary" id="rw-add">${icon("plus")}Tambah Periode</button></div><div id="rw-list"></div>`;
+  const draw = () => {
+    const rows = [...rwCache].sort((a, b) => (b.tahun_mulai || 0) - (a.tahun_mulai || 0));
+    $("#rw-list").innerHTML = rows.length ? `<div class="list">${rows.map(p => {
+      const n = parseSusunan(p.susunan).length;
+      const thn = p.tahun_selesai && p.tahun_selesai !== p.tahun_mulai ? `${p.tahun_mulai}\u2013${p.tahun_selesai}` : p.tahun_mulai;
+      return `<div class="row ${p.tampil ? "" : "dim"}"><span class="thumb" style="display:grid;place-items:center;font-weight:800;color:var(--primary);background:var(--primary-50);border-radius:12px;font-size:13px">${esc(String(p.tahun_mulai))}</span>
+        <div class="rmain"><div class="rtitle">Periode ${esc(p.judul)} ${p.tampil ? "" : `<span class="badge badge-gray">Disembunyikan</span>`}</div><div class="rsub">${esc(String(thn))} \u00b7 Ketua: ${esc(p.ketua || "-")} \u00b7 ${n} pengurus</div></div>
+        <div class="ractions"><button class="icon-btn" title="${p.tampil ? "Sembunyikan" : "Tampilkan"}" data-vis="${esc(p.id)}">${icon(p.tampil ? "eye" : "eye-off")}</button><button class="icon-btn" title="Ubah" data-edit="${esc(p.id)}">${icon("edit")}</button><button class="icon-btn del" title="Hapus" data-del="${esc(p.id)}">${icon("trash")}</button></div></div>`;
+    }).join("")}</div>` : emptyBox("Belum ada data periode. Tekan \u201cTambah Periode\u201d untuk mulai mencatat riwayat kepengurusan.", "users");
+  };
+  $("#rw-add").addEventListener("click", () => riwayatForm());
+  $("#rw-list").addEventListener("click", async e => {
+    const b = e.target.closest("[data-vis],[data-edit],[data-del]"); if (!b) return;
+    const p = rwCache.find(x => String(x.id) === String(b.dataset.vis || b.dataset.edit || b.dataset.del)); if (!p) return;
+    if (b.dataset.edit) return riwayatForm(p);
+    try {
+      if (b.dataset.vis) { await withLoading(() => api.save("riwayat_pengurus", { id: p.id, tampil: !p.tampil })); p.tampil = !p.tampil; toast(p.tampil ? "Periode ditampilkan." : "Periode disembunyikan."); }
+      if (b.dataset.del) {
+        if (!(await confirmDialog("Hapus periode ini?", `Periode ${p.judul} beserta susunan pengurusnya akan dihapus dari riwayat.`, "Hapus"))) return;
+        await withLoading(async () => { await api.remove("riwayat_pengurus", p.id); if (p.foto_path) await api.removeFile(p.foto_path).catch(() => { }); });
+        rwCache = rwCache.filter(x => x.id !== p.id); toast("Periode dihapus.");
+      }
+      draw();
+    } catch (err) { toast(pesanError(err), "err"); }
+  });
+  draw();
+};
+function riwayatForm(p = null) {
+  const th = new Date().getFullYear();
+  const v = p || { judul: "", tahun_mulai: th, tahun_selesai: null, ketua: "", catatan: "", susunan: "", foto_url: "", foto_path: "", tampil: true };
+  const img = {};
+  const m = openModal({
+    title: p ? "Ubah Periode Kepengurusan" : "Tambah Periode Kepengurusan", size: "wide",
+    body: `<div class="fgrid">
+      <div class="field"><label for="rw-j">Nama periode <span class="req">*</span></label><input class="input" id="rw-j" maxlength="60" placeholder="Contoh: 2022/2023" value="${esc(v.judul)}"></div>
+      <div class="field"><label for="rw-k">Nama Ketua</label><input class="input" id="rw-k" maxlength="100" placeholder="Nama lengkap ketua periode ini" value="${esc(v.ketua)}"></div>
+      <div class="field"><label for="rw-m">Tahun mulai <span class="req">*</span></label><input class="input" type="number" id="rw-m" min="2000" max="2100" value="${esc(v.tahun_mulai ?? "")}"></div>
+      <div class="field"><label for="rw-s">Tahun selesai</label><input class="input" type="number" id="rw-s" min="2000" max="2100" placeholder="Kosongkan bila masih berjalan" value="${esc(v.tahun_selesai ?? "")}"></div>
+      <div class="field full"><label for="rw-c">Catatan (opsional)</label><textarea class="input" id="rw-c" maxlength="1500" rows="2" placeholder="Contoh: Dipilih dalam Musyawarah Majelis Syuro di Daegu, 13 November 2022.">${esc(v.catatan)}</textarea></div>
+      <div class="field full"><label for="rw-p">Susunan pengurus</label>
+        <textarea class="input" id="rw-p" maxlength="8000" rows="9" placeholder="Sekretaris Umum | Nama&#10;Bendahara Umum | Nama&#10;Ketua Bidang Dakwah | Nama&#10;Majelis Syuro | Nama">${esc(v.susunan)}</textarea>
+        <span class="hint">Satu baris satu orang, format <b>Jabatan | Nama</b>. <span id="rw-n"></span></span>
+        <button type="button" class="btn btn-ghost btn-sm" id="rw-salin" style="align-self:flex-start;margin-top:6px">${icon("copy")}Salin dari Susunan Pengurus saat ini</button></div>
+      ${imageFieldHtml("foto", v.foto_url, "Foto bersama pengurus (opsional)")}
+      <div class="field full"><label class="check"><input type="checkbox" id="rw-v" ${v.tampil ? "checked" : ""}>Tampilkan di situs</label></div></div>`,
+    foot: `<button class="btn btn-outline btn-sm" data-close>Batal</button><button class="btn btn-primary btn-sm" data-save>${icon("check")}Simpan</button>`
+  });
+  bindImageFields(m.el, img);
+  const hitung = () => { const n = parseSusunan($("#rw-p", m.el).value).length; $("#rw-n", m.el).textContent = n ? `(${n} orang)` : ""; };
+  $("#rw-p", m.el).addEventListener("input", hitung); hitung();
+  $("#rw-salin", m.el).addEventListener("click", async () => {
+    try {
+      const rows = (await api.list("susunan_pengurus")).filter(x => x.tampil).sort((a, b) => (a.urutan || 0) - (b.urutan || 0));
+      if (!rows.length) return toast("Susunan Pengurus saat ini masih kosong.", "err");
+      const ta = $("#rw-p", m.el);
+      ta.value = (ta.value.trim() ? ta.value.trim() + "\n" : "") + rows.map(x => `${x.jabatan} | ${x.nama}`).join("\n");
+      const ketua = rows.find(x => /^ketua( umum)?$/i.test(String(x.jabatan).trim()));
+      if (ketua && !$("#rw-k", m.el).value.trim()) $("#rw-k", m.el).value = ketua.nama;
+      hitung(); toast(`${rows.length} pengurus disalin.`);
+    } catch (err) { toast(pesanError(err), "err"); }
+  });
+  m.el.querySelector("[data-save]").addEventListener("click", async () => {
+    const judul = $("#rw-j", m.el).value.trim(), mulai = parseInt($("#rw-m", m.el).value, 10);
+    const selRaw = $("#rw-s", m.el).value.trim(), selesai = selRaw ? parseInt(selRaw, 10) : null;
+    if (judul.length < 2) return toast("Nama periode wajib diisi, contoh: 2022/2023.", "err");
+    if (!(mulai >= 2000 && mulai <= 2100)) return toast("Tahun mulai tidak valid.", "err");
+    if (selesai !== null && !(selesai >= mulai && selesai <= 2100)) return toast("Tahun selesai harus sama atau setelah tahun mulai.", "err");
+    try {
+      await withLoading(async () => {
+        const f = await resolveImage(img, "foto", "riwayat", v.foto_url, v.foto_path);
+        const row = { judul, tahun_mulai: mulai, tahun_selesai: selesai, ketua: $("#rw-k", m.el).value.trim(), catatan: $("#rw-c", m.el).value.trim(),
+          susunan: lines($("#rw-p", m.el).value).join("\n"), foto_url: f.url, foto_path: f.path, tampil: $("#rw-v", m.el).checked };
+        if (p) row.id = p.id;
+        await api.save("riwayat_pengurus", row);
+      });
+      m.close(); toast("Periode kepengurusan disimpan."); go("riwayat");
+    } catch (err) { toast(pesanError(err), "err"); }
+  });
+}
+
 // ----- Pengaturan situs (Ketua) -----
 let setTab = "identitas";
 VIEWS.pengaturan = async () => {
@@ -3664,6 +4075,7 @@ async function start() {
     renderLanding();
     return;
   }
+  ruteDariUrl();
   await loadPublik();
   tutupIntro();
   if (!IS_PREVIEW) {
