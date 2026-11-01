@@ -527,6 +527,49 @@
 #app-root .tl-ketua b { font-size: 19px; line-height: 1.3; }
 #app-root .tl-cat { margin: 14px 0 0; color: var(--muted); white-space: pre-line; }
 #app-root .tl-foto { display: block; width: 100%; max-height: 380px; object-fit: cover; border-radius: 14px; margin-top: 16px; background: var(--soft); }
+#app-root .tl-galeri { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 16px; }
+#app-root .tl-ft { position: relative; border: 0; padding: 0; cursor: zoom-in; border-radius: 12px; overflow: hidden; background: var(--soft); font: inherit; }
+#app-root .tl-ft img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; transition: transform .3s; }
+#app-root .tl-ft:hover img { transform: scale(1.04); }
+#app-root .tl-ft.utama { grid-column: 1 / -1; }
+#app-root .tl-ft.utama img { aspect-ratio: 16 / 9; max-height: 420px; }
+#app-root .tl-ft .cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 22px 10px 8px; background: linear-gradient(transparent, rgba(0,0,0,.72)); color: #fff; font-size: 12.5px; font-weight: 600; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#app-root .tl-ft.utama .cap { font-size: 14.5px; padding: 30px 14px 12px; white-space: normal; }
+#app-root .tl-ft .more { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(11,23,54,.62); color: #fff; font-weight: 800; font-size: 22px; }
+@media (max-width: 560px) { #app-root .tl-galeri { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+#app-root .rwf-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; margin-bottom: 8px; }
+#app-root .rwf { position: relative; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--card); display: flex; flex-direction: column; }
+#app-root .rwf img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; background: var(--soft); }
+#app-root .rwf-utama { position: absolute; top: 8px; left: 8px; background: var(--primary); color: #fff; font-size: 11.5px; font-weight: 700; padding: 3px 9px; border-radius: 999px; }
+#app-root .rwf-body { padding: 8px; display: flex; flex-direction: column; gap: 6px; }
+#app-root .rwf-body .input { font-size: 14px; padding: 8px 10px; }
+#app-root .rwf-act { display: flex; gap: 4px; justify-content: flex-end; }
+#app-root .rwf-act .icon-btn[disabled] { opacity: .35; pointer-events: none; }
+#app-root .rwf-kosong { color: var(--muted); font-size: 14px; padding: 14px; border: 1px dashed var(--border); border-radius: 12px; text-align: center; grid-column: 1 / -1; }
+#app-root .member .asal { display: inline-flex; align-items: center; gap: 4px; margin: 6px 0 0; font-size: 13px; color: var(--muted); }
+#app-root .member .asal .ico { width: 14px; height: 14px; color: var(--primary); }
+#app-root .tl-sus li { display: flex; gap: 10px; align-items: center; }
+#app-root .ang-ft { flex: none; width: 44px; height: 44px; border-radius: 50%; object-fit: cover; background: var(--primary-50); border: 2px solid #fff; box-shadow: 0 0 0 1px var(--border); }
+#app-root .ang-i { display: grid; place-items: center; font-size: 14px; font-weight: 800; color: var(--primary); }
+#app-root .tl-sus li > div { min-width: 0; }
+#app-root .tl-sus li small { display: flex; align-items: center; gap: 3px; font-size: 12px; color: var(--muted); margin-top: 1px; }
+#app-root .tl-sus li small .ico { width: 12px; height: 12px; color: var(--primary); flex: none; }
+#app-root .rwa-list { display: flex; flex-direction: column; gap: 8px; }
+#app-root .rwa { display: flex; gap: 10px; align-items: center; padding: 8px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); }
+#app-root .rwa-foto { position: relative; flex: none; width: 56px; height: 56px; border-radius: 50%; border: 2px dashed var(--border); background: var(--primary-50); padding: 0; cursor: pointer; overflow: hidden; display: grid; place-items: center; color: var(--primary); font-weight: 800; }
+#app-root .rwa-foto img { width: 100%; height: 100%; object-fit: cover; }
+#app-root .rwa-foto i { position: absolute; right: 0; bottom: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--primary); color: #fff; display: grid; place-items: center; }
+#app-root .rwa-foto i .ico { width: 12px; height: 12px; }
+#app-root .rwa-in { flex: 1; min-width: 0; display: grid; grid-template-columns: 1fr 1.3fr 1.4fr; gap: 6px; }
+#app-root .rwa-in .input { font-size: 14px; padding: 8px 10px; }
+#app-root .rwa-act { flex: none; display: flex; gap: 2px; }
+#app-root .rwa-act [data-naik] .ico { transform: rotate(180deg); }
+#app-root .rwa-act .icon-btn[disabled] { opacity: .3; pointer-events: none; }
+#app-root .rwa-tools { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+#app-root .rwa-cepat { margin-top: 8px; border: 1px dashed var(--border); border-radius: 12px; padding: 8px 12px; }
+#app-root .rwa-cepat summary { cursor: pointer; font-weight: 600; font-size: 14px; color: var(--primary); }
+#app-root .rwa-cepat[open] { display: flex; flex-direction: column; gap: 6px; }
+@media (max-width: 720px) { #app-root .rwa { flex-wrap: wrap; } #app-root .rwa-in { grid-template-columns: 1fr; order: 3; flex-basis: 100%; } #app-root .rwa-act { margin-left: auto; } }
 #app-root .tl-sus { margin-top: 16px; border-top: 1px solid var(--border); padding-top: 4px; }
 #app-root .tl-sus summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 10px; font-weight: 700; font-size: 14.5px; color: var(--primary); padding: 10px 0; }
 #app-root .tl-sus summary::-webkit-details-marker { display: none; }
@@ -534,7 +577,7 @@
 #app-root .tl-sus[open] summary .ico { transform: rotate(180deg); }
 #app-root .tl-sus ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 8px; }
 #app-root .tl-sus li { background: var(--soft); border-radius: 12px; padding: 10px 14px; }
-#app-root .tl-sus li span { display: block; font-size: 12.5px; color: var(--muted); }
+#app-root .tl-sus li > div > span { display: block; font-size: 12.5px; color: var(--muted); }
 #app-root .tl-sus li b { font-size: 15px; }
 #app-root .org-empty { text-align: center; padding: 48px 20px; color: var(--muted); }
 #app-root .org-empty .ico { width: 40px; height: 40px; color: var(--primary); margin-bottom: 10px; }
@@ -1441,7 +1484,29 @@ async function copyText(t) {
 }
 
 // ----- Kompres gambar di browser -----
-async function compressImage(file, maxW = 1600, quality = 0.8) {
+// Hemat penyimpanan: foto disimpan sebagai WEBP (lebih kecil dari JPG), maks. 1280 px (~80-150 KB per foto)
+function canvasKeBlob(c, quality) {
+  return new Promise((res, rej) => c.toBlob(b => {
+    if (b && b.type === "image/webp") return res(b);
+    c.toBlob(j => j ? res(j) : rej(new Error("Gagal memproses gambar.")), "image/jpeg", quality);
+  }, "image/webp", quality));
+}
+// Foto profil pengurus: dipotong persegi 240x240 px (~8-15 KB)
+async function compressAvatar(file, size = 240, quality = 0.78) {
+  if (!/^image\/(jpeg|png|webp|gif)$/i.test(file.type)) throw new Error("Format gambar harus JPG, PNG, atau WEBP.");
+  if (file.size > 15 * 1024 * 1024) throw new Error("Ukuran gambar maksimal 15 MB.");
+  const url = URL.createObjectURL(file);
+  try {
+    const img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => rej(new Error("Gambar tidak bisa dibaca.")); i.src = url; });
+    const sisi = Math.min(img.naturalWidth, img.naturalHeight);
+    const sx = (img.naturalWidth - sisi) / 2, sy = Math.max(0, (img.naturalHeight - sisi) / 2 - sisi * 0.08);
+    const c = document.createElement("canvas"); c.width = c.height = size;
+    const ctx = c.getContext("2d"); ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, size, size);
+    ctx.imageSmoothingQuality = "high"; ctx.drawImage(img, sx, sy, sisi, sisi, 0, 0, size, size);
+    return await canvasKeBlob(c, quality);
+  } finally { URL.revokeObjectURL(url); }
+}
+async function compressImage(file, maxW = 1280, quality = 0.74) {
   if (!/^image\/(jpeg|png|webp|gif)$/i.test(file.type)) throw new Error("Format gambar harus JPG, PNG, atau WEBP.");
   if (file.size > 15 * 1024 * 1024) throw new Error("Ukuran gambar maksimal 15 MB.");
   const url = URL.createObjectURL(file);
@@ -1451,7 +1516,7 @@ async function compressImage(file, maxW = 1600, quality = 0.8) {
     const w = Math.round(img.naturalWidth * scale), h = Math.round(img.naturalHeight * scale);
     const c = document.createElement("canvas"); c.width = w; c.height = h;
     const ctx = c.getContext("2d"); ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, w, h); ctx.drawImage(img, 0, 0, w, h);
-    return await new Promise((res, rej) => c.toBlob(b => b ? res(b) : rej(new Error("Gagal memproses gambar.")), "image/jpeg", quality));
+    return await canvasKeBlob(c, quality);
   } finally { URL.revokeObjectURL(url); }
 }
 function pickFiles(multiple = false) {
@@ -1633,7 +1698,7 @@ const mockApi = (() => {
     susunan_pengurus: [
       ["Ustadz Ahmad Fauzi", "Ketua Umum"], ["Muhammad Rizky", "Wakil Ketua"], ["Siti Nurhaliza", "Sekretaris"],
       ["Dimas Anggara", "Bendahara"], ["Bagus Pratama", "Koordinator Kegiatan"], ["Rahayu Wulandari", "Koordinator Sosial"]
-    ].map(([nama, jabatan], i) => ({ id: uid(), nama, jabatan, foto_url: "", foto_path: "", urutan: i + 1, tampil: true })),
+    ].map(([nama, jabatan], i) => ({ id: uid(), nama, jabatan, asal: ["Cilacap, Jawa Tengah", "Lombok Timur, NTB", "Indramayu, Jawa Barat", "Kendal, Jawa Tengah", "Blitar, Jawa Timur", "Bandung, Jawa Barat"][i] || "", foto_url: "", foto_path: "", urutan: i + 1, tampil: true })),
     faq: [
       ["Bagaimana cara bergabung menjadi anggota KMI Korsel?", "Isi formulir Hubungi Kami dengan kategori \"Ingin Bergabung\". Pengurus akan menghubungi Anda dan memasukkan ke grup komunitas di kota terdekat."],
       ["Apakah ada biaya keanggotaan?", "Tidak ada. Keanggotaan KMI Korsel gratis untuk seluruh WNI muslim di Korea Selatan."],
@@ -1711,7 +1776,7 @@ const mockApi = (() => {
         kegiatan: db.kegiatan.filter(k => k.tampil).map(({ dibuat_oleh, diubah_pada, gambar_path, tampil, ...r }) => r),
         galeri: db.galeri.filter(g => g.tampil).sort((a, b) => a.urutan - b.urutan),
         pengurus: db.susunan_pengurus.filter(p => p.tampil).sort((a, b) => a.urutan - b.urutan),
-        riwayat: db.riwayat_pengurus.filter(p => p.tampil).sort((a, b) => b.tahun_mulai - a.tahun_mulai).map(({ foto_path, tampil, ...r }) => r),
+        riwayat: db.riwayat_pengurus.filter(p => p.tampil).sort((a, b) => b.tahun_mulai - a.tahun_mulai).map(({ foto_path, tampil, ...r }) => ({ ...r, foto: (r.foto || []).map(f => ({ url: f.url, ket: f.ket || "" })), anggota: (r.anggota || []).map(({ foto_path, ...a }) => a) })),
         faq: db.faq.filter(f => f.tampil).sort((a, b) => a.urutan - b.urutan),
         facebook: db.pengaturan.facebook_feed === "tidak" ? [] : clone(db.facebook),
         keuangan: db.pengaturan.keuangan_tampil === "tidak" ? [] : db.keuangan.filter(k => k.tampil).sort((a, b) => b.tanggal.localeCompare(a.tanggal)).map(({ tampil, dibuat_oleh, diubah_pada, ...r }) => r)
@@ -1856,7 +1921,7 @@ const mockApi = (() => {
       return { ok: true };
     },
     async fbTarik() { needKetua(); await wait(300); return { request_id: 1, status: "" }; },
-    async cekKeamanan() { needKetua(); await wait(400); return { tabel_tanpa_rls: [], tabel_terbuka_anon: [], fungsi_terbuka_anon: ["daftar_pengurus", "get_data_publik", "kirim_pesan"], definer_tanpa_search_path: [], admin_aktif: db.staf.filter(x => x.peran === "Admin" && x.aktif).length, ketua_aktif: db.staf.filter(x => x.peran === "Ketua" && x.aktif).length, password_sementara: 0, pendaftar_menunggu: db.pendaftaran.filter(d => d.status === "Menunggu").length, brevo_tersimpan: true, facebook_tersimpan: true, bucket_media: { publik: true, batas_mb: 5, tipe: ["image/jpeg", "image/png", "image/webp", "image/gif"] }, login_24_jam: 3, hapus_7_hari: 1, email_hari_ini: 12, batas_email: 280, pesan_24_jam: 4, captcha_login: false }; },
+    async cekKeamanan() { needKetua(); await wait(400); return { tabel_tanpa_rls: [], tabel_terbuka_anon: [], fungsi_terbuka_anon: ["daftar_pengurus", "get_data_publik", "kirim_pesan"], definer_tanpa_search_path: [], admin_aktif: db.staf.filter(x => x.peran === "Admin" && x.aktif).length, ketua_aktif: db.staf.filter(x => x.peran === "Ketua" && x.aktif).length, password_sementara: 0, pendaftar_menunggu: db.pendaftaran.filter(d => d.status === "Menunggu").length, brevo_tersimpan: true, facebook_tersimpan: true, bucket_media: { publik: true, batas_mb: 5, tipe: ["image/jpeg", "image/png", "image/webp", "image/gif"] }, login_24_jam: 3, hapus_7_hari: 1, db_mb: 9.4, penyimpanan: { mb: 42.7, file: 318 }, email_hari_ini: 12, batas_email: 280, pesan_24_jam: 4, captcha_login: false }; },
     async fbCek() { needKetua(); await wait(300); db.pengaturan.fb_status = "Mode preview: contoh postingan ditampilkan."; return { status: "ok", jumlah: db.facebook.length }; },
     async simpanCacheIG(str) { needStaf(); await wait(); db.pengaturan.instagram_cache = str; db.pengaturan.instagram_cache_waktu = new Date().toISOString(); return { ok: true }; },
     async daftarPendaftaran() { needKetua(); await wait(); return clone(db.pendaftaran.map(({ _pw, ...d }) => d)); },
@@ -1956,8 +2021,9 @@ const supabaseApi = (() => {
     },
     async remove(table, id) { chk(await supabase.from(table).delete().eq("id", id)); },
     async upload(folder, blob) {
-      const path = `${folder}/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.jpg`;
-      chk(await supabase.storage.from(BUCKET).upload(path, blob, { contentType: "image/jpeg", cacheControl: "31536000", upsert: false }));
+      const webp = blob.type === "image/webp";
+      const path = `${folder}/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${webp ? "webp" : "jpg"}`;
+      chk(await supabase.storage.from(BUCKET).upload(path, blob, { contentType: webp ? "image/webp" : "image/jpeg", cacheControl: "31536000", upsert: false }));
       const { data } = supabase.storage.from(BUCKET).getPublicUrl(path);
       return { url: data.publicUrl, path };
     },
@@ -2212,8 +2278,9 @@ function initSliders(scope = root) {
 }
 
 const lightbox = { open: false, i: 0, el: null };
-function openLightbox(i) {
-  const g = PUB.galeri || []; if (!g.length) return;
+function openLightbox(i, list) {
+  if (list) lightbox.list = list; else if (!lightbox.open) lightbox.list = null;
+  const g = lightbox.list || PUB.galeri || []; if (!g.length) return;
   lightbox.i = (i + g.length) % g.length;
   const p = g[lightbox.i];
   if (!lightbox.el) {
@@ -2231,10 +2298,10 @@ function openLightbox(i) {
     lightbox.el.addEventListener("touchend", e => { if (sx == null) return; const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 50) openLightbox(lightbox.i + (dx < 0 ? 1 : -1)); sx = null; });
     root.appendChild(lightbox.el);
   }
-  lightbox.el.innerHTML = `<button class="lb-btn lb-close" data-lb-close aria-label="Tutup">${icon("x")}</button>${g.length > 1 ? `<button class="lb-btn lb-prev" data-lb-prev aria-label="Sebelumnya">${icon("chevron-left")}</button><button class="lb-btn lb-next" data-lb-next aria-label="Berikutnya">${icon("chevron-right")}</button>` : ""}<img src="${esc(imgUrl(p.foto_url) || placeholder(lightbox.i))}" alt="${esc(p.judul || "")}"><div class="lb-cap">${esc(p.judul || "")}<small>${esc(p.tanggal ? fmtTanggal(p.tanggal) : "")} \u00b7 ${lightbox.i + 1} / ${g.length}</small></div>`;
+  lightbox.el.innerHTML = `<button class="lb-btn lb-close" data-lb-close aria-label="Tutup">${icon("x")}</button>${g.length > 1 ? `<button class="lb-btn lb-prev" data-lb-prev aria-label="Sebelumnya">${icon("chevron-left")}</button><button class="lb-btn lb-next" data-lb-next aria-label="Berikutnya">${icon("chevron-right")}</button>` : ""}<img src="${esc(imgUrl(p.foto_url) || placeholder(lightbox.i))}" alt="${esc(p.judul || "")}"><div class="lb-cap">${esc(p.judul || "")}<small>${p.tanggal ? esc(fmtTanggal(p.tanggal)) + " \u00b7 " : ""}${lightbox.i + 1} / ${g.length}</small></div>`;
   lightbox.open = true;
 }
-function closeLightbox() { if (lightbox.el) { lightbox.el.remove(); lightbox.el = null; } lightbox.open = false; }
+function closeLightbox() { if (lightbox.el) { lightbox.el.remove(); lightbox.el = null; } lightbox.open = false; lightbox.list = null; }
 document.addEventListener("keydown", e => {
   if (!lightbox.open) return;
   if (e.key === "ArrowLeft") openLightbox(lightbox.i - 1);
@@ -2307,7 +2374,7 @@ function renderPengurus() {
   if (!p.length) return;
   $("#pengurus").innerHTML = `<div class="container">
     <div class="sec-head center"><span class="eyebrow">${icon("users")}Pengurus</span><h2 class="sec-title">Susunan Pengurus Inti</h2><p class="sec-desc">${esc(namaLengkap())}. Amanah yang dijalankan bersama untuk melayani jamaah di seluruh Korea Selatan.</p></div>
-    <div class="team">${p.map(m => { const f = imgUrl(m.foto_url); return `<article class="card member">${f ? `<img class="avatar" src="${esc(f)}" alt="${esc(m.nama)}" loading="lazy">` : `<span class="avatar avatar-i">${esc(initials(m.nama))}</span>`}<span class="badge">${esc(m.jabatan)}</span><h4>${esc(m.nama)}</h4></article>`; }).join("")}</div>
+    <div class="team">${p.map(m => { const f = imgUrl(m.foto_url); return `<article class="card member">${f ? `<img class="avatar" src="${esc(f)}" alt="${esc(m.nama)}" loading="lazy">` : `<span class="avatar avatar-i">${esc(initials(m.nama))}</span>`}<span class="badge">${esc(m.jabatan)}</span><h4>${esc(m.nama)}</h4>${m.asal ? `<p class="asal">${icon("map-pin")}${esc(m.asal)}</p>` : ""}</article>`; }).join("")}</div>
   </div>`;
 }
 
@@ -2627,7 +2694,7 @@ function renderOrg() {
 
 // ----- Pengurus dari masa ke masa -----
 function parseSusunan(t) {
-  return lines(t).map(l => { const i = l.indexOf("|"); return i < 0 ? { j: "", n: l } : { j: l.slice(0, i).trim(), n: l.slice(i + 1).trim() }; }).filter(x => x.n || x.j);
+  return lines(t).map(l => { const b = l.split("|").map(x => x.trim()); return b.length < 2 ? { j: "", n: b[0], a: "" } : { j: b[0], n: b[1] || "", a: b.slice(2).join(" ").trim() }; }).filter(x => x.n || x.j);
 }
 function renderRiwayat() {
   const r = PUB.riwayat || [];
@@ -2643,7 +2710,7 @@ function renderRiwayat() {
       <div><b>${esc(String(tertua))}</b><span>periode tertua yang tercatat</span></div>
       <div><b>2007</b><span>${esc(namaSingkat())} berdiri di KBRI Seoul</span></div></div>
     <ol class="tl">${r.map((p, i) => {
-      const s = parseSusunan(p.susunan), foto = imgUrl(p.foto_url);
+      const s = anggotaRiwayat(p), fotos = fotoRiwayat(p);
       const berjalan = i === 0 && (!p.tahun_selesai || p.tahun_selesai >= kini);
       const thn = p.tahun_selesai && p.tahun_selesai !== p.tahun_mulai ? `${p.tahun_mulai} \u2013 ${p.tahun_selesai}` : String(p.tahun_mulai);
       return `<li class="tl-item ${berjalan ? "now" : ""}"><span class="tl-dot"></span><div class="tl-year">${esc(thn)}</div>
@@ -2651,10 +2718,15 @@ function renderRiwayat() {
           <div class="tl-head"><span class="badge">${icon("calendar")}Periode ${esc(p.judul)}</span>${berjalan ? `<span class="badge tl-now">Periode berjalan</span>` : ""}</div>
           ${p.ketua ? `<div class="tl-ketua"><span class="avatar avatar-i">${esc(initials(p.ketua))}</span><div><small>Ketua</small><b>${esc(p.ketua)}</b></div></div>` : ""}
           ${p.catatan ? `<p class="tl-cat">${esc(p.catatan)}</p>` : ""}
-          ${foto ? `<img class="tl-foto" src="${esc(foto)}" alt="Foto pengurus periode ${esc(p.judul)}" loading="lazy">` : ""}
-          ${s.length ? `<details class="tl-sus"${i === 0 ? " open" : ""}><summary>Susunan pengurus (${s.length} orang)${icon("chevron-down")}</summary><ul>${s.map(x => `<li>${x.j ? `<span>${esc(x.j)}</span>` : ""}<b>${esc(x.n)}</b></li>`).join("")}</ul></details>` : ""}
+          ${fotos.length ? `<div class="tl-galeri">${fotos.slice(0, 5).map((f, k) => `<button type="button" class="tl-ft${k === 0 ? " utama" : ""}" data-rwfoto="${k}" data-rwp="${esc(p.id)}" aria-label="Buka foto ${k + 1}${f.ket ? ": " + esc(f.ket) : ""}"><img src="${esc(imgUrl(f.url))}" alt="${esc(f.ket || "Foto pengurus periode " + p.judul)}" loading="lazy">${f.ket ? `<span class="cap">${esc(f.ket)}</span>` : ""}${k === 4 && fotos.length > 5 ? `<span class="more">+${fotos.length - 5}</span>` : ""}</button>`).join("")}</div>` : ""}
+          ${s.length ? `<details class="tl-sus"${i === 0 ? " open" : ""}><summary>Susunan pengurus (${s.length} orang)${icon("chevron-down")}</summary><ul>${s.map(x => { const f = imgUrl(x.foto_url); return `<li>${f ? `<img class="ang-ft" src="${esc(f)}" alt="${esc(x.nama)}" loading="lazy" width="44" height="44">` : `<span class="ang-ft ang-i">${esc(initials(x.nama || x.jabatan))}</span>`}<div>${x.jabatan ? `<span>${esc(x.jabatan)}</span>` : ""}<b>${esc(x.nama)}</b>${x.asal ? `<small>${icon("map-pin")}${esc(x.asal)}</small>` : ""}</div></li>`; }).join("")}</ul></details>` : ""}
         </article></li>`;
     }).join("")}</ol>${linkKini}`;
+}
+
+function fotoRiwayat(p) {
+  const a = Array.isArray(p.foto) && p.foto.length ? p.foto : (p.foto_url ? [{ url: p.foto_url, ket: "" }] : []);
+  return a.filter(f => f && imgUrl(f.url)).map(f => ({ url: f.url, ket: String(f.ket || "") }));
 }
 
 // ----- AD/ART -----
@@ -2732,6 +2804,12 @@ function lompatPasal(id) {
   t.scrollIntoView({ block: "center" }); t.classList.remove("flash"); void t.offsetWidth; t.classList.add("flash");
 }
 function klikOrganisasi(e) {
+  const rf = e.target.closest("[data-rwfoto]");
+  if (rf) {
+    const p = (PUB.riwayat || []).find(x => String(x.id) === rf.dataset.rwp); if (!p) return true;
+    openLightbox(+rf.dataset.rwfoto, fotoRiwayat(p).map(f => ({ foto_url: f.url, judul: f.ket || "Periode " + p.judul })));
+    return true;
+  }
   const pg = e.target.closest("[data-page]");
   if (pg) { e.preventDefault(); bukaOrganisasi(pg.dataset.tab || "riwayat"); return true; }
   const t = e.target.closest("[data-orgtab]");
@@ -3220,13 +3298,13 @@ function imageFieldHtml(name, url, label) {
   const u = imgUrl(url);
   return `<div class="field full"><label>${esc(label)}</label><div class="img-field" data-imgf="${name}"><img src="${esc(u || placeholder(0, "", [4, 3]))}" alt="Pratinjau" data-prev><div class="img-btns"><button type="button" class="btn btn-outline btn-sm" data-pick>${icon("upload")}${u ? "Ganti gambar" : "Pilih gambar"}</button>${u ? `<button type="button" class="btn btn-ghost btn-sm" data-clear style="color:var(--danger)">${icon("trash")}Hapus</button>` : ""}</div></div><span class="hint">JPG/PNG/WEBP. Otomatis dikecilkan sebelum diunggah.</span></div>`;
 }
-function bindImageFields(scope, state) {
+function bindImageFields(scope, state, opt = {}) {
   $$("[data-imgf]", scope).forEach(box => {
     const name = box.dataset.imgf;
     box.addEventListener("click", async e => {
       if (e.target.closest("[data-pick]")) {
         const [f] = await pickFiles(false); if (!f) return;
-        try { const blob = await compressImage(f); state[name] = { blob, cleared: false }; box.querySelector("[data-prev]").src = URL.createObjectURL(blob); }
+        try { const blob = opt.avatar ? await compressAvatar(f) : await compressImage(f); state[name] = { blob, cleared: false }; box.querySelector("[data-prev]").src = URL.createObjectURL(blob); }
         catch (err) { toast(pesanError(err), "err"); }
       }
       if (e.target.closest("[data-clear]")) { state[name] = { blob: null, cleared: true }; box.querySelector("[data-prev]").src = placeholder(0, "", [4, 3]); }
@@ -3583,7 +3661,7 @@ VIEWS.susunan = async () => {
   $("#pv-body").innerHTML = `<div class="toolbar"><div style="flex:1;color:var(--muted);font-size:14px">Daftar ini hanya untuk <b>tampilan</b> di situs. Akun login diatur di menu Akun Staf.</div><button class="btn btn-primary" id="sp-add">${icon("plus")}Tambah</button></div><div id="sp-list"></div>`;
   const draw = () => {
     const rows = [...susCache].sort((a, b) => (a.urutan || 0) - (b.urutan || 0));
-    $("#sp-list").innerHTML = rows.length ? `<div class="list">${rows.map(p => `<div class="row ${p.tampil ? "" : "dim"}">${imgUrl(p.foto_url) ? `<img class="thumb" style="border-radius:50%" src="${esc(imgUrl(p.foto_url))}" alt="">` : `<span class="thumb avatar-i" style="border-radius:50%;display:grid;place-items:center;font-size:20px">${esc(initials(p.nama))}</span>`}<div class="rmain"><div class="rtitle">${esc(p.nama)}${p.tampil ? "" : `<span class="badge badge-gray">${icon("eye-off")}Tersembunyi</span>`}</div><div class="rsub">${esc(p.jabatan)} \u00b7 urutan ${p.urutan ?? 0}</div></div><div class="ractions"><button class="icon-btn" data-vis="${esc(p.id)}" aria-label="Tampil/sembunyi" title="Tampil/sembunyi">${icon(p.tampil ? "eye" : "eye-off")}</button><button class="icon-btn" data-edit="${esc(p.id)}" aria-label="Ubah" title="Ubah">${icon("edit")}</button><button class="icon-btn del" data-del="${esc(p.id)}" aria-label="Hapus" title="Hapus">${icon("trash")}</button></div></div>`).join("")}</div>` : emptyBox("Belum ada data pengurus.", "users");
+    $("#sp-list").innerHTML = rows.length ? `<div class="list">${rows.map(p => `<div class="row ${p.tampil ? "" : "dim"}">${imgUrl(p.foto_url) ? `<img class="thumb" style="border-radius:50%" src="${esc(imgUrl(p.foto_url))}" alt="">` : `<span class="thumb avatar-i" style="border-radius:50%;display:grid;place-items:center;font-size:20px">${esc(initials(p.nama))}</span>`}<div class="rmain"><div class="rtitle">${esc(p.nama)}${p.tampil ? "" : `<span class="badge badge-gray">${icon("eye-off")}Tersembunyi</span>`}</div><div class="rsub">${esc(p.jabatan)}${p.asal ? " \u00b7 " + esc(p.asal) : ""} \u00b7 urutan ${p.urutan ?? 0}</div></div><div class="ractions"><button class="icon-btn" data-vis="${esc(p.id)}" aria-label="Tampil/sembunyi" title="Tampil/sembunyi">${icon(p.tampil ? "eye" : "eye-off")}</button><button class="icon-btn" data-edit="${esc(p.id)}" aria-label="Ubah" title="Ubah">${icon("edit")}</button><button class="icon-btn del" data-del="${esc(p.id)}" aria-label="Hapus" title="Hapus">${icon("trash")}</button></div></div>`).join("")}</div>` : emptyBox("Belum ada data pengurus.", "users");
   };
   $("#sp-add").addEventListener("click", () => susunanForm());
   $("#sp-list").addEventListener("click", async e => {
@@ -3592,32 +3670,34 @@ VIEWS.susunan = async () => {
     if (b.dataset.edit) return susunanForm(p);
     try {
       if (b.dataset.vis) { await withLoading(() => api.save("susunan_pengurus", { id: p.id, tampil: !p.tampil })); p.tampil = !p.tampil; }
-      if (b.dataset.del) { if (!(await confirmDialog("Hapus data pengurus?", `${p.nama} akan dihapus dari daftar tampilan.`, "Hapus"))) return; await withLoading(async () => { await api.remove("susunan_pengurus", p.id); if (p.foto_path) await api.removeFile(p.foto_path).catch(() => { }); }); susCache = susCache.filter(x => x.id !== p.id); toast("Data pengurus dihapus."); }
+      if (b.dataset.del) { if (!(await confirmDialog("Hapus data pengurus?", `${p.nama} akan dihapus dari daftar tampilan.`, "Hapus"))) return; await withLoading(async () => { await api.remove("susunan_pengurus", p.id); if (p.foto_path && !(await fotoDipakaiRiwayat(p.foto_url))) await api.removeFile(p.foto_path).catch(() => { }); }); susCache = susCache.filter(x => x.id !== p.id); toast("Data pengurus dihapus."); }
       draw();
     } catch (err) { toast(pesanError(err), "err"); }
   });
   draw();
 };
 function susunanForm(p = null) {
-  const v = p || { nama: "", jabatan: "", foto_url: "", foto_path: "", urutan: (susCache.reduce((a, x) => Math.max(a, x.urutan || 0), 0) + 1), tampil: true };
+  const v = p || { nama: "", jabatan: "", asal: "", foto_url: "", foto_path: "", urutan: (susCache.reduce((a, x) => Math.max(a, x.urutan || 0), 0) + 1), tampil: true };
   const img = {};
   const m = openModal({
     title: p ? "Ubah Pengurus" : "Tambah Pengurus",
     body: `<div class="fgrid"><div class="field full"><label for="sf-n">Nama lengkap</label><input class="input" id="sf-n" maxlength="120" value="${esc(v.nama)}"></div>
       <div class="field"><label for="sf-j">Jabatan</label><input class="input" id="sf-j" maxlength="80" placeholder="Contoh: Sekretaris" value="${esc(v.jabatan)}"></div>
       <div class="field"><label for="sf-u">Urutan</label><input class="input" type="number" id="sf-u" min="0" value="${esc(v.urutan ?? 0)}"></div>
-      ${imageFieldHtml("foto", v.foto_url, "Foto (opsional)")}
+      <div class="field full"><label for="sf-a">Asal daerah di Indonesia</label><input class="input" id="sf-a" maxlength="120" placeholder="Contoh: Cilacap, Jawa Tengah" value="${esc(v.asal || "")}"></div>
+      ${imageFieldHtml("foto", v.foto_url, "Foto wajah (opsional, otomatis dipotong kecil & hemat)")}
       <div class="field full"><label class="check"><input type="checkbox" id="sf-v" ${v.tampil ? "checked" : ""}>Tampilkan di situs</label></div></div>`,
     foot: `<button class="btn btn-outline btn-sm" data-close>Batal</button><button class="btn btn-primary btn-sm" data-save>${icon("check")}Simpan</button>`
   });
-  bindImageFields(m.el, img);
+  bindImageFields(m.el, img, { avatar: true });
   m.el.querySelector("[data-save]").addEventListener("click", async () => {
     const nama = $("#sf-n", m.el).value.trim(), jab = $("#sf-j", m.el).value.trim();
     if (nama.length < 2 || jab.length < 2) return toast("Nama dan jabatan wajib diisi.", "err");
     try {
       await withLoading(async () => {
-        const f = await resolveImage(img, "foto", "pengurus", v.foto_url, v.foto_path);
-        const row = { nama, jabatan: jab, urutan: parseInt($("#sf-u", m.el).value, 10) || 0, tampil: $("#sf-v", m.el).checked, foto_url: f.url, foto_path: f.path };
+        const jalurLama = v.foto_path && img.foto && await fotoDipakaiRiwayat(v.foto_url) ? "" : v.foto_path;   // foto yang dipakai di riwayat jangan ikut terhapus
+        const f = await resolveImage(img, "foto", "pengurus", v.foto_url, jalurLama);
+        const row = { nama, jabatan: jab, asal: $("#sf-a", m.el).value.trim().slice(0, 120), urutan: parseInt($("#sf-u", m.el).value, 10) || 0, tampil: $("#sf-v", m.el).checked, foto_url: f.url, foto_path: f.path };
         if (p) row.id = p.id;
         await api.save("susunan_pengurus", row);
       });
@@ -3627,6 +3707,14 @@ function susunanForm(p = null) {
 }
 
 // ----- Riwayat Pengurus (Ketua & Admin Utama) -----
+async function fotoDipakaiRiwayat(url) {
+  if (!url) return false;
+  try { return (await api.list("riwayat_pengurus")).some(r => (r.anggota || []).some(a => a.foto_url === url)); } catch { return true; }
+}
+function anggotaRiwayat(p) {
+  const a = Array.isArray(p.anggota) && p.anggota.length ? p.anggota : parseSusunan(p.susunan).map(x => ({ jabatan: x.j, nama: x.n, asal: x.a || "", foto_url: "" }));
+  return a.filter(x => x && (x.nama || x.jabatan)).map(x => ({ jabatan: String(x.jabatan || ""), nama: String(x.nama || ""), asal: String(x.asal || ""), foto_url: String(x.foto_url || ""), foto_path: String(x.foto_path || "") }));
+}
 let rwCache = [];
 VIEWS.riwayat = async () => {
   rwCache = await api.list("riwayat_pengurus");
@@ -3635,10 +3723,10 @@ VIEWS.riwayat = async () => {
   const draw = () => {
     const rows = [...rwCache].sort((a, b) => (b.tahun_mulai || 0) - (a.tahun_mulai || 0));
     $("#rw-list").innerHTML = rows.length ? `<div class="list">${rows.map(p => {
-      const n = parseSusunan(p.susunan).length;
+      const n = anggotaRiwayat(p).length;
       const thn = p.tahun_selesai && p.tahun_selesai !== p.tahun_mulai ? `${p.tahun_mulai}\u2013${p.tahun_selesai}` : p.tahun_mulai;
       return `<div class="row ${p.tampil ? "" : "dim"}"><span class="thumb" style="display:grid;place-items:center;font-weight:800;color:var(--primary);background:var(--primary-50);border-radius:12px;font-size:13px">${esc(String(p.tahun_mulai))}</span>
-        <div class="rmain"><div class="rtitle">Periode ${esc(p.judul)} ${p.tampil ? "" : `<span class="badge badge-gray">Disembunyikan</span>`}</div><div class="rsub">${esc(String(thn))} \u00b7 Ketua: ${esc(p.ketua || "-")} \u00b7 ${n} pengurus</div></div>
+        <div class="rmain"><div class="rtitle">Periode ${esc(p.judul)} ${p.tampil ? "" : `<span class="badge badge-gray">Disembunyikan</span>`}</div><div class="rsub">${esc(String(thn))} \u00b7 Ketua: ${esc(p.ketua || "-")} \u00b7 ${n} pengurus \u00b7 ${fotoRiwayat(p).length} foto</div></div>
         <div class="ractions"><button class="icon-btn" title="${p.tampil ? "Sembunyikan" : "Tampilkan"}" data-vis="${esc(p.id)}">${icon(p.tampil ? "eye" : "eye-off")}</button><button class="icon-btn" title="Ubah" data-edit="${esc(p.id)}">${icon("edit")}</button><button class="icon-btn del" title="Hapus" data-del="${esc(p.id)}">${icon("trash")}</button></div></div>`;
     }).join("")}</div>` : emptyBox("Belum ada data periode. Tekan \u201cTambah Periode\u201d untuk mulai mencatat riwayat kepengurusan.", "users");
   };
@@ -3651,7 +3739,11 @@ VIEWS.riwayat = async () => {
       if (b.dataset.vis) { await withLoading(() => api.save("riwayat_pengurus", { id: p.id, tampil: !p.tampil })); p.tampil = !p.tampil; toast(p.tampil ? "Periode ditampilkan." : "Periode disembunyikan."); }
       if (b.dataset.del) {
         if (!(await confirmDialog("Hapus periode ini?", `Periode ${p.judul} beserta susunan pengurusnya akan dihapus dari riwayat.`, "Hapus"))) return;
-        await withLoading(async () => { await api.remove("riwayat_pengurus", p.id); if (p.foto_path) await api.removeFile(p.foto_path).catch(() => { }); });
+        await withLoading(async () => {
+          await api.remove("riwayat_pengurus", p.id);
+          const paths = [p.foto_path, ...(Array.isArray(p.foto) ? p.foto.map(f => f.path) : []), ...anggotaRiwayat(p).map(a => a.foto_path)].filter(Boolean);
+          for (const pth of paths) await api.removeFile(pth).catch(() => { });
+        });
         rwCache = rwCache.filter(x => x.id !== p.id); toast("Periode dihapus.");
       }
       draw();
@@ -3671,28 +3763,102 @@ function riwayatForm(p = null) {
       <div class="field"><label for="rw-m">Tahun mulai <span class="req">*</span></label><input class="input" type="number" id="rw-m" min="2000" max="2100" value="${esc(v.tahun_mulai ?? "")}"></div>
       <div class="field"><label for="rw-s">Tahun selesai</label><input class="input" type="number" id="rw-s" min="2000" max="2100" placeholder="Kosongkan bila masih berjalan" value="${esc(v.tahun_selesai ?? "")}"></div>
       <div class="field full"><label for="rw-c">Catatan (opsional)</label><textarea class="input" id="rw-c" maxlength="1500" rows="2" placeholder="Contoh: Dipilih dalam Musyawarah Majelis Syuro di Daegu, 13 November 2022.">${esc(v.catatan)}</textarea></div>
-      <div class="field full"><label for="rw-p">Susunan pengurus</label>
-        <textarea class="input" id="rw-p" maxlength="8000" rows="9" placeholder="Sekretaris Umum | Nama&#10;Bendahara Umum | Nama&#10;Ketua Bidang Dakwah | Nama&#10;Majelis Syuro | Nama">${esc(v.susunan)}</textarea>
-        <span class="hint">Satu baris satu orang, format <b>Jabatan | Nama</b>. <span id="rw-n"></span></span>
-        <button type="button" class="btn btn-ghost btn-sm" id="rw-salin" style="align-self:flex-start;margin-top:6px">${icon("copy")}Salin dari Susunan Pengurus saat ini</button></div>
-      ${imageFieldHtml("foto", v.foto_url, "Foto bersama pengurus (opsional)")}
+      <div class="field full"><label>Susunan pengurus <span id="rw-n" style="font-weight:500;color:var(--muted)"></span></label>
+        <div class="rwa-list" id="rw-ang"></div>
+        <div class="rwa-tools"><button type="button" class="btn btn-outline btn-sm" id="rw-ang-tambah">${icon("user-plus")}Tambah orang</button>
+          <button type="button" class="btn btn-ghost btn-sm" id="rw-salin">${icon("copy")}Salin dari Susunan Pengurus saat ini</button></div>
+        <details class="rwa-cepat"><summary>Isi cepat dengan teks (banyak orang sekaligus)</summary>
+          <textarea class="input" id="rw-teks" rows="5" placeholder="Sekretaris Umum | Nama | Asal daerah&#10;Bendahara Umum | Nama | Cilacap, Jawa Tengah&#10;Majelis Syuro | Nama"></textarea>
+          <span class="hint">Satu baris satu orang: <b>Jabatan | Nama | Asal</b> (asal boleh dikosongkan).</span>
+          <button type="button" class="btn btn-outline btn-sm" id="rw-teks-ok" style="align-self:flex-start">${icon("plus")}Tambahkan ke daftar</button></details>
+        <span class="hint">Ketuk lingkaran foto untuk memasang foto wajah. Foto otomatis dipotong kecil (\u00b110 KB) supaya penyimpanan hemat.</span></div>
+      <div class="field full"><label>Foto (opsional, maks. 12)</label>
+        <div class="rwf-list" id="rw-foto"></div>
+        <button type="button" class="btn btn-outline btn-sm" id="rw-tambah-foto" style="align-self:flex-start">${icon("upload")}Tambah foto</button>
+        <span class="hint">Bisa pilih beberapa foto sekaligus. Setiap foto bisa diberi keterangan. Foto pertama menjadi foto utama.</span></div>
       <div class="field full"><label class="check"><input type="checkbox" id="rw-v" ${v.tampil ? "checked" : ""}>Tampilkan di situs</label></div></div>`,
     foot: `<button class="btn btn-outline btn-sm" data-close>Batal</button><button class="btn btn-primary btn-sm" data-save>${icon("check")}Simpan</button>`
   });
-  bindImageFields(m.el, img);
-  const hitung = () => { const n = parseSusunan($("#rw-p", m.el).value).length; $("#rw-n", m.el).textContent = n ? `(${n} orang)` : ""; };
-  $("#rw-p", m.el).addEventListener("input", hitung); hitung();
+  const fotos = (Array.isArray(v.foto) && v.foto.length ? v.foto : (v.foto_url ? [{ url: v.foto_url, path: v.foto_path || "", ket: "" }] : []))
+    .map(f => ({ url: f.url || "", path: f.path || "", ket: f.ket || "", blob: null, prev: "" }));
+  const hapusPath = [];
+  const gambarFoto = () => {
+    const box = $("#rw-foto", m.el);
+    box.innerHTML = fotos.length ? fotos.map((f, i) => `<div class="rwf" data-i="${i}"><img src="${esc(f.prev || imgUrl(f.url))}" alt="Foto ${i + 1}">${i === 0 ? `<span class="rwf-utama">Utama</span>` : ""}
+      <div class="rwf-body"><input class="input" data-ket maxlength="200" placeholder="Keterangan foto (opsional)" value="${esc(f.ket)}">
+      <div class="rwf-act"><button type="button" class="icon-btn" data-kiri title="Geser ke depan" ${i === 0 ? "disabled" : ""}>${icon("chevron-left")}</button><button type="button" class="icon-btn" data-kanan title="Geser ke belakang" ${i === fotos.length - 1 ? "disabled" : ""}>${icon("chevron-right")}</button><button type="button" class="icon-btn del" data-hapus title="Hapus foto">${icon("trash")}</button></div></div></div>`).join("")
+      : `<div class="rwf-kosong">Belum ada foto.</div>`;
+    $("#rw-tambah-foto", m.el).disabled = fotos.length >= 12;
+  };
+  $("#rw-foto", m.el).addEventListener("input", e => { const it = e.target.closest(".rwf"); if (it && e.target.matches("[data-ket]")) fotos[+it.dataset.i].ket = e.target.value; });
+  $("#rw-foto", m.el).addEventListener("click", e => {
+    const it = e.target.closest(".rwf"); if (!it) return; const i = +it.dataset.i;
+    if (e.target.closest("[data-hapus]")) { const [f] = fotos.splice(i, 1); if (f.path) hapusPath.push(f.path); }
+    else if (e.target.closest("[data-kiri]") && i > 0) [fotos[i - 1], fotos[i]] = [fotos[i], fotos[i - 1]];
+    else if (e.target.closest("[data-kanan]") && i < fotos.length - 1) [fotos[i + 1], fotos[i]] = [fotos[i], fotos[i + 1]];
+    else return;
+    gambarFoto();
+  });
+  $("#rw-tambah-foto", m.el).addEventListener("click", async () => {
+    const files = await pickFiles(true); if (!files.length) return;
+    const sisa = 12 - fotos.length;
+    if (files.length > sisa) toast(`Maksimal 12 foto per periode. ${files.length - sisa} foto tidak ditambahkan.`, "err");
+    for (const f of files.slice(0, sisa)) {
+      try { const blob = await compressImage(f); fotos.push({ url: "", path: "", ket: "", blob, prev: URL.createObjectURL(blob) }); }
+      catch (err) { toast(pesanError(err), "err"); }
+    }
+    gambarFoto();
+  });
+  gambarFoto();
+  // --- daftar anggota (foto kecil, jabatan, nama, asal) ---
+  const ang = anggotaRiwayat(v).map(x => ({ ...x, blob: null, prev: "" }));
+  const hapusAng = [];
+  const gambarAng = () => {
+    $("#rw-ang", m.el).innerHTML = ang.length ? ang.map((a, i) => `<div class="rwa" data-i="${i}">
+      <button type="button" class="rwa-foto" data-afoto title="Pasang/ganti foto">${a.prev || imgUrl(a.foto_url) ? `<img src="${esc(a.prev || imgUrl(a.foto_url))}" alt="">` : `<span>${esc(initials(a.nama || "?"))}</span>`}<i>${icon("upload")}</i></button>
+      <div class="rwa-in"><input class="input" data-f="jabatan" maxlength="80" placeholder="Jabatan" value="${esc(a.jabatan)}"><input class="input" data-f="nama" maxlength="100" placeholder="Nama lengkap" value="${esc(a.nama)}"><input class="input" data-f="asal" maxlength="120" placeholder="Asal daerah, mis. Cilacap, Jawa Tengah" value="${esc(a.asal)}"></div>
+      <div class="rwa-act"><button type="button" class="icon-btn" data-naik title="Naikkan" ${i === 0 ? "disabled" : ""}>${icon("chevron-down")}</button><button type="button" class="icon-btn" data-turun title="Turunkan" ${i === ang.length - 1 ? "disabled" : ""}>${icon("chevron-down")}</button>${a.prev || a.foto_url ? `<button type="button" class="icon-btn" data-afoto-hapus title="Hapus foto">${icon("eye-off")}</button>` : ""}<button type="button" class="icon-btn del" data-ahapus title="Hapus orang">${icon("trash")}</button></div></div>`).join("")
+      : `<div class="rwf-kosong">Belum ada pengurus. Tekan \u201cTambah orang\u201d atau salin dari susunan saat ini.</div>`;
+    $("#rw-n", m.el).textContent = ang.length ? `(${ang.length} orang)` : "";
+    $("#rw-ang-tambah", m.el).disabled = ang.length >= 100;
+  };
+  const buangFoto = a => { if (a.foto_path) hapusAng.push(a.foto_path); a.foto_url = ""; a.foto_path = ""; a.blob = null; a.prev = ""; };
+  $("#rw-ang", m.el).addEventListener("input", e => { const it = e.target.closest(".rwa"); if (it && e.target.dataset.f) ang[+it.dataset.i][e.target.dataset.f] = e.target.value; });
+  $("#rw-ang", m.el).addEventListener("click", async e => {
+    const it = e.target.closest(".rwa"); if (!it) return; const i = +it.dataset.i, a = ang[i];
+    if (e.target.closest("[data-afoto]")) {
+      const [f] = await pickFiles(false); if (!f) return;
+      try { const blob = await compressAvatar(f); buangFoto(a); a.blob = blob; a.prev = URL.createObjectURL(blob); }
+      catch (err) { return toast(pesanError(err), "err"); }
+    } else if (e.target.closest("[data-afoto-hapus]")) buangFoto(a);
+    else if (e.target.closest("[data-ahapus]")) { buangFoto(a); ang.splice(i, 1); }
+    else if (e.target.closest("[data-naik]") && i > 0) [ang[i - 1], ang[i]] = [ang[i], ang[i - 1]];
+    else if (e.target.closest("[data-turun]") && i < ang.length - 1) [ang[i + 1], ang[i]] = [ang[i], ang[i + 1]];
+    else return;
+    gambarAng();
+  });
+  $("#rw-ang-tambah", m.el).addEventListener("click", () => {
+    ang.push({ jabatan: "", nama: "", asal: "", foto_url: "", foto_path: "", blob: null, prev: "" }); gambarAng();
+    const ins = $$(".rwa:last-child [data-f=jabatan]", m.el); if (ins[0]) ins[0].focus();
+  });
+  $("#rw-teks-ok", m.el).addEventListener("click", () => {
+    const baru = parseSusunan($("#rw-teks", m.el).value).slice(0, 100 - ang.length);
+    if (!baru.length) return toast("Tulis minimal satu baris: Jabatan | Nama | Asal", "err");
+    baru.forEach(x => ang.push({ jabatan: x.j, nama: x.n, asal: x.a, foto_url: "", foto_path: "", blob: null, prev: "" }));
+    $("#rw-teks", m.el).value = ""; gambarAng(); toast(`${baru.length} orang ditambahkan.`);
+  });
   $("#rw-salin", m.el).addEventListener("click", async () => {
     try {
       const rows = (await api.list("susunan_pengurus")).filter(x => x.tampil).sort((a, b) => (a.urutan || 0) - (b.urutan || 0));
       if (!rows.length) return toast("Susunan Pengurus saat ini masih kosong.", "err");
-      const ta = $("#rw-p", m.el);
-      ta.value = (ta.value.trim() ? ta.value.trim() + "\n" : "") + rows.map(x => `${x.jabatan} | ${x.nama}`).join("\n");
+      // foto dipakai bersama (tanpa salinan file baru) supaya penyimpanan tetap hemat
+      rows.slice(0, 100 - ang.length).forEach(x => ang.push({ jabatan: x.jabatan || "", nama: x.nama || "", asal: x.asal || "", foto_url: x.foto_url || "", foto_path: "", blob: null, prev: "" }));
       const ketua = rows.find(x => /^ketua( umum)?$/i.test(String(x.jabatan).trim()));
       if (ketua && !$("#rw-k", m.el).value.trim()) $("#rw-k", m.el).value = ketua.nama;
-      hitung(); toast(`${rows.length} pengurus disalin.`);
+      gambarAng(); toast(`${rows.length} pengurus disalin beserta fotonya.`);
     } catch (err) { toast(pesanError(err), "err"); }
   });
+  gambarAng();
   m.el.querySelector("[data-save]").addEventListener("click", async () => {
     const judul = $("#rw-j", m.el).value.trim(), mulai = parseInt($("#rw-m", m.el).value, 10);
     const selRaw = $("#rw-s", m.el).value.trim(), selesai = selRaw ? parseInt(selRaw, 10) : null;
@@ -3701,11 +3867,25 @@ function riwayatForm(p = null) {
     if (selesai !== null && !(selesai >= mulai && selesai <= 2100)) return toast("Tahun selesai harus sama atau setelah tahun mulai.", "err");
     try {
       await withLoading(async () => {
-        const f = await resolveImage(img, "foto", "riwayat", v.foto_url, v.foto_path);
+        const hasil = [];
+        for (const f of fotos) {
+          if (f.blob) { const up = await api.upload("riwayat", f.blob); hasil.push({ url: up.url, path: up.path || "", ket: f.ket.trim().slice(0, 200) }); }
+          else if (f.url) hasil.push({ url: f.url, path: f.path, ket: f.ket.trim().slice(0, 200) });
+        }
+        const anggota = [];
+        for (const a of ang) {
+          const jab = a.jabatan.trim().slice(0, 80), nm = a.nama.trim().slice(0, 100), asal = a.asal.trim().slice(0, 120);
+          if (!jab && !nm) { if (a.foto_path) hapusAng.push(a.foto_path); continue; }
+          let url = a.foto_url, path = a.foto_path;
+          if (a.blob) { const up = await api.upload("pengurus-riwayat", a.blob); url = up.url; path = up.path || ""; }
+          anggota.push({ jabatan: jab, nama: nm, asal, foto_url: url, foto_path: path });
+        }
         const row = { judul, tahun_mulai: mulai, tahun_selesai: selesai, ketua: $("#rw-k", m.el).value.trim(), catatan: $("#rw-c", m.el).value.trim(),
-          susunan: lines($("#rw-p", m.el).value).join("\n"), foto_url: f.url, foto_path: f.path, tampil: $("#rw-v", m.el).checked };
+          anggota, susunan: anggota.map(a => [a.jabatan, a.nama, a.asal].filter((x, k) => x || k < 2).join(" | ")).join("\n").slice(0, 8000),
+          foto: hasil, foto_url: hasil[0]?.url || "", foto_path: "", tampil: $("#rw-v", m.el).checked };
         if (p) row.id = p.id;
         await api.save("riwayat_pengurus", row);
+        for (const pth of [...hapusPath, ...hapusAng]) await api.removeFile(pth).catch(() => { });
       });
       m.close(); toast("Periode kepengurusan disimpan."); go("riwayat");
     } catch (err) { toast(pesanError(err), "err"); }
@@ -3985,6 +4165,11 @@ function ujiDariServer(c) {
   add("Token Facebook disimpan di Vault", c.facebook_tersimpan ? true : null, c.facebook_tersimpan ? "tersimpan aman" : "belum diisi");
   add("Aktivitas: masuk panel 24 jam terakhir", null, c.login_24_jam + " kali");
   add("Aktivitas: penghapusan 7 hari terakhir", null, c.hapus_7_hari + " kali");
+  if ("db_mb" in c) {
+    const db = +c.db_mb || 0, st = c.penyimpanan;
+    add("Ukuran database (batas gratis 500 MB)", db < 400 ? true : null, `${db} MB terpakai (${Math.round(db / 5)}%)`, "");
+    if (st) add("Penyimpanan foto (batas gratis 1 GB)", st.mb < 800 ? true : null, `${st.mb} MB terpakai (${Math.round(st.mb / 10.24)}%) \u00b7 ${st.file} file`, "");
+  }
   if ("email_hari_ini" in c) {
     add("Pemakaian email otomatis hari ini", c.email_hari_ini < c.batas_email * 0.8 ? true : null, `${c.email_hari_ini} dari ${c.batas_email}`, "");
     add("Pesan masuk 24 jam terakhir (wajar < 50)", c.pesan_24_jam < 50 ? true : null, c.pesan_24_jam + " pesan");
