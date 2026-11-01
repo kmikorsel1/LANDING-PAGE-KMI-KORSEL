@@ -103,7 +103,11 @@
   "rewrites": [
     {
       "source": "/organisasi",
-      "destination": "/index.html"
+      "destination": "/"
+    },
+    {
+      "source": "/organisasi/",
+      "destination": "/"
     }
   ]
 }
