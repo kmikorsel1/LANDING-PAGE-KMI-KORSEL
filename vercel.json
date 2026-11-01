@@ -100,12 +100,6 @@
       "permanent": false
     }
   ],
-  "functions": {
-    "api/publik.js": {
-      "includeFiles": "config.js",
-      "maxDuration": 10
-    }
-  },
   "rewrites": [
     {
       "source": "/organisasi",
