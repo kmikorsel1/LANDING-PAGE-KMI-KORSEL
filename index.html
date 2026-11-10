@@ -1114,6 +1114,95 @@
 #app-root .ld-logo circle { fill: none; stroke: #0064E0; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 90 260; }
 @keyframes kmiLdSpin { to { transform: rotate(360deg); } }
 @keyframes kmiLdPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(.93); } }
+
+/* ===== Beranda: BENTO GRID ===== */
+#app-root #beranda.hero { padding: 36px 0 56px; }
+#app-root .bento { --bg: 14px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: minmax(132px, auto); grid-auto-flow: dense; gap: var(--bg); }
+#app-root .bt { position: relative; border-radius: 26px; background: var(--card); border: 1px solid var(--border); padding: 20px 22px; display: flex; flex-direction: column; gap: 6px; overflow: hidden; color: var(--text); text-decoration: none; text-align: left; font: inherit; min-width: 0; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+#app-root a.bt:hover, #app-root button.bt:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: color-mix(in srgb, var(--primary) 35%, var(--border)); }
+#app-root a.bt:focus-visible, #app-root button.bt:focus-visible { outline: 3px solid color-mix(in srgb, var(--primary) 45%, transparent); outline-offset: 3px; }
+#app-root .bt .bt-ic { width: 42px; height: 42px; border-radius: 14px; display: grid; place-items: center; background: var(--primary-100); color: var(--primary); flex: none; }
+#app-root .bt .bt-ic .ico { width: 21px; height: 21px; }
+#app-root .bt .bt-k { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+#app-root .bt .bt-t { font-size: 17px; font-weight: 800; line-height: 1.25; letter-spacing: -.01em; }
+#app-root .bt .bt-d { font-size: 13.5px; line-height: 1.5; color: var(--muted); }
+#app-root .bt .bt-go { position: absolute; top: 18px; right: 18px; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--border); color: var(--text); background: var(--card); transition: transform .2s; }
+#app-root .bt:hover .bt-go { transform: rotate(-45deg); }
+#app-root .bt .bt-go .ico { width: 16px; height: 16px; }
+#app-root .bt .bt-push { margin-top: auto; }
+/* intro */
+#app-root .bt-intro { grid-column: span 2; grid-row: span 3; padding: 34px 34px 30px; gap: 0; justify-content: center; background: radial-gradient(520px 320px at 100% 0%, color-mix(in srgb, var(--primary) 14%, transparent), transparent 70%), var(--card); }
+#app-root .bt-intro h1, #app-root #kmi-landing .bt-intro h1 { margin-top: 18px; font-size: clamp(30px, 3.5vw, 48px); line-height: 1.06; }
+#app-root .bt-intro h1 .hl { white-space: normal; }
+#app-root .bt-intro .hero-sub { font-size: 17px; margin-top: 14px; }
+#app-root .bt-intro .hero-actions { margin-top: 24px; }
+/* foto */
+#app-root .bt-photo { grid-column: span 2; grid-row: span 3; padding: 0; border: 0; min-height: 420px; background: var(--primary-100); }
+#app-root .bt-photo .hero-slider { position: absolute; inset: 0; border-radius: 0; box-shadow: none; }
+#app-root .bt-photo .hero-slider .sl-track, #app-root .bt-photo .hero-slider .sl-slide { height: 100%; }
+#app-root .bt-photo .hero-slider .sl-slide img { height: 100%; aspect-ratio: auto; }
+#app-root .bt-photo .hero-slider .logo-slide { aspect-ratio: auto; }
+#app-root .bt-photo .hero-slider .logo-slide img { width: 46%; height: auto; aspect-ratio: 1; --ly: -12%; }
+#app-root .bt-photo .hero-float { top: 16px; left: 16px; }
+#app-root .bt-photo .hero-caption { left: 14px; right: 14px; bottom: 14px; }
+#app-root .bt-photo .hero-slider .sl-dots { bottom: 96px; }
+/* statistik */
+#app-root .bt-stat { justify-content: flex-end; background: var(--primary-50, var(--card)); }
+#app-root .bt-stat b { font-size: clamp(30px, 3.2vw, 42px); line-height: 1; font-weight: 800; letter-spacing: -.03em; color: var(--primary); }
+#app-root .bt-stat span { font-size: 13.5px; color: var(--muted); font-weight: 600; }
+/* agenda */
+#app-root .bt-event { grid-column: span 2; grid-row: span 2; padding: 0; border: 0; cursor: pointer; background: #0B2540; color: #fff; justify-content: flex-end; }
+#app-root .bt-event img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .55; transition: transform .5s ease; }
+#app-root .bt-event:hover img { transform: scale(1.04); }
+#app-root .bt-event::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(4,18,36,0) 20%, rgba(4,18,36,.88) 100%); }
+#app-root .bt-event .ev-in { position: relative; z-index: 1; padding: 22px 24px; display: flex; flex-direction: column; gap: 8px; }
+#app-root .bt-event .bt-k { color: #BFE3FF; }
+#app-root .bt-event .bt-t { font-size: 22px; color: #fff; }
+#app-root .bt-event .ev-meta { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; color: #DCEBFA; }
+#app-root .bt-event .ev-meta span { display: inline-flex; align-items: center; gap: 6px; }
+#app-root .bt-event .ev-meta .ico { width: 15px; height: 15px; }
+#app-root .bt-event .bt-go { z-index: 1; background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.35); color: #fff; }
+/* slogan */
+#app-root .bt-quote { grid-column: span 2; justify-content: center; background: var(--primary); border-color: var(--primary); color: #fff; padding: 24px 26px; }
+#app-root .bt-quote .q { font-size: clamp(18px, 1.9vw, 23px); font-weight: 700; line-height: 1.32; letter-spacing: -.01em; text-wrap: balance; }
+#app-root .bt-quote .bt-k { color: rgba(255,255,255,.72); }
+#app-root .bt-quote .qmark { position: absolute; right: 18px; bottom: -26px; font-size: 140px; line-height: 1; font-weight: 800; color: rgba(255,255,255,.12); font-family: Georgia, serif; pointer-events: none; }
+/* donasi & kontak */
+#app-root .bt-donasi { background: color-mix(in srgb, var(--accent) 8%, var(--card)); }
+#app-root .bt-donasi .bt-ic { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); }
+#app-root .bt-kontak { grid-column: span var(--s4, 1); background: var(--text); color: var(--bg-page, #fff); border-color: var(--text); flex-direction: row; align-items: center; gap: 16px; }
+#app-root .bt-kontak .bt-t, #app-root .bt-kontak .bt-d { color: inherit; }
+#app-root .bt-kontak .bt-d { opacity: .72; }
+#app-root .bt-kontak .bt-ic { background: #22C55E; color: #fff; }
+#app-root .bt-kontak .bt-go { position: static; margin-left: auto; background: transparent; border-color: currentColor; color: inherit; flex: none; }
+/* pengurus */
+#app-root .bt-ava { display: flex; margin-top: auto; }
+#app-root .bt-ava img, #app-root .bt-ava span { width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--card); object-fit: cover; margin-left: -9px; background: var(--primary-100); color: var(--primary); display: grid; place-items: center; font-size: 12px; font-weight: 800; }
+#app-root .bt-ava > :first-child { margin-left: 0; }
+@media (max-width: 1020px) {
+  #app-root .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: minmax(128px, auto); }
+  #app-root .bt-intro, #app-root .bt-photo { grid-row: auto; }
+  #app-root .bt-photo { min-height: 0; aspect-ratio: 4 / 3.3; }
+  #app-root .bt-kontak { grid-column: span var(--s2, 1); }
+}
+@media (max-width: 560px) {
+  #app-root #beranda.hero { padding: 18px 0 40px; }
+  #app-root .bento { --bg: 10px; grid-auto-rows: minmax(118px, auto); }
+  #app-root .bt { padding: 16px; border-radius: 22px; }
+  #app-root .bt-intro { padding: 24px 20px; }
+  #app-root .bt-photo { aspect-ratio: 1 / 1; padding: 0; }
+  #app-root .bt-photo .hero-slider .logo-slide img { width: 44%; --ly: -18%; }
+  #app-root .bt-event { grid-row: span 2; padding: 0; }
+  #app-root .bt-event .bt-t { font-size: 19px; }
+  #app-root .bt .bt-t { font-size: 15.5px; }
+  #app-root .bt .bt-go { top: 12px; right: 12px; width: 28px; height: 28px; }
+  #app-root .bt-kontak { flex-wrap: wrap; }
+  #app-root .bt-kontak .bt-d { display: none; }
+  #app-root .bt-photo .hero-slider .sl-dots { bottom: auto; top: 14px; }
+  #app-root .bt-photo .hero-caption small { display: none; }
+  #app-root .bt-kontak .bt-go { position: absolute; top: 12px; right: 12px; margin: 0; }
+}
+@media (prefers-reduced-motion: reduce) { #app-root .bt, #app-root .bt-event img, #app-root .bt .bt-go { transition: none; } #app-root a.bt:hover, #app-root button.bt:hover { transform: none; } }
 </style>
 
 </head>
@@ -2123,19 +2212,44 @@ function renderHero() {
   igPosts().slice(0, 6).forEach(p => heroSlides.push({ url: p.img, cap: (p.cap.split("\n")[0] || "").slice(0, 90) || "Instagram " + namaSingkat() }));
   (PUB.galeri || []).slice(0, 7).forEach(p => { const u = imgUrl(p.foto_url); if (u) heroSlides.push({ url: u, cap: p.judul || S("hero_gambar_keterangan") }); });
   const capAwal = heroSlides[0].cap || S("hero_gambar_keterangan");
-  $("#beranda").innerHTML = `<div class="container hero-grid">
-    <div>
+  const go = `<span class="bt-go">${icon("arrow-right")}</span>`;
+  const tiles = [];
+  stats.forEach(([a, l]) => tiles.push({ n: 1, h: `<div class="bt bt-stat"><b>${esc(a)}</b><span>${esc(l)}</span></div>` }));
+  const evs = sortKegiatan(PUB.kegiatan || []);
+  const ev = evs.find(k => statusKegiatan(k) !== "Selesai") || evs[0];
+  if (ev) {
+    const st = statusKegiatan(ev);
+    const lbl = ev.jenis === "Pengumuman" ? "Pengumuman" : (st === "Selesai" ? "Kegiatan terakhir" : "Agenda terdekat");
+    const img = imgUrl(ev.gambar_url) || placeholder(3, ev.jenis === "Pengumuman" ? "Pengumuman" : "");
+    tiles.push({ n: 4, h: `<button type="button" class="bt bt-event" data-ev="${esc(ev.id)}"><img src="${esc(img)}" alt="" loading="lazy">${go}<div class="ev-in"><span class="bt-k">${icon(ev.jenis === "Pengumuman" ? "megaphone" : "calendar")} ${lbl}</span><span class="bt-t">${esc(ev.judul)}</span><span class="ev-meta">${ev.tanggal ? `<span>${icon("calendar")}${esc(fmtTanggal(ev.tanggal))}</span>` : ""}${ev.waktu ? `<span>${icon("clock")}${esc(ev.waktu)}</span>` : ""}${ev.lokasi ? `<span>${icon("map-pin")}${esc(ev.lokasi)}</span>` : ""}</span></div></button>` });
+  }
+  if (S("slogan")) tiles.push({ n: 2, h: `<div class="bt bt-quote"><span class="bt-k">Semangat kami</span><p class="q">${esc(S("slogan"))}</p><span class="qmark" aria-hidden="true">\u201d</span></div>` });
+  const masjid = safeUrl(S("link_website_masjid")) || "https://korea-masjid.vercel.app/";
+  tiles.push({ n: 1, h: `<a class="bt" href="${esc(masjid)}" target="_blank" rel="noopener"><span class="bt-ic">${icon("mosque")}</span>${go}<span class="bt-t bt-push">Cari Masjid di Korea</span><span class="bt-d">Direktori masjid &amp; musala</span></a>` });
+  const pg = PUB.pengurus || [];
+  if (pg.length) {
+    const ava = pg.slice(0, 4).map(p => { const u = imgUrl(p.foto_url); return u ? `<img src="${esc(u)}" alt="" loading="lazy">` : `<span>${esc(String(p.nama || "?").trim().charAt(0).toUpperCase())}</span>`; }).join("") + (pg.length > 4 ? `<span>+${pg.length - 4}</span>` : "");
+    tiles.push({ n: 1, h: `<a class="bt" href="#pengurus" data-go="pengurus">${go}<span class="bt-k">Pengurus</span><span class="bt-t">${pg.length} pengurus aktif</span><span class="bt-ava">${ava}</span></a>` });
+  }
+  tiles.push({ n: 1, h: `<a class="bt" href="${orgUrl("adart")}" data-page="organisasi" data-tab="adart"><span class="bt-ic">${icon("book-open")}</span>${go}<span class="bt-t bt-push">Organisasi &amp; AD/ART</span><span class="bt-d">Struktur, sejarah &amp; aturan</span></a>` });
+  if (S("donasi_no_rekening").trim()) tiles.push({ n: 1, h: `<a class="bt bt-donasi" href="#donasi" data-go="donasi"><span class="bt-ic">${icon("heart")}</span>${go}<span class="bt-t bt-push">Dukung Kegiatan</span><span class="bt-d">Salurkan donasi Anda</span></a>` });
+  const isi = tiles.reduce((a, b) => a + b.n, 0);
+  const s4 = 1 + (4 - (isi + 1) % 4) % 4, s2 = 1 + (2 - (isi + 1) % 2) % 2;
+  const wa = S("no_wa_publik");
+  tiles.push({ n: 1, h: `<a class="bt bt-kontak" href="#kontak" data-go="kontak" style="--s4:${s4};--s2:${s2}"><span class="bt-ic">${icon(wa ? "whatsapp" : "message")}</span><span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span class="bt-t">Hubungi Kami &amp; Bergabung</span><span class="bt-d">Tanya, gabung, atau konfirmasi donasi \u2014 pengurus akan membalas secepatnya.</span></span>${go}</a>` });
+  $("#beranda").innerHTML = `<div class="container bento">
+    <div class="bt bt-intro">
       <div class="hero-badges">${S("hero_label") ? `<span class="badge">${icon("mosque")}${esc(S("hero_label"))}</span>` : ""}<span class="badge b-red"><span class="flag" style="display:inline-block;width:14px;height:10px;border-radius:2px;background:linear-gradient(#E11D2E 50%,#fff 50%);box-shadow:0 0 0 1px #F6C9CF"></span>WNI di Korea</span></div>
       <h1>${judul}</h1>
       ${S("hero_subjudul") ? `<p class="hero-sub">${esc(S("hero_subjudul"))}</p>` : ""}
       <div class="hero-actions"><a href="#kontak" class="btn btn-primary" data-go="kontak">${icon("message")}Hubungi Kami</a><a href="#kegiatan" class="btn btn-outline" data-go="kegiatan">Lihat Kegiatan${icon("arrow-right")}</a></div>
-      ${stats.length ? `<div class="hero-stats">${stats.map(([a, l]) => `<div class="stat"><b>${esc(a)}</b><span>${esc(l)}</span></div>`).join("")}</div>` : ""}
     </div>
-    <div class="hero-media">
+    <div class="bt bt-photo hero-media">
       ${sliderHtml("hero-slider", heroSlides.map((h, i) => h.logo ? `<div class="sl-slide logo-slide" data-cap="${esc(h.cap || "")}"><img src="${esc(h.url)}" alt="Logo ${esc(namaLengkap())}" fetchpriority="high"></div>` : `<div class="sl-slide" data-cap="${esc(h.cap || "")}"><img src="${esc(h.url)}" alt="${esc(h.cap || "Kegiatan KMI Korsel")}" loading="lazy"></div>`), 5000)}
       <div class="hero-float"><span class="dot"></span>Terbuka untuk seluruh WNI</div>
       ${capAwal ? `<div class="hero-caption"><span class="ic">${icon("users")}</span><div><small>${heroSlides.length > 1 ? "Dokumentasi kegiatan" : "Selamat datang"}</small><strong id="hero-cap">${esc(capAwal)}</strong></div></div>` : ""}
     </div>
+    ${tiles.map(x => x.h).join("\n    ")}
   </div>`;
 }
 
